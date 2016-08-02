@@ -20,6 +20,9 @@
 		8C72A2CD1D510D50008301CC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */; };
 		8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */; };
 		950DC8501D51045500601BC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC84F1D51045500601BC5 /* Extensions.swift */; };
+		950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignUp.storyboard */; };
+		950DC8571D510D5F00601BC5 /* Sign Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8561D510D5F00601BC5 /* Sign Up.png */; };
+		950DC85A1D5110A800601BC5 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8591D5110A800601BC5 /* Ubuntu-R.ttf */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,9 @@
 		8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		950DC84F1D51045500601BC5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
+		950DC8561D510D5F00601BC5 /* Sign Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign Up.png"; sourceTree = "<group>"; };
+		950DC8591D5110A800601BC5 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,9 @@
 				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
 				8C044AB31D4FBF76002754B5 /* Info.plist */,
 				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
+				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
+				950DC8531D510CC200601BC5 /* SignUp.storyboard */,
+				950DC8581D510D8100601BC5 /* Supporting Files */,
 			);
 			path = Turnn;
 			sourceTree = "<group>";
@@ -211,8 +220,11 @@
 				8C72A2CC1D510D50008301CC /* Category.storyboard in Resources */,
 				8C044AB21D4FBF76002754B5 /* LaunchScreen.storyboard in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
+				950DC85A1D5110A800601BC5 /* Ubuntu-R.ttf in Resources */,
+				950DC8571D510D5F00601BC5 /* Sign Up.png in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
 				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
+				950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +356,15 @@
 				8C044AB11D4FBF76002754B5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		950DC8531D510CC200601BC5 /* SignUp.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				950DC8541D510CC200601BC5 /* Base */,
+			);
+			name = SignUp.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
