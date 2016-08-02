@@ -20,6 +20,14 @@
 		8C72A2CD1D510D50008301CC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */; };
 		8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */; };
 		950DC8501D51045500601BC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC84F1D51045500601BC5 /* Extensions.swift */; };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+		CE4D12C91D511090005ECD86 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D12C71D511090005ECD86 /* Storyboard.storyboard */; };
+		CE4D12CD1D511A6D005ECD86 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D12CC1D511A6D005ECD86 /* EventFinderViewController.swift */; };
+		CE4D60A21D511D66000043AF /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D60A11D511D66000043AF /* EventFinderTableViewCell.swift */; };
+=======
+>>>>>>> feature/EventsView
 		950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignUp.storyboard */; };
 		95E595311D51452E00416B2A /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95E595301D51452E00416B2A /* Ubuntu-R.ttf */; };
 		95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595341D51460900416B2A /* AddressTableViewCell.swift */; };
@@ -34,8 +42,10 @@
 		95E595471D51460900416B2A /* ZipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5953D1D51460900416B2A /* ZipTableViewCell.swift */; };
 		95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595481D51461100416B2A /* CreateEventViewController.swift */; };
 		95E5954B1D51461B00416B2A /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E5954A1D51461B00416B2A /* CreateEvent.storyboard */; };
-		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
-		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
+<<<<<<< HEAD
+=======
+>>>>>>> 33e22b48e6c7bf2c84b06121c0c6cfa014c86af1
+>>>>>>> feature/EventsView
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +68,14 @@
 		8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		950DC84F1D51045500601BC5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+		CE4D12C81D511090005ECD86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
+		CE4D12CC1D511A6D005ECD86 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
+		CE4D60A11D511D66000043AF /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> feature/EventsView
 		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
 		95E595301D51452E00416B2A /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-R.ttf"; path = "Turnn/Ubuntu-R.ttf"; sourceTree = "<group>"; };
 		95E595341D51460900416B2A /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,8 +91,10 @@
 		95E595481D51461100416B2A /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		95E5954A1D51461B00416B2A /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
-		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
-		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+>>>>>>> 33e22b48e6c7bf2c84b06121c0c6cfa014c86af1
+>>>>>>> feature/EventsView
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,11 +142,29 @@
 			children = (
 				8C044AA71D4FBF76002754B5 /* AppDelegate.swift */,
 				950DC84F1D51045500601BC5 /* Extensions.swift */,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+				8C1C608E1D4FFC610015FAC5 /* User.swift */,
+				8C1C60901D4FFCC10015FAC5 /* Location.swift */,
+				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
+				CE4D12CC1D511A6D005ECD86 /* EventFinderViewController.swift */,
+				CE4D60A11D511D66000043AF /* EventFinderTableViewCell.swift */,
+				CE4D12C71D511090005ECD86 /* Storyboard.storyboard */,
+				8C044AA91D4FBF76002754B5 /* ViewController.swift */,
+				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
+				CE4D60A31D5146DA000043AF /* XStoryboardX */,
+=======
+>>>>>>> feature/EventsView
 				8C72A2D21D510DEC008301CC /* Models */,
 				8C72A2D11D510DDA008301CC /* Controllers */,
 				8C72A2D01D510DCB008301CC /* ViewControllers */,
 				95E595321D5145E400416B2A /* Views */,
 				8C72A2CF1D510DC1008301CC /* Storyboards */,
+<<<<<<< HEAD
+=======
+>>>>>>> 33e22b48e6c7bf2c84b06121c0c6cfa014c86af1
+>>>>>>> feature/EventsView
 				8C044AB31D4FBF76002754B5 /* Info.plist */,
 				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
 				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
@@ -153,7 +191,6 @@
 				8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */,
 				8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */,
 				95E595481D51461100416B2A /* CreateEventViewController.swift */,
-				CE9C29961D51565F00158B14 /* EventFinderViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -191,7 +228,6 @@
 				95E595351D51460900416B2A /* CategoriesTableViewCell.swift */,
 				95E595361D51460900416B2A /* CityTableViewCell.swift */,
 				95E595371D51460900416B2A /* DescriptionTableViewCell.swift */,
-				CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */,
 				95E595381D51460900416B2A /* ExampleCollectionViewCell.swift */,
 				95E595391D51460900416B2A /* LocationTableViewCell.swift */,
 				95E5953A1D51460900416B2A /* MoreInfoTableViewCell.swift */,
@@ -216,6 +252,15 @@
 				6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE4D60A31D5146DA000043AF /* XStoryboardX */ = {
+			isa = PBXGroup;
+			children = (
+				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
+				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
+			);
+			name = XStoryboardX;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +334,15 @@
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
 				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
+<<<<<<< HEAD
 				950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */,
+=======
+<<<<<<< HEAD
+				CE4D12C91D511090005ECD86 /* Storyboard.storyboard in Resources */,
+=======
+				950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */,
+>>>>>>> 33e22b48e6c7bf2c84b06121c0c6cfa014c86af1
+>>>>>>> feature/EventsView
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,11 +448,19 @@
 			files = (
 				8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */,
 				95E595471D51460900416B2A /* ZipTableViewCell.swift in Sources */,
-				CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */,
 				8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */,
+<<<<<<< HEAD
 				8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */,
+=======
+<<<<<<< HEAD
+				8C044AAA1D4FBF76002754B5 /* ViewController.swift in Sources */,
+				CE4D60A21D511D66000043AF /* EventFinderTableViewCell.swift in Sources */,
+				CE4D12CD1D511A6D005ECD86 /* EventFinderViewController.swift in Sources */,
+=======
+				8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */,
+>>>>>>> 33e22b48e6c7bf2c84b06121c0c6cfa014c86af1
+>>>>>>> feature/EventsView
 				8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */,
-				CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */,
 				95E595451D51460900416B2A /* TimeTableViewCell.swift in Sources */,
 				95E595461D51460900416B2A /* TitleTableViewCell.swift in Sources */,
 				95E595411D51460900416B2A /* DescriptionTableViewCell.swift in Sources */,
@@ -436,6 +497,17 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+		CE4D12C71D511090005ECD86 /* Storyboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE4D12C81D511090005ECD86 /* Base */,
+			);
+			name = Storyboard.storyboard;
+=======
+>>>>>>> feature/EventsView
 		950DC8531D510CC200601BC5 /* SignUp.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -443,6 +515,10 @@
 			);
 			name = SignUp.storyboard;
 			path = ..;
+<<<<<<< HEAD
+=======
+>>>>>>> 33e22b48e6c7bf2c84b06121c0c6cfa014c86af1
+>>>>>>> feature/EventsView
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -34,8 +34,6 @@
 		95E595471D51460900416B2A /* ZipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5953D1D51460900416B2A /* ZipTableViewCell.swift */; };
 		95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595481D51461100416B2A /* CreateEventViewController.swift */; };
 		95E5954B1D51461B00416B2A /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95E5954A1D51461B00416B2A /* CreateEvent.storyboard */; };
-		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
-		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +71,6 @@
 		95E595481D51461100416B2A /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		95E5954A1D51461B00416B2A /* CreateEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateEvent.storyboard; sourceTree = "<group>"; };
 		95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
-		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
-		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +149,6 @@
 				8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */,
 				8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */,
 				95E595481D51461100416B2A /* CreateEventViewController.swift */,
-				CE9C29961D51565F00158B14 /* EventFinderViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -191,7 +186,6 @@
 				95E595351D51460900416B2A /* CategoriesTableViewCell.swift */,
 				95E595361D51460900416B2A /* CityTableViewCell.swift */,
 				95E595371D51460900416B2A /* DescriptionTableViewCell.swift */,
-				CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */,
 				95E595381D51460900416B2A /* ExampleCollectionViewCell.swift */,
 				95E595391D51460900416B2A /* LocationTableViewCell.swift */,
 				95E5953A1D51460900416B2A /* MoreInfoTableViewCell.swift */,
@@ -395,11 +389,9 @@
 			files = (
 				8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */,
 				95E595471D51460900416B2A /* ZipTableViewCell.swift in Sources */,
-				CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */,
 				8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */,
 				8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */,
 				8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */,
-				CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */,
 				95E595451D51460900416B2A /* TimeTableViewCell.swift in Sources */,
 				95E595461D51460900416B2A /* TitleTableViewCell.swift in Sources */,
 				95E595411D51460900416B2A /* DescriptionTableViewCell.swift in Sources */,
