@@ -25,7 +25,7 @@ class Location: FirebaseType {
     
     var endpoint: String {
         
-        return "locations"
+        return "Locations"
     }
     
     var dictionaryCopy: [String:AnyObject] {

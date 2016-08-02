@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-/*class Event {
+class Event: FirebaseType {
     
     private let titleKey = "title"
     private let locationKey = "location"
@@ -22,7 +22,7 @@ import UIKit
     private let imageKey = "image"
     
     var title: String
-    var location: String // what type should location be?
+    var location: Location // what type should location be?
     var startTime: NSDate
     var endTime: NSDate?
     //    let categories: [Category]
@@ -34,14 +34,19 @@ import UIKit
     var identifier: String?
     //    let host: User      --> what time should host be?
     
+    
+    required init?(dictionary: [String : AnyObject], identifier: String) {
+        <#code#>
+    }
+    
     var endpoint: String {
         
-        return "events"
+        return "Events"
     }
     
     var dictionaryCopy: [String:AnyObject] {
         
-        
+        // guard { non - optional values [:] }
         
         return [titleKey:title, locationKey:location, startTimeKey:startTime, endTimeKey:endTime, descriptionKey:description, passwordProtectedKey:passwordProtected, passwordKey:password, contactInfoKey:contactInfo, imageKey:image]
     }
@@ -49,7 +54,7 @@ import UIKit
 
 
 
-*/
+
 /*
  import Foundation
  
