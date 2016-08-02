@@ -87,21 +87,53 @@
 			isa = PBXGroup;
 			children = (
 				8C044AA71D4FBF76002754B5 /* AppDelegate.swift */,
-				8C1C608A1D4FFAAF0015FAC5 /* Event.swift */,
 				950DC84F1D51045500601BC5 /* Extensions.swift */,
-				8C1C608E1D4FFC610015FAC5 /* User.swift */,
-				8C1C60901D4FFCC10015FAC5 /* Location.swift */,
-				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
-				8C72A2C91D510D50008301CC /* Category.storyboard */,
-				8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */,
-				8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */,
-				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
+				8C72A2D21D510DEC008301CC /* Models */,
+				8C72A2D11D510DDA008301CC /* Controllers */,
+				8C72A2D01D510DCB008301CC /* ViewControllers */,
+				8C72A2CF1D510DC1008301CC /* Storyboards */,
 				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
-				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
 				8C044AB31D4FBF76002754B5 /* Info.plist */,
 				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
 			);
 			path = Turnn;
+			sourceTree = "<group>";
+		};
+		8C72A2CF1D510DC1008301CC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8C72A2C91D510D50008301CC /* Category.storyboard */,
+				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
+				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		8C72A2D01D510DCB008301CC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */,
+				8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8C72A2D11D510DDA008301CC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8C72A2D21D510DEC008301CC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C1C608A1D4FFAAF0015FAC5 /* Event.swift */,
+				8C1C608E1D4FFC610015FAC5 /* User.swift */,
+				8C1C60901D4FFCC10015FAC5 /* Location.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		97A216E3475E11154D7CFAD8 /* Frameworks */ = {
