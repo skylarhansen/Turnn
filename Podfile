@@ -6,7 +6,7 @@ target 'Turnn' do
   use_frameworks!
 
   # Pods for Turnn
-pod 'Firebase', '>= 2.5.1'
+pod 'Firebase'
 pod 'FirebaseAuth'
 pod 'FirebaseDatabase'
 

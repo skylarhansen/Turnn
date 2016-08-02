@@ -17,6 +17,7 @@
 		8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C608E1D4FFC610015FAC5 /* User.swift */; };
 		8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C60901D4FFCC10015FAC5 /* Location.swift */; };
 		8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C60921D5002860015FAC5 /* FirebaseController.swift */; };
+		950DC8501D51045500601BC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC84F1D51045500601BC5 /* Extensions.swift */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		8C1C608E1D4FFC610015FAC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8C1C60901D4FFCC10015FAC5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8C1C60921D5002860015FAC5 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		950DC84F1D51045500601BC5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +82,9 @@
 		8C044AA61D4FBF76002754B5 /* Turnn */ = {
 			isa = PBXGroup;
 			children = (
-				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
 				8C044AA71D4FBF76002754B5 /* AppDelegate.swift */,
 				8C1C608A1D4FFAAF0015FAC5 /* Event.swift */,
+				950DC84F1D51045500601BC5 /* Extensions.swift */,
 				8C1C608E1D4FFC610015FAC5 /* User.swift */,
 				8C1C60901D4FFCC10015FAC5 /* Location.swift */,
 				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
@@ -91,6 +93,7 @@
 				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
 				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
 				8C044AB31D4FBF76002754B5 /* Info.plist */,
+				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
 			);
 			path = Turnn;
 			sourceTree = "<group>";
@@ -110,12 +113,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C044AB61D4FBF76002754B5 /* Build configuration list for PBXNativeTarget "Turnn" */;
 			buildPhases = (
+				022F77CFD80BFB396F0378E8 /* 📦 Check Pods Manifest.lock */,
 				9E1CF88A41ABADD27FE9110B /* [CP] Check Pods Manifest.lock */,
 				8C044AA01D4FBF76002754B5 /* Sources */,
 				8C044AA11D4FBF76002754B5 /* Frameworks */,
 				8C044AA21D4FBF76002754B5 /* Resources */,
 				B669FFABD5CBB0EC529D2200 /* [CP] Embed Pods Frameworks */,
 				686AD4103BF49E2700494520 /* [CP] Copy Pods Resources */,
+				25C2D18FFF78F5179103C3DD /* 📦 Embed Pods Frameworks */,
+				893027E04A42795F53862DFF /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -174,6 +180,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		022F77CFD80BFB396F0378E8 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		25C2D18FFF78F5179103C3DD /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Turnn/Pods-Turnn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		686AD4103BF49E2700494520 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -182,6 +218,21 @@
 			inputPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Turnn/Pods-Turnn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		893027E04A42795F53862DFF /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +283,7 @@
 				8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */,
 				8C1C608B1D4FFAAF0015FAC5 /* Event.swift in Sources */,
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
+				950DC8501D51045500601BC5 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
