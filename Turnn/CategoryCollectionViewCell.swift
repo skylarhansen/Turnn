@@ -15,7 +15,14 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         
-        categoryImageView.layer.cornerRadius = categoryImageView.bounds.width / 2
+        categoryImageView.layer.cornerRadius = 86.0 / 2.0
+        
+        categoryImageView.layer.masksToBounds = true
+    }
+    
+    func updateWith(image: UIImage) {
+        
+        categoryImageView.image = image
     }
     
 }
