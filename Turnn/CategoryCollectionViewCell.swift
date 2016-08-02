@@ -13,6 +13,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     
-    // make image view circular
+    override func awakeFromNib() {
+        
+        categoryImageView.layer.cornerRadius = categoryImageView.bounds.width / 2
+    }
     
 }
