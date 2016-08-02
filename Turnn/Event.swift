@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Event {
+/*class Event {
     
     private let titleKey = "title"
     private let locationKey = "location"
@@ -49,7 +49,7 @@ class Event {
 
 
 
-
+*/
 /*
  import Foundation
  
