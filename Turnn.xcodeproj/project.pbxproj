@@ -23,6 +23,7 @@
 		950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignUp.storyboard */; };
 		950DC8571D510D5F00601BC5 /* Sign Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8561D510D5F00601BC5 /* Sign Up.png */; };
 		950DC85A1D5110A800601BC5 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8591D5110A800601BC5 /* Ubuntu-R.ttf */; };
+		95F59DD61D5121EC00FEF6EE /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
 		950DC8561D510D5F00601BC5 /* Sign Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign Up.png"; sourceTree = "<group>"; };
 		950DC8591D5110A800601BC5 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
+		95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +100,11 @@
 				8C72A2D11D510DDA008301CC /* Controllers */,
 				8C72A2D01D510DCB008301CC /* ViewControllers */,
 				8C72A2CF1D510DC1008301CC /* Storyboards */,
-				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
 				8C044AB31D4FBF76002754B5 /* Info.plist */,
 				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
 				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
 				950DC8531D510CC200601BC5 /* SignUp.storyboard */,
-				950DC8581D510D8100601BC5 /* Supporting Files */,
+				95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */,
 			);
 			path = Turnn;
 			sourceTree = "<group>";
@@ -223,6 +224,7 @@
 				950DC85A1D5110A800601BC5 /* Ubuntu-R.ttf in Resources */,
 				950DC8571D510D5F00601BC5 /* Sign Up.png in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
+				95F59DD61D5121EC00FEF6EE /* Ubuntu-R.ttf in Resources */,
 				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
 				950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */,
 			);

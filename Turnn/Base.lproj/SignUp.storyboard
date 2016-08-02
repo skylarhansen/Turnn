@@ -94,7 +94,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="centerX" secondItem="cSQ-hv-Ah2" secondAttribute="centerX" id="94J-5U-58j"/>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="top" secondItem="zbT-AP-IZ7" secondAttribute="bottom" constant="80" id="9QX-QG-isX"/>
