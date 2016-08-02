@@ -18,6 +18,9 @@
 		8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C60901D4FFCC10015FAC5 /* Location.swift */; };
 		8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C60921D5002860015FAC5 /* FirebaseController.swift */; };
 		950DC8501D51045500601BC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC84F1D51045500601BC5 /* Extensions.swift */; };
+		950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignUp.storyboard */; };
+		950DC8571D510D5F00601BC5 /* Sign Up.png in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8561D510D5F00601BC5 /* Sign Up.png */; };
+		950DC85A1D5110A800601BC5 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8591D5110A800601BC5 /* Ubuntu-R.ttf */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		8C1C60901D4FFCC10015FAC5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8C1C60921D5002860015FAC5 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		950DC84F1D51045500601BC5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
+		950DC8561D510D5F00601BC5 /* Sign Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign Up.png"; sourceTree = "<group>"; };
+		950DC8591D5110A800601BC5 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,12 +96,23 @@
 				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
 				8C044AA91D4FBF76002754B5 /* ViewController.swift */,
 				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
-				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
 				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
 				8C044AB31D4FBF76002754B5 /* Info.plist */,
 				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
+				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
+				950DC8531D510CC200601BC5 /* SignUp.storyboard */,
+				950DC8581D510D8100601BC5 /* Supporting Files */,
 			);
 			path = Turnn;
+			sourceTree = "<group>";
+		};
+		950DC8581D510D8100601BC5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				950DC8591D5110A800601BC5 /* Ubuntu-R.ttf */,
+				950DC8561D510D5F00601BC5 /* Sign Up.png */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		97A216E3475E11154D7CFAD8 /* Frameworks */ = {
@@ -172,8 +189,11 @@
 			files = (
 				8C044AB21D4FBF76002754B5 /* LaunchScreen.storyboard in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
+				950DC85A1D5110A800601BC5 /* Ubuntu-R.ttf in Resources */,
+				950DC8571D510D5F00601BC5 /* Sign Up.png in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
 				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
+				950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +324,15 @@
 				8C044AB11D4FBF76002754B5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		950DC8531D510CC200601BC5 /* SignUp.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				950DC8541D510CC200601BC5 /* Base */,
+			);
+			name = SignUp.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
