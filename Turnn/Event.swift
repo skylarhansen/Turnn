@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Event {
+/*class Event {
     
     private let titleKey = "title"
     private let locationKey = "location"
@@ -48,4 +48,61 @@ class Event {
 }
 
 
+<<<<<<< HEAD
+=======
+
+*/
+/*
+ import Foundation
+ 
+ class Location: FirebaseType {
+ 
+ private let addressKey = "address"
+ private let cityKey = "city"
+ private let stateKey = "state"
+ private let zipKey = "zip"
+ 
+ var address: String
+ var city: String
+ var state: String
+ var zipCode: String
+ //    let latitude: Double {}
+ //    let longitude: Double {}
+ var identifier: String?
+ 
+ var endpoint: String {
+ 
+ return "locations"
+ }
+ 
+ var dictionaryCopy: [String:AnyObject] {
+ 
+ return [addressKey:address, cityKey:city, stateKey:state, zipKey:zipCode]
+ }
+ 
+ init(address: String, city: String, state: String, zipCode: String) {
+ 
+ self.address = address
+ self.city = city
+ self.state = state
+ self.zipCode = zipCode
+ self.identifier = nil
+ }
+ 
+ required init?(dictionary: [String:AnyObject], identifier: String) {
+ 
+ guard let address = dictionary[addressKey] as? String,
+ city = dictionary[cityKey] as? String,
+ state = dictionary[stateKey] as? String,
+ zipCode = dictionary[zipKey] as? String else { return  nil }
+ 
+ self.address = address
+ self.identifier = identifier
+ self.city = city
+ self.state = state
+ self.zipCode = zipCode
+ }
+ }
+ */
+>>>>>>> 33e22b48e6c7bf2c84b06121c0c6cfa014c86af1
  
