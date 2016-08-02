@@ -103,8 +103,7 @@
 				8C044AB31D4FBF76002754B5 /* Info.plist */,
 				8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */,
 				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
-				950DC8531D510CC200601BC5 /* SignUp.storyboard */,
-				95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */,
+				95F80A3C1D512330000196E0 /* Supporting Files */,
 			);
 			path = Turnn;
 			sourceTree = "<group>";
@@ -112,6 +111,7 @@
 		8C72A2CF1D510DC1008301CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				950DC8531D510CC200601BC5 /* SignUp.storyboard */,
 				8C72A2C91D510D50008301CC /* Category.storyboard */,
 				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
 				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
@@ -144,6 +144,14 @@
 				8C1C60901D4FFCC10015FAC5 /* Location.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		95F80A3C1D512330000196E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		97A216E3475E11154D7CFAD8 /* Frameworks */ = {
