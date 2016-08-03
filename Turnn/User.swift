@@ -29,9 +29,13 @@ class User: FirebaseType {
     
     var dictionaryCopy: [String:AnyObject] {
         
-        guard let events = events else { return ["":""] }
+        var dictionary: [String: AnyObject] = [eventsKey: events]
         
-        return [hostNameKey:hostName, paidKey:paid, eventsKey:events]
+        if let events = events, identifier = identifier {
+            dictionary.updateValue(events, forKey: eventsKey)
+            dictionary.updateValue(identifier, forKey: identifier)
+        }
+        return dictionary
     }
     
     init(hostName: String, events: [Event] = [], paid: Bool = false) {

@@ -42,19 +42,24 @@ class Event: FirebaseType {
         return "Events"
     }
     
-    var dictionaryCopy: [String:AnyObject] {
+    var dictionaryCopy: [String: AnyObject] {
         
-        guard let eventDescription = eventDescription,
-        passwordProtected = passwordProtected,
-        password = password,
-        contactInfo = contactInfo,
-        image = image,
-        moreInfo = moreInfo else { return ["":""] }
+        var dictionary: [String : AnyObject] = [eventDescriptionKey: eventDescription, passwordProtectedKey: passwordProtected, passwordKey: password, contactInfoKey: contactInfo, imageKey: image, moreInfoKey: moreInfo]
         
-        return [titleKey:title, locationKey:location, startTimeKey:startTime, endTimeKey:endTime, eventDescriptionKey:eventDescription, passwordProtectedKey:passwordProtected, passwordKey:password, contactInfoKey:contactInfo, imageKey:image, moreInfoKey: moreInfo]
+        if let eventDescription = eventDescription, passwordProtected = passwordProtected, password = password, contactInfo = contactInfo, image = image, moreInfo = moreInfo {
+            
+            dictionary.updateValue(eventDescription, forKey: eventDescriptionKey)
+            dictionary.updateValue(passwordProtected, forKey: passwordProtectedKey)
+            dictionary.updateValue(password, forKey: passwordKey)
+            dictionary.updateValue(contactInfo, forKey: contactInfoKey)
+            dictionary.updateValue(image, forKey: imageKey)
+            dictionary.updateValue(moreInfo, forKey: moreInfoKey)
+        }
+        
+        return dictionary
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], eventDescription: String?, passwordProtected: Bool?, password: String?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String) {
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], eventDescription: String?, passwordProtected: Bool?, password: String?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?) {
         
         self.title = title
         self.location = location
