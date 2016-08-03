@@ -39,6 +39,11 @@
 		95E595471D51460900416B2A /* ZipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5953D1D51460900416B2A /* ZipTableViewCell.swift */; };
 		95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595481D51461100416B2A /* CreateEventViewController.swift */; };
 		95EC6CE41D5265A300707935 /* SignInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EC6CE31D5265A300707935 /* SignInSignUpViewController.swift */; };
+		CCE9DEB71D52989C00363A98 /* HostDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEB61D52989C00363A98 /* HostDetailTableViewCell.swift */; };
+		CCE9DEB91D5298A700363A98 /* PriceDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEB81D5298A700363A98 /* PriceDetailTableViewCell.swift */; };
+		CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */; };
+		CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */; };
+		CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */; };
 		CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52B9971D525E4E00E1C7E9 /* Categories.swift */; };
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
@@ -84,6 +89,11 @@
 		95E595481D51461100416B2A /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		95EC6CE31D5265A300707935 /* SignInSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInSignUpViewController.swift; sourceTree = "<group>"; };
 		95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
+		CCE9DEB61D52989C00363A98 /* HostDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CCE9DEB81D5298A700363A98 /* PriceDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CE52B9971D525E4E00E1C7E9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
 		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +266,11 @@
 			isa = PBXGroup;
 			children = (
 				9591632D1D524DA500C23C24 /* EventDetailViewController.swift */,
+				CCE9DEB61D52989C00363A98 /* HostDetailTableViewCell.swift */,
+				CCE9DEB81D5298A700363A98 /* PriceDetailTableViewCell.swift */,
+				CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */,
+				CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */,
+				CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */,
 			);
 			name = "Event Detail View";
 			sourceTree = "<group>";
@@ -438,6 +453,7 @@
 			files = (
 				8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */,
 				95E595471D51460900416B2A /* ZipTableViewCell.swift in Sources */,
+				CCE9DEB91D5298A700363A98 /* PriceDetailTableViewCell.swift in Sources */,
 				CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */,
 				8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */,
 				8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */,
@@ -446,6 +462,7 @@
 				95E595451D51460900416B2A /* TimeTableViewCell.swift in Sources */,
 				95E595461D51460900416B2A /* TitleTableViewCell.swift in Sources */,
 				95E595411D51460900416B2A /* DescriptionTableViewCell.swift in Sources */,
+				CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */,
 				8C1C608B1D4FFAAF0015FAC5 /* Event.swift in Sources */,
 				95E595421D51460900416B2A /* ExampleCollectionViewCell.swift in Sources */,
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
@@ -457,9 +474,12 @@
 				95EC6CE41D5265A300707935 /* SignInSignUpViewController.swift in Sources */,
 				959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */,
 				95E595441D51460900416B2A /* MoreInfoTableViewCell.swift in Sources */,
+				CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */,
+				CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */,
 				950DC8501D51045500601BC5 /* Extensions.swift in Sources */,
 				95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */,
 				95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */,
+				CCE9DEB71D52989C00363A98 /* HostDetailTableViewCell.swift in Sources */,
 				9591632E1D524DA500C23C24 /* EventDetailViewController.swift in Sources */,
 				95E595401D51460900416B2A /* CityTableViewCell.swift in Sources */,
 			);

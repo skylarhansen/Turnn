@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fra-qZ-PYe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fra-qZ-PYe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -93,7 +93,7 @@
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostCell" textLabel="BC7-pD-vGM" detailTextLabel="p3T-oZ-VEx" style="IBUITableViewCellStyleSubtitle" id="7mc-70-XVi" customClass="HostTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostDetailCell" textLabel="BC7-pD-vGM" detailTextLabel="p3T-oZ-VEx" style="IBUITableViewCellStyleSubtitle" id="7mc-70-XVi" customClass="HostDetailTableViewCell" customModule="Turnn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7mc-70-XVi" id="QFN-pm-8qk">
@@ -119,8 +119,11 @@
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="hostNameLabel" destination="p3T-oZ-VEx" id="oSc-nB-9zd"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" textLabel="P2P-bD-txQ" detailTextLabel="gDh-nE-0LS" style="IBUITableViewCellStyleSubtitle" id="bIK-f1-6qu" customClass="LocationTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationDetailCell" textLabel="P2P-bD-txQ" detailTextLabel="gDh-nE-0LS" style="IBUITableViewCellStyleSubtitle" id="bIK-f1-6qu" customClass="LocationDetailTableViewCell" customModule="Turnn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bIK-f1-6qu" id="0Dp-fl-iog">
@@ -146,8 +149,11 @@
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="locationLabel" destination="gDh-nE-0LS" id="fkT-4n-RBS"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="priceCell" textLabel="l7c-P6-tdA" detailTextLabel="xAT-in-Iua" style="IBUITableViewCellStyleSubtitle" id="45o-ZE-PSk" customClass="PriceTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="priceDetailCell" textLabel="l7c-P6-tdA" detailTextLabel="xAT-in-Iua" style="IBUITableViewCellStyleSubtitle" id="45o-ZE-PSk" customClass="PriceDetailTableViewCell" customModule="Turnn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="148" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="45o-ZE-PSk" id="paA-Gf-Gp8">
@@ -173,8 +179,11 @@
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="priceLabel" destination="xAT-in-Iua" id="SPV-To-3Q7"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" textLabel="R0o-GS-3jc" detailTextLabel="Boy-VN-cin" style="IBUITableViewCellStyleSubtitle" id="23e-c7-Pn8" customClass="DescriptionTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionDetailCell" textLabel="R0o-GS-3jc" detailTextLabel="Boy-VN-cin" style="IBUITableViewCellStyleSubtitle" id="23e-c7-Pn8" customClass="DescriptionDetailTableViewCell" customModule="Turnn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="208" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23e-c7-Pn8" id="TF9-lR-B7V">
@@ -201,8 +210,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="Boy-VN-cin" id="msp-9h-4qs"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreInfoCell" textLabel="2gL-Wt-iey" detailTextLabel="ydX-OD-Lig" style="IBUITableViewCellStyleSubtitle" id="SNg-vH-7qb" customClass="MoreInfoTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreInfoDetailCell" textLabel="2gL-Wt-iey" detailTextLabel="ydX-OD-Lig" style="IBUITableViewCellStyleSubtitle" id="SNg-vH-7qb" customClass="MoreInfoDetailTableViewCell" customModule="Turnn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="268" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SNg-vH-7qb" id="9Xl-kd-RqB">
@@ -228,6 +240,9 @@
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="moreInfoLabel" destination="ydX-OD-Lig" id="Gbu-K3-Ay8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
