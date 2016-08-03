@@ -18,7 +18,7 @@
         <!--Sign Up / SIgn In-->
         <scene sceneID="kAg-8B-ORv">
             <objects>
-                <viewController title="Sign Up / SIgn In" id="lW2-Sa-KeV" sceneMemberID="viewController">
+                <viewController title="Sign Up / SIgn In" id="lW2-Sa-KeV" customClass="SignInSignUpViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zbT-AP-IZ7"/>
                         <viewControllerLayoutGuide type="bottom" id="mvH-7T-Y3f"/>
@@ -94,7 +94,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="centerX" secondItem="cSQ-hv-Ah2" secondAttribute="centerX" id="94J-5U-58j"/>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="top" secondItem="zbT-AP-IZ7" secondAttribute="bottom" constant="80" id="9QX-QG-isX"/>
