@@ -29,11 +29,16 @@ class EventController {
         })
     }
     
-    static func updateEvent(){
-    }
-    
     static func deleteEvent(event: Event){
         event.delete()
+    }
+    
+    static func updateEvent(event: Event){
+        if let identifier = event.identifier {
+            FirebaseController.ref.child("Events").child(identifier).updateChildValues(event.dictionaryCopy)
+        } else {
+            print("Event could not be updated. Event ID is \(event.identifier!)")
+        }
     }
     
 
