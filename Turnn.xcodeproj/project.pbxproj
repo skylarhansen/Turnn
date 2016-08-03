@@ -19,7 +19,7 @@
 		8C72A2CD1D510D50008301CC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */; };
 		8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */; };
 		950DC8501D51045500601BC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC84F1D51045500601BC5 /* Extensions.swift */; };
-		950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignUp.storyboard */; };
+		950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */; };
 		957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FDB1D5250AC00596A18 /* Category.storyboard */; };
 		957C4FE01D5250B600596A18 /* EventDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */; };
 		957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */; };
@@ -38,6 +38,7 @@
 		95E595461D51460900416B2A /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5953C1D51460900416B2A /* TitleTableViewCell.swift */; };
 		95E595471D51460900416B2A /* ZipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E5953D1D51460900416B2A /* ZipTableViewCell.swift */; };
 		95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595481D51461100416B2A /* CreateEventViewController.swift */; };
+		95EC6CE41D5265A300707935 /* SignInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EC6CE31D5265A300707935 /* SignInSignUpViewController.swift */; };
 		CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52B9971D525E4E00E1C7E9 /* Categories.swift */; };
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
@@ -62,7 +63,7 @@
 		8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		950DC84F1D51045500601BC5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignUp.storyboard; sourceTree = "<group>"; };
+		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignInSignUp.storyboard; sourceTree = "<group>"; };
 		957C4FDC1D5250AC00596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Category.storyboard; sourceTree = "<group>"; };
 		957C4FDF1D5250B600596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventDetailView.storyboard; sourceTree = "<group>"; };
 		957C4FE21D5250BB00596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateEvent.storyboard; sourceTree = "<group>"; };
@@ -81,6 +82,7 @@
 		95E5953C1D51460900416B2A /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		95E5953D1D51460900416B2A /* ZipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipTableViewCell.swift; sourceTree = "<group>"; };
 		95E595481D51461100416B2A /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		95EC6CE31D5265A300707935 /* SignInSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInSignUpViewController.swift; sourceTree = "<group>"; };
 		95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
 		CE52B9971D525E4E00E1C7E9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,7 +152,7 @@
 				957C4FDB1D5250AC00596A18 /* Category.storyboard */,
 				957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */,
 				957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */,
-				950DC8531D510CC200601BC5 /* SignUp.storyboard */,
+				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
 				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
 				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
 			);
@@ -164,6 +166,7 @@
 				CE52B9941D525ACC00E1C7E9 /* Create Event View */,
 				CE52B9951D525AEC00E1C7E9 /* Event Finder View */,
 				CE52B9961D525AF500E1C7E9 /* Event Detail View */,
+				95EC6CE51D5265A700707935 /* Sign In/Up View */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -185,6 +188,14 @@
 				CE52B9971D525E4E00E1C7E9 /* Categories.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		95EC6CE51D5265A700707935 /* Sign In/Up View */ = {
+			isa = PBXGroup;
+			children = (
+				95EC6CE31D5265A300707935 /* SignInSignUpViewController.swift */,
+			);
+			name = "Sign In/Up View";
 			sourceTree = "<group>";
 		};
 		95F80A3C1D512330000196E0 /* Supporting Files */ = {
@@ -321,7 +332,7 @@
 				957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
 				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
-				950DC8551D510CC200601BC5 /* SignUp.storyboard in Resources */,
+				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +454,7 @@
 				8C72A2CD1D510D50008301CC /* CategoryCollectionViewCell.swift in Sources */,
 				959163301D524DC700C23C24 /* HostTableViewCell.swift in Sources */,
 				CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */,
+				95EC6CE41D5265A300707935 /* SignInSignUpViewController.swift in Sources */,
 				959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */,
 				95E595441D51460900416B2A /* MoreInfoTableViewCell.swift in Sources */,
 				950DC8501D51045500601BC5 /* Extensions.swift in Sources */,
@@ -472,12 +484,12 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		950DC8531D510CC200601BC5 /* SignUp.storyboard */ = {
+		950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				950DC8541D510CC200601BC5 /* Base */,
 			);
-			name = SignUp.storyboard;
+			name = SignInSignUp.storyboard;
 			path = ..;
 			sourceTree = "<group>";
 		};
