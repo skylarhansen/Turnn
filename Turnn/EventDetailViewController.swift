@@ -32,13 +32,7 @@ class EventDetailViewController: UIViewController {
         mapView.layer.cornerRadius = mapView.frame.width/2
         mapView.clipsToBounds = true
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+   
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -63,7 +57,43 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var categoryIcon5: UIImageView!
     
-    /*
+    // MARK: tableView data source functions
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 5
+    }
+   
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch indexPath.row {
+            
+        case 0:
+            let HostDetailCell = tableView.dequeueReusableCellWithIdentifier("hostDetailCell", forIndexPath: indexPath)
+            return HostDetailCell ?? UITableViewCell()
+            
+        case 1:
+            let PriceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath)
+            return PriceDetailCell ?? UITableViewCell()
+            
+        case 2:
+            let LocationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath)
+            return LocationDetailCell ?? UITableViewCell()
+            
+        case 3:
+            let DescriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath)
+            return DescriptionDetailCell ?? UITableViewCell()
+            
+        case 4:
+            let MoreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath)
+            return MoreInfoDetailCell ?? UITableViewCell()
+        }
+    }
+       /*
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -9,22 +9,25 @@
 import UIKit
 
 class PriceDetailTableViewCell: UITableViewCell {
-
+    
+    var price: Double?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     @IBOutlet weak var priceLabel: UILabel!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     func updatePriceWithEvent(event: Event) {
-        priceLabel.text = event.price 
-    }
+        guard let price = price else { return }
+            priceLabel.text = "\(event.price)"
+        }
 
 }
