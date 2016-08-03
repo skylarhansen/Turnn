@@ -12,6 +12,9 @@
             <string>Ubuntu</string>
             <string>Ubuntu</string>
             <string>Ubuntu</string>
+            <string>Ubuntu</string>
+            <string>Ubuntu</string>
+            <string>Ubuntu</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -36,42 +39,101 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq0-dW-abp">
-                                <rect key="frame" x="203" y="300" width="194" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="194" id="OT2-Wa-elC"/>
-                                    <constraint firstAttribute="height" constant="21" id="yYt-Ls-pDY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSQ-hv-Ah2">
-                                <rect key="frame" x="211" y="329" width="179" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="179" id="OvQ-3G-k7D"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I8-Bf-SWt">
-                                <rect key="frame" x="203" y="369" width="194" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="ZM1-tQ-43z"/>
-                                    <constraint firstAttribute="width" constant="194" id="qJk-fo-hAf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PA7-Bu-3ur">
-                                <rect key="frame" x="211" y="398" width="179" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="179" id="K2W-aK-Yxe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="lXy-eJ-aKi">
+                                <rect key="frame" x="203" y="290" width="194" height="264"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq0-dW-abp">
+                                        <rect key="frame" x="0.0" y="0.0" width="194" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="OT2-Wa-elC"/>
+                                            <constraint firstAttribute="height" constant="21" id="yYt-Ls-pDY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSQ-hv-Ah2">
+                                        <rect key="frame" x="0.0" y="22" width="194" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="OvQ-3G-k7D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I8-Bf-SWt">
+                                        <rect key="frame" x="0.0" y="53" width="194" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="ZM1-tQ-43z"/>
+                                            <constraint firstAttribute="width" constant="194" id="qJk-fo-hAf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PA7-Bu-3ur">
+                                        <rect key="frame" x="0.0" y="75" width="194" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="K2W-aK-Yxe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCf-hs-7qd">
+                                        <rect key="frame" x="0.0" y="106" width="194" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="3TY-KW-GJU"/>
+                                            <constraint firstAttribute="width" constant="194" id="LXO-uh-TZH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uQd-ws-1Gf">
+                                        <rect key="frame" x="0.0" y="128" width="194" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="HFc-io-CT4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZo-3P-7o8">
+                                        <rect key="frame" x="0.0" y="159" width="194" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="IfL-YW-Xjb"/>
+                                            <constraint firstAttribute="width" constant="194" id="eEI-xq-bl2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OE2-S2-WTA">
+                                        <rect key="frame" x="0.0" y="181" width="194" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="oIe-GX-ygx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name: (optional)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgV-Tj-O7F">
+                                        <rect key="frame" x="0.0" y="212" width="194" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="Arn-UM-x3A"/>
+                                            <constraint firstAttribute="height" constant="21" id="iXZ-80-jCX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UFL-6d-qrM">
+                                        <rect key="frame" x="0.0" y="234" width="194" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="194" id="hSs-Nd-zIc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-73-aff">
                                 <rect key="frame" x="232" y="536" width="136" height="15"/>
                                 <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
@@ -94,21 +156,14 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="3nu-KM-X5H" firstAttribute="centerX" secondItem="cSQ-hv-Ah2" secondAttribute="centerX" id="94J-5U-58j"/>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="top" secondItem="zbT-AP-IZ7" secondAttribute="bottom" constant="80" id="9QX-QG-isX"/>
                             <constraint firstItem="Af4-73-aff" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="AEt-ed-Kij"/>
-                            <constraint firstItem="Xq0-dW-abp" firstAttribute="leading" secondItem="1I8-Bf-SWt" secondAttribute="leading" id="H5q-wb-qAG"/>
-                            <constraint firstItem="1I8-Bf-SWt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cSQ-hv-Ah2" secondAttribute="bottom" constant="10" id="L5Q-4n-XpN"/>
                             <constraint firstItem="E9A-cj-A46" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="Szj-4v-ICx"/>
+                            <constraint firstItem="Xq0-dW-abp" firstAttribute="centerY" secondItem="EeT-Gw-1Rc" secondAttribute="centerY" id="Vg6-Cg-mEw"/>
                             <constraint firstItem="mvH-7T-Y3f" firstAttribute="top" secondItem="E9A-cj-A46" secondAttribute="bottom" constant="12" id="WRW-fe-Gcd"/>
-                            <constraint firstItem="PA7-Bu-3ur" firstAttribute="top" secondItem="cSQ-hv-Ah2" secondAttribute="bottom" constant="39" id="ZT8-DE-G8H"/>
-                            <constraint firstItem="cSQ-hv-Ah2" firstAttribute="trailing" secondItem="PA7-Bu-3ur" secondAttribute="trailing" id="aag-e1-F4g"/>
-                            <constraint firstAttribute="bottom" secondItem="cSQ-hv-Ah2" secondAttribute="bottom" constant="241" id="bCI-8O-vrq"/>
-                            <constraint firstItem="cSQ-hv-Ah2" firstAttribute="top" secondItem="Xq0-dW-abp" secondAttribute="bottom" constant="8" id="bn1-jp-paR"/>
-                            <constraint firstItem="cSQ-hv-Ah2" firstAttribute="leading" secondItem="PA7-Bu-3ur" secondAttribute="leading" id="dOy-7h-aPu"/>
-                            <constraint firstItem="Xq0-dW-abp" firstAttribute="centerX" secondItem="cSQ-hv-Ah2" secondAttribute="centerX" id="dT7-Bq-JAv"/>
-                            <constraint firstItem="PA7-Bu-3ur" firstAttribute="top" secondItem="1I8-Bf-SWt" secondAttribute="bottom" constant="8" id="hZx-0n-jx8"/>
+                            <constraint firstItem="Xq0-dW-abp" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="dSN-x8-BpV"/>
                             <constraint firstItem="E9A-cj-A46" firstAttribute="top" secondItem="Af4-73-aff" secondAttribute="bottom" constant="10" id="p2l-V4-vG4"/>
                             <constraint firstItem="Nid-bY-Q30" firstAttribute="top" secondItem="3nu-KM-X5H" secondAttribute="bottom" constant="21" id="sjm-Ik-Rtl"/>
                             <constraint firstItem="Nid-bY-Q30" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="snQ-JN-k8w"/>
