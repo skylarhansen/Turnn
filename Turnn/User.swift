@@ -34,10 +34,12 @@ class User: FirebaseType {
         return [hostNameKey:hostName, paidKey:paid, eventsKey:events]
     }
     
-    init(hostName: String, paid: Bool = false) {
+    init(hostName: String, events: [Event] = [], paid: Bool = false) {
         
         self.hostName = hostName
         self.paid = paid
+        self.identifier = nil
+        self.events = events
     }
     
     required init?(dictionary: [String:AnyObject], identifier: String) {
