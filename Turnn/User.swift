@@ -11,7 +11,7 @@ import Foundation
 struct User {
     
     let hostName: String
-    let events: [Event]
+   // let events: [Event]
 //    let eventCount: Int {} 
     let paid: Bool
 }

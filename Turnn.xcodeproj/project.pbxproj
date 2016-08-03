@@ -17,6 +17,13 @@
 		8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C608E1D4FFC610015FAC5 /* User.swift */; };
 		8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C60901D4FFCC10015FAC5 /* Location.swift */; };
 		8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C60921D5002860015FAC5 /* FirebaseController.swift */; };
+		CC360BF81D514B0D0040F5AB /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC360BF71D514B0D0040F5AB /* HostTableViewCell.swift */; };
+		CC360BFA1D5153B80040F5AB /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC360BF91D5153B80040F5AB /* PriceTableViewCell.swift */; };
+		CC360BFC1D5153C50040F5AB /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC360BFB1D5153C50040F5AB /* LocationTableViewCell.swift */; };
+		CC360BFE1D5153D00040F5AB /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC360BFD1D5153D00040F5AB /* DescriptionTableViewCell.swift */; };
+		CC360C001D5153DA0040F5AB /* MoreInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC360BFF1D5153DA0040F5AB /* MoreInfoTableViewCell.swift */; };
+		CC7006BF1D510882002B1EB7 /* EventDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC7006BE1D510882002B1EB7 /* EventDetailView.storyboard */; };
+		CC7006C11D511492002B1EB7 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7006C01D511492002B1EB7 /* EventDetailViewController.swift */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +43,13 @@
 		8C1C608E1D4FFC610015FAC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8C1C60901D4FFCC10015FAC5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8C1C60921D5002860015FAC5 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		CC360BF71D514B0D0040F5AB /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
+		CC360BF91D5153B80040F5AB /* PriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
+		CC360BFB1D5153C50040F5AB /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		CC360BFD1D5153D00040F5AB /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		CC360BFF1D5153DA0040F5AB /* MoreInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoTableViewCell.swift; sourceTree = "<group>"; };
+		CC7006BE1D510882002B1EB7 /* EventDetailView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventDetailView.storyboard; sourceTree = "<group>"; };
+		CC7006C01D511492002B1EB7 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +101,13 @@
 				8C1C60901D4FFCC10015FAC5 /* Location.swift */,
 				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
 				8C044AA91D4FBF76002754B5 /* ViewController.swift */,
+				CC360BF71D514B0D0040F5AB /* HostTableViewCell.swift */,
+				CC360BF91D5153B80040F5AB /* PriceTableViewCell.swift */,
+				CC360BFB1D5153C50040F5AB /* LocationTableViewCell.swift */,
+				CC360BFD1D5153D00040F5AB /* DescriptionTableViewCell.swift */,
+				CC360BFF1D5153DA0040F5AB /* MoreInfoTableViewCell.swift */,
+				CC7006C01D511492002B1EB7 /* EventDetailViewController.swift */,
+				CC7006BE1D510882002B1EB7 /* EventDetailView.storyboard */,
 				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
 				8C044AAE1D4FBF76002754B5 /* Assets.xcassets */,
 				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
@@ -167,6 +188,7 @@
 				8C044AB21D4FBF76002754B5 /* LaunchScreen.storyboard in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
+				CC7006BF1D510882002B1EB7 /* EventDetailView.storyboard in Resources */,
 				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,9 +250,15 @@
 			files = (
 				8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */,
 				8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */,
+				CC360BFE1D5153D00040F5AB /* DescriptionTableViewCell.swift in Sources */,
+				CC360BFA1D5153B80040F5AB /* PriceTableViewCell.swift in Sources */,
 				8C044AAA1D4FBF76002754B5 /* ViewController.swift in Sources */,
+				CC360BF81D514B0D0040F5AB /* HostTableViewCell.swift in Sources */,
 				8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */,
+				CC360BFC1D5153C50040F5AB /* LocationTableViewCell.swift in Sources */,
+				CC360C001D5153DA0040F5AB /* MoreInfoTableViewCell.swift in Sources */,
 				8C1C608B1D4FFAAF0015FAC5 /* Event.swift in Sources */,
+				CC7006C11D511492002B1EB7 /* EventDetailViewController.swift in Sources */,
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
