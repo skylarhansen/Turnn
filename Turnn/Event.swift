@@ -19,6 +19,7 @@ class Event: FirebaseType {
     private let eventDescriptionKey = "eventDescription"
     private let passwordProtectedKey = "passwordProtected"
     private let passwordKey = "password"
+    private let priceKey = "price"
     private let contactInfoKey = "contactInfo"
     private let imageKey = "image"
     private let moreInfoKey = "moreInfo"
@@ -32,6 +33,7 @@ class Event: FirebaseType {
     var eventDescription: String?
     var passwordProtected: Bool?
     var password: String?
+    var price: Double?
     var contactInfo: String?
     var image: UIImage?
     var identifier: String?
@@ -44,9 +46,9 @@ class Event: FirebaseType {
     
     var dictionaryCopy: [String: AnyObject] {
         
-        var dictionary: [String : AnyObject] = [eventDescriptionKey: eventDescription, passwordProtectedKey: passwordProtected, passwordKey: password, contactInfoKey: contactInfo, imageKey: image, moreInfoKey: moreInfo]
+        var dictionary: [String : AnyObject] = [eventDescriptionKey: eventDescription, passwordProtectedKey: passwordProtected, passwordKey: password, priceKey: price contactInfoKey: contactInfo, imageKey: image, moreInfoKey: moreInfo]
         
-        if let eventDescription = eventDescription, passwordProtected = passwordProtected, password = password, contactInfo = contactInfo, image = image, moreInfo = moreInfo {
+        if let eventDescription = eventDescription, passwordProtected = passwordProtected, password = password, price = price, contactInfo = contactInfo, image = image, moreInfo = moreInfo {
             
             dictionary.updateValue(eventDescription, forKey: eventDescriptionKey)
             dictionary.updateValue(passwordProtected, forKey: passwordProtectedKey)
@@ -54,12 +56,13 @@ class Event: FirebaseType {
             dictionary.updateValue(contactInfo, forKey: contactInfoKey)
             dictionary.updateValue(image, forKey: imageKey)
             dictionary.updateValue(moreInfo, forKey: moreInfoKey)
+            dictionary.updateValue(price, forKey: priceKey)
         }
         
         return dictionary
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], eventDescription: String?, passwordProtected: Bool?, password: String?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?) {
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], eventDescription: String?, passwordProtected: Bool?, password: String?, price: Double?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?) {
         
         self.title = title
         self.location = location
@@ -69,6 +72,7 @@ class Event: FirebaseType {
         self.eventDescription = eventDescription
         self.passwordProtected = passwordProtected
         self.password = password
+        self.price = price
         self.contactInfo = contactInfo
         self.image = image
         self.host = host
@@ -86,6 +90,7 @@ class Event: FirebaseType {
         eventDescription = dictionary[eventDescriptionKey] as? String,
         passwordProtected = dictionary[passwordProtectedKey] as? Bool,
         password = dictionary[passwordKey] as? String,
+        price = dictionary[priceKey] as? Double,
         contactInfo = dictionary[contactInfoKey] as? String,
         image = dictionary[imageKey] as? UIImage,
         host = dictionary[hostKey] as? User,
@@ -99,10 +104,10 @@ class Event: FirebaseType {
         self.eventDescription = eventDescription
         self.passwordProtected = passwordProtected
         self.password = password
+        self.price = price
         self.contactInfo = contactInfo
         self.image = image
         self.host = host
         self.moreInfo = moreInfo
-        
       }
 }
