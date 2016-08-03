@@ -46,7 +46,7 @@ class Event: FirebaseType {
     
     var dictionaryCopy: [String: AnyObject] {
         
-        var dictionary: [String : AnyObject] = [eventDescriptionKey: eventDescription, passwordProtectedKey: passwordProtected, passwordKey: password, priceKey: price contactInfoKey: contactInfo, imageKey: image, moreInfoKey: moreInfo]
+        var dictionary: [String : AnyObject] = [eventDescriptionKey: eventDescription, passwordProtectedKey: passwordProtected, passwordKey: password, priceKey: price, contactInfoKey: contactInfo, imageKey: image, moreInfoKey: moreInfo]
         
         if let eventDescription = eventDescription, passwordProtected = passwordProtected, password = password, price = price, contactInfo = contactInfo, image = image, moreInfo = moreInfo {
             

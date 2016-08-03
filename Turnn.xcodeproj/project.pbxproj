@@ -47,6 +47,7 @@
 		CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */; };
 		CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */; };
 		CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52B9971D525E4E00E1C7E9 /* Categories.swift */; };
+		CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */; };
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
@@ -99,6 +100,7 @@
 		CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CE52B9971D525E4E00E1C7E9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
 		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +171,7 @@
 				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
 				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
 				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
+				CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
 				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
 				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
+				CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +547,14 @@
 				957C4FE21D5250BB00596A18 /* Base */,
 			);
 			name = CreateEvent.storyboard;
+			sourceTree = "<group>";
+		};
+		CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE52B99A1D52AC0C00E1C7E9 /* Base */,
+			);
+			name = EventFinder.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

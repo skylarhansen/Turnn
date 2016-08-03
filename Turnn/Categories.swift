@@ -12,15 +12,16 @@ import UIKit
 enum Categories: Int {
     
     case Admission
-    case Alcohol
     case BoardGames
+    case Basketball
     case Dancing
+    case Drinking
     case Food
     case Hackathon
+    case Hiking
     case Holiday
     case Movie
     case Music
-    case Outdoor
     case Pin
     case Party
     case Shopping
@@ -31,35 +32,37 @@ enum Categories: Int {
         switch self {
             
         case .Admission:
-            return UIImage(named: "Admission")
-        case .Alcohol:
-            return UIImage(named: "Alcohol")
+            return UIImage(named: "Circle Admission")
         case .BoardGames:
-            return UIImage(named: "Board Games")
+            return UIImage(named: "Circle Games")
+        case .Basketball:
+            return UIImage(named: "Circle Basketball")
         case .Dancing:
-            return UIImage(named: "Dancing")
+            return UIImage(named: "Circle Dancing")
+        case .Drinking:
+            return UIImage(named: "Circle Drinking")
         case .Food:
-            return UIImage(named: "Food")
+            return UIImage(named: "Circle Food")
         case .Hackathon:
-            return UIImage(named: "Hackaton")
+            return UIImage(named: "Circle Hackaton")
+        case .Hiking:
+            return UIImage(named: "Circle Hiking")
         case .Holiday:
-            return UIImage(named: "Holiday")
+            return UIImage(named: "Circle Holiday")
         case .Movie:
-            return UIImage(named: "Movie")
+            return UIImage(named: "Circle Video")
         case .Music:
-            return UIImage(named: "Music")
-        case .Outdoor:
-            return UIImage(named: "Outdoor")
+            return UIImage(named: "Circle Music")
         case .Pin:
             return UIImage(named: "Pin")
         case .Party:
-            return UIImage(named: "Party")
+            return UIImage(named: "Circle Party")
         case .Shopping:
-            return UIImage(named: "Shopping")
+            return UIImage(named: "Circle Shopping")
         case .Sports:
             return UIImage(named: "Sports")
         case .VideoGames:
-            return UIImage(named: "Video Games")
+            return UIImage(named: "Circle Video Games")
         }
     }
     
@@ -68,26 +71,26 @@ enum Categories: Int {
             
         case .Admission:
             return "Admission"
-        case .Alcohol:
-            return "Alcohol"
         case .BoardGames:
-            return "BoardGames"
+            return "Board Games"
+        case .Basketball:
+            return "Basketball"
         case .Dancing:
             return "Dancing"
+        case .Drinking:
+            return "Drinking"
         case .Food:
             return "Food"
         case .Hackathon:
             return "Hackaton"
+        case .Hiking:
+            return "Outdoor"
         case .Holiday:
             return "Holiday"
         case .Movie:
             return "Movie"
         case .Music:
             return "Music"
-        case .Outdoor:
-            return "Outdoor"
-        case .Pin:
-            return "Pin"
         case .Party:
             return "Party"
         case .Shopping:
@@ -95,7 +98,7 @@ enum Categories: Int {
         case .Sports:
             return "Sports"
         case .VideoGames:
-            return "VideoGames"
+            return "Video Games"
         }
     }
 }

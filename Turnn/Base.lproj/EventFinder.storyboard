@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QMz-LY-pdw">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -40,13 +41,13 @@
                                                             <rect key="frame" x="3" y="0.0" width="409" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pajama Party" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adp-hw-9Cx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="204.5" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="205" height="44"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wmo-0C-PmI">
-                                                                    <rect key="frame" x="204.5" y="0.0" width="204.5" height="44"/>
+                                                                    <rect key="frame" x="205" y="0.0" width="205" height="44"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wwt-iP-Hak">
                                                                             <rect key="frame" x="0.0" y="0.0" width="41" height="44"/>
@@ -55,13 +56,13 @@
                                                                             <rect key="frame" x="41" y="0.0" width="41" height="44"/>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wSt-Y0-ik0">
-                                                                            <rect key="frame" x="82" y="0.0" width="40.5" height="44"/>
+                                                                            <rect key="frame" x="82" y="0.0" width="41" height="44"/>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nEi-E6-Qox">
-                                                                            <rect key="frame" x="122.5" y="0.0" width="41" height="44"/>
+                                                                            <rect key="frame" x="123" y="0.0" width="41" height="44"/>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FtZ-Ub-dKP">
-                                                                            <rect key="frame" x="163.5" y="0.0" width="41" height="44"/>
+                                                                            <rect key="frame" x="164" y="0.0" width="41" height="44"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                 </stackView>
