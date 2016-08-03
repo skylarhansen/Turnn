@@ -24,7 +24,7 @@ class User: FirebaseType {
     
     var endpoint: String {
         
-        return "User"
+        return "Users"
     }
     
     var dictionaryCopy: [String:AnyObject] {
@@ -34,11 +34,11 @@ class User: FirebaseType {
         return [hostNameKey:hostName, paidKey:paid, eventsKey:events]
     }
     
-    init(hostName: String, events: [Event] = [], paid: Bool = false) {
+    init(firstName: String, lastName: String = "", identifier: String, events: [Event] = [], paid: Bool = false) {
         
-        self.hostName = hostName
+        self.hostName = firstName + " " + lastName
         self.paid = paid
-        self.identifier = nil
+        self.identifier = identifier
         self.events = events
     }
     
