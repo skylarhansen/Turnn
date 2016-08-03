@@ -35,9 +35,9 @@ class Event: FirebaseType {
     //    let host: User      --> what time should host be?
     
     
-    required init?(dictionary: [String : AnyObject], identifier: String) {
-        <#code#>
-    }
+   // required init?(dictionary: [String : AnyObject], identifier: String) {
+  //      <#code#>
+  //  }
     
     var endpoint: String {
         
