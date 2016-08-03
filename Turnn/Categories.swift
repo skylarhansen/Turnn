@@ -76,7 +76,7 @@ enum Categories: Int {
             return "Dancing"
         case .Food:
             return "Food"
-        case .Hackaton:
+        case .Hackathon:
             return "Hackaton"
         case .Holiday:
             return "Holiday"

@@ -15,6 +15,7 @@ class Event: FirebaseType {
     private let locationKey = "location"
     private let startTimeKey = "startTime"
     private let endTimeKey = "endTime"
+    private let categoriesKey = "categories"
     private let descriptionKey = "description"
     private let passwordProtectedKey = "passwordProtected"
     private let passwordKey = "password"
@@ -27,7 +28,7 @@ class Event: FirebaseType {
     var location: Location
     var startTime: NSDate
     var endTime: NSDate
-//        var categories: [Category]
+    var categories: [Category]
     var description: String?
     var passwordProtected: Bool?
     var password: String?
@@ -38,7 +39,6 @@ class Event: FirebaseType {
     var moreInfo: String?
     
     var endpoint: String {
-        
         return "Events"
     }
     
@@ -49,22 +49,22 @@ class Event: FirebaseType {
         password = password,
         contactInfo = contactInfo,
         image = image,
-        identifier = identifier,
         moreInfo = moreInfo else { return ["":""] }
         
-        return [titleKey:title, locationKey:location, startTimeKey:startTime, endTimeKey:endTime, descriptionKey:description, passwordProtectedKey:passwordProtected, passwordKey:password, contactInfoKey:contactInfo, imageKey:image]
+        return [titleKey:title, locationKey:location, startTimeKey:startTime, endTimeKey:endTime, descriptionKey:description, passwordProtectedKey:passwordProtected, passwordKey:password, contactInfoKey:contactInfo, imageKey:image, moreInfoKey: moreInfo]
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, description: String?, passwordProtected: Bool?, password: String?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String) {
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], description: String?, passwordProtected: Bool?, password: String?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String) {
         
         self.title = title
         self.location = location
         self.startTime = startTime
         self.endTime = endTime
+        self.categories = categories
         self.description = description
         self.passwordProtected = passwordProtected
         self.password = password
-        self. contactInfo = contactInfo
+        self.contactInfo = contactInfo
         self.image = image
         self.host = host
         self.moreInfo = moreInfo
@@ -76,6 +76,8 @@ class Event: FirebaseType {
         guard let title = dictionary[titleKey] as? String,
         location = dictionary[locationKey] as? Location,
         startTime = dictionary[startTimeKey] as? NSDate,
+        endTime = dictionary[endTimeKey] as? NSDate,
+        categories = dictionary[categoriesKey] as? [Category],
         description = dictionary[descriptionKey] as? String,
         passwordProtected = dictionary[passwordProtectedKey] as? Bool,
         password = dictionary[passwordKey] as? String,
@@ -87,6 +89,8 @@ class Event: FirebaseType {
         self.title = title
         self.location = location
         self.startTime = startTime
+        self.endTime = endTime
+        self.categories = categories
         self.description = description
         self.passwordProtected = passwordProtected
         self.password = password
