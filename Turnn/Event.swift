@@ -16,7 +16,7 @@ class Event: FirebaseType {
     private let startTimeKey = "startTime"
     private let endTimeKey = "endTime"
     private let categoriesKey = "categories"
-    private let descriptionKey = "description"
+    private let eventDescriptionKey = "eventDescription"
     private let passwordProtectedKey = "passwordProtected"
     private let passwordKey = "password"
     private let contactInfoKey = "contactInfo"
@@ -29,7 +29,7 @@ class Event: FirebaseType {
     var startTime: NSDate
     var endTime: NSDate
     var categories: [Category]
-    var description: String?
+    var eventDescription: String?
     var passwordProtected: Bool?
     var password: String?
     var contactInfo: String?
@@ -44,24 +44,24 @@ class Event: FirebaseType {
     
     var dictionaryCopy: [String:AnyObject] {
         
-        guard let description = description,
+        guard let eventDescription = eventDescription,
         passwordProtected = passwordProtected,
         password = password,
         contactInfo = contactInfo,
         image = image,
         moreInfo = moreInfo else { return ["":""] }
         
-        return [titleKey:title, locationKey:location, startTimeKey:startTime, endTimeKey:endTime, descriptionKey:description, passwordProtectedKey:passwordProtected, passwordKey:password, contactInfoKey:contactInfo, imageKey:image, moreInfoKey: moreInfo]
+        return [titleKey:title, locationKey:location, startTimeKey:startTime, endTimeKey:endTime, eventDescriptionKey:eventDescription, passwordProtectedKey:passwordProtected, passwordKey:password, contactInfoKey:contactInfo, imageKey:image, moreInfoKey: moreInfo]
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], description: String?, passwordProtected: Bool?, password: String?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String) {
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], eventDescription: String?, passwordProtected: Bool?, password: String?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String) {
         
         self.title = title
         self.location = location
         self.startTime = startTime
         self.endTime = endTime
         self.categories = categories
-        self.description = description
+        self.eventDescription = eventDescription
         self.passwordProtected = passwordProtected
         self.password = password
         self.contactInfo = contactInfo
@@ -78,7 +78,7 @@ class Event: FirebaseType {
         startTime = dictionary[startTimeKey] as? NSDate,
         endTime = dictionary[endTimeKey] as? NSDate,
         categories = dictionary[categoriesKey] as? [Category],
-        description = dictionary[descriptionKey] as? String,
+        eventDescription = dictionary[eventDescriptionKey] as? String,
         passwordProtected = dictionary[passwordProtectedKey] as? Bool,
         password = dictionary[passwordKey] as? String,
         contactInfo = dictionary[contactInfoKey] as? String,
@@ -91,7 +91,7 @@ class Event: FirebaseType {
         self.startTime = startTime
         self.endTime = endTime
         self.categories = categories
-        self.description = description
+        self.eventDescription = eventDescription
         self.passwordProtected = passwordProtected
         self.password = password
         self.contactInfo = contactInfo
