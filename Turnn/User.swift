@@ -29,9 +29,11 @@ class User: FirebaseType {
     
     var dictionaryCopy: [String:AnyObject] {
         
+        guard let events = events else { return self.dictionaryCopy }
+        
         var dictionary: [String: AnyObject] = [eventsKey: events]
         
-        if let events = events, identifier = identifier {
+        if let identifier = identifier {
             dictionary.updateValue(events, forKey: eventsKey)
             dictionary.updateValue(identifier, forKey: identifier)
         }

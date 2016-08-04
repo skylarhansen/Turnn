@@ -43,6 +43,7 @@ class Location: FirebaseType {
         self.state = state
         self.zipCode = zipCode
         self.identifier = nil
+        self.region = MKCoordinateRegion()
     }
     
     required init?(dictionary: [String:AnyObject], identifier: String) {
@@ -57,6 +58,7 @@ class Location: FirebaseType {
         self.city = city
         self.state = state
         self.zipCode = zipCode
+        self.region = MKCoordinateRegion()
     }
 }
  

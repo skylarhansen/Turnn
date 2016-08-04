@@ -91,6 +91,8 @@ enum Categories: Int {
             return "Movie"
         case .Music:
             return "Music"
+        case .Pin:
+            return "Pin"
         case .Party:
             return "Party"
         case .Shopping:

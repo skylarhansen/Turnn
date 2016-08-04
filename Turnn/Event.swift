@@ -46,23 +46,28 @@ class Event: FirebaseType {
     
     var dictionaryCopy: [String: AnyObject] {
         
+        guard let eventDescription = eventDescription,
+            passwordProtected = passwordProtected,
+            password = password,
+            price = price,
+            contactInfo = contactInfo,
+            image = image,
+            moreInfo = moreInfo else { return self.dictionaryCopy }
+        
         var dictionary: [String : AnyObject] = [eventDescriptionKey: eventDescription, passwordProtectedKey: passwordProtected, passwordKey: password, priceKey: price, contactInfoKey: contactInfo, imageKey: image, moreInfoKey: moreInfo]
         
-        if let eventDescription = eventDescription, passwordProtected = passwordProtected, password = password, price = price, contactInfo = contactInfo, image = image, moreInfo = moreInfo {
-            
-            dictionary.updateValue(eventDescription, forKey: eventDescriptionKey)
-            dictionary.updateValue(passwordProtected, forKey: passwordProtectedKey)
-            dictionary.updateValue(password, forKey: passwordKey)
-            dictionary.updateValue(contactInfo, forKey: contactInfoKey)
-            dictionary.updateValue(image, forKey: imageKey)
-            dictionary.updateValue(moreInfo, forKey: moreInfoKey)
-            dictionary.updateValue(price, forKey: priceKey)
-        }
+        dictionary.updateValue(eventDescription, forKey: eventDescriptionKey)
+        dictionary.updateValue(passwordProtected, forKey: passwordProtectedKey)
+        dictionary.updateValue(password, forKey: passwordKey)
+        dictionary.updateValue(contactInfo, forKey: contactInfoKey)
+        dictionary.updateValue(image, forKey: imageKey)
+        dictionary.updateValue(moreInfo, forKey: moreInfoKey)
+        dictionary.updateValue(price, forKey: priceKey)
         
         return dictionary
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], eventDescription: String?, passwordProtected: Bool?, password: String?, price: Double?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?) {
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Categories], eventDescription: String?, passwordProtected: Bool?, password: String?, price: Double?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?) {
         
         self.title = title
         self.location = location
@@ -80,21 +85,21 @@ class Event: FirebaseType {
         self.identifier = nil
     }
     
-     required init?(dictionary: [String : AnyObject], identifier: String) {
+    required init?(dictionary: [String : AnyObject], identifier: String) {
         
         guard let title = dictionary[titleKey] as? String,
-        location = dictionary[locationKey] as? Location,
-        startTime = dictionary[startTimeKey] as? NSDate,
-        endTime = dictionary[endTimeKey] as? NSDate,
-        categories = dictionary[categoriesKey] as? [Category],
-        eventDescription = dictionary[eventDescriptionKey] as? String,
-        passwordProtected = dictionary[passwordProtectedKey] as? Bool,
-        password = dictionary[passwordKey] as? String,
-        price = dictionary[priceKey] as? Double,
-        contactInfo = dictionary[contactInfoKey] as? String,
-        image = dictionary[imageKey] as? UIImage,
-        host = dictionary[hostKey] as? User,
-        moreInfo = dictionary[moreInfoKey] as? String else { return nil }
+            location = dictionary[locationKey] as? Location,
+            startTime = dictionary[startTimeKey] as? NSDate,
+            endTime = dictionary[endTimeKey] as? NSDate,
+            categories = dictionary[categoriesKey] as? [Categories],
+            eventDescription = dictionary[eventDescriptionKey] as? String,
+            passwordProtected = dictionary[passwordProtectedKey] as? Bool,
+            password = dictionary[passwordKey] as? String,
+            price = dictionary[priceKey] as? Double,
+            contactInfo = dictionary[contactInfoKey] as? String,
+            image = dictionary[imageKey] as? UIImage,
+            host = dictionary[hostKey] as? User,
+            moreInfo = dictionary[moreInfoKey] as? String else { return nil }
         
         self.title = title
         self.location = location
@@ -109,5 +114,5 @@ class Event: FirebaseType {
         self.image = image
         self.host = host
         self.moreInfo = moreInfo
-      }
+    }
 }

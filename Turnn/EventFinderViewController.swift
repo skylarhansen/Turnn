@@ -16,7 +16,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var eventsTableView: UITableView!
     
-    let locationManager: CLLocationManager()
+    let locationManager: CLLocationManager = CLLocationManager()
     var search: Location!
     var annotation: [MKPointAnnotation]?
     

@@ -11,7 +11,7 @@ import UIKit
 
 class EventController {
 
-    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Category], eventDescription: String? = "", passwordProtected: Bool? = false, password: String?, price: Double?, contactInfo: String?, image: UIImage?, moreInfo: String?)
+    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Categories], eventDescription: String? = "", passwordProtected: Bool? = false, password: String?, price: Double?, contactInfo: String?, image: UIImage?, moreInfo: String?)
     {
         guard let host = UserController.sharedController.currentUser
             else { NSLog("there is no current user logged in"); return }
