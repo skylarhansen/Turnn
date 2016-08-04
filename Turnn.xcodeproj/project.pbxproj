@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C044AA71D4FBF76002754B5 /* AppDelegate.swift */; };
-		8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C044AAB1D4FBF76002754B5 /* Main.storyboard */; };
 		8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C044AAE1D4FBF76002754B5 /* Assets.xcassets */; };
 		8C044AB21D4FBF76002754B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */; };
 		8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */; };
@@ -59,7 +58,6 @@
 		6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turnn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C044AA41D4FBF76002754B5 /* Turnn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turnn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C044AA71D4FBF76002754B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8C044AAC1D4FBF76002754B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C044AAE1D4FBF76002754B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C044AB11D4FBF76002754B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C044AB31D4FBF76002754B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */,
 				957C4FDB1D5250AC00596A18 /* Category.storyboard */,
 				957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */,
-				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -355,7 +352,6 @@
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
-				8C044AAD1D4FBF76002754B5 /* Main.storyboard in Resources */,
 				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
 				CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */,
 			);
@@ -500,14 +496,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8C044AAB1D4FBF76002754B5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C044AAC1D4FBF76002754B5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

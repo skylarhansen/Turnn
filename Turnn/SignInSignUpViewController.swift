@@ -10,8 +10,20 @@ import UIKit
 
 class SignInSignUpViewController: UIViewController {
     
-    @IBOutlet var conditionalLabels: [UILabel]!
-    @IBOutlet var conditionalFields: [UITextField]!
+    @IBOutlet var conditionalLabels: [UILabel]! {
+        didSet {
+            conditionalLabels.forEach {
+                $0.hidden = true
+            }
+        }
+    }
+    @IBOutlet var conditionalFields: [UITextField]! {
+        didSet {
+            conditionalFields.forEach {
+                $0.hidden = true
+            }
+        }
+    }
     
     @IBOutlet weak var haveAccountLabel: UILabel!
     @IBOutlet weak var signUpOrInButtonOutlet: UIButton!
@@ -20,7 +32,6 @@ class SignInSignUpViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     
@@ -29,12 +40,7 @@ class SignInSignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewUI()
-        conditionalLabels.forEach {
-            $0.hidden = true
-        }
-        conditionalFields.forEach {
-            $0.hidden = true
-        }
+ 
         createAccountButton.enabled = false
         createAccountButton.hidden = true
         haveAccountLabel.text = "Don't have an account?"
@@ -64,11 +70,6 @@ class SignInSignUpViewController: UIViewController {
         blurView.frame = imageView.frame
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func updateLoginView() {
         if isSignInPage == true  {
             conditionalLabels.forEach {
@@ -96,7 +97,7 @@ class SignInSignUpViewController: UIViewController {
     var createAccountButtonVisible: Bool = true {
         didSet {
             
-            if isSignInPage == false && emailField.text != "" && passwordField != "" && usernameField != "" && firstNameField != "" {
+            if isSignInPage == false && emailField.text != "" && passwordField != "" && firstNameField != "" {
                 createAccountButton.hidden = false
                 createAccountButton.enabled = true
             } else {
