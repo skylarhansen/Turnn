@@ -9,5 +9,6 @@ target 'Turnn' do
 pod 'Firebase'
 pod 'FirebaseAuth'
 pod 'FirebaseDatabase'
+pod 'FirebaseStorage'
 
 end
