@@ -26,7 +26,7 @@ class Event: FirebaseType {
     private let hostKey = "host"
     
     var title: String
-    var location: Location
+    var location: Location?
     var startTime: NSDate
     var endTime: NSDate
     var categories: [Categories]
@@ -56,6 +56,9 @@ class Event: FirebaseType {
         
         var dictionary: [String : AnyObject] = [eventDescriptionKey: eventDescription, passwordProtectedKey: passwordProtected, passwordKey: password, priceKey: price, contactInfoKey: contactInfo, imageKey: image, moreInfoKey: moreInfo]
         
+        if let location = location {
+            dictionary.updateValue(location, forKey: locationKey)
+        }
         dictionary.updateValue(eventDescription, forKey: eventDescriptionKey)
         dictionary.updateValue(passwordProtected, forKey: passwordProtectedKey)
         dictionary.updateValue(password, forKey: passwordKey)
@@ -88,7 +91,7 @@ class Event: FirebaseType {
     required init?(dictionary: [String : AnyObject], identifier: String) {
         
         guard let title = dictionary[titleKey] as? String,
-            location = dictionary[locationKey] as? Location,
+            location = dictionary[locationKey] as? [String: AnyObject],
             startTime = dictionary[startTimeKey] as? NSDate,
             endTime = dictionary[endTimeKey] as? NSDate,
             categories = dictionary[categoriesKey] as? [Categories],
@@ -102,7 +105,11 @@ class Event: FirebaseType {
             moreInfo = dictionary[moreInfoKey] as? String else { return nil }
         
         self.title = title
-        self.location = location
+        if let location = Location(dictionary: location) {
+            self.location = location
+        } else {
+            self.location = nil
+        }
         self.startTime = startTime
         self.endTime = endTime
         self.categories = categories
