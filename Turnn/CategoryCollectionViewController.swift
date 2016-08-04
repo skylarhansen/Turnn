@@ -24,7 +24,7 @@ class CategoryCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        print(Categories.count)
         return Categories.count
     }
     

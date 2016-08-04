@@ -50,7 +50,7 @@ enum Categories: Int {
         case .Food:
             return UIImage(named: "Circle Food")
         case .Hackathon:
-            return UIImage(named: "Circle Hackaton")
+            return UIImage(named: "Circle Hackathon")
         case .Hiking:
             return UIImage(named: "Circle Hiking")
         case .Holiday:
@@ -88,7 +88,7 @@ enum Categories: Int {
         case .Food:
             return "Food"
         case .Hackathon:
-            return "Hackaton"
+            return "Hackathon"
         case .Hiking:
             return "Outdoor"
         case .Holiday:
