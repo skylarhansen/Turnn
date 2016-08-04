@@ -11,32 +11,36 @@ import UIKit
 private let reuseIdentifier = "categoryCell"
 
 class CategoryCollectionViewController: UICollectionViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 1
+        return Categories.count
     }
-
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
-    
-    
+        guard let category = Categories(rawValue: indexPath.item),
+            image = category.image,
+            name = category.name else { return CategoryCollectionViewCell() }
+        
+        cell.updateWith(image, name: name)
+        
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
-
+    
 }
 
 extension CategoryCollectionViewController: UICollectionViewDelegateFlowLayout {

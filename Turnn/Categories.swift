@@ -28,6 +28,12 @@ enum Categories: Int {
     case Sports
     case VideoGames
     
+    static let count: Int = {
+        var max: Int = 0
+        while let _ = Categories(rawValue: max) { max += 1 }
+        return max
+    }()
+    
     var image: UIImage? {
         switch self {
             
@@ -66,7 +72,7 @@ enum Categories: Int {
         }
     }
     
-    var name: String {
+    var name: String? {
         switch self {
             
         case .Admission:
