@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 
-class EventDetailViewController: UIViewController {
+class EventDetailViewController: UIViewController, MKMapViewDelegate {
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,10 @@ class EventDetailViewController: UIViewController {
         mapView.layer.masksToBounds = false
         mapView.layer.cornerRadius = mapView.frame.width/2
         mapView.clipsToBounds = true
+        
+        let eventLocation = CLLocation(latitude: 0, longitude: 0)
+        
+        centerMapOnLocation(eventLocation)
     }
    
     // MARK: - Outlets
@@ -47,6 +53,8 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var eventTimeLabel: UILabel!
     
+    @IBOutlet weak var eventEndTimeLabel: UILabel!
+   
     @IBOutlet var categoryImageViews: [UIImageView]!
     
     func updateCategoryIcons(event: Event) {
@@ -54,7 +62,7 @@ class EventDetailViewController: UIViewController {
         var imageArray: [UIImage] = []
         for category in event.categories {
             guard let unwrappedCategory = Categories(rawValue: category.rawValue), let image = unwrappedCategory.image else {
-                print("")
+                print("error: \(NSLocalizedDescriptionKey)")
                 return
             }
             imageArray.append(image)
@@ -64,16 +72,31 @@ class EventDetailViewController: UIViewController {
             
             categoryImageViews[index].image = image
         }
-
-//        let category = event.categories[0]
-        
     }
     
-    func updateBackgroundImage(event: Event) {
+    func updateEventDetail(event: Event) {
         eventImageView.image = event.image
+        eventTitleLabel.text = event.title
+        eventTimeLabel.text = "\(event.startTime)"
+        if event.endTime == event.endTime {
+            eventTimeLabel.text = "\(event.endTime)" } else {
+               eventEndTimeLabel.text = "" }
+        }
+    
+    // MARK: Map functions
+    
+//    func updateMapWithEventLocation(location: Location) {
+//        mapView.centerCoordinate = location.
+//        
+//    }
+    
+    let regionRadius: CLLocationDistance = 20
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
 
-    
     // MARK: tableView data source functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -113,14 +136,5 @@ class EventDetailViewController: UIViewController {
             return UITableViewCell()
         }
     }
-       /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

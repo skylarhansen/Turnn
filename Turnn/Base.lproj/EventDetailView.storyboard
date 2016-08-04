@@ -265,6 +265,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJ1-7J-v6H">
+                                <rect key="frame" x="82" y="149" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -283,10 +289,12 @@
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="bottom" secondItem="83c-yr-PJs" secondAttribute="top" id="jPw-hF-oin"/>
                             <constraint firstItem="JSA-cY-EmY" firstAttribute="top" secondItem="iCa-MI-9Mm" secondAttribute="bottom" constant="8" symbolic="YES" id="jqQ-9s-XRK"/>
                             <constraint firstItem="RRb-xc-SVF" firstAttribute="leading" secondItem="s8i-2x-d6t" secondAttribute="leading" id="jwv-1Q-NYO"/>
+                            <constraint firstItem="oJ1-7J-v6H" firstAttribute="centerX" secondItem="JSA-cY-EmY" secondAttribute="centerX" id="mHP-xK-IX6"/>
                             <constraint firstItem="1Lr-va-uyx" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" id="muA-3s-MYV"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="top" secondItem="s8i-2x-d6t" secondAttribute="top" id="sD3-Tp-Vf9"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" id="sN8-gt-Euv"/>
                             <constraint firstItem="Ym7-64-vfM" firstAttribute="centerY" secondItem="RRb-xc-SVF" secondAttribute="centerY" id="sgV-eT-V0v"/>
+                            <constraint firstItem="nP8-JE-3Rr" firstAttribute="top" secondItem="oJ1-7J-v6H" secondAttribute="bottom" constant="8" symbolic="YES" id="tjN-Dv-OEw"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="trailing" secondItem="s8i-2x-d6t" secondAttribute="trailing" id="tkf-KO-pOD"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="leading" secondItem="s8i-2x-d6t" secondAttribute="leading" id="uaY-Hx-Qja"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="Ym7-64-vfM" secondAttribute="bottom" constant="21" id="v1Q-97-Slv"/>
@@ -296,6 +304,7 @@
                     <navigationItem key="navigationItem" id="uJc-zx-N0g"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="nP8-JE-3Rr" id="wzl-QH-neK"/>
+                        <outlet property="eventEndTimeLabel" destination="oJ1-7J-v6H" id="uAj-ZL-iOm"/>
                         <outlet property="eventImageView" destination="RRb-xc-SVF" id="Kcf-n1-p4H"/>
                         <outlet property="eventTimeLabel" destination="JSA-cY-EmY" id="n0l-qV-tCz"/>
                         <outlet property="eventTitleLabel" destination="iCa-MI-9Mm" id="SEx-sF-NN4"/>
