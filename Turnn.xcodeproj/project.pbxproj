@@ -165,13 +165,13 @@
 		8C72A2CF1D510DC1008301CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
+				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
+				CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */,
+				957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */,
 				957C4FDB1D5250AC00596A18 /* Category.storyboard */,
 				957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */,
-				957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */,
-				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
 				8C044AAB1D4FBF76002754B5 /* Main.storyboard */,
-				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
-				CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";

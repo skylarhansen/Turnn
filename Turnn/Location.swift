@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class Location: FirebaseType {
     
@@ -15,6 +16,7 @@ class Location: FirebaseType {
     private let stateKey = "state"
     private let zipKey = "zip"
     
+    
     var address: String
     var city: String
     var state: String
@@ -22,6 +24,7 @@ class Location: FirebaseType {
 //    let latitude: Double {}
 //    let longitude: Double {}
     var identifier: String?
+    var region: MKCoordinateRegion
     
     var endpoint: String {
         

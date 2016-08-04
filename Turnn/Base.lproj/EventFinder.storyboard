@@ -14,55 +14,55 @@
                         <viewControllerLayoutGuide type="bottom" id="S1R-pt-Ur8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qbh-Gh-Scq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zAV-e8-0ve">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4IW-qF-6Nr">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="274"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="274"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="274" id="lpI-gh-Qge"/>
                                         </constraints>
                                     </mapView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" maximumZoomScale="3" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q20-6C-VJU">
-                                        <rect key="frame" x="0.0" y="274" width="414" height="398"/>
+                                        <rect key="frame" x="0.0" y="274" width="600" height="262"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" id="9ks-3K-Jyc" customClass="EventFinderTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9ks-3K-Jyc" id="vfQ-PH-uez">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8NA-FF-Tdz">
-                                                            <rect key="frame" x="3" y="0.0" width="409" height="44"/>
+                                                            <rect key="frame" x="3" y="0.0" width="595" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pajama Party" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adp-hw-9Cx">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="205" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="44"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wmo-0C-PmI">
-                                                                    <rect key="frame" x="205" y="0.0" width="205" height="44"/>
+                                                                    <rect key="frame" x="298" y="0.0" width="298" height="44"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wwt-iP-Hak">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="44"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t3E-qK-Qrk">
-                                                                            <rect key="frame" x="41" y="0.0" width="41" height="44"/>
+                                                                            <rect key="frame" x="60" y="0.0" width="60" height="44"/>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wSt-Y0-ik0">
-                                                                            <rect key="frame" x="82" y="0.0" width="41" height="44"/>
+                                                                            <rect key="frame" x="119" y="0.0" width="60" height="44"/>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nEi-E6-Qox">
-                                                                            <rect key="frame" x="123" y="0.0" width="41" height="44"/>
+                                                                            <rect key="frame" x="179" y="0.0" width="60" height="44"/>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FtZ-Ub-dKP">
-                                                                            <rect key="frame" x="164" y="0.0" width="41" height="44"/>
+                                                                            <rect key="frame" x="238" y="0.0" width="60" height="44"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                 </stackView>
@@ -113,7 +113,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Categories" id="pRJ-Kc-nWl"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="c9p-2Y-r8r"/>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="eventsTableView" destination="q20-6C-VJU" id="oSa-SA-6dZ"/>
                         <outlet property="mapView" destination="4IW-qF-6Nr" id="dFW-oA-iD1"/>
@@ -121,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228" y="487"/>
+            <point key="canvasLocation" x="1351" y="482"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zng-qE-dMm">
