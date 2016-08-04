@@ -10,9 +10,35 @@ import UIKit
 
 class SignInSignUpViewController: UIViewController {
     
+    @IBOutlet var conditionalLabels: [UILabel]!
+    
+    @IBOutlet var conditionalFields: [UITextField]!
+    
+    @IBOutlet weak var haveAccountLabel: UILabel!
+    @IBOutlet weak var signUpOrInButtonOutlet: UIButton!
+    
+    @IBOutlet weak var createAccountButton: UIButton!
+    
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
+    
+    var isSignInPage = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewUI()
+        conditionalLabels.forEach {
+            $0.hidden = true
+        }
+        conditionalFields.forEach {
+            $0.hidden = true
+        }
+        createAccountButton.hidden = true
+        haveAccountLabel.text = "Don't have an account?"
+        signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
     }
     
     func setupViewUI() {
@@ -27,7 +53,6 @@ class SignInSignUpViewController: UIViewController {
     }
     
     func setBackgroundForView() {
-        
         let blurEffect = UIBlurEffect(style: .Dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
         
@@ -39,12 +64,52 @@ class SignInSignUpViewController: UIViewController {
         blurView.frame = imageView.frame
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func updateLoginView() {
+        if isSignInPage == true  {
+            conditionalLabels.forEach {
+                $0.hidden = false
+            }
+            conditionalFields.forEach {
+                $0.hidden = false
+            }
+            haveAccountLabel.text = "Already have an account?"
+            signUpOrInButtonOutlet.setTitle("Sign In", forState: .Normal)
+            isSignInPage = false
+        } else {
+            conditionalLabels.forEach {
+                $0.hidden = true
+            }
+            conditionalFields.forEach {
+                $0.hidden = true
+            }
+            haveAccountLabel.text = "Don't have an account?"
+            signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
+            isSignInPage = true
+        }
+    }
+    
+    var createAccountButtonVisible: Bool = true {
+        didSet {
+            
+            if isSignInPage == false && emailField.text != "" && passwordField != "" && usernameField != "" && firstNameField != "" {
+                createAccountButton.hidden = false
+            } else {
+                createAccountButton.hidden = true
+            }
+        }
+    }
+    
+    @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
+        updateLoginView()
+    }
+    
+    @IBAction func createAccountButtonTapped(sender: AnyObject) {
+    }
     
     /*
      // MARK: - Navigation
