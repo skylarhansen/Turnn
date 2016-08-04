@@ -15,6 +15,7 @@
             <string>Ubuntu</string>
             <string>Ubuntu</string>
             <string>Ubuntu</string>
+            <string>Ubuntu</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -40,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="lXy-eJ-aKi">
-                                <rect key="frame" x="203" y="290" width="194" height="264"/>
+                                <rect key="frame" x="203" y="263" width="194" height="264"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq0-dW-abp">
                                         <rect key="frame" x="0.0" y="0.0" width="194" height="21"/>
@@ -135,7 +136,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-73-aff">
-                                <rect key="frame" x="232" y="536" width="136" height="15"/>
+                                <rect key="frame" x="232" y="540" width="136" height="15"/>
                                 <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -146,6 +147,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="toggleSignUpOrInButtonTapped:" destination="lW2-Sa-KeV" eventType="touchUpInside" id="gKF-t4-pTH"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nid-bY-Q30">
                                 <rect key="frame" x="186" y="183" width="228" height="2"/>
@@ -155,21 +159,57 @@
                                     <constraint firstAttribute="height" constant="2" id="pxR-p2-O54"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ue-82-wMQ">
+                                <rect key="frame" x="199" y="203" width="203" height="45"/>
+                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="29"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="Create Account">
+                                    <color key="titleColor" red="0.1176470588" green="0.58823529409999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAccountButtonTapped:" destination="lW2-Sa-KeV" eventType="touchUpInside" id="oOf-9g-uEg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="top" secondItem="zbT-AP-IZ7" secondAttribute="bottom" constant="80" id="9QX-QG-isX"/>
+                            <constraint firstItem="5Ue-82-wMQ" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="9sk-aW-t7m"/>
                             <constraint firstItem="Af4-73-aff" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="AEt-ed-Kij"/>
+                            <constraint firstItem="Xq0-dW-abp" firstAttribute="top" secondItem="5Ue-82-wMQ" secondAttribute="bottom" constant="15" id="Kly-tv-aUw"/>
+                            <constraint firstItem="cSQ-hv-Ah2" firstAttribute="centerY" secondItem="EeT-Gw-1Rc" secondAttribute="centerY" id="PrO-SY-pFK"/>
                             <constraint firstItem="E9A-cj-A46" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="Szj-4v-ICx"/>
-                            <constraint firstItem="Xq0-dW-abp" firstAttribute="centerY" secondItem="EeT-Gw-1Rc" secondAttribute="centerY" id="Vg6-Cg-mEw"/>
                             <constraint firstItem="mvH-7T-Y3f" firstAttribute="top" secondItem="E9A-cj-A46" secondAttribute="bottom" constant="12" id="WRW-fe-Gcd"/>
-                            <constraint firstItem="Xq0-dW-abp" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="dSN-x8-BpV"/>
-                            <constraint firstItem="E9A-cj-A46" firstAttribute="top" secondItem="Af4-73-aff" secondAttribute="bottom" constant="10" id="p2l-V4-vG4"/>
+                            <constraint firstItem="cSQ-hv-Ah2" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="ipV-0c-1xW"/>
+                            <constraint firstItem="E9A-cj-A46" firstAttribute="top" secondItem="Af4-73-aff" secondAttribute="bottom" constant="6" id="p2l-V4-vG4"/>
                             <constraint firstItem="Nid-bY-Q30" firstAttribute="top" secondItem="3nu-KM-X5H" secondAttribute="bottom" constant="21" id="sjm-Ik-Rtl"/>
                             <constraint firstItem="Nid-bY-Q30" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="snQ-JN-k8w"/>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="yhO-H8-wOD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createAccountButton" destination="5Ue-82-wMQ" id="H1i-C5-NWF"/>
+                        <outlet property="emailField" destination="cSQ-hv-Ah2" id="w89-8F-WAa"/>
+                        <outlet property="firstNameField" destination="OE2-S2-WTA" id="E3d-pO-T8U"/>
+                        <outlet property="haveAccountLabel" destination="Af4-73-aff" id="SLH-uE-xqo"/>
+                        <outlet property="lastNameField" destination="UFL-6d-qrM" id="SjL-QQ-hci"/>
+                        <outlet property="passwordField" destination="PA7-Bu-3ur" id="iaT-Ps-y62"/>
+                        <outlet property="signUpOrInButtonOutlet" destination="E9A-cj-A46" id="3ey-9X-Q1R"/>
+                        <outlet property="usernameField" destination="uQd-ws-1Gf" id="rhl-7G-Ya7"/>
+                        <outletCollection property="conditionalFields" destination="SCf-hs-7qd" collectionClass="NSMutableArray" id="o4L-DM-C8g"/>
+                        <outletCollection property="conditionalFields" destination="SCf-hs-7qd" collectionClass="NSMutableArray" id="43h-rG-fPM"/>
+                        <outletCollection property="conditionalFields" destination="UZo-3P-7o8" collectionClass="NSMutableArray" id="9Yk-7a-sD7"/>
+                        <outletCollection property="conditionalFields" destination="HgV-Tj-O7F" collectionClass="NSMutableArray" id="kpY-5h-Vi7"/>
+                        <outletCollection property="conditionalLabels" destination="SCf-hs-7qd" collectionClass="NSMutableArray" id="zYR-S3-Rg4"/>
+                        <outletCollection property="conditionalFields" destination="uQd-ws-1Gf" collectionClass="NSMutableArray" id="aDj-hd-1Be"/>
+                        <outletCollection property="conditionalLabels" destination="SCf-hs-7qd" collectionClass="NSMutableArray" id="xSN-7L-llE"/>
+                        <outletCollection property="conditionalLabels" destination="UZo-3P-7o8" collectionClass="NSMutableArray" id="dZW-h0-5Q6"/>
+                        <outletCollection property="conditionalLabels" destination="HgV-Tj-O7F" collectionClass="NSMutableArray" id="fBe-J7-G0q"/>
+                        <outletCollection property="conditionalFields" destination="uQd-ws-1Gf" collectionClass="NSMutableArray" id="B3N-vG-ONL"/>
+                        <outletCollection property="conditionalFields" destination="OE2-S2-WTA" collectionClass="NSMutableArray" id="XVD-8U-ZYf"/>
+                        <outletCollection property="conditionalFields" destination="UFL-6d-qrM" collectionClass="NSMutableArray" id="S2F-RE-2k9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzp-MT-f5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
