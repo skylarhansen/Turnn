@@ -47,15 +47,32 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var eventTimeLabel: UILabel!
     
-    @IBOutlet weak var categoryIcon1: UIImageView!
+    @IBOutlet var categoryImageViews: [UIImageView]!
     
-    @IBOutlet weak var categoryIcon2: UIImageView!
+    func updateCategoryIcons(event: Event) {
+        
+        var imageArray: [UIImage] = []
+        for category in event.categories {
+            guard let unwrappedCategory = Categories(rawValue: category.rawValue), let image = unwrappedCategory.image else {
+                print("")
+                return
+            }
+            imageArray.append(image)
+        }
+        
+        for (index, image) in imageArray.enumerate() {
+            
+            categoryImageViews[index].image = image
+        }
+
+//        let category = event.categories[0]
+        
+    }
     
-    @IBOutlet weak var categoryIcon3: UIImageView!
-    
-    @IBOutlet weak var categoryIcon4: UIImageView!
-    
-    @IBOutlet weak var categoryIcon5: UIImageView!
+    func updateBackgroundImage(event: Event) {
+        eventImageView.image = event.image
+    }
+
     
     // MARK: tableView data source functions
     
@@ -68,7 +85,7 @@ class EventDetailViewController: UIViewController {
         // #warning Incomplete implementation, return the number of rows
         return 5
     }
-   
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
             
@@ -91,6 +108,9 @@ class EventDetailViewController: UIViewController {
         case 4:
             let MoreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath)
             return MoreInfoDetailCell ?? UITableViewCell()
+            
+        default:
+            return UITableViewCell()
         }
     }
        /*

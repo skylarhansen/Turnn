@@ -29,7 +29,7 @@ class Event: FirebaseType {
     var location: Location
     var startTime: NSDate
     var endTime: NSDate
-    var categories: [Category]
+    var categories: [Categories]
     var eventDescription: String?
     var passwordProtected: Bool?
     var password: String?

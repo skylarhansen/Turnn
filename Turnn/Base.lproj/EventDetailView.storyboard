@@ -254,8 +254,8 @@
                                     <constraint firstAttribute="height" constant="130" id="ji8-eA-wfa"/>
                                 </constraints>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSA-cY-EmY">
-                                <rect key="frame" x="60" y="117" width="85" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSA-cY-EmY">
+                                <rect key="frame" x="61" y="117" width="85" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="F3h-lN-bFQ"/>
                                     <constraint firstAttribute="height" constant="27" id="OM1-xw-Yv5"/>
@@ -296,16 +296,16 @@
                     <navigationItem key="navigationItem" id="uJc-zx-N0g"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="nP8-JE-3Rr" id="wzl-QH-neK"/>
-                        <outlet property="categoryIcon1" destination="lfv-3U-j1L" id="dye-Of-gMU"/>
-                        <outlet property="categoryIcon2" destination="ubx-Np-n4p" id="s3V-7v-Hwp"/>
-                        <outlet property="categoryIcon3" destination="JD0-KU-Dgq" id="CnV-dW-AVr"/>
-                        <outlet property="categoryIcon4" destination="IEz-vL-Ifq" id="At9-MT-Yen"/>
-                        <outlet property="categoryIcon5" destination="e7n-Z2-HGZ" id="tf6-Zw-Au0"/>
                         <outlet property="eventImageView" destination="RRb-xc-SVF" id="Kcf-n1-p4H"/>
                         <outlet property="eventTimeLabel" destination="JSA-cY-EmY" id="n0l-qV-tCz"/>
                         <outlet property="eventTitleLabel" destination="iCa-MI-9Mm" id="SEx-sF-NN4"/>
                         <outlet property="mapView" destination="Ym7-64-vfM" id="boQ-aN-09L"/>
                         <outlet property="tableView" destination="1Lr-va-uyx" id="K1g-kt-h5C"/>
+                        <outletCollection property="categoryImageViews" destination="lfv-3U-j1L" collectionClass="NSMutableArray" id="MZg-jS-ely"/>
+                        <outletCollection property="categoryImageViews" destination="ubx-Np-n4p" collectionClass="NSMutableArray" id="Uf1-ZY-RMB"/>
+                        <outletCollection property="categoryImageViews" destination="JD0-KU-Dgq" collectionClass="NSMutableArray" id="z54-TQ-4J7"/>
+                        <outletCollection property="categoryImageViews" destination="IEz-vL-Ifq" collectionClass="NSMutableArray" id="s6f-WA-JnQ"/>
+                        <outletCollection property="categoryImageViews" destination="e7n-Z2-HGZ" collectionClass="NSMutableArray" id="bHr-3n-OuT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zz-lQ-vzi" userLabel="First Responder" sceneMemberID="firstResponder"/>
