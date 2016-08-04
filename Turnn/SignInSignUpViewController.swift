@@ -11,7 +11,6 @@ import UIKit
 class SignInSignUpViewController: UIViewController {
     
     @IBOutlet var conditionalLabels: [UILabel]!
-    
     @IBOutlet var conditionalFields: [UITextField]!
     
     @IBOutlet weak var haveAccountLabel: UILabel!
@@ -36,6 +35,7 @@ class SignInSignUpViewController: UIViewController {
         conditionalFields.forEach {
             $0.hidden = true
         }
+        createAccountButton.enabled = false
         createAccountButton.hidden = true
         haveAccountLabel.text = "Don't have an account?"
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
@@ -98,7 +98,9 @@ class SignInSignUpViewController: UIViewController {
             
             if isSignInPage == false && emailField.text != "" && passwordField != "" && usernameField != "" && firstNameField != "" {
                 createAccountButton.hidden = false
+                createAccountButton.enabled = true
             } else {
+                createAccountButton.enabled = false
                 createAccountButton.hidden = true
             }
         }
@@ -109,6 +111,7 @@ class SignInSignUpViewController: UIViewController {
     }
     
     @IBAction func createAccountButtonTapped(sender: AnyObject) {
+        
     }
     
     /*
