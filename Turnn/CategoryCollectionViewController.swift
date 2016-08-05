@@ -24,22 +24,37 @@ class CategoryCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(Categories.count)
+        
         return Categories.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
         guard let category = Categories(rawValue: indexPath.item),
             image = category.image,
+            selectedImage = category.selectedImage,
             name = category.name else { return CategoryCollectionViewCell() }
-        
-        cell.updateWith(image, name: name)
+        if ((collectionView.indexPathsForSelectedItems()?.contains(indexPath)) != nil) {
+            cell.updateWith(selectedImage, name: name)
+        } else {
+            cell.updateWith(image, name: name)
+        }
         
         return cell
     }
     
     // MARK: UICollectionViewDelegate
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        collectionView.reloadItemsAtIndexPaths([indexPath])
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        collectionView.reloadItemsAtIndexPaths([indexPath])
+    }
     
 }
 
