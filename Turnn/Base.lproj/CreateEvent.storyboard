@@ -311,13 +311,16 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="382-Qk-gd1">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="382-Qk-gd1">
                                                     <rect key="frame" x="0.0" y="33" width="570" height="70"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="382-Qk-gd1" firstAttribute="top" secondItem="KEm-sT-7mV" secondAttribute="bottom" constant="8" symbolic="YES" id="VrV-qE-rDF"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -351,13 +354,16 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="52h-ZP-U3J">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="52h-ZP-U3J">
                                                     <rect key="frame" x="0.0" y="33" width="570" height="70"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="52h-ZP-U3J" firstAttribute="top" secondItem="RHj-IZ-3Gi" secondAttribute="bottom" constant="8" symbolic="YES" id="RM9-EN-KkS"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -434,8 +440,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Turnn" id="39a-O1-UKa">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Ie9-e6-7Pa"/>
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="vjE-1c-plR"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Ie9-e6-7Pa">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="DS4-8K-S5U" id="NKu-Dw-lDP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="vjE-1c-plR">
+                            <connections>
+                                <action selector="createEventButtonTapped:" destination="DS4-8K-S5U" id="Ke1-w2-2m2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LP4-e8-mEx" userLabel="First Responder" sceneMemberID="firstResponder"/>

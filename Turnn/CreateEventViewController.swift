@@ -19,6 +19,25 @@ class CreateEventViewController: UITableViewController {
         setupTableViewUI()
     }
     
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func createEventButtonTapped(sender: AnyObject) {
+//        if let event = Event {
+//        EventController.createEvent(event.title, location: Location, startTime: event.startTime, endTime: event.endTime, categories: [Categories], eventDescription: event.eventDescription?, passwordProtected: event.passwordProtected?, password: event.password?, price: event.price?, contactInfo: event.contactInfo?, image: event.image?, moreInfo: event.moreInfo?)
+//        }
+//        else {
+        
+        let alertController = UIAlertController(title: "Missing Required Information", message: "Double check your event's required fields!", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+
+    
+    
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
         self.navigationController?.navigationBar.tintColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)

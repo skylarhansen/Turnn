@@ -21,6 +21,10 @@ class CategoryCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func cancelButtonTapped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+}
+   
     // MARK: UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

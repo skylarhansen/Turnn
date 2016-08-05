@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QMz-LY-pdw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QMz-LY-pdw">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -94,6 +94,7 @@
                                                     <outlet property="icon3ImageView" destination="wSt-Y0-ik0" id="Vbh-AW-GmO"/>
                                                     <outlet property="icon4ImageView" destination="nEi-E6-Qox" id="D09-0O-b2N"/>
                                                     <outlet property="icon5ImageView" destination="FtZ-Ub-dKP" id="irK-zo-Ddc"/>
+                                                    <segue destination="W7b-bk-Bqp" kind="show" identifier="toDetailSegue" id="YFg-8W-8VV"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -110,8 +111,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Turnn Events" id="6nb-wp-L5F">
-                        <barButtonItem key="leftBarButtonItem" title="Categories" id="pRJ-Kc-nWl"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c9p-2Y-r8r"/>
+                        <barButtonItem key="leftBarButtonItem" title="Categories" id="pRJ-Kc-nWl">
+                            <connections>
+                                <segue destination="lKW-UX-92g" kind="show" id="bp8-id-lIa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c9p-2Y-r8r">
+                            <connections>
+                                <segue destination="SHe-GN-2xC" kind="show" identifier="createEvent" id="osa-ll-IqP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="eventsTableView" destination="q20-6C-VJU" id="oSa-SA-6dZ"/>
@@ -121,6 +130,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1351" y="482"/>
+        </scene>
+        <!--CreateEvent-->
+        <scene sceneID="7Ks-RW-YOI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateEvent" id="SHe-GN-2xC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oYp-KW-Mz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1797.5" y="256"/>
+        </scene>
+        <!--EventDetailView-->
+        <scene sceneID="yTN-n7-2tc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetailView" id="W7b-bk-Bqp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fg4-gW-Vo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1769.5" y="447"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zng-qE-dMm">
@@ -139,6 +164,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxD-wh-P4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="614" y="482"/>
+        </scene>
+        <!--Category-->
+        <scene sceneID="4pm-sl-BTF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Category" id="lKW-UX-92g" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oXl-Ak-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="977.5" y="87"/>
         </scene>
     </scenes>
 </document>
