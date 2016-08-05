@@ -34,7 +34,7 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.layer.cornerRadius = mapView.frame.width/2
         mapView.clipsToBounds = true
         
-        let eventLocation = CLLocation(latitude: 0, longitude: 0)
+        let eventLocation = CLLocation(latitude: 51.5032510, longitude: -0.1278950)
         
         centerMapOnLocation(eventLocation)
     }
@@ -86,8 +86,8 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
     // MARK: Map functions
     
 //    func updateMapWithEventLocation(location: Location) {
-//        mapView.centerCoordinate = location.
-//        
+//        mapView.centerCoordinate =
+//
 //    }
     
     let regionRadius: CLLocationDistance = 20
