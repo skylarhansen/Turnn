@@ -45,23 +45,26 @@ class CategoryCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
         guard collectionView.indexPathsForSelectedItems()?.count <= 5 else {
             collectionView.deselectItemAtIndexPath(indexPath, animated: false)
             return
         }
+        
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
+            
             guard let category = Categories(rawValue: indexPath.item),
                 selectedImage = category.selectedImage,
                 name = category.name else { return }
             
             cell.updateWith(selectedImage, name: name)
         }
-        
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
+            
             guard let category = Categories(rawValue: indexPath.item),
                 image = category.image,
                 name = category.name else { return }
@@ -69,7 +72,6 @@ class CategoryCollectionViewController: UICollectionViewController {
             cell.updateWith(image, name: name)
         }
     }
-    
 }
 
 extension CategoryCollectionViewController: UICollectionViewDelegateFlowLayout {

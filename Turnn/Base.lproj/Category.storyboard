@@ -78,7 +78,14 @@
                             <outlet property="delegate" destination="KRN-GG-qpq" id="IMK-es-x3b"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Categories" id="0t3-Gz-ACg"/>
+                    <navigationItem key="navigationItem" title="Categories" id="0t3-Gz-ACg">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="OBK-1O-oSE"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="SX3-Iq-wCG">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="KRN-GG-qpq" id="AcE-Gi-cgA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8C-zQ-suE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
