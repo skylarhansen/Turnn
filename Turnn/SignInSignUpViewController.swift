@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import FirebaseAuth
 
 class SignInSignUpViewController: UIViewController {
     
@@ -33,13 +35,22 @@ class SignInSignUpViewController: UIViewController {
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     
+    @IBOutlet weak var loginOrSignUpButtonOutlet: UIButton!
+    
     var isSignInPage = true
+    
+    let dummyLocation = Location(address: "341 S Main St", city: "Salt Lake City", state: "UT", zipCode: "84111")
+    
+    let dummyUser = User(firstName: "Andrew", lastName: "Madsen", events: [], paid: true, identifier: "fake_id")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
+        loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
+
+        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate(), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks")
     }
     
     func setupViewUI() {
@@ -67,23 +78,29 @@ class SignInSignUpViewController: UIViewController {
     
     func updateLoginView() {
         if isSignInPage == true  {
-            conditionalLabels.forEach {
+            UIView.animateWithDuration(0.25){
+            self.conditionalLabels.forEach {
                 $0.hidden = false
             }
-            conditionalFields.forEach {
+            self.conditionalFields.forEach {
                 $0.hidden = false
             }
-            haveAccountLabel.text = "Already have an account?"
+            self.haveAccountLabel.text = "Already have an account?"
+            }
+            loginOrSignUpButtonOutlet.setTitle("CREATE ACCOUNT", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign In", forState: .Normal)
             isSignInPage = false
         } else {
-            conditionalLabels.forEach {
+            UIView.animateWithDuration(0.25){
+            self.conditionalLabels.forEach {
                 $0.hidden = true
             }
-            conditionalFields.forEach {
+            self.conditionalFields.forEach {
                 $0.hidden = true
             }
-            haveAccountLabel.text = "Don't have an account?"
+            self.haveAccountLabel.text = "Don't have an account?"
+            }
+            loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
             isSignInPage = true
         }
@@ -95,11 +112,21 @@ class SignInSignUpViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
-        
-        
-        
-        
-        
+        if isSignInPage == false {
+            
+            if let firstName = firstNameField.text where firstNameField.text != "",
+                let email = emailField.text where emailField.text != "",
+                let password = passwordField.text where passwordField.text != "" {
+                
+                UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user) in
+                    UserController.shared.currentUser = user
+                })
+                
+            } else {
+                // Present Alert saying required fields not filled out
+            }
+            
+        }
     }
     
     /*
@@ -111,5 +138,4 @@ class SignInSignUpViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }

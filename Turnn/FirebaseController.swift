@@ -34,7 +34,8 @@ extension FirebaseType {
             newEndpoint = newEndpoint.childByAutoId()
             self.identifier = newEndpoint.key
         }
-        newEndpoint.updateChildValues(dictionaryCopy)
+        newEndpoint.setValue(dictionaryCopy)
+        //newEndpoint.updateChildValues(dictionaryCopy)
     }
     
     func delete() {

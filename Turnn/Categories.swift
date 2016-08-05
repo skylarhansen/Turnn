@@ -11,22 +11,22 @@ import UIKit
 
 enum Categories: Int {
     
-    case Admission
-    case BoardGames
-    case Basketball
-    case Dancing
-    case Drinking
-    case Food
-    case Hackathon
-    case Hiking
-    case Holiday
-    case Movie
-    case Music
-    case Pin
-    case Party
-    case Shopping
-    case Sports
-    case VideoGames
+    case Admission  // 0
+    case BoardGames // 1
+    case Basketball // 2
+    case Dancing    // 3
+    case Drinking   // 4
+    case Food       // 5
+    case Hackathon  // 6
+    case Hiking     // 7
+    case Holiday    // 8
+    case Movie      // 9
+    case Music      // 10
+    case Pin        // 11
+    case Party      // 12
+    case Shopping   // 13
+    case Sports     // 14
+    case VideoGames // 15
     
     static let count: Int = {
         var max: Int = 0

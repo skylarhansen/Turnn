@@ -24,7 +24,7 @@ class LocationDetailTableViewCell: UITableViewCell {
     }
     
     func updateLocationWithEvent(event: Event) {
-        locationLabel.text = event.location?.address
+        locationLabel.text = event.location.address
     }
 
 }

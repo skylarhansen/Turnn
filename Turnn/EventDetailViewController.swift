@@ -44,15 +44,11 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var eventImageView: UIImageView!
     
     @IBOutlet weak var eventTitleLabel: UILabel!
-    
     @IBOutlet weak var eventTimeLabel: UILabel!
-    
     @IBOutlet weak var eventEndTimeLabel: UILabel!
    
     @IBOutlet var categoryImageViews: [UIImageView]!
@@ -61,7 +57,7 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         
         var imageArray: [UIImage] = []
         for category in event.categories {
-            guard let unwrappedCategory = Categories(rawValue: category.rawValue), let image = unwrappedCategory.image else {
+            guard let unwrappedCategory = Categories(rawValue: category), let image = unwrappedCategory.image else {
                 print("error: \(NSLocalizedDescriptionKey)")
                 return
             }

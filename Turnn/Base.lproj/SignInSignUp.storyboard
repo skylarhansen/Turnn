@@ -112,30 +112,30 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ob0-lH-6EC">
-                                <rect key="frame" x="232" y="499" width="136" height="91"/>
+                                <rect key="frame" x="200" y="499" width="200" height="91"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OS-5h-0UK">
-                                        <rect key="frame" x="31" y="0.0" width="75" height="37"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="5h4-ZL-8W9"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5h4-ZL-8W9"/>
                                             <constraint firstAttribute="height" constant="37" id="pGF-vr-JpB"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="22"/>
-                                        <state key="normal" title="LOGIN">
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="23"/>
+                                        <state key="normal" title="CREATE ACCOUNT">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="loginButtonTapped:" destination="lW2-Sa-KeV" eventType="touchUpInside" id="4aU-F7-fwf"/>
+                                            <action selector="loginButtonTapped:" destination="lW2-Sa-KeV" eventType="touchUpInside" id="beo-4K-496"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-73-aff">
-                                        <rect key="frame" x="0.0" y="43" width="136" height="15"/>
+                                        <rect key="frame" x="32" y="43" width="136" height="15"/>
                                         <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9A-cj-A46">
-                                        <rect key="frame" x="46" y="64" width="45" height="27"/>
+                                        <rect key="frame" x="78" y="64" width="45" height="27"/>
                                         <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
                                         <state key="normal" title="Sign Up">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -164,6 +164,7 @@
                         <outlet property="firstNameField" destination="OE2-S2-WTA" id="E3d-pO-T8U"/>
                         <outlet property="haveAccountLabel" destination="Af4-73-aff" id="SLH-uE-xqo"/>
                         <outlet property="lastNameField" destination="UFL-6d-qrM" id="SjL-QQ-hci"/>
+                        <outlet property="loginOrSignUpButtonOutlet" destination="6OS-5h-0UK" id="ObV-iv-gGy"/>
                         <outlet property="passwordField" destination="PA7-Bu-3ur" id="iaT-Ps-y62"/>
                         <outlet property="signUpOrInButtonOutlet" destination="E9A-cj-A46" id="3ey-9X-Q1R"/>
                         <outletCollection property="conditionalLabels" destination="UZo-3P-7o8" collectionClass="NSMutableArray" id="Jr2-yS-2e5"/>

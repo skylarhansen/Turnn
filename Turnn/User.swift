@@ -10,12 +10,16 @@ import Foundation
 
 class User: FirebaseType {
     
-    private let hostNameKey = "hostName"
+    private let firstNameKey = "firstName"
+    private let lastNameKey = "lastName"
+    private let identifierKey = "id"
     private let paidKey = "paid"
     private let eventsKey = "events"
     
-    var hostName: String
+    var firstName: String
+    var lastName: String?
     var events: [Event]?
+    var eventIds: [String]
     //    var eventCount: Int {}
     var paid: Bool
     //    let latitude: Double {}
@@ -23,37 +27,45 @@ class User: FirebaseType {
     var identifier: String?
     
     var endpoint: String {
-        
         return "Users"
     }
     
     var dictionaryCopy: [String:AnyObject] {
         
-        guard let events = events else { return self.dictionaryCopy }
-        let eventIds = events.flatMap { $0.identifier }
-        var dictionary: [String: AnyObject] = [eventsKey: eventIds.map { [$0: true] }]
+        var dictionary: [String: AnyObject] = [firstNameKey: firstName, paidKey: paid]
         
-        if let identifier = identifier {
-            dictionary.updateValue(eventIds, forKey: eventsKey)
-            dictionary.updateValue(identifier, forKey: identifier)
+        if let lastName = lastName {
+        dictionary.updateValue(lastName, forKey: lastName)
+        }
+        
+        if let events = events {
+        let eventIds = events.flatMap { $0.identifier }
+        let eventDictionary: [String: AnyObject] = [eventsKey: eventIds.map { [$0: true] }]
+        dictionary.updateValue(eventDictionary, forKey: eventsKey)
+            
         }
         return dictionary
     }
     
-    init(firstName: String, lastName: String = "", identifier: String, events: [Event] = [], paid: Bool = false) {
+    init(firstName: String, lastName: String?, events: [Event] = [], paid: Bool = false, identifier: String) {
         
-        self.hostName = firstName + " " + lastName
+        self.firstName = firstName
+        self.lastName = lastName
         self.paid = paid
+        self.eventIds = events.flatMap { $0.identifier }
         self.identifier = identifier
-        self.events = events
     }
     
     required init?(dictionary: [String:AnyObject], identifier: String) {
         
-        guard let hostName = dictionary[hostNameKey] as? String,
+        guard let firstName = dictionary[firstNameKey] as? String,
+            lastName = dictionary[lastNameKey] as? String,
+        eventsDictionary = dictionary[eventsKey] as? [String: AnyObject],
             paid = dictionary[paidKey] as? Bool else { return nil }
         
-        self.hostName = hostName
+        self.firstName = firstName
+        self.lastName = lastName
+        self.eventIds = Array(eventsDictionary.keys)
         self.paid = paid
     }
 }

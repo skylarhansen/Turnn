@@ -11,10 +11,10 @@ import UIKit
 
 class EventController {
 
-    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Categories], eventDescription: String? = "", passwordProtected: Bool? = false, password: String?, price: Double?, contactInfo: String?, image: UIImage?, moreInfo: String?)
+    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool = false, password: String?, price: Double?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?)
     {
-        guard let host = UserController.sharedController.currentUser
-            else { NSLog("there is no current user logged in"); return }
+        //guard let host = UserController.sharedController.currentUser
+           // else { NSLog("there is no current user logged in"); return }
         
         var event = Event(title: title, location: location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: eventDescription, passwordProtected: passwordProtected, password: password, price: price,contactInfo: contactInfo, image: image, host: host, moreInfo: moreInfo)
         
