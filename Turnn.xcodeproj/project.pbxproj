@@ -28,6 +28,7 @@
 		9591632E1D524DA500C23C24 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632D1D524DA500C23C24 /* EventDetailViewController.swift */; };
 		959163301D524DC700C23C24 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632F1D524DC700C23C24 /* HostTableViewCell.swift */; };
 		959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959163311D524DD900C23C24 /* PriceTableViewCell.swift */; };
+		95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */; };
 		95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595341D51460900416B2A /* AddressTableViewCell.swift */; };
 		95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595351D51460900416B2A /* CategoriesTableViewCell.swift */; };
 		95E595401D51460900416B2A /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595361D51460900416B2A /* CityTableViewCell.swift */; };
@@ -353,6 +354,7 @@
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
 				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
 				CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */,
+				95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

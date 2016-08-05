@@ -28,8 +28,6 @@ class SignInSignUpViewController: UIViewController {
     @IBOutlet weak var haveAccountLabel: UILabel!
     @IBOutlet weak var signUpOrInButtonOutlet: UIButton!
     
-    @IBOutlet weak var createAccountButton: UIButton!
-    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
@@ -40,9 +38,6 @@ class SignInSignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewUI()
- 
-        createAccountButton.enabled = false
-        createAccountButton.hidden = true
         haveAccountLabel.text = "Don't have an account?"
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
     }
@@ -94,24 +89,16 @@ class SignInSignUpViewController: UIViewController {
         }
     }
     
-    var createAccountButtonVisible: Bool = true {
-        didSet {
-            
-            if isSignInPage == false && emailField.text != "" && passwordField != "" && firstNameField != "" {
-                createAccountButton.hidden = false
-                createAccountButton.enabled = true
-            } else {
-                createAccountButton.enabled = false
-                createAccountButton.hidden = true
-            }
-        }
-    }
     
     @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
         updateLoginView()
     }
     
-    @IBAction func createAccountButtonTapped(sender: AnyObject) {
+    @IBAction func loginButtonTapped(sender: AnyObject) {
+        
+        
+        
+        
         
     }
     
