@@ -25,6 +25,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     func updateWith(image: UIImage, name: String) {
         
         categoryImageView.image = image
-        self.name = name
+        categoryLabel.text = name
     }
 }

@@ -19,6 +19,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         // Do any additional setup after loading the view.
+        collectionView?.allowsMultipleSelection = true
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
@@ -28,11 +29,12 @@ class CategoryCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(Categories.count)
+        
         return Categories.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
         guard let category = Categories(rawValue: indexPath.item),
             image = category.image,
@@ -43,8 +45,37 @@ class CategoryCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    
     // MARK: UICollectionViewDelegate
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        guard collectionView.indexPathsForSelectedItems()?.count <= 5 else {
+            collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+            return
+        }
+        
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
+            
+            guard let category = Categories(rawValue: indexPath.item),
+                selectedImage = category.selectedImage,
+                name = category.name else { return }
+            
+            cell.updateWith(selectedImage, name: name)
+        }
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
+            
+            guard let category = Categories(rawValue: indexPath.item),
+                image = category.image,
+                name = category.name else { return }
+            
+            cell.updateWith(image, name: name)
+        }
+    }
 }
 
 extension CategoryCollectionViewController: UICollectionViewDelegateFlowLayout {
