@@ -9,30 +9,32 @@
 /*  FIREBASE DATA STRUCTURE REFERENCE
  
  events
-    - identifier
-        - title: titleString
-        - location:
-            - lat: Double
-            - long: Double
-            - address: String
-            - city: String
-            - state: String
-            - zip: String
-        - startTime: NSDate
-        - endTime: NSDate
-        - categories
-            - identifier: true
-            - identifier: true
-        - description: String
-        - passwordPro: bool
-        - password: String
-        - contactInfo: String
+     - identifier
+         - title: titleString
+         - location:
+             - lat: Double
+             - long: Double
+             - address: String
+             - city: String
+             - state: String
+             - zip: String
+         - startTime: Double
+         - endTime: Double
+         - categories
+             - identifier: true
+             - identifier: true
+         - description: String
+         - passwordPro: Bool
+         - password: String
+         - contactInfo: String
  
  user
-    - identifier
-    (email and password managed by Firebase directly)
-        - username
-        - events
-            - identifier: true
-            - identifier: true
+     - identifier
+     (email and password managed by Firebase directly)
+         - username: String
+         - hostname: String
+         - paid: Bool
+         - events
+             - identifier: true
+             - identifier: true
  */

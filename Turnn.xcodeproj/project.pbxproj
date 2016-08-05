@@ -28,7 +28,6 @@
 		9591632E1D524DA500C23C24 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632D1D524DA500C23C24 /* EventDetailViewController.swift */; };
 		959163301D524DC700C23C24 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632F1D524DC700C23C24 /* HostTableViewCell.swift */; };
 		959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959163311D524DD900C23C24 /* PriceTableViewCell.swift */; };
-		95E595311D51452E00416B2A /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95E595301D51452E00416B2A /* Ubuntu-R.ttf */; };
 		95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595341D51460900416B2A /* AddressTableViewCell.swift */; };
 		95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595351D51460900416B2A /* CategoriesTableViewCell.swift */; };
 		95E595401D51460900416B2A /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595361D51460900416B2A /* CityTableViewCell.swift */; };
@@ -80,7 +79,6 @@
 		9591632D1D524DA500C23C24 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		9591632F1D524DC700C23C24 /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
 		959163311D524DD900C23C24 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
-		95E595301D51452E00416B2A /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-R.ttf"; path = "Turnn/Ubuntu-R.ttf"; sourceTree = "<group>"; };
 		95E595341D51460900416B2A /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		95E595351D51460900416B2A /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		95E595361D51460900416B2A /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		8C044A9B1D4FBF76002754B5 = {
 			isa = PBXGroup;
 			children = (
-				95E595301D51452E00416B2A /* Ubuntu-R.ttf */,
 				8C044AA61D4FBF76002754B5 /* Turnn */,
 				8C044AA51D4FBF76002754B5 /* Products */,
 				512025F4E3ECBABD312F977B /* Pods */,
@@ -150,6 +147,7 @@
 			children = (
 				8C044AA71D4FBF76002754B5 /* AppDelegate.swift */,
 				950DC84F1D51045500601BC5 /* Extensions.swift */,
+				956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */,
 				8C72A2D21D510DEC008301CC /* Models */,
 				8C72A2D11D510DDA008301CC /* Controllers */,
 				8C72A2D01D510DCB008301CC /* View Controllers */,
@@ -219,7 +217,6 @@
 		95F80A3C1D512330000196E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */,
 				95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */,
 			);
 			name = "Supporting Files";
@@ -291,7 +288,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C044AB61D4FBF76002754B5 /* Build configuration list for PBXNativeTarget "Turnn" */;
 			buildPhases = (
-				022F77CFD80BFB396F0378E8 /* 📦 Check Pods Manifest.lock */,
+				022F77CFD80BFB396F0378E8 /* [CP] Check Pods Manifest.lock */,
 				9E1CF88A41ABADD27FE9110B /* [CP] Check Pods Manifest.lock */,
 				8C044AA01D4FBF76002754B5 /* Sources */,
 				8C044AA11D4FBF76002754B5 /* Frameworks */,
@@ -351,7 +348,6 @@
 				957C4FE01D5250B600596A18 /* EventDetailView.storyboard in Resources */,
 				957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */,
 				8C044AB21D4FBF76002754B5 /* LaunchScreen.storyboard in Resources */,
-				95E595311D51452E00416B2A /* Ubuntu-R.ttf in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
@@ -363,14 +359,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		022F77CFD80BFB396F0378E8 /* 📦 Check Pods Manifest.lock */ = {
+		022F77CFD80BFB396F0378E8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,9 +639,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Turnn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -655,9 +653,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Turnn/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
