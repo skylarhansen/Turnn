@@ -35,7 +35,7 @@ class User: FirebaseType {
         var dictionary: [String: AnyObject] = [firstNameKey: firstName, paidKey: paid]
         
         if let lastName = lastName {
-        dictionary.updateValue(lastName, forKey: lastName)
+        dictionary.updateValue(lastName, forKey: lastNameKey)
         }
         
         if let events = events {
