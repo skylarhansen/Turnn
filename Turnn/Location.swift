@@ -21,9 +21,8 @@ class Location {
     var city: String
     var state: String
     var zipCode: String
-//    let latitude: Double {}
-//    let longitude: Double {}
-//    var identifier: String?
+//    var latitude: Double {}
+//    var longitude: Double {}
     var region: MKCoordinateRegion
     
     var endpoint: String {
@@ -32,7 +31,6 @@ class Location {
     }
     
     var dictionaryCopy: [String:AnyObject] {
-        
         return [addressKey:address, cityKey:city, stateKey:state, zipKey:zipCode]
     }
     
@@ -42,7 +40,6 @@ class Location {
         self.city = city
         self.state = state
         self.zipCode = zipCode
-//        self.identifier = nil
         self.region = MKCoordinateRegion()
     }
     
@@ -54,7 +51,6 @@ class Location {
         zipCode = dictionary[zipKey] as? String else { return  nil }
         
         self.address = address
-//        self.identifier = identifier
         self.city = city
         self.state = state
         self.zipCode = zipCode
