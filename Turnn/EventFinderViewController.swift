@@ -16,24 +16,25 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var eventsTableView: UITableView!
     
-    let locationManager: CLLocationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     var search: Location!
     var annotation: [MKPointAnnotation]?
     var events: [Event] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.locationManager.delegate = self
-        
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
         self.locationManager.requestWhenInUseAuthorization()
-        
-        self.locationManager.startUpdatingLocation()
-        
         self.mapView.showsUserLocation = true
         
+        if CLLocationManager.locationServicesEnabled() {
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
+        }
+        
+        setupTableViewUI()
+        setBackgroundForTableView()
+        fetchEvents()
     }
     
     // MARK: - TableView Appearance
@@ -41,7 +42,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
         self.navigationController?.navigationBar.tintColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)
-        self.eventsTableView.separatorColor = .clearColor()
+        self.eventsTableView.separatorColor = .whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         setBackgroundForTableView()
     }
@@ -50,16 +51,15 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         let blurEffect = UIBlurEffect(style: .Dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
-        
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
         imageView.contentMode = .Center
         
         imageView.addSubview(blurView)
         eventsTableView.backgroundView = imageView
-        blurView.frame = imageView.frame
+        blurView.frame = self.view.bounds
     }
     
-    // MARK: - Location Delegate Methods
+    // MARK: - Location Manager Delegate Methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
