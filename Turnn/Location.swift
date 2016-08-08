@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import MapKit
+import Mapbox
 
 class Location {
     
@@ -23,7 +23,7 @@ class Location {
     var zipCode: String
 //    var latitude: Double {}
 //    var longitude: Double {}
-    var region: MKCoordinateRegion
+    //var region: MKCoordinateRegion
     
     var endpoint: String {
         
@@ -40,7 +40,7 @@ class Location {
         self.city = city
         self.state = state
         self.zipCode = zipCode
-        self.region = MKCoordinateRegion()
+       // self.region = MKCoordinateRegion()
     }
     
     init?(dictionary: [String:AnyObject]) {
@@ -54,7 +54,7 @@ class Location {
         self.city = city
         self.state = state
         self.zipCode = zipCode
-        self.region = MKCoordinateRegion()
+        //self.region = MKCoordinateRegion()
     }
 }
  

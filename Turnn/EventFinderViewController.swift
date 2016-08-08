@@ -7,19 +7,26 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 import CoreLocation
 
 class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
 
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var eventsTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+
     
     let locationManager: CLLocationManager = CLLocationManager()
     var search: Location!
-    var annotation: [MKPointAnnotation]?
+    var annotation: [MGLPointAnnotation]?
     
+    var currentLocation: CLLocation? {
+        return locationManager.location
+    }
+    
+   var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +40,17 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.startUpdatingLocation()
         
         self.mapView.showsUserLocation = true
+        
+        setBackgroundForTableView()
+
+        setupTableViewUI()
+        
+        let point = MGLPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
+        point.title = "Dev Mountain"
+        point.subtitle = "341 Main St Salt Lake City, U.S.A"
+        
+        mapView.addAnnotation(point)
         
     }
     
@@ -57,17 +75,36 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
         imageView.addSubview(blurView)
         eventsTableView.backgroundView = imageView
         blurView.frame = imageView.frame
+        blurView.frame = imageView.bounds
     }
     
-    // MARK: - Location Delegate Methods
+    func updateMap(mapView:MGLMapView){
+        if let annotations = mapView.annotations {
+            for i in annotations {
+                mapView.removeAnnotation(i)
+                mapView.addAnnotation(i)
+                mapView.showAnnotations(i as! [MGLAnnotation], animated: false)
+            }
+        }
+    }
     
+    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        return true
+    }
+    
+  //   MARK: - Location Delegate Methods
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation previousLocation: CLLocation) {
+        print("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)")
+    }
+
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-        
-        self.mapView.setRegion(region, animated: true)
+//        let region = MGLLocation(center: center, span: MGLCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+//        
+//        self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
         
     }
@@ -79,6 +116,23 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return events.count
+    }
+    
+    /*
+     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+     
+     // Configure the cell...
+     
+     return cell
+     }
+     */
+
     
 
     /*

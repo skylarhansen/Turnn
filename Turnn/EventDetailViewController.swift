@@ -8,8 +8,15 @@
 
 import UIKit
 import Mapbox
+import CoreLocation
 
-class EventDetailViewController: UIViewController, MGLMapViewDelegate {
+class EventDetailViewController: UIViewController, MGLMapViewDelegate, CLLocationManagerDelegate {
+    
+    var locationManager: CLLocationManager!
+    
+    var currentLocation: CLLocation? {
+        return locationManager.location
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +45,8 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         point.subtitle = "341 Main St Salt Lake City, U.S.A"
         
         mapView.addAnnotation(point)
-
     }
-   
+    
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -52,7 +58,7 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventEndTimeLabel: UILabel!
-   
+    
     @IBOutlet var categoryImageViews: [UIImageView]!
     
     func updateCategoryIcons(event: Event) {
@@ -78,10 +84,14 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         eventTimeLabel.text = "\(event.startTime)"
         if event.endTime == event.endTime {
             eventTimeLabel.text = "\(event.endTime)" } else {
-               eventEndTimeLabel.text = "" }
-        }
+            eventEndTimeLabel.text = "" }
+    }
     
-  
+    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        // Always try to show a callout when an annotation is tapped.
+        return true
+    }
+    
     // MARK: tableView data source functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
