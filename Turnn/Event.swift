@@ -46,7 +46,7 @@ class Event: FirebaseType {
     }
     
     var dictionaryCopy: [String: AnyObject] {
-
+        
         var dictionary: [String : AnyObject] = [titleKey : title, startTimeKey : startTime.timeIntervalSince1970, endTimeKey : endTime.timeIntervalSince1970, categoriesKey : categories, hostKey: host.dictionaryCopy, locationKey : location.dictionaryCopy, passwordProtectedKey : passwordProtected]
         
         if let eventDescription = eventDescription {
@@ -62,7 +62,7 @@ class Event: FirebaseType {
         if let price = price {
             dictionary.updateValue(price, forKey: priceKey)
         }
-
+        
         if let contactInfo = contactInfo {
             dictionary.updateValue(contactInfo, forKey: contactInfoKey)
         }
@@ -74,7 +74,7 @@ class Event: FirebaseType {
         if let moreInfo = moreInfo {
             dictionary.updateValue(moreInfo, forKey: moreInfoKey)
         }
-
+        
         return dictionary
     }
     
@@ -99,8 +99,8 @@ class Event: FirebaseType {
     required init?(dictionary: [String : AnyObject], identifier: String) {
         
         guard let title = dictionary[titleKey] as? String,
-        locationDictionary = dictionary[locationKey] as? [String: AnyObject],
-        location = Location(dictionary: locationDictionary),
+            locationDictionary = dictionary[locationKey] as? [String: AnyObject],
+            location = Location(dictionary: locationDictionary),
             startTime = dictionary[startTimeKey] as? Double,
             endTime = dictionary[endTimeKey] as? Double,
             categories = dictionary[categoriesKey] as? [Int],
@@ -110,7 +110,7 @@ class Event: FirebaseType {
             price = dictionary[priceKey] as? Double,
             contactInfo = dictionary[contactInfoKey] as? String,
             image = dictionary[imageKey] as? UIImage,
-        hostDictionary = dictionary[hostKey] as? [String : AnyObject],
+            hostDictionary = dictionary[hostKey] as? [String : AnyObject],
             host = User(dictionary: hostDictionary, identifier: hostDictionary["id"] as! String),
             moreInfo = dictionary[moreInfoKey] as? String else { return nil }
         

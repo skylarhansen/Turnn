@@ -29,6 +29,7 @@ class GeoFireController {
             }
             completion(success: true)
         }
+<<<<<<< Updated upstream
     }
     
     static func createLocation(address: String, city: String, state: String, zipCode: String, latitude: Double, longitude: Double)
@@ -36,6 +37,9 @@ class GeoFireController {
         var location = Location(address: address, city: city, state: state, zipCode: zipCode, latitude: latitude, longitude: longitude)
            }
     
+=======
+    }    
+>>>>>>> Stashed changes
     
     static func queryFiveMilesAroundMe() {
         guard let center = LocationController.sharedInstance.coreLocationManager.location else { return }
