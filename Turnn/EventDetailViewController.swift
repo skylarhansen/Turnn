@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 
 class EventDetailViewController: UIViewController, MKMapViewDelegate {
     
@@ -34,9 +34,15 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.layer.cornerRadius = mapView.frame.width/2
         mapView.clipsToBounds = true
         
-        let eventLocation = CLLocation(latitude: 51.5032510, longitude: -0.1278950)
+        let point = MGLPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: 45.52258, longitude: -122.6732)
+        point.title = "Voodoo Doughnut"
+        point.subtitle = "22 SW 3rd Avenue Portland Oregon, U.S.A."
         
-        centerMapOnLocation(eventLocation)
+        mapView.addAnnotation(point)
+        
+        centerMapOnLocation(point)
+
     }
    
     // MARK: - Outlets
@@ -44,7 +50,7 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var eventImageView: UIImageView!
     
     @IBOutlet weak var eventTitleLabel: UILabel!

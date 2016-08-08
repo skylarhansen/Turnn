@@ -46,12 +46,28 @@
 		CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */; };
 		CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */; };
 		CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */; };
+		CCE9DF051D58EA7200363A98 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9DF041D58EA7200363A98 /* Mapbox.framework */; };
+		CCE9DF061D58EA7200363A98 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9DF041D58EA7200363A98 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52B9971D525E4E00E1C7E9 /* Categories.swift */; };
 		CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */; };
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CCE9DF071D58EA7200363A98 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CCE9DF061D58EA7200363A98 /* Mapbox.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1CFAC4F5E9F9AEF5DD731FFE /* Pods-Turnn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turnn.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turnn/Pods-Turnn.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +114,7 @@
 		CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CCE9DF041D58EA7200363A98 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		CE52B9971D525E4E00E1C7E9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */,
+				CCE9DF051D58EA7200363A98 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +146,7 @@
 		8C044A9B1D4FBF76002754B5 = {
 			isa = PBXGroup;
 			children = (
+				CCE9DF041D58EA7200363A98 /* Mapbox.framework */,
 				8C044AA61D4FBF76002754B5 /* Turnn */,
 				8C044AA51D4FBF76002754B5 /* Products */,
 				512025F4E3ECBABD312F977B /* Pods */,
@@ -298,6 +317,7 @@
 				686AD4103BF49E2700494520 /* [CP] Copy Pods Resources */,
 				25C2D18FFF78F5179103C3DD /* 📦 Embed Pods Frameworks */,
 				893027E04A42795F53862DFF /* 📦 Copy Pods Resources */,
+				CCE9DF071D58EA7200363A98 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -640,6 +660,10 @@
 			baseConfigurationReference = 35B988C46F35ED4E2176DC6F /* Pods-Turnn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Turnn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -654,6 +678,10 @@
 			baseConfigurationReference = 1CFAC4F5E9F9AEF5DD731FFE /* Pods-Turnn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Turnn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
