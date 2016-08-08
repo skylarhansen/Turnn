@@ -12,17 +12,28 @@ class EventFinderTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var icon1ImageView: UIImageView!
-    @IBOutlet weak var icon2ImageView: UIImageView!
-    @IBOutlet weak var icon3ImageView: UIImageView!
-    @IBOutlet weak var icon4ImageView: UIImageView!
-    @IBOutlet weak var icon5ImageView: UIImageView!
-
+    @IBOutlet var categoryImages: [UIImageView]!
     
+    func loadImageViews(images: [UIImage]) {
+        for (index, image) in images.enumerate() {
+            categoryImages[index].hidden = false
+            categoryImages[index].image = image
+        }
+    }
+    
+    func updateWithEvent(event: Event) {
+        eventNameLabel.text = event.title
+        //loadCategoriesForEvent()
+        //loadImageViews(images)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        for categoyImageView in categoryImages {
+            categoyImageView.hidden = true
+        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
