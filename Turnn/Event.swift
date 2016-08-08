@@ -100,7 +100,7 @@ class Event: FirebaseType {
         
         guard let title = dictionary[titleKey] as? String,
         locationDictionary = dictionary[locationKey] as? [String: AnyObject],
-            location = Location(dictionary: locationDictionary),
+        location = Location(dictionary: locationDictionary, identifier: locationDictionary["id"] as! String),
             startTime = dictionary[startTimeKey] as? Double,
             endTime = dictionary[endTimeKey] as? Double,
             categories = dictionary[categoriesKey] as? [Int],
