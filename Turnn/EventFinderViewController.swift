@@ -7,18 +7,18 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 import CoreLocation
 
-class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MGLMapViewDelegate {
     
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var eventsTableView: UITableView!
     
     let locationManager = CLLocationManager()
-    var search: Location!
-    var annotation: [MKPointAnnotation]?
+    var search: Location?
+    var annotation: [MGLPointAnnotation]?
     var events: [Event] = []
     
     override func viewDidLoad() {
@@ -35,6 +35,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         setupTableViewUI()
         setBackgroundForTableView()
         fetchEvents()
+        
+        let point = MGLPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
+        point.title = "Dev Mountain"
+        point.subtitle = "341 Main St Salt Lake City, U.S.A"
+        
+        mapView.addAnnotation(point)
     }
     
     // MARK: - TableView Appearance
@@ -65,11 +72,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         let location = locations.last
         
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-        
-        self.mapView.setRegion(region, animated: true)
+//        let region = MGLCoordinateRegion(center: center, span: MGLCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+//        
+//        self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
         
+    }
+    
+    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+        // Always try to show a callout when an annotation is tapped.
+        return true
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
