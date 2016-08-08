@@ -34,8 +34,7 @@ class GeoFireController {
     static func createLocation(address: String, city: String, state: String, zipCode: String, latitude: Double, longitude: Double)
     {
         var location = Location(address: address, city: city, state: state, zipCode: zipCode, latitude: latitude, longitude: longitude)
-        location.save()
-    }
+           }
     
     
     static func queryFiveMilesAroundMe() {

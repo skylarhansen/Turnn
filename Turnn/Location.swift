@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class Location: FirebaseType {
+class Location {
     
     private let addressKey = "address"
     private let cityKey = "city"
@@ -24,8 +24,7 @@ class Location: FirebaseType {
     var zipCode: String
     var latitude: Double
     var longitude: Double
-    var region: MKCoordinateRegion
-    var identifier: String?
+    //var region: MKCoordinateRegion
     
     var endpoint: String {
         return "Locations"
@@ -43,11 +42,10 @@ class Location: FirebaseType {
         self.zipCode = zipCode
         self.latitude = latitude
         self.longitude = longitude
-        self.region = MKCoordinateRegion()
-        self.identifier = nil
+       // self.region = MKCoordinateRegion()
     }
     
-    required init?(dictionary: [String:AnyObject], identifier: String) {
+    init?(dictionary: [String:AnyObject]) {
         
         guard let address = dictionary[addressKey] as? String,
         city = dictionary[cityKey] as? String,
@@ -64,7 +62,7 @@ class Location: FirebaseType {
         self.zipCode = zipCode
         self.latitude = latitude
         self.longitude = longitude
-        self.region = MKCoordinateRegion()
+        //self.region = MKCoordinateRegion()
     }
 }
  
