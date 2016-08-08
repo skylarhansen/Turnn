@@ -13,7 +13,7 @@
   identifers [like when we append an event identifer to a
   user's record, etc.])
  
- events
+ Events
      - identifier
          - title: String
          - location:
@@ -37,7 +37,7 @@
                             otherwise this spot would look
                             like location & categories)
  
- user
+ Users
      - identifier
      (email and password managed by Firebase directly)
          - username: String
@@ -46,4 +46,45 @@
          - events
              - identifier: true
              - identifier: true
+ 
+ Locations
+     - identifier
+        - g:  (geohash--String)
+        - l
+             - 0:  (latitude--Double)
+             - 1:  (longitude--Double)
+        - eventIdentifier: String
+ 
+ 
+ 
+ 
  */
+
+
+
+
+
+/*
+ backup of Firebase Database rules
+ as they currently stand at Mon 8 Aug 11:30am
+ 
+ {
+ "rules": {
+ "Events": {
+ ".read" : true,
+ ".write" : true
+ },
+ "Users": {
+ ".read" : true,
+ ".write" : true
+ },
+ "Locations": {
+ ".read": true,
+ ".write": true,
+ ".indexOn": "g",
+ "geofire": {
+ },
+ }
+ }
+ }
+*/

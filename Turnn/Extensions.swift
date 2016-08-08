@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension NSDate: Comparable {
-    
 }
 
 public func == (lhs: NSDate, rhs: NSDate) -> Bool {
@@ -79,3 +78,31 @@ extension UIButton {
         }
     }
 }
+
+extension Double {
+    
+    func makeMeters() -> Double {
+        let result = self * 1609.34
+        return result
+        
+    }
+}
+
+extension Event {
+
+    func loadCategoriesForEvent() -> [UIImage] {
+        var imageArray: [UIImage] = []
+        for category in self.categories {
+            if let image = Categories(rawValue: category)?.selectedImage {
+                imageArray.append(image)
+            }
+        }
+        return imageArray
+    }
+}
+
+
+
+
+
+

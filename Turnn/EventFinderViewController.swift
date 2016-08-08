@@ -10,8 +10,8 @@ import UIKit
 import Mapbox
 import CoreLocation
 
-class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
-
+class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
+    
     
     @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var eventsTableView: UITableView!
@@ -20,6 +20,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager: CLLocationManager = CLLocationManager()
     var search: Location!
+<<<<<<< HEAD
     var annotation: [MGLPointAnnotation]?
     
     var currentLocation: CLLocation? {
@@ -27,6 +28,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
     }
     
    var events = [Event]()
+=======
+    var annotation: [MKPointAnnotation]?
+    var events: [Event] = []
+>>>>>>> d6c36d23bf445af251e0e3df80418efbfeae9290
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +122,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
     }
     
+<<<<<<< HEAD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -142,9 +148,45 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+=======
+    // MARK: - Fetch Events -
+    
+    func fetchEvents() {
+        EventController.fetchEvents { (events) in
+            self.events = events
+            self.eventsTableView.reloadData()
+        }
+>>>>>>> d6c36d23bf445af251e0e3df80418efbfeae9290
     }
-    */
+    
+    // MARK: - Table view data source -
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
+        
+        let event = events[indexPath.row]
+        eventCell?.updateWithEvent(event)
 
+            return eventCell ?? UITableViewCell()
+    }
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 

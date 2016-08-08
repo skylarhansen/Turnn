@@ -39,7 +39,7 @@ class SignInSignUpViewController: UIViewController {
     
     var isSignInPage = true
     
-    let dummyLocation = Location(address: "341 S Main St", city: "Salt Lake City", state: "UT", zipCode: "84111")
+    let dummyLocation = Location(address: "341 S Main St", city: "Salt Lake City", state: "UT", zipCode: "84111", latitude: 34, longitude: 55)
     
     let dummyUser = User(firstName: "Andrew", lastName: "Madsen", events: [], paid: true, identifier: "fake_id")
     
@@ -51,6 +51,7 @@ class SignInSignUpViewController: UIViewController {
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
 
         EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate(), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks")
+        GeoFireController.createLocation("341 S Main St", city: "Salt Lake City", state: "UT", zipCode: "84111", latitude: 34, longitude: 55)
     }
     
     func setupViewUI() {
