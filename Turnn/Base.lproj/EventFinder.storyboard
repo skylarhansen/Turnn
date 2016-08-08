@@ -34,7 +34,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9ks-3K-Jyc" id="vfQ-PH-uez">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8NA-FF-Tdz">
@@ -89,15 +89,19 @@
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="eventNameLabel" destination="adp-hw-9Cx" id="o6l-tM-knv"/>
-                                                    <outlet property="icon1ImageView" destination="wwt-iP-Hak" id="G7a-Fx-YrU"/>
-                                                    <outlet property="icon2ImageView" destination="t3E-qK-Qrk" id="EMo-gB-OkI"/>
-                                                    <outlet property="icon3ImageView" destination="wSt-Y0-ik0" id="Vbh-AW-GmO"/>
-                                                    <outlet property="icon4ImageView" destination="nEi-E6-Qox" id="D09-0O-b2N"/>
-                                                    <outlet property="icon5ImageView" destination="FtZ-Ub-dKP" id="irK-zo-Ddc"/>
+                                                    <outletCollection property="categoryImages" destination="wwt-iP-Hak" collectionClass="NSMutableArray" id="MOW-pp-vf8"/>
+                                                    <outletCollection property="categoryImages" destination="t3E-qK-Qrk" collectionClass="NSMutableArray" id="EPT-G4-KGP"/>
+                                                    <outletCollection property="categoryImages" destination="wSt-Y0-ik0" collectionClass="NSMutableArray" id="9YF-st-ldx"/>
+                                                    <outletCollection property="categoryImages" destination="nEi-E6-Qox" collectionClass="NSMutableArray" id="Oye-Gd-LhW"/>
+                                                    <outletCollection property="categoryImages" destination="FtZ-Ub-dKP" collectionClass="NSMutableArray" id="UJO-pv-9L5"/>
                                                     <segue destination="W7b-bk-Bqp" kind="show" identifier="toDetailSegue" id="YFg-8W-8VV"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="68G-yD-Hdw" id="B4D-aF-HMl"/>
+                                            <outlet property="delegate" destination="68G-yD-Hdw" id="dSo-5Z-4FL"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                             </stackView>
