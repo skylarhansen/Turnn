@@ -9,9 +9,7 @@
 import UIKit
 import Mapbox
 
-class EventDetailViewController: UIViewController, MKMapViewDelegate {
-    
-    let locationManager = CLLocationManager()
+class EventDetailViewController: UIViewController, MGLMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +33,11 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         mapView.clipsToBounds = true
         
         let point = MGLPointAnnotation()
-        point.coordinate = CLLocationCoordinate2D(latitude: 45.52258, longitude: -122.6732)
-        point.title = "Voodoo Doughnut"
-        point.subtitle = "22 SW 3rd Avenue Portland Oregon, U.S.A."
+        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
+        point.title = "Dev Mountain"
+        point.subtitle = "341 Main St Salt Lake City, U.S.A"
         
         mapView.addAnnotation(point)
-        
-        centerMapOnLocation(point)
 
     }
    
@@ -85,20 +81,7 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
                eventEndTimeLabel.text = "" }
         }
     
-    // MARK: Map functions
-    
-//    func updateMapWithEventLocation(location: Location) {
-//        mapView.centerCoordinate =
-//
-//    }
-    
-    let regionRadius: CLLocationDistance = 20
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-
+  
     // MARK: tableView data source functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

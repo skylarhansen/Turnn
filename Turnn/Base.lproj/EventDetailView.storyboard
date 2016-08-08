@@ -3,11 +3,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Event Detail View Controller-->
+        <!--Delegate-->
         <scene sceneID="rap-3h-VYh">
             <objects>
                 <viewController id="DeV-nU-JC0" customClass="EventDetailViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
@@ -246,14 +245,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ym7-64-vfM">
-                                <rect key="frame" x="225" y="27" width="130" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ym7-64-vfM" secondAttribute="height" multiplier="1:1" id="1Rf-XD-VMz"/>
-                                    <constraint firstAttribute="width" constant="130" id="Cxs-FU-O9H"/>
-                                    <constraint firstAttribute="height" constant="130" id="ji8-eA-wfa"/>
-                                </constraints>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSA-cY-EmY">
                                 <rect key="frame" x="61" y="117" width="85" height="27"/>
                                 <constraints>
@@ -271,35 +262,68 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lh9-bf-VqD" customClass="MGLMapView">
+                                <rect key="frame" x="215" y="28" width="145" height="145"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.070313461120000004" green="0.78432720899999997" blue="0.86106544730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsUserLocation" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="zoomLevel">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="latitude">
+                                        <real key="value" value="40.761823"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="longitude">
+                                        <real key="value" value="-111.89059399999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="DeV-nU-JC0" id="FdV-eU-wQ1"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="lh9-bf-VqD" secondAttribute="bottom" constant="8" id="0Rk-XT-go2"/>
                             <constraint firstItem="JSA-cY-EmY" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leadingMargin" constant="45" id="3Nb-34-Qll"/>
+                            <constraint firstItem="lh9-bf-VqD" firstAttribute="top" secondItem="iCa-MI-9Mm" secondAttribute="top" id="3XL-aS-sIb"/>
                             <constraint firstAttribute="bottom" secondItem="s8i-2x-d6t" secondAttribute="bottom" constant="439" id="BFq-zP-dOu"/>
-                            <constraint firstItem="Ym7-64-vfM" firstAttribute="leading" secondItem="iCa-MI-9Mm" secondAttribute="trailing" constant="36" id="CSx-Nt-wBY"/>
+                            <constraint firstAttribute="trailing" secondItem="lh9-bf-VqD" secondAttribute="trailing" constant="20" id="OMa-r6-iBS"/>
                             <constraint firstItem="1Lr-va-uyx" firstAttribute="top" secondItem="RRb-xc-SVF" secondAttribute="bottom" constant="47" id="PMx-bl-wD2"/>
+                            <constraint firstItem="lh9-bf-VqD" firstAttribute="leading" secondItem="iCa-MI-9Mm" secondAttribute="trailing" constant="26" id="Tbw-Ej-pYP"/>
                             <constraint firstItem="83c-yr-PJs" firstAttribute="top" secondItem="1Lr-va-uyx" secondAttribute="bottom" id="Y3u-9O-j1P"/>
                             <constraint firstAttribute="trailing" secondItem="1Lr-va-uyx" secondAttribute="trailing" id="Z61-4h-tMP"/>
+                            <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="lh9-bf-VqD" secondAttribute="bottom" constant="5" id="Zw1-KU-zx5"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="JSA-cY-EmY" secondAttribute="bottom" constant="34" id="acs-JV-i4E"/>
                             <constraint firstItem="iCa-MI-9Mm" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leadingMargin" id="cT9-1h-Ipb"/>
                             <constraint firstItem="RRb-xc-SVF" firstAttribute="trailing" secondItem="s8i-2x-d6t" secondAttribute="trailing" id="cr7-oG-q19"/>
                             <constraint firstAttribute="trailing" secondItem="s8i-2x-d6t" secondAttribute="trailing" id="fJP-XB-XEj"/>
                             <constraint firstItem="RRb-xc-SVF" firstAttribute="top" secondItem="uKd-Nr-Ihp" secondAttribute="bottom" constant="2" id="fOu-eH-Q6a"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="3ik-iB-e3U" secondAttribute="top" constant="178" id="fYg-oM-FNG"/>
+                            <constraint firstItem="lh9-bf-VqD" firstAttribute="top" secondItem="uKd-Nr-Ihp" secondAttribute="bottom" constant="30" id="fZ0-7B-76z"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="bottom" secondItem="83c-yr-PJs" secondAttribute="top" id="jPw-hF-oin"/>
                             <constraint firstItem="JSA-cY-EmY" firstAttribute="top" secondItem="iCa-MI-9Mm" secondAttribute="bottom" constant="8" symbolic="YES" id="jqQ-9s-XRK"/>
                             <constraint firstItem="RRb-xc-SVF" firstAttribute="leading" secondItem="s8i-2x-d6t" secondAttribute="leading" id="jwv-1Q-NYO"/>
+                            <constraint firstItem="lh9-bf-VqD" firstAttribute="leading" secondItem="iCa-MI-9Mm" secondAttribute="trailing" constant="26" id="lCe-Rp-UN1"/>
                             <constraint firstItem="oJ1-7J-v6H" firstAttribute="centerX" secondItem="JSA-cY-EmY" secondAttribute="centerX" id="mHP-xK-IX6"/>
                             <constraint firstItem="1Lr-va-uyx" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" id="muA-3s-MYV"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="top" secondItem="s8i-2x-d6t" secondAttribute="top" id="sD3-Tp-Vf9"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" id="sN8-gt-Euv"/>
-                            <constraint firstItem="Ym7-64-vfM" firstAttribute="centerY" secondItem="RRb-xc-SVF" secondAttribute="centerY" id="sgV-eT-V0v"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="top" secondItem="oJ1-7J-v6H" secondAttribute="bottom" constant="8" symbolic="YES" id="tjN-Dv-OEw"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="trailing" secondItem="s8i-2x-d6t" secondAttribute="trailing" id="tkf-KO-pOD"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="leading" secondItem="s8i-2x-d6t" secondAttribute="leading" id="uaY-Hx-Qja"/>
-                            <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="Ym7-64-vfM" secondAttribute="bottom" constant="21" id="v1Q-97-Slv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ym7-64-vfM" secondAttribute="trailing" constant="4" id="ynB-TB-mLP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lh9-bf-VqD" secondAttribute="trailing" constant="-1" id="zsJ-JR-hVZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0Rk-XT-go2"/>
+                                <exclude reference="OMa-r6-iBS"/>
+                                <exclude reference="Tbw-Ej-pYP"/>
+                                <exclude reference="fZ0-7B-76z"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="uJc-zx-N0g"/>
                     <connections>
@@ -308,7 +332,7 @@
                         <outlet property="eventImageView" destination="RRb-xc-SVF" id="Kcf-n1-p4H"/>
                         <outlet property="eventTimeLabel" destination="JSA-cY-EmY" id="n0l-qV-tCz"/>
                         <outlet property="eventTitleLabel" destination="iCa-MI-9Mm" id="SEx-sF-NN4"/>
-                        <outlet property="mapView" destination="Ym7-64-vfM" id="boQ-aN-09L"/>
+                        <outlet property="mapView" destination="lh9-bf-VqD" id="af5-ns-n6E"/>
                         <outlet property="tableView" destination="1Lr-va-uyx" id="K1g-kt-h5C"/>
                         <outletCollection property="categoryImageViews" destination="lfv-3U-j1L" collectionClass="NSMutableArray" id="MZg-jS-ely"/>
                         <outletCollection property="categoryImageViews" destination="ubx-Np-n4p" collectionClass="NSMutableArray" id="Uf1-ZY-RMB"/>
