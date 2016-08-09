@@ -178,7 +178,7 @@
                 <viewControllerPlaceholder storyboardName="CreateEvent" id="SHe-GN-2xC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYp-KW-Mz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797.5" y="256"/>
+            <point key="canvasLocation" x="1864.5" y="482"/>
         </scene>
         <!--EventDetailView-->
         <scene sceneID="yTN-n7-2tc">
@@ -186,7 +186,7 @@
                 <viewControllerPlaceholder storyboardName="EventDetailView" id="W7b-bk-Bqp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fg4-gW-Vo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876.5" y="525"/>
+            <point key="canvasLocation" x="1876.5" y="531"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zng-qE-dMm">
@@ -212,7 +212,7 @@
                 <viewControllerPlaceholder storyboardName="Category" id="lKW-UX-92g" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXl-Ak-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977.5" y="87"/>
+            <point key="canvasLocation" x="1855" y="432"/>
         </scene>
     </scenes>
 </document>
