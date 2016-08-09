@@ -51,8 +51,42 @@ class SignInSignUpViewController: UIViewController {
         loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
 
-        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate(), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks")
-        GeoFireController.queryFiveMilesAroundMe()
+        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate(), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
+            
+            if success {
+                GeoFireController.queryEventsForRadius(miles: 5.0) { (keys) in
+                    
+                    if let keys = keys {
+                        
+                        let key = keys[1]
+                        
+                        GeoFireController.getEventIdsForLocationIdentifiers([key], completion: { (ids) in
+                            if let ids = ids {
+                                EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
+                                    print(events)
+                                    if let events = events {
+                                        print("EVENT RETRIEVED: \(events[0])")
+                                    } else {
+                                        print("Dang it!!!")
+                                    }
+                                })
+                            } else {
+                                print("Did not get back any eventIDs")
+                            }
+                        })
+                        
+                        print("Keys:\n")
+                        for key in keys {
+                            print("\(key)\n")
+                        }
+                    } else {
+                        print("💩")
+                    }
+                }
+            } else {
+                print("CRAP THIS SUCKS.... (just give up)!")
+            }
+        })
     }
     
     func setupViewUI() {
