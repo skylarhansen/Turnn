@@ -45,3 +45,4 @@ class GeoFireController {
             NSNotificationCenter.defaultCenter().postNotificationName("NewLocalEvent", object: nil)
         }
     }
+}

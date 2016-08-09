@@ -19,7 +19,7 @@
 		746B890F1CECD5326ADD05028FC0FC5C /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F9210763EAF061FDB7294F1BE07258 /* GFGeoHash.m */; };
 		75F28DB38113DCB2D9121B7163C875CA /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = C55211665151B3BFDAEA0C0BFF693366 /* GFGeoHashQuery.m */; };
 		7D6ED8A7FE3F654EEC63F134E383BBA7 /* GFBase32Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 81845104BD43DE4674EA56D287789753 /* GFBase32Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9569D81B1D5924D500EF6DE8 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E13484E7E3133B33216F44DD509F58 /* FirebaseDatabase.framework */; };
+		95FDAF9C1D5A413C00191DE4 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E13484E7E3133B33216F44DD509F58 /* FirebaseDatabase.framework */; };
 		9B8FEC707269B27CA0CD40A36B647186 /* GFCircleQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 70A28A7CD16506B503F46EC7D6CD923A /* GFCircleQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A4656AA37096D90C796730F3A274FA91 /* GeoFire.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB3A90509A0C2619E032E7A6F248852 /* GeoFire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C0335D1F224EB7A3CBF79079BA17AF31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D1159654E476B277E1D950E9C0CBD4 /* Foundation.framework */; };
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9569D81B1D5924D500EF6DE8 /* FirebaseDatabase.framework in Frameworks */,
+				95FDAF9C1D5A413C00191DE4 /* FirebaseDatabase.framework in Frameworks */,
 				2166735050EC3CA9D824700B620B063E /* CoreLocation.framework in Frameworks */,
 				C0335D1F224EB7A3CBF79079BA17AF31 /* Foundation.framework in Frameworks */,
 			);
