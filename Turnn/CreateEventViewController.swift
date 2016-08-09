@@ -11,32 +11,30 @@ import UIKit
 class CreateEventViewController: UITableViewController {
     
     var locationSelected: Bool = false
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+            
         setupTableViewUI()
     }
+    
+    var event: Event?
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func createEventButtonTapped(sender: AnyObject) {
-//        if let event = Event {
-//        EventController.createEvent(event.title, location: Location, startTime: event.startTime, endTime: event.endTime, categories: [Categories], eventDescription: event.eventDescription?, passwordProtected: event.passwordProtected?, password: event.password?, price: event.price?, contactInfo: event.contactInfo?, image: event.image?, moreInfo: event.moreInfo?)
-//        }
-//        else {
-        
-        let alertController = UIAlertController(title: "Missing Required Information", message: "Double check your event's required fields!", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
-        
-        presentViewController(alertController, animated: true, completion: nil)
-        
+        if let event = event {
+            EventController.createEvent(event.title, location: event.location, startTime: event.startTime, endTime: event.endTime, categories: event.categories, eventDescription: event.eventDescription?, passwordProtected: event.passwordProtected, password: event.password?, price: event.price?, contactInfo: event.contactInfo?, image: event.image?, host: event.host, moreInfo: event.moreInfo?)
+        } else {
+            let alertController = UIAlertController(title: "Missing Required Information", message: "Double check your event's required fields!", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+            
+            presentViewController(alertController, animated: true, completion: nil)
+        }
     }
-
-    
     
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
@@ -62,7 +60,7 @@ class CreateEventViewController: UITableViewController {
         tableView.backgroundView = imageView
         blurView.frame = imageView.frame
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -142,10 +140,10 @@ class CreateEventViewController: UITableViewController {
     }
     
     // MARK - TableView Delegate
-
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // May not need
-
+        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
