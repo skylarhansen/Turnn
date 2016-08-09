@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
+class MoreInfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var moreInfoLabel: UILabel!
     @IBOutlet weak var moreInfoTextView: UITextView!
@@ -19,8 +19,6 @@ class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
         
         setupCell()
     }
-    
-    weak var delegate: moreInfoTextViewDelegate?
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -40,6 +38,3 @@ class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
     }
 }
 
-protocol moreInfoTextViewDelegate: class {
-    
-}

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
+class AddressTableViewCell: UITableViewCell {
 
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var spacerView: UIView!
@@ -19,8 +19,6 @@ class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         setupCell()
     }
-    
-    weak var delegate: addressTextFieldDelegate?
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -37,8 +35,4 @@ class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
-}
-
-protocol addressTextFieldDelegate: class {
-    
 }

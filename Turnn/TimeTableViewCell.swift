@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
+class TimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
@@ -18,8 +18,6 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         setupCell()
     }
-    
-    weak var delegate: timeTextFieldDelegate?
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -36,8 +34,4 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
-}
-
-protocol timeTextFieldDelegate: class {
-    
 }

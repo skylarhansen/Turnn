@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
+class CityTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var spacerView: UIView!
@@ -19,8 +19,6 @@ class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         setupCell()
     }
-    
-    weak var delegate: cityTextFieldDelegate?
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -37,10 +35,6 @@ class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
-}
-
-protocol cityTextFieldDelegate: class {
-    
 }
 
 

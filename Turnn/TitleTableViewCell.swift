@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
+class TitleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
@@ -20,12 +20,10 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
         setupCell()
     }
     
-    weak var delegate: titleTextFieldDelegate?
-    
     func setupCell() {
         self.backgroundColor = .clearColor()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -37,8 +35,4 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
-}
-
-protocol titleTextFieldDelegate: class {
-    
 }
