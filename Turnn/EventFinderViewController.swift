@@ -133,7 +133,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         if segue.identifier == "addCategories" {
             let navController = segue.destinationViewController as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
-            categoryVC?.doneButtonTitle = ""
             categoryVC?.mode = .Search
         }
     }
