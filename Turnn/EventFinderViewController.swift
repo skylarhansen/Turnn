@@ -27,9 +27,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.showsUserLocation = true
         
         if CLLocationManager.locationServicesEnabled() {
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.startUpdatingLocation()
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
         }
         
         setupTableViewUI()
@@ -73,8 +73,15 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         
-        _ = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        //        let region = MGLCoordinateRegion(center: center, span: MGLCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        //
+        //        self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
+        
+    }
+    
+    @IBAction func unwindToEventFinder(segue: UIStoryboardSegue) {
         
     }
     
@@ -115,19 +122,20 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         let event = events[indexPath.row]
         eventCell?.updateWithEvent(event)
-
-            return eventCell ?? UITableViewCell()
+        
+        return eventCell ?? UITableViewCell()
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "addCategories" {
+            let navController = segue.destinationViewController as? UINavigationController
+            let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
+            categoryVC?.mode = .Search
+        }
+    }
 }
 
 

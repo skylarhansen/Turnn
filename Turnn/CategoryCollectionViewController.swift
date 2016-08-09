@@ -12,20 +12,40 @@ private let reuseIdentifier = "categoryCell"
 
 class CategoryCollectionViewController: UICollectionViewController {
     
+    var doneButtonTitle = "Search"
+    
+    enum ButtonMode: String {
+        case Search
+        case Save
+    }
+    
+    var mode: ButtonMode = .Save
+    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        handleMode()
         
-        // Do any additional setup after loading the view.
         collectionView?.allowsMultipleSelection = true
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        
         dismissViewControllerAnimated(true, completion: nil)
-}
-   
+    }
+    
+    @IBAction func doneButtonTapped(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("unwindWithCategories", sender: self)
+    }
+    
+    func handleMode() {
+        doneButton.title = mode.rawValue
+    }
+    
     // MARK: UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,10 +78,15 @@ class CategoryCollectionViewController: UICollectionViewController {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
             
             guard let category = Categories(rawValue: indexPath.item),
-                selectedImage = category.selectedImage,
+                selectedImage = category.selectedCircleImage,
                 name = category.name else { return }
             
             cell.updateWith(selectedImage, name: name)
+        }
+        
+        if let count = collectionView.indexPathsForSelectedItems()?.count {
+            
+            self.title = "\(count)/5 Selected"
         }
     }
     
@@ -74,6 +99,11 @@ class CategoryCollectionViewController: UICollectionViewController {
                 name = category.name else { return }
             
             cell.updateWith(image, name: name)
+        }
+        
+        if let count = collectionView.indexPathsForSelectedItems()?.count {
+            
+            self.title = "\(count)/5 Selected"
         }
     }
 }

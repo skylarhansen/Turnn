@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Categories-->
+        <!--0/5 Selected-->
         <scene sceneID="1gh-MB-Cvm">
             <objects>
                 <collectionViewController id="KRN-GG-qpq" customClass="CategoryCollectionViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,21 +78,32 @@
                             <outlet property="delegate" destination="KRN-GG-qpq" id="IMK-es-x3b"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Categories" id="0t3-Gz-ACg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kgs-hF-bhf">
+                    <navigationItem key="navigationItem" title="0/5 Selected" id="0t3-Gz-ACg">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="c2s-26-Qiy">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="KRN-GG-qpq" id="ws7-jY-SUA"/>
+                                <action selector="cancelButtonTapped:" destination="KRN-GG-qpq" id="AUp-Fr-i6g"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="GbO-3z-RxQ">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="KRN-GG-qpq" id="YkB-Qg-50u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="GbO-3z-RxQ" id="u9q-rF-UAK"/>
+                        <segue destination="LKE-5E-5RA" kind="unwind" identifier="unwindWithCategories" unwindAction="unwindToEventFinder:" id="8ad-Ty-sMz"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8C-zQ-suE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LKE-5E-5RA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1141" y="486"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ih7-E3-tRa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5r-bE-rhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jvZ-kJ-mYz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LoV-7d-Em5">
@@ -104,7 +115,6 @@
                         <segue destination="KRN-GG-qpq" kind="relationship" relationship="rootViewController" id="KoA-wk-GSn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M5r-bE-rhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="473" y="486"/>
         </scene>

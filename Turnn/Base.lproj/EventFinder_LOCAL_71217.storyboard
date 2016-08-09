@@ -154,7 +154,7 @@
                     <navigationItem key="navigationItem" title="Turnn Events" id="6nb-wp-L5F">
                         <barButtonItem key="leftBarButtonItem" title="Categories" id="pRJ-Kc-nWl">
                             <connections>
-                                <segue destination="lKW-UX-92g" kind="presentation" identifier="addCategories" id="bp8-id-lIa"/>
+                                <segue destination="lKW-UX-92g" kind="show" id="bp8-id-lIa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="c9p-2Y-r8r">
@@ -209,12 +209,10 @@
         <!--Category-->
         <scene sceneID="4pm-sl-BTF">
             <objects>
-                <viewControllerPlaceholder storyboardName="Category" id="lKW-UX-92g" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="oLJ-XW-MTI"/>
-                </viewControllerPlaceholder>
+                <viewControllerPlaceholder storyboardName="Category" id="lKW-UX-92g" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXl-Ak-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797" y="161"/>
+            <point key="canvasLocation" x="1855" y="432"/>
         </scene>
     </scenes>
 </document>

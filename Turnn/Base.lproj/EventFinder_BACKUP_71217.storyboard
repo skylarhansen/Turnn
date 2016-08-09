@@ -214,7 +214,11 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXl-Ak-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
+            <point key="canvasLocation" x="1855" y="432"/>
+=======
             <point key="canvasLocation" x="1797" y="161"/>
+>>>>>>> feature/categoryViewStuff
         </scene>
     </scenes>
 </document>
