@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class EventController {
 
@@ -19,6 +20,14 @@ class EventController {
         var event = Event(title: title, location: location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: eventDescription, passwordProtected: passwordProtected, password: password, price: price,contactInfo: contactInfo, image: image, host: host, moreInfo: moreInfo)
         
         event.save()
+        
+        LocationController.sharedInstance.forwardGeocoding(String.autoformatAddressForGPSAquisition(event)) { (location, error) in
+            if let GPS = location {
+                GeoFireController.setLocation(event.identifier!, location: GPS) { (success, savedLocation) in
+                    savedLocation?.updateChildValues(["EventID" : event.identifier!])
+                }
+            }
+        }
     }
     
     static func fetchEvents(completion: (events: [Event]) -> Void){
@@ -46,7 +55,7 @@ class EventController {
     
     static func mockEvents() -> [Event]{
         
-        let mockLocation = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 189.3450000, longitude: 0.12345678)
+        let mockLocation = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312")
         let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
         
         let event1 = Event(title: "Hey! 1", location: mockLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "Nice Event Man! 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
