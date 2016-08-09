@@ -37,15 +37,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
         guard let category = Categories(rawValue: indexPath.item),
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            image = category.grayCircleImage,
-=======
             image = category.image,
->>>>>>> Stashed changes
-=======
-            image = category.image,
->>>>>>> Stashed changes
             name = category.name else { return CategoryCollectionViewCell() }
         
         cell.updateWith(image, name: name)
@@ -66,7 +58,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
             
             guard let category = Categories(rawValue: indexPath.item),
-                selectedImage = category.selectedCircleImage,
+                selectedImage = category.selectedImage,
                 name = category.name else { return }
             
             cell.updateWith(selectedImage, name: name)
@@ -78,15 +70,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
             
             guard let category = Categories(rawValue: indexPath.item),
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                image = category.grayCircleImage,
-=======
                 image = category.image,
->>>>>>> Stashed changes
-=======
-                image = category.image,
->>>>>>> Stashed changes
                 name = category.name else { return }
             
             cell.updateWith(image, name: name)

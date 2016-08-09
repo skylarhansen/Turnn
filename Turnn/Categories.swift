@@ -106,15 +106,7 @@ enum Categories: Int {
         case .BoardGames:
             return UIImage(named: "Board Games Gray")
         case .Dancing:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            return  UIImage(named: "Dancing Gray")
-=======
             return UIImage(named: "Dancing Gray")
->>>>>>> Stashed changes
-=======
-            return UIImage(named: "Dancing Gray")
->>>>>>> Stashed changes
         case .Drinking:
             return UIImage(named: "Drinking Gray")
         case .Food:
