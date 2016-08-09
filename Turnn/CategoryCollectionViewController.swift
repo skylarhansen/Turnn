@@ -14,24 +14,36 @@ class CategoryCollectionViewController: UICollectionViewController {
     
     var doneButtonTitle = "Search"
     
+    enum ButtonMode: String {
+        case Search
+        case Save
+    }
+    
+    var mode: ButtonMode = .Save
+    
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        
-        self.doneButton.title = doneButtonTitle
+        handleMode()
         
         collectionView?.allowsMultipleSelection = true
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
         
         self.performSegueWithIdentifier("unwindWithCategories", sender: self)
+    }
+    
+    func handleMode() {
+        doneButton.title = mode.rawValue
     }
     
     // MARK: UICollectionViewDataSource

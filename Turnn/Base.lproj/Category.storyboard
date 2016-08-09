@@ -79,12 +79,12 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="0/5 Selected" id="0t3-Gz-ACg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kgs-hF-bhf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="c2s-26-Qiy">
                             <connections>
-                                <action selector="cancelButtonTapped:" destination="KRN-GG-qpq" id="ws7-jY-SUA"/>
+                                <action selector="cancelButtonTapped:" destination="KRN-GG-qpq" id="AUp-Fr-i6g"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="GbO-3z-RxQ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="GbO-3z-RxQ">
                             <connections>
                                 <action selector="doneButtonTapped:" destination="KRN-GG-qpq" id="YkB-Qg-50u"/>
                             </connections>
@@ -103,6 +103,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ih7-E3-tRa">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5r-bE-rhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jvZ-kJ-mYz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LoV-7d-Em5">
@@ -114,7 +115,6 @@
                         <segue destination="KRN-GG-qpq" kind="relationship" relationship="rootViewController" id="KoA-wk-GSn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M5r-bE-rhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="473" y="486"/>
         </scene>
