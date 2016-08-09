@@ -18,7 +18,9 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         setupCell()
     }
-        
+    
+    weak var delegate: timeTextFieldDelegate?
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
     }
@@ -34,4 +36,8 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
+}
+
+protocol timeTextFieldDelegate: class {
+    
 }

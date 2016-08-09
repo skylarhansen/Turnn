@@ -20,6 +20,7 @@ class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
         setupCell()
     }
     
+    weak var delegate: cityTextFieldDelegate?
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -36,6 +37,10 @@ class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
+}
+
+protocol cityTextFieldDelegate: class {
+    
 }
 
 

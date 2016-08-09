@@ -12,54 +12,27 @@ class CreateEventViewController: UITableViewController {
     
     var locationSelected: Bool = false
     
-    var titleCell: TitleTableViewCell!
-    var timeCell: TimeTableViewCell!
-    var locationCell: LocationTableViewCell!
-    var addressCell: AddressTableViewCell!
-    var cityCell: CityTableViewCell!
-    var descriptionCell: DescriptionTableViewCell!
-    var zipCell: ZipTableViewCell!
-    var moreInfoCell: MoreInfoTableViewCell!
-    
-    var categories: [Int]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Do any additional setup after loading the view, typically from a nib.
+            
         setupTableViewUI()
     }
     
     var event: Event?
-    
-    // MARK: - Actions
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func createEventButtonTapped(sender: AnyObject) {
-        createEventWithEventInfo { (success) in
-            self.dismissViewControllerAnimated(true, completion: nil)
-            if !success {
-                let alertController = UIAlertController(title: "Missing Required Information", message: "Double check your event's required fields!", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Okie dokes", style: .Cancel, handler: nil))
-                
-                self.presentViewController(alertController, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    func createEventWithEventInfo(completion: (success: Bool) -> Void) {
-        if let title = titleCell.titleTextField.text, let time = timeCell.timeTextField.text, let address = addressCell.addressTextField.text, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories {
-            
-            let location = Location(address: address, city: city, state: "UT", zipCode: zip)
-            
-            EventController.createEvent(title, location: location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo)
-            
-            completion(success: true)
+        if let event = event {
+            EventController.createEvent(event.title, location: event.location, startTime: event.startTime, endTime: event.endTime, categories: event.categories, eventDescription: event.eventDescription?, passwordProtected: event.passwordProtected, password: event.password?, price: event.price?, contactInfo: event.contactInfo?, image: event.image?, host: event.host, moreInfo: event.moreInfo?)
         } else {
-            print("Could not create Event... something was nil")
-            completion(success: false)
+            let alertController = UIAlertController(title: "Missing Required Information", message: "Double check your event's required fields!", preferredStyle: .Alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: nil))
+            
+            presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
@@ -111,28 +84,28 @@ class CreateEventViewController: UITableViewController {
         if locationSelected {
             switch indexPath.row {
             case 0:
-                titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                let titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
                 return titleCell ?? UITableViewCell()
             case 1:
-                timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                let timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
                 return timeCell ?? UITableViewCell()
             case 2:
-                locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                let locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
                 return locationCell ?? UITableViewCell()
             case 3:
-                addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
+                let addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
                 return addressCell ?? UITableViewCell()
             case 4:
-                cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
+                let cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
                 return cityCell ?? UITableViewCell()
             case 5:
-                zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
+                let zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
                 return zipCell ?? UITableViewCell()
             case 6:
-                descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                let descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
                 return descriptionCell ?? UITableViewCell()
             case 7:
-                moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                let moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
                 return moreInfoCell ?? UITableViewCell()
             case 8:
                 let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
@@ -143,19 +116,19 @@ class CreateEventViewController: UITableViewController {
         } else {
             switch indexPath.row {
             case 0:
-                titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                let titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
                 return titleCell ?? UITableViewCell()
             case 1:
-                timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                let timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
                 return timeCell ?? UITableViewCell()
             case 2:
-                locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                let locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
                 return locationCell ?? UITableViewCell()
             case 3:
-                descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                let descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
                 return descriptionCell ?? UITableViewCell()
             case 4:
-                moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                let moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
                 return moreInfoCell ?? UITableViewCell()
             case 5:
                 let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
@@ -204,5 +177,7 @@ class CreateEventViewController: UITableViewController {
             }
         }
     }
+    
+    
 }
 

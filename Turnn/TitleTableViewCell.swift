@@ -19,7 +19,9 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         setupCell()
     }
-        
+    
+    weak var delegate: titleTextFieldDelegate?
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
     }
@@ -35,4 +37,8 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
+}
+
+protocol titleTextFieldDelegate: class {
+    
 }
