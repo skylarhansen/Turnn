@@ -52,7 +52,7 @@ class SignInSignUpViewController: UIViewController {
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
 
         EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate(), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks")
-//        GeoFireController.createLocation("341 S Main St", city: "Salt Lake City", state: "UT", zipCode: "84111", latitude: 34, longitude: 55)
+        GeoFireController.queryFiveMilesAroundMe()
     }
     
     func setupViewUI() {

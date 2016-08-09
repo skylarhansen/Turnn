@@ -81,8 +81,8 @@ extension UIButton {
 
 extension Double {
     
-    func makeMeters() -> Double {
-        let result = self * 1609.34
+    func makeKilometers() -> Double {
+        let result = self * 1.60934
         return result
         
     }
@@ -107,9 +107,3 @@ extension String {
         return event.location.address + ", " + event.location.city + ", " + event.location.state + ", " + event.location.zipCode
     }
 }
-
-
-
-
-
-
