@@ -2,8 +2,8 @@
 //  LocationController.swift
 //  Turnn
 //
-//  Created by Dylan Slade on 4/14/16.
-//  Copyright © 2016 Relief Group. All rights reserved.
+//  Created by Steve Cox on 8/8/16.
+//  Copyright © 2016 Skylar Hansen. All rights reserved.
 //
 
 import Foundation
