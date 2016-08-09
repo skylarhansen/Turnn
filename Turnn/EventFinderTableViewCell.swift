@@ -23,8 +23,7 @@ class EventFinderTableViewCell: UITableViewCell {
     
     func updateWithEvent(event: Event) {
         eventNameLabel.text = event.title
-        //loadCategoriesForEvent()
-        //loadImageViews(images)
+        loadImageViews(event.loadCategoriesForEvent())
     }
 
     override func awakeFromNib() {

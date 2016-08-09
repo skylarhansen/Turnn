@@ -34,7 +34,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         setupTableViewUI()
         setBackgroundForTableView()
-        fetchEvents()
+        //fetchEvents()
+        
+        self.events = EventController.mockEvents()
         
         let point = MGLPointAnnotation()
         point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)

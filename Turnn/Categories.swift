@@ -66,7 +66,7 @@ enum Categories: Int {
         }
     }
     
-    var selectedImage: UIImage? {
+    var selectedCircleImage: UIImage? {
         switch self {
         case .Admission:
             return UIImage(named: "Circle Admission")
@@ -98,6 +98,43 @@ enum Categories: Int {
             return UIImage(named: "Circle Video Games")
         }
     }
+    
+    var selectedImage: UIImage? {
+        switch self {
+        case .Admission:
+            return UIImage(named: "Admission")
+        case .BoardGames:
+            return UIImage(named: "Board Games")
+        case .Dancing:
+            return UIImage(named: "Dancing")
+        case .Drinking:
+            return UIImage(named: "Drinking")
+        case .Food:
+            return UIImage(named: "Food")
+        case .Hackathon:
+            return UIImage(named: "Hackathon")
+        case .Hiking:
+            return UIImage(named: "Hiking")
+        case .Holiday:
+            return UIImage(named: "Holiday")
+        case .Movie:
+            return UIImage(named: "Movie")
+        case .Music:
+            return UIImage(named: "Music")
+        case .Party:
+            return UIImage(named: "Party")
+        case .Shopping:
+            return UIImage(named: "Shopping")
+        case .Sports:
+            return UIImage(named: "Sports")
+        case .VideoGames:
+            return UIImage(named: "Video Games")
+        }
+    }
+    
+//     Add two more enum properties for the non circle icons one for the blue icons and one for grey
+    // Create Event wont have circle icons grey, then blue when selected
+    // Event finder have non circle blue icons show
     
     var name: String? {
         switch self {

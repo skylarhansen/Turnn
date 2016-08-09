@@ -44,5 +44,16 @@ class EventController {
         }
     }
     
-
+    static func mockEvents() -> [Event]{
+        
+        let mockLocation = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 189.3450000, longitude: 0.12345678)
+        let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
+        
+        let event1 = Event(title: "Hey! 1", location: mockLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "Nice Event Man! 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event2 = Event(title: "Hey! 2", location: mockLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,2,1,5], eventDescription: "Nice Event Man! 2", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event3 = Event(title: "Hey! 3", location: mockLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [3,6,8], eventDescription: "Nice Event Man! 3", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event4 = Event(title: "Hey! 4", location: mockLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [2,9], eventDescription: "Nice Event Man! 4", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        
+        return [event1, event2, event3, event4]
+    }
 }

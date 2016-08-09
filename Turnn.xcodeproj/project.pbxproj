@@ -30,7 +30,6 @@
 		959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959163311D524DD900C23C24 /* PriceTableViewCell.swift */; };
 		95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */; };
 		95C11F691D58E4FB00999A5E /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C11F681D58E4FB00999A5E /* LocationController.swift */; };
-		95C11F701D58ED1A00999A5E /* GeoFireController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C11F6F1D58ED1A00999A5E /* GeoFireController.swift */; };
 		95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595341D51460900416B2A /* AddressTableViewCell.swift */; };
 		95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595351D51460900416B2A /* CategoriesTableViewCell.swift */; };
 		95E595401D51460900416B2A /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595361D51460900416B2A /* CityTableViewCell.swift */; };
@@ -54,6 +53,7 @@
 		CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */; };
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
+		CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C11F6B1D58E8FC00999A5E /* GeoFire.framework */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */,
+				CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */,
 				CCE9DF051D58EA7200363A98 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,7 +514,6 @@
 				959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */,
 				953C11D81D52A7F5009777FC /* EventController.swift in Sources */,
 				95E595441D51460900416B2A /* MoreInfoTableViewCell.swift in Sources */,
-				95C11F701D58ED1A00999A5E /* GeoFireController.swift in Sources */,
 				CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */,
 				CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */,
 				950DC8501D51045500601BC5 /* Extensions.swift in Sources */,
