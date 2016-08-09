@@ -19,9 +19,7 @@ class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
         
         setupCell()
     }
-    
-    weak var delegate: zipTextFieldDelegate?
-    
+        
     func setupCell() {
         self.backgroundColor = .clearColor()
     }
@@ -37,8 +35,4 @@ class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
             }
         }
     }
-}
-
-protocol zipTextFieldDelegate: class {
-    
 }

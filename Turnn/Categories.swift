@@ -106,7 +106,7 @@ enum Categories: Int {
         case .BoardGames:
             return UIImage(named: "Board Games Gray")
         case .Dancing:
-            return UIImage(named: "Dancing Gray")
+            return UIImage(named: "Dancing Gray")
         case .Drinking:
             return UIImage(named: "Drinking Gray")
         case .Food:

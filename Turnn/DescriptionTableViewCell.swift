@@ -20,7 +20,6 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
         setupCell()
     }
     
-    weak var delegate: descriptionTextViewDelegate?
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -38,8 +37,4 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
             }
         }
     }
-}
-
-protocol descriptionTextViewDelegate: class {
-    
 }

@@ -12,7 +12,7 @@ class CategoriesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
