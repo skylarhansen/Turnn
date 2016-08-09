@@ -6,35 +6,30 @@
 //  Copyright © 2016 Relief Group. All rights reserved.
 //
 
-// SAMPLE CODE TO STUDY TO FIGURE OUT HOW TO DO OURS
-
-// well, mostly sample code, Team Turnn has had to tweak several
-// things, to adapt it to the recently released Firebase 3.0
-
 import Foundation
 import FirebaseDatabase
 import GeoFire
 
 class GeoFireController {
  
-    static let geofire = GeoFire(firebaseRef: FirebaseController.ref)
+    static let geofire = GeoFire(firebaseRef: FirebaseController.ref.child("Locations"))
     
-    //static let geofire = GeoFire(firebaseRef: FirebaseController.firebase.childByAppendingPath("Location"))
+    static let eventData = FirebaseController.ref.child("Events")
     
-    static func setLocation(eventID: String, location: CLLocation, completion: (success : Bool) -> Void) {
-        geofire.setLocation(location, forKey: eventID) { (error) in
+    static func setLocation(eventID: String, location: CLLocation, completion: (success : Bool, savedLocation: FIRDatabaseReference?) -> Void) {
+        let key = geofire.firebaseRef.childByAutoId().key
+        geofire.setLocation(location, forKey: key) { (error) in
             if let error = error {
                 print(error)
-                completion(success: false)
+                completion(success: false, savedLocation: nil)
             }
-            completion(success: true)
+            completion(success: true, savedLocation: geofire.firebaseRef.child(key))
         }
     }
     
     static func createLocation(address: String, city: String, state: String, zipCode: String, latitude: Double, longitude: Double)
     {
-        var location = Location(address: address, city: city, state: state, zipCode: zipCode, latitude: latitude, longitude: longitude)
-        location.save()
+      //  var location = Location(address: address, city: city, state: state, zipCode: zipCode)
     }
     
     

@@ -9,52 +9,42 @@
 import Foundation
 import MapKit
 
-class Location: FirebaseType {
+class Location {
     
     private let addressKey = "address"
     private let cityKey = "city"
     private let stateKey = "state"
     private let zipKey = "zip"
-    private let latitudeKey = "latitude"
-    private let longitudeKey = "longitude"
     
     var address: String
     var city: String
     var state: String
     var zipCode: String
-    var latitude: Double
-    var longitude: Double
-    var region: MKCoordinateRegion
-    var identifier: String?
+    //var region: MKCoordinateRegion
     
     var endpoint: String {
         return "Locations"
     }
     
     var dictionaryCopy: [String:AnyObject] {
-        return [addressKey:address, cityKey:city, stateKey:state, zipKey:zipCode, longitudeKey:longitude, latitudeKey: latitude]
+        return [addressKey:address, cityKey:city, stateKey:state, zipKey:zipCode]
     }
     
-    init(address: String, city: String, state: String, zipCode: String, latitude: Double, longitude: Double) {
+    init(address: String, city: String, state: String, zipCode: String) {
         
         self.address = address
         self.city = city
         self.state = state
         self.zipCode = zipCode
-        self.latitude = latitude
-        self.longitude = longitude
-        self.region = MKCoordinateRegion()
-        self.identifier = nil
+        //self.region = MKCoordinateRegion()
     }
     
-    required init?(dictionary: [String:AnyObject], identifier: String) {
+    init?(dictionary: [String:AnyObject]) {
         
         guard let address = dictionary[addressKey] as? String,
         city = dictionary[cityKey] as? String,
         state = dictionary[stateKey] as? String,
-        zipCode = dictionary[zipKey] as? String,
-        latitude = dictionary[latitudeKey] as? Double,
-        longitude = dictionary[longitudeKey] as? Double
+        zipCode = dictionary[zipKey] as? String
             
             else { return nil }
         
@@ -62,9 +52,6 @@ class Location: FirebaseType {
         self.city = city
         self.state = state
         self.zipCode = zipCode
-        self.latitude = latitude
-        self.longitude = longitude
-        self.region = MKCoordinateRegion()
     }
 }
  

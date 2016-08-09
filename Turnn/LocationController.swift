@@ -6,8 +6,6 @@
 //  Copyright © 2016 Relief Group. All rights reserved.
 //
 
-// SAMPLE CODE TO STUDY TO FIGURE OUT HOW TO DO OURS
-
 import Foundation
 import CoreLocation
 
@@ -27,19 +25,28 @@ class LocationController {
         setUpCoreLocation()
     }
     
-    // Enter address to get Location for Event
-    func getCoordinatesFromCity(address: String, completion: (longitude: CLLocationDegrees?, latitude: CLLocationDegrees?) -> Void ) {
-        CLGeocoder().geocodeAddressString(address) { (placemarks, error) in
+    // Enter address to get GPS for Event
+    func forwardGeocoding(address: String, completion: (location: CLLocation?, error: String?) -> Void) {
+        var coordinate: CLLocationCoordinate2D?
+        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
-                print(error?.localizedDescription)
-                completion(longitude: nil, latitude: nil)
-            } else {
-                if let placemarks = placemarks, firstPlacemark = placemarks.first, location = firstPlacemark.location {
-                    completion(longitude: location.coordinate.longitude, latitude: location.coordinate.latitude)
-                } else {
-                    completion(longitude: nil, latitude: nil)
-                }
+                print(error)
+                completion(location: nil, error: "\(error?.localizedDescription)")
             }
-        }
+            if placemarks?.count > 0 {
+                let placemark = placemarks?[0]
+                let location = placemark?.location
+                coordinate = location?.coordinate
+                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                
+                if let coordinate = coordinate {
+                    completion(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), error: nil)
+                } else {
+                    completion(location: nil, error: "Could not unwrap a value for coordinate")
+                }
+            } else {
+                completion(location: nil, error: "Placemark Count <= 0")
+            }
+        })
     }
 }
