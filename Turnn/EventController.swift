@@ -21,7 +21,7 @@ class EventController {
         
         event.save()
         
-        LocationController.sharedInstance.forwardGeocoding(event.location.address + ", " + event.location.city + ", " + event.location.state + ", " + event.location.zipCode) { (location, error) in
+        LocationController.sharedInstance.forwardGeocoding(String.autoformatAddressForGPSAquisition(event)) { (location, error) in
             if let GPS = location {
                 GeoFireController.setLocation(event.identifier!, location: GPS) { (success, savedLocation) in
                     savedLocation?.updateChildValues(["EventID" : event.identifier!])
