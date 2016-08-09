@@ -68,8 +68,8 @@
                                     <constraint firstAttribute="bottom" secondItem="LvB-Gl-t6u" secondAttribute="bottom" id="ua0-UJ-eXF"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="categoryImageView" destination="2GF-3u-Lfm" id="UT0-RL-vmo"/>
-                                    <outlet property="categoryLabel" destination="qUn-5P-b3k" id="QPK-H8-E08"/>
+                                    <outlet property="categoryImageView" destination="2GF-3u-Lfm" id="KW7-sy-zFx"/>
+                                    <outlet property="categoryLabel" destination="qUn-5P-b3k" id="4Vy-GW-ELb"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -103,7 +103,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ih7-E3-tRa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M5r-bE-rhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jvZ-kJ-mYz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LoV-7d-Em5">
@@ -115,6 +114,7 @@
                         <segue destination="KRN-GG-qpq" kind="relationship" relationship="rootViewController" id="KoA-wk-GSn"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5r-bE-rhk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="473" y="486"/>
         </scene>

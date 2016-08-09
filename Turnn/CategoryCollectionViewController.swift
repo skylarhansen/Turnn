@@ -30,6 +30,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         handleMode()
         
         collectionView?.allowsMultipleSelection = true
+
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
@@ -57,7 +58,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
         guard let category = Categories(rawValue: indexPath.item),
-            image = category.selectedImage,
+            image = category.grayCircleImage,
             name = category.name else { return CategoryCollectionViewCell() }
         
         cell.updateWith(image, name: name)

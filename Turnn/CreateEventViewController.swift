@@ -51,7 +51,7 @@ class CreateEventViewController: UITableViewController {
             
             let location = Location(address: address, city: city, state: "UT", zipCode: zip)
             
-            EventController.createEvent(title, location: location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo)
+        //    EventController.createEvent(title, location: location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo)
         } else {
             print("So Sorry, could not create Event because something was nil")
             completion(success: false)
