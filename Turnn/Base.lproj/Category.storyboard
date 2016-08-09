@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Categories-->
+        <!--0/5 Selected-->
         <scene sceneID="1gh-MB-Cvm">
             <objects>
                 <collectionViewController id="KRN-GG-qpq" customClass="CategoryCollectionViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
@@ -78,12 +78,13 @@
                             <outlet property="delegate" destination="KRN-GG-qpq" id="IMK-es-x3b"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Categories" id="0t3-Gz-ACg">
+                    <navigationItem key="navigationItem" title="0/5 Selected" id="0t3-Gz-ACg">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kgs-hF-bhf">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="KRN-GG-qpq" id="ws7-jY-SUA"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="GbO-3z-RxQ"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8C-zQ-suE" userLabel="First Responder" sceneMemberID="firstResponder"/>

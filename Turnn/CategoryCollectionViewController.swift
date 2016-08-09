@@ -15,17 +15,13 @@ class CategoryCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Do any additional setup after loading the view.
         collectionView?.allowsMultipleSelection = true
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-}
-   
+    }
+    
     // MARK: UICollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,10 +54,15 @@ class CategoryCollectionViewController: UICollectionViewController {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
             
             guard let category = Categories(rawValue: indexPath.item),
-                selectedImage = category.selectedImage,
+                selectedImage = category.selectedCircleImage,
                 name = category.name else { return }
             
             cell.updateWith(selectedImage, name: name)
+        }
+        
+        if let count = collectionView.indexPathsForSelectedItems()?.count {
+            
+            self.title = "\(count)/5 Selected"
         }
     }
     
@@ -74,6 +75,11 @@ class CategoryCollectionViewController: UICollectionViewController {
                 name = category.name else { return }
             
             cell.updateWith(image, name: name)
+        }
+        
+        if let count = collectionView.indexPathsForSelectedItems()?.count {
+            
+            self.title = "\(count)/5 Selected"
         }
     }
 }
