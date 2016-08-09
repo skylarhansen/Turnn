@@ -4,6 +4,8 @@
 //
 //  Created by Jake Hardy on 4/15/16.
 //  Copyright © 2016 Relief Group. All rights reserved.
+//  Lended with Love by Nathan Falcone on 8/8/16.
+//  Adapted with gratitude by Team Turnn on 8/8/16.
 //
 
 import Foundation
@@ -13,8 +15,6 @@ import GeoFire
 class GeoFireController {
  
     static let geofire = GeoFire(firebaseRef: FirebaseController.ref.child("Locations"))
-    
-    static let eventData = FirebaseController.ref.child("Events")
     
     static func setLocation(eventID: String, location: CLLocation, completion: (success : Bool, savedLocation: FIRDatabaseReference?) -> Void) {
         let key = geofire.firebaseRef.childByAutoId().key
@@ -27,22 +27,17 @@ class GeoFireController {
         }
     }
     
-    static func createLocation(address: String, city: String, state: String, zipCode: String, latitude: Double, longitude: Double)
-    {
-      //  var location = Location(address: address, city: city, state: state, zipCode: zipCode)
-    }
-    
-    
     static func queryFiveMilesAroundMe() {
         guard let center = LocationController.sharedInstance.coreLocationManager.location else { return }
-        let circleQuery = geofire.queryAtLocation(center, withRadius: 5.makeMeters())
-        circleQuery.observeEventType(.KeyEntered) { (eventID, location) in
-            //EventController.fetchfetchEventWithEventID(eventID, completion: { (event) in
-                ///NSNotificationCenter.defaultCenter().postNotificationName("NewLocalEvent", object: nil)
-      //  })
-        }
-        circleQuery.observeEventType(.KeyExited) { (eventID, location) in
-            NSNotificationCenter.defaultCenter().postNotificationName("NewLocalEvent", object: nil)
-        }
+        print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
+        let circleQuery = geofire.queryAtLocation(center, withRadius: 5.0.makeKilometers())
+        circleQuery.observeEventType(.KeyEntered, withBlock: { (key, location: CLLocation!) in
+                print("Key '\(key)' entered the search area and is at location '\(location)'")
+            })
+
+        circleQuery.observeEventType(.KeyExited, withBlock: { (key, location: CLLocation!) in
+            print("Key '\(key)' left the search area, previously being at location '\(location)'")
+        })
+        
     }
 }

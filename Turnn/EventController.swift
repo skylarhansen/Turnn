@@ -11,6 +11,8 @@ import UIKit
 import CoreLocation
 
 class EventController {
+    
+    static let eventData = FirebaseController.ref.child("Events")
 
     static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool = false, password: String?, price: Double?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?)
     {
@@ -31,7 +33,7 @@ class EventController {
     }
     
     static func fetchEvents(completion: (events: [Event]) -> Void){
-        FirebaseController.ref.child("Events").observeEventType(.Value, withBlock: { (dataSnapshot) in
+        eventData.observeEventType(.Value, withBlock: { (dataSnapshot) in
             guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
                 completion(events: [])
                 return
@@ -39,6 +41,27 @@ class EventController {
             let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
             completion(events: events)
         })
+    }
+    
+    // Gets particular events with identifiers -> Completes with [Event]
+    static func fetchEventsThatMatchQuery(eventIDs: [String], completion: (events: [Event]?) -> Void) {
+        eventData.observeSingleEventOfType(.Value, withBlock:
+            { (dataSnapshot) in
+        guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
+            completion(events: [])
+            return
+        }
+        let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
+        completion(events: events)
+    })
+        // grabs data at specified endpoint and initializes (attempts) an Event object
+       // FirebaseController.dataAtEndPoint(endpoint) { (data) in
+        //    guard let json = data as? [String : AnyObject] else { completion(event: nil) ; return }
+         //   guard let event = Event(dictionary: json, identifier: eventID) else //{ completion(event: nil) ; return }
+         //   self.events.append(event)
+            // Complete with initialized event
+         //   completion(event: event)
+        //}
     }
     
     static func deleteEvent(event: Event){
