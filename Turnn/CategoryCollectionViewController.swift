@@ -12,14 +12,26 @@ private let reuseIdentifier = "categoryCell"
 
 class CategoryCollectionViewController: UICollectionViewController {
     
+    var doneButtonTitle = "Search"
+    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.doneButton.title = doneButtonTitle
         
         collectionView?.allowsMultipleSelection = true
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func doneButtonTapped(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("unwindWithCategories", sender: self)
     }
     
     // MARK: UICollectionViewDataSource

@@ -81,6 +81,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
     }
     
+    @IBAction func unwindToEventFinder(segue: UIStoryboardSegue) {
+        
+    }
+    
     func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         // Always try to show a callout when an annotation is tapped.
         return true

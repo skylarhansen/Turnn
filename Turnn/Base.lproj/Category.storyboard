@@ -84,10 +84,19 @@
                                 <action selector="cancelButtonTapped:" destination="KRN-GG-qpq" id="ws7-jY-SUA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="GbO-3z-RxQ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="GbO-3z-RxQ">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="KRN-GG-qpq" id="YkB-Qg-50u"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="GbO-3z-RxQ" id="u9q-rF-UAK"/>
+                        <segue destination="LKE-5E-5RA" kind="unwind" identifier="unwindWithCategories" unwindAction="unwindToEventFinder:" id="8ad-Ty-sMz"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8C-zQ-suE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LKE-5E-5RA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1141" y="486"/>
         </scene>
