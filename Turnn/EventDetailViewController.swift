@@ -59,7 +59,7 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         
         var imageArray: [UIImage] = []
         for category in event.categories {
-            guard let unwrappedCategory = Categories(rawValue: category), let image = unwrappedCategory.image else {
+            guard let unwrappedCategory = Categories(rawValue: category), let image = unwrappedCategory.selectedImage else {
                 print("error: \(NSLocalizedDescriptionKey)")
                 return
             }
