@@ -73,10 +73,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         
-        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-//        let region = MGLCoordinateRegion(center: center, span: MGLCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-//        
-//        self.mapView.setRegion(region, animated: true)
+        _ = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
         self.locationManager.stopUpdatingLocation()
         
     }
