@@ -39,7 +39,8 @@ class SignInSignUpViewController: UIViewController {
     
     var isSignInPage = true
     
-    let dummyLocation = Location(address: "341 S Main St", city: "Salt Lake City", state: "UT", zipCode: "84111", latitude: 34, longitude: 55)
+    
+    let dummyLocation = Location(address: "341 S Main Street", city: "Salt Lake City", state: "UT", zipCode: "84111")
     
     let dummyUser = User(firstName: "Andrew", lastName: "Madsen", events: [], paid: true, identifier: "fake_id")
     

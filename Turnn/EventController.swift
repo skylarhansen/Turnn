@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class EventController {
 
@@ -19,6 +20,14 @@ class EventController {
         var event = Event(title: title, location: location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: eventDescription, passwordProtected: passwordProtected, password: password, price: price,contactInfo: contactInfo, image: image, host: host, moreInfo: moreInfo)
         
         event.save()
+        
+        LocationController.sharedInstance.forwardGeocoding(String.autoformatAddressForGPSAquisition(event)) { (location, error) in
+            if let GPS = location {
+                GeoFireController.setLocation(event.identifier!, location: GPS) { (success, savedLocation) in
+                    savedLocation?.updateChildValues(["EventID" : event.identifier!])
+                }
+            }
+        }
     }
     
     static func fetchEvents(completion: (events: [Event]) -> Void){

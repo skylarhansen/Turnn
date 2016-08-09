@@ -20,6 +20,11 @@ class Location {
     var city: String
     var state: String
     var zipCode: String
+<<<<<<< HEAD
+    var latitude: Double
+    var longitude: Double
+=======
+>>>>>>> feature/moreGeoFun
     //var region: MKCoordinateRegion
     
     var endpoint: String {
@@ -36,7 +41,13 @@ class Location {
         self.city = city
         self.state = state
         self.zipCode = zipCode
+<<<<<<< HEAD
+        self.latitude = latitude
+        self.longitude = longitude
+       // self.region = MKCoordinateRegion()
+=======
         //self.region = MKCoordinateRegion()
+>>>>>>> feature/moreGeoFun
     }
     
     init?(dictionary: [String:AnyObject]) {
@@ -52,6 +63,12 @@ class Location {
         self.city = city
         self.state = state
         self.zipCode = zipCode
+<<<<<<< HEAD
+        self.latitude = latitude
+        self.longitude = longitude
+        //self.region = MKCoordinateRegion()
+=======
+>>>>>>> feature/moreGeoFun
     }
 }
  

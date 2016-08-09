@@ -101,6 +101,13 @@ extension Event {
     }
 }
 
+extension String {
+
+    static func autoformatAddressForGPSAquisition(event: Event) -> String {
+        return event.location.address + ", " + event.location.city + ", " + event.location.state + ", " + event.location.zipCode
+    }
+}
+
 
 
 

@@ -46,7 +46,6 @@ class Event: FirebaseType {
     }
     
     var dictionaryCopy: [String: AnyObject] {
-        
         var dictionary: [String : AnyObject] = [titleKey : title, startTimeKey : startTime.timeIntervalSince1970, endTimeKey : endTime.timeIntervalSince1970, categoriesKey : categories, hostKey: host.dictionaryCopy, locationKey : location.dictionaryCopy, passwordProtectedKey : passwordProtected]
         
         if let eventDescription = eventDescription {
@@ -62,7 +61,6 @@ class Event: FirebaseType {
         if let price = price {
             dictionary.updateValue(price, forKey: priceKey)
         }
-        
         if let contactInfo = contactInfo {
             dictionary.updateValue(contactInfo, forKey: contactInfoKey)
         }
@@ -74,7 +72,6 @@ class Event: FirebaseType {
         if let moreInfo = moreInfo {
             dictionary.updateValue(moreInfo, forKey: moreInfoKey)
         }
-        
         return dictionary
     }
     
