@@ -36,5 +36,4 @@ class LocationTableViewCell: UITableViewCell {
             }
         }
     }
-
 }

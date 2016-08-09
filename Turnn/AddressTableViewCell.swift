@@ -20,6 +20,8 @@ class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
         setupCell()
     }
     
+    weak var delegate: addressTextFieldDelegate?
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
     }
@@ -34,7 +36,9 @@ class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
                 self.backgroundColor = .clearColor()
             }
         }
-
     }
+}
 
+protocol addressTextFieldDelegate: class {
+    
 }

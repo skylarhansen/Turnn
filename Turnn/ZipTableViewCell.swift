@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZipTableViewCell: UITableViewCell {
+class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var spacerView: UIView!
@@ -19,6 +19,8 @@ class ZipTableViewCell: UITableViewCell {
         
         setupCell()
     }
+    
+    weak var delegate: zipTextFieldDelegate?
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -34,7 +36,9 @@ class ZipTableViewCell: UITableViewCell {
                 self.backgroundColor = .clearColor()
             }
         }
-
     }
+}
 
+protocol zipTextFieldDelegate: class {
+    
 }

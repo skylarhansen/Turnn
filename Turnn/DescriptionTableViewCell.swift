@@ -20,6 +20,8 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
         setupCell()
     }
     
+    weak var delegate: descriptionTextViewDelegate?
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.descriptionTextView.layer.cornerRadius = 8
@@ -35,7 +37,9 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
                 self.backgroundColor = .clearColor()
             }
         }
-
     }
+}
 
+protocol descriptionTextViewDelegate: class {
+    
 }

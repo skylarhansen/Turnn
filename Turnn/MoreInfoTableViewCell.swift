@@ -20,6 +20,8 @@ class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
         setupCell()
     }
     
+    weak var delegate: moreInfoTextViewDelegate?
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.moreInfoTextView.layer.cornerRadius = 8
@@ -35,7 +37,9 @@ class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
                 self.backgroundColor = .clearColor()
             }
         }
-
     }
+}
 
+protocol moreInfoTextViewDelegate: class {
+    
 }
