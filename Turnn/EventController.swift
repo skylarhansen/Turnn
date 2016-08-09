@@ -14,7 +14,7 @@ class EventController {
     
     static let eventData = FirebaseController.ref.child("Events")
 
-    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool = false, password: String?, price: Double?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?)
+    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: Double? = 0.0, contactInfo: String? = "", image: UIImage?, host: User, moreInfo: String?, completion: (success: Bool) -> Void)
     {
         //guard let host = UserController.sharedController.currentUser
            // else { NSLog("there is no current user logged in"); return }
@@ -27,7 +27,10 @@ class EventController {
             if let GPS = location {
                 GeoFireController.setLocation(event.identifier!, location: GPS) { (success, savedLocation) in
                     savedLocation?.updateChildValues(["EventID" : event.identifier!])
+                    completion(success: true)
                 }
+            } else {
+                completion(success: false)
             }
         }
     }
@@ -45,15 +48,24 @@ class EventController {
     
     // Gets particular events with identifiers -> Completes with [Event]
     static func fetchEventsThatMatchQuery(eventIDs: [String], completion: (events: [Event]?) -> Void) {
-        eventData.observeSingleEventOfType(.Value, withBlock:
-            { (dataSnapshot) in
-        guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
-            completion(events: [])
-            return
+        var events: [Event] = []
+        
+        let eventFetchGroup = dispatch_group_create()
+        for eventID in eventIDs {
+            dispatch_group_enter(eventFetchGroup)
+            eventData.child(eventID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                print(snapshot.value!)
+                if let eventDictionary = snapshot.value as? [String : AnyObject], let event = Event(dictionary: eventDictionary, identifier: eventID) {
+                    events.append(event)
+                    dispatch_group_leave(eventFetchGroup)
+                }
+            })
         }
-        let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
-        completion(events: events)
-    })
+
+        dispatch_group_notify(eventFetchGroup, dispatch_get_main_queue()) { 
+            completion(events: events)
+        }
+    }
         // grabs data at specified endpoint and initializes (attempts) an Event object
        // FirebaseController.dataAtEndPoint(endpoint) { (data) in
         //    guard let json = data as? [String : AnyObject] else { completion(event: nil) ; return }
@@ -62,7 +74,6 @@ class EventController {
             // Complete with initialized event
          //   completion(event: event)
         //}
-    }
     
     static func deleteEvent(event: Event){
         event.delete()

@@ -101,28 +101,45 @@ class Event: FirebaseType {
             startTime = dictionary[startTimeKey] as? Double,
             endTime = dictionary[endTimeKey] as? Double,
             categories = dictionary[categoriesKey] as? [Int],
-            eventDescription = dictionary[eventDescriptionKey] as? String,
             passwordProtected = dictionary[passwordProtectedKey] as? Bool,
-            password = dictionary[passwordKey] as? String,
-            price = dictionary[priceKey] as? Double,
-            contactInfo = dictionary[contactInfoKey] as? String,
-            image = dictionary[imageKey] as? UIImage,
             hostDictionary = dictionary[hostKey] as? [String : AnyObject],
-            host = User(dictionary: hostDictionary, identifier: hostDictionary["id"] as! String),
-            moreInfo = dictionary[moreInfoKey] as? String else { return nil }
+            //Change back to id if and when we make that change
+            host = User(dictionary: hostDictionary, identifier: hostDictionary["firstName"] as? String ?? "") else {
+                print("COULD NOT CONVERT DICTIONARY TO EVENT")
+                return nil
+        }
+        
+        if let eventDescription = dictionary[eventDescriptionKey] as? String {
+            self.eventDescription = eventDescription
+        }
+        
+        if passwordProtected == true {
+            if let password = dictionary[passwordKey] as? String {
+                self.password = password
+            }
+        }
+        
+        if let price = dictionary[priceKey] as? Double {
+            self.price = price
+        }
+        if let contactInfo = dictionary[contactInfoKey] as? String {
+            self.contactInfo = contactInfo
+        }
+        
+        if let image = dictionary[imageKey] as? UIImage {
+            self.image = image
+        }
+        
+        if let moreInfo = dictionary[moreInfoKey] as? String {
+            self.moreInfo = moreInfo
+        }
         
         self.title = title
         self.location = location
         self.startTime = NSDate(timeIntervalSince1970: startTime)
         self.endTime = NSDate(timeIntervalSince1970: endTime)
         self.categories = categories
-        self.eventDescription = eventDescription
         self.passwordProtected = passwordProtected
-        self.password = password
-        self.price = price
-        self.contactInfo = contactInfo
-        self.image = image
         self.host = host
-        self.moreInfo = moreInfo
     }
 }

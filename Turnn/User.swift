@@ -19,7 +19,7 @@ class User: FirebaseType {
     var firstName: String
     var lastName: String?
     var events: [Event]?
-    var eventIds: [String]
+    var eventIds: [String]?
     //    var eventCount: Int {}
     var paid: Bool
     //    let latitude: Double {}
@@ -60,12 +60,16 @@ class User: FirebaseType {
         
         guard let firstName = dictionary[firstNameKey] as? String,
             lastName = dictionary[lastNameKey] as? String,
-        eventsDictionary = dictionary[eventsKey] as? [String: AnyObject],
             paid = dictionary[paidKey] as? Bool else { return nil }
+        
+        if let eventDictionary = dictionary[eventsKey] as? [String: AnyObject] {
+            let eventIds = eventDictionary.map({$0.0})
+            self.eventIds = eventIds
+        }
+
         
         self.firstName = firstName
         self.lastName = lastName
-        self.eventIds = Array(eventsDictionary.keys)
         self.paid = paid
     }
 }
