@@ -103,7 +103,7 @@ class CreateEventViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if locationSelected {
-            return 9
+            return 10
         } else {
             return 6
         }
@@ -128,15 +128,18 @@ class CreateEventViewController: UITableViewController {
                 cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
                 return cityCell ?? UITableViewCell()
             case 5:
+                stateCell = tableView.dequeueReusableCellWithIdentifier("stateCell", forIndexPath: indexPath) as? StateTableViewCell
+                return stateCell ?? UITableViewCell()
+            case 6:
                 zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
                 return zipCell ?? UITableViewCell()
-            case 6:
+            case 7:
                 descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
                 return descriptionCell ?? UITableViewCell()
-            case 7:
+            case 8:
                 moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
                 return moreInfoCell ?? UITableViewCell()
-            case 8:
+            case 9:
                 let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
                 return categoriesCell ?? UITableViewCell()
             default:
@@ -179,7 +182,7 @@ class CreateEventViewController: UITableViewController {
         if indexPath.row == 2 && !self.locationSelected {
             self.locationSelected = !self.locationSelected
             tableView.beginUpdates()
-            let indexPaths = [NSIndexPath(forRow: 3, inSection: 0), NSIndexPath(forRow: 4, inSection: 0), NSIndexPath(forRow: 5, inSection: 0)]
+            let indexPaths = [NSIndexPath(forRow: 3, inSection: 0), NSIndexPath(forRow: 4, inSection: 0), NSIndexPath(forRow: 5, inSection: 0), NSIndexPath(forRow: 6, inSection: 0)]
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Middle)
             tableView.endUpdates()
         }
@@ -188,9 +191,9 @@ class CreateEventViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if locationSelected {
             switch indexPath.row {
-            case 6...7:
+            case 7...8:
                 return 120
-            case 8:
+            case 9:
                 return 200
             default:
                 return 50
