@@ -25,6 +25,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return locationManager.location
     }
     
+    var selectedIndexPath: NSIndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -154,7 +156,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return eventCell ?? UITableViewCell()
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedIndexPath = indexPath
+        self.performSegueWithIdentifier("toDetailSegue", sender: nil)
+    }
+    
     // MARK: - Navigation
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -162,6 +170,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             let navController = segue.destinationViewController as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
             categoryVC?.mode = .Search
+        }
+        
+        if segue.identifier == "toDetailSegue" {
+            if let eventDetailVC = segue.destinationViewController as? EventDetailViewController, let indexPath = self.selectedIndexPath {
+                let event = events[indexPath.row]
+                eventDetailVC.event = event
+            }
+            
         }
     }
     

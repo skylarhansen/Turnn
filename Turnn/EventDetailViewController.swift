@@ -11,6 +11,19 @@ import Mapbox
 
 class EventDetailViewController: UIViewController, MGLMapViewDelegate {
     
+    var event: Event?
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var mapView: MGLMapView!
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var eventEndTimeLabel: UILabel!
+    @IBOutlet var categoryImageViews: [UIImageView]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,22 +51,14 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         point.subtitle = "341 Main St Salt Lake City, U.S.A"
         
         mapView.addAnnotation(point)
-
     }
-   
-    // MARK: - Outlets
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var mapView: MGLMapView!
-    @IBOutlet weak var eventImageView: UIImageView!
-    
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventTimeLabel: UILabel!
-    @IBOutlet weak var eventEndTimeLabel: UILabel!
-   
-    @IBOutlet var categoryImageViews: [UIImageView]!
+    func loadImageViews(images: [UIImage]) {
+        for (index, image) in images.enumerate() {
+            categoryImageViews[index].hidden = false
+            categoryImageViews[index].image = image
+        }
+    }
     
     func updateCategoryIcons(event: Event) {
         
@@ -76,21 +81,27 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         eventImageView.image = event.image
         eventTitleLabel.text = event.title
         eventTimeLabel.text = "\(event.startTime)"
+        loadImageViews(event.loadCategoriesForEvent())
         if event.endTime == event.endTime {
             eventTimeLabel.text = "\(event.endTime)" } else {
-               eventEndTimeLabel.text = "" }
-        }
+            eventEndTimeLabel.text = "" }
+    }
     
-  
+    // MARK: - Action Buttons -
+    
+    @IBAction func backButton(sender: AnyObject) {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    
+    
     // MARK: tableView data source functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 5
     }
     
@@ -98,28 +109,34 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         switch indexPath.row {
             
         case 0:
-            let HostDetailCell = tableView.dequeueReusableCellWithIdentifier("hostDetailCell", forIndexPath: indexPath)
-            return HostDetailCell ?? UITableViewCell()
+            let hostDetailCell = tableView.dequeueReusableCellWithIdentifier("hostDetailCell", forIndexPath: indexPath) as? HostDetailTableViewCell
+            hostDetailCell?.hostNameLabel.text = event?.host.firstName
+            return hostDetailCell ?? UITableViewCell()
             
         case 1:
-            let PriceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath)
-            return PriceDetailCell ?? UITableViewCell()
+            let priceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath) as? PriceDetailTableViewCell
+            priceDetailCell?.priceNumberLabel.text = "\(event?.price)"
+            return priceDetailCell ?? UITableViewCell()
             
         case 2:
-            let LocationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath)
-            return LocationDetailCell ?? UITableViewCell()
+            let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
+            locationDetailCell?.addressLabel.text = event?.location.address
+            locationDetailCell?.cityStateLabel.text = "\(event?.location.city), \(event?.location.state)"
+            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
+            return locationDetailCell ?? UITableViewCell()
             
         case 3:
-            let DescriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath)
-            return DescriptionDetailCell ?? UITableViewCell()
+            let descriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath) as? DescriptionDetailTableViewCell
+            descriptionDetailCell?.descriptionTextView.text = event?.eventDescription
+            return descriptionDetailCell ?? UITableViewCell()
             
         case 4:
-            let MoreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath)
-            return MoreInfoDetailCell ?? UITableViewCell()
+            let moreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath) as? MoreInfoDetailTableViewCell
+            moreInfoDetailCell?.moreInfoTextView.text = event?.eventDescription
+            return moreInfoDetailCell ?? UITableViewCell()
             
         default:
             return UITableViewCell()
         }
     }
-    
 }

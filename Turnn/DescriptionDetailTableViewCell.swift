@@ -16,6 +16,7 @@ class DescriptionDetailTableViewCell: UITableViewCell {
     }
 
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -24,7 +25,7 @@ class DescriptionDetailTableViewCell: UITableViewCell {
     }
     
     func updateDescriptionWithEvent(event: Event) {
-        descriptionLabel.text = event.eventDescription
+        descriptionTextView.text = event.eventDescription
     }
 
 }

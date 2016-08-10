@@ -15,7 +15,11 @@ class LocationDetailTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    @IBOutlet weak var locationLabel: UILabel!
+    
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var streetNumberLabel: UILabel!
+    @IBOutlet weak var cityStateLabel: UILabel!
+    @IBOutlet weak var zipcodeLabel: UILabel!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -24,7 +28,8 @@ class LocationDetailTableViewCell: UITableViewCell {
     }
     
     func updateLocationWithEvent(event: Event) {
-        locationLabel.text = event.location.address
+        streetNumberLabel.text = event.location.address
+        cityStateLabel.text = "\(event.location.city), \(event.location.state)"
+        zipcodeLabel.text = event.location.zipCode
     }
-
 }
