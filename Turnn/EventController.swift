@@ -89,7 +89,7 @@ class EventController {
     
     static func mockEvents() -> [Event]{
         
-        let mockLocation = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312")
+        let mockLocation = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.761819, longitude: -111.890561)
         let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
         
         let event1 = Event(title: "Hey! 1", location: mockLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "Nice Event Man! 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
