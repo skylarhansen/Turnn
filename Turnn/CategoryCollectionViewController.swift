@@ -13,6 +13,7 @@ private let reuseIdentifier = "categoryCell"
 class CategoryCollectionViewController: UICollectionViewController {
     
     var doneButtonTitle = "Search"
+    var categories: [Int] = []
     
     enum ButtonMode: String {
         case Search
@@ -87,6 +88,7 @@ class CategoryCollectionViewController: UICollectionViewController {
                 name = category.name else { return }
             
             cell.updateWith(selectedImage, name: name)
+            categories.append(category.rawValue)
         }
         
         if let count = collectionView.indexPathsForSelectedItems()?.count {
@@ -101,9 +103,11 @@ class CategoryCollectionViewController: UICollectionViewController {
             
             guard let category = Categories(rawValue: indexPath.item),
                 image = category.grayCircleImage,
-                name = category.name else { return }
+                name = category.name,
+                index = categories.indexOf(category.rawValue) else { return }
             
             cell.updateWith(image, name: name)
+            categories.removeAtIndex(index)
         }
         
         if let count = collectionView.indexPathsForSelectedItems()?.count {

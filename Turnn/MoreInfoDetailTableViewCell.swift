@@ -16,6 +16,7 @@ class MoreInfoDetailTableViewCell: UITableViewCell {
     }
 
     @IBOutlet weak var moreInfoLabel: UILabel!
+    @IBOutlet weak var moreInfoTextView: UITextView!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -24,7 +25,7 @@ class MoreInfoDetailTableViewCell: UITableViewCell {
     }
     
     func updateMoreInfoWithEvent(event: Event) {
-        moreInfoLabel.text = event.moreInfo
+        moreInfoTextView.text = event.moreInfo
     }
 
 }

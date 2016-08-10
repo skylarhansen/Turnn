@@ -18,6 +18,7 @@ class PriceDetailTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var priceNumberLabel: UILabel!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -27,7 +28,7 @@ class PriceDetailTableViewCell: UITableViewCell {
     
     func updatePriceWithEvent(event: Event) {
         guard price != nil else { return }
-            priceLabel.text = "\(event.price)"
+            priceNumberLabel.text = "\(event.price)"
         }
 
 }
