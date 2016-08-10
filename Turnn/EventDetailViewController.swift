@@ -32,12 +32,12 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         mapView.layer.cornerRadius = mapView.frame.width/2
         mapView.clipsToBounds = true
         
-        let point = MGLPointAnnotation()
-        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
-        point.title = "Dev Mountain"
-        point.subtitle = "341 Main St Salt Lake City, U.S.A"
-        
-        mapView.addAnnotation(point)
+//        let point = MGLPointAnnotation()
+//        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
+//        point.title = "Dev Mountain"
+//        point.subtitle = "341 Main St Salt Lake City, U.S.A"
+//        
+//        mapView.addAnnotation(point)
 
     }
    

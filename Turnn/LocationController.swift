@@ -37,7 +37,7 @@ class LocationController {
                 let placemark = placemarks?[0]
                 let location = placemark?.location
                 coordinate = location?.coordinate
-                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                //print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
                 
                 if let coordinate = coordinate {
                     completion(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), error: nil)

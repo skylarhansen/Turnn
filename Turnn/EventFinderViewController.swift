@@ -19,7 +19,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     let locationManager = CLLocationManager()
     var search: Location?
     var annotation: [MGLPointAnnotation]?
-    var events: [Event] = []
+    var events: [Event] = EventController.mockEvents() {
+        didSet {
+            if mapView != nil {
+                updateMap(mapView)
+            }
+        }
+    }
     var annotations = [MGLAnnotation]()
     var usersCurrentLocation: CLLocation? {
         return locationManager.location
@@ -27,7 +33,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        displayEvents()
         setupTableViewUI()
         setBackgroundForTableView()
         //fetchEvents()
@@ -43,14 +49,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         // MARK: - MOCK DATA
         
-        self.events = EventController.mockEvents()
+       self.events = EventController.mockEvents()
         
-        let point = MGLPointAnnotation()
-        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
-        point.title = "Dev Mountain"
-        point.subtitle = "341 Main St Salt Lake City, U.S.A"
-        
-        mapView.addAnnotation(point)
+//        let point = MGLPointAnnotation()
+//        point.coordinate = CLLocationCoordinate2D(latitude: 40.765735, longitude: -111.890574)
+//        point.title = "Eva's Bakery"
+//        point.subtitle = "155 South Main St, Salt Lake City, U.S.A"
+//        
+//        mapView.addAnnotation(point)
     }
     
     func updateMap(mapView:MGLMapView){
@@ -58,7 +64,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             for i in annotations {
                 mapView.addAnnotation(i)
                 mapView.removeAnnotation(i)
-                mapView.showAnnotations(i as! [MGLAnnotation], animated: false)
+                mapView.showAnnotations( annotations , animated: false)
             }
         }
     }
@@ -70,7 +76,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
-            self.mapView.addAnnotations(annotations)
+            self.mapView.addAnnotations([point])
         }
     }
     
@@ -79,9 +85,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             return nil
         }
         
-        // MARK: - TableView Appearance
         return MGLAnnotationView()
     }
+    
+    // MARK: - TableView Appearance
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.separatorInset = UIEdgeInsetsZero
@@ -113,7 +120,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        mapView.setCenterCoordinate(center, zoomLevel: 12, animated: true)
+        mapView.setCenterCoordinate(center, zoomLevel: 14, animated: true)
         self.locationManager.stopUpdatingLocation()
     }
     
