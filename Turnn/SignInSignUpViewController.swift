@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import FirebaseAuth
 
-class SignInSignUpViewController: UIViewController {
+class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var conditionalLabels: [UILabel]! {
         didSet {
@@ -35,36 +35,56 @@ class SignInSignUpViewController: UIViewController {
     @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var lastNameField: UITextField!
     
+    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var loginOrSignUpButtonOutlet: UIButton!
     
     var isSignInPage = true
     
     
-    let dummyLocation = Location(address: "341 S Main Street", city: "Salt Lake City", state: "UT", zipCode: "84111")
+    let dummyLocation = Location(address: "341 S Main Street", city: "Salt Lake City", state: "UT", zipCode: "84111", latitude: 40.761819, longitude: -111.890561)
     
     let dummyUser = User(firstName: "Andrew", lastName: "Madsen", events: [], paid: true, identifier: "fake_id")
     
+    func setDelegatesForTextFields() {
+        emailField.delegate = self
+        passwordField.delegate = self
+        firstNameField.delegate = self
+        lastNameField.delegate = self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDelegatesForTextFields()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
         loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
 
-        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate(), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
+        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(30000), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
             
             if success {
                 GeoFireController.queryEventsForRadius(miles: 5.0) { (keys) in
                     
                     if let keys = keys {
                 
-                        
                         GeoFireController.getEventIdsForLocationIdentifiers(keys, completion: { (ids) in
                             if let ids = ids {
                                 EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
-                                    print(events)
+                                   // print(events)
                                     if let events = events {
-                                        print("EVENT RETRIEVED: \(events)")
+                                        //print("EVENT RETRIEVED: \(events)")
+                                        
+                                        let eventSort = events.divide({$0.endTime.timeIntervalSince1970 <= NSDate().timeIntervalSince1970})
+                                        
+                                        let currentEvents = eventSort.slice
+                                        
+                                        print(currentEvents)
+                                        
+                                        let oldEvents = eventSort.remainder
+                                        
+                                        print("======")
+                                        print(oldEvents)
                                     } else {
                                         print("Dang it!!!")
                                     }
@@ -74,9 +94,9 @@ class SignInSignUpViewController: UIViewController {
                             }
                         })
                         
-                        print("Keys:\n")
+                        //print("Keys:\n")
                         for key in keys {
-                            print("\(key)\n")
+                       //     print("\(key)\n")
                         }
                     } else {
                         print("💩")
@@ -87,6 +107,24 @@ class SignInSignUpViewController: UIViewController {
             }
         })
     }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        UIView.animateWithDuration(0.5) { 
+            self.centerYConstraint.constant = -65
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @IBAction func tappedOutsideTextFields(sender: AnyObject) {
+        
+        self.view.endEditing(true)
+        
+        UIView.animateWithDuration(0.5) {
+            self.centerYConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
     func setupViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)

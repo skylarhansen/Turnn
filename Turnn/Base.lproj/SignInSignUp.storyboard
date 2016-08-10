@@ -111,10 +111,10 @@
                                     <constraint firstAttribute="width" constant="194" id="12n-1D-8bO"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ob0-lH-6EC">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ob0-lH-6EC">
                                 <rect key="frame" x="200" y="499" width="200" height="91"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OS-5h-0UK">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OS-5h-0UK">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5h4-ZL-8W9"/>
@@ -128,13 +128,13 @@
                                             <action selector="loginButtonTapped:" destination="lW2-Sa-KeV" eventType="touchUpInside" id="beo-4K-496"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-73-aff">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af4-73-aff">
                                         <rect key="frame" x="32" y="43" width="136" height="15"/>
                                         <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9A-cj-A46">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9A-cj-A46">
                                         <rect key="frame" x="78" y="64" width="45" height="27"/>
                                         <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
                                         <state key="normal" title="Sign Up">
@@ -148,6 +148,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="top" secondItem="zbT-AP-IZ7" secondAttribute="bottom" constant="60" id="9QX-QG-isX"/>
                             <constraint firstItem="cSQ-hv-Ah2" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="FDB-fc-2sN"/>
@@ -158,8 +159,12 @@
                             <constraint firstItem="cSQ-hv-Ah2" firstAttribute="centerY" secondItem="EeT-Gw-1Rc" secondAttribute="centerY" id="x4Y-b3-5Bs"/>
                             <constraint firstItem="3nu-KM-X5H" firstAttribute="centerX" secondItem="EeT-Gw-1Rc" secondAttribute="centerX" id="yhO-H8-wOD"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="w7z-UZ-Rzv" appends="YES" id="MJf-5P-ZNa"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="centerYConstraint" destination="x4Y-b3-5Bs" id="byy-5K-ZdS"/>
                         <outlet property="emailField" destination="cSQ-hv-Ah2" id="w89-8F-WAa"/>
                         <outlet property="firstNameField" destination="OE2-S2-WTA" id="E3d-pO-T8U"/>
                         <outlet property="haveAccountLabel" destination="Af4-73-aff" id="SLH-uE-xqo"/>
@@ -175,6 +180,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzp-MT-f5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="w7z-UZ-Rzv">
+                    <connections>
+                        <action selector="tappedOutsideTextFields:" destination="lW2-Sa-KeV" id="BZu-5O-hzj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="31" y="60"/>
         </scene>
