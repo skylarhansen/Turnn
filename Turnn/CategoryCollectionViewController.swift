@@ -30,7 +30,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         handleMode()
         
         collectionView?.allowsMultipleSelection = true
-
+        
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
@@ -40,7 +40,11 @@ class CategoryCollectionViewController: UICollectionViewController {
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("unwindWithCategories", sender: self)
+        if mode == .Search {
+            self.performSegueWithIdentifier("unwindToEventFinder", sender: self)
+        } else if mode == .Save {
+            self.performSegueWithIdentifier("unwindToCreateEvent", sender: self)
+        }
     }
     
     func handleMode() {
@@ -96,7 +100,7 @@ class CategoryCollectionViewController: UICollectionViewController {
         if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
             
             guard let category = Categories(rawValue: indexPath.item),
-                image = category.selectedImage,
+                image = category.grayCircleImage,
                 name = category.name else { return }
             
             cell.updateWith(image, name: name)
