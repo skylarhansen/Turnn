@@ -27,6 +27,7 @@ class CreateEventViewController: UITableViewController {
     var descriptionCell: DescriptionTableViewCell!
     var zipCell: ZipTableViewCell!
     var moreInfoCell: MoreInfoTableViewCell!
+    var stateCell: StateTableViewCell!
     
     var categories: [Int]?
     
@@ -51,7 +52,7 @@ class CreateEventViewController: UITableViewController {
     }
    
     func createEventWithEventInfo(completion: (success: Bool) -> Void) {
-        if let title = titleCell.titleTextField.text where title.characters.count > 0 , let time = timeCell.timeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories {
+        if let title = titleCell.titleTextField.text where title.characters.count > 0 , let time = timeCell.timeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories, let state = stateCell.stateTextField.text {
             
             let location = Location(address: address, city: city, state: "UT", zipCode: zip, latitude: 43.000, longitude: -111.00)
             

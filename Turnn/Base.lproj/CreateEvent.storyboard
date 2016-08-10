@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yjm-zq-GYo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yjm-zq-GYo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -63,7 +63,7 @@
                             </variation>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="kxJ-ac-Ltd">
-                            <rect key="frame" x="0.0" y="786" width="600" height="50"/>
+                            <rect key="frame" x="0.0" y="832" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -254,8 +254,46 @@
                                     <outlet property="spacerView" destination="1cq-Li-lHL" id="naO-oJ-MG2"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="stateCell" rowHeight="46" id="ORf-CF-ZDn" userLabel="stateCell" customClass="StateTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="382" width="600" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ORf-CF-ZDn" id="4Sw-yO-25u">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="45.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3j-Mj-ETr">
+                                            <rect key="frame" x="8" y="8" width="577" height="30"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy2-ob-yUB" userLabel="Spacer View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="7Xg-RU-QBm"/>
+                                                        <constraint firstAttribute="height" constant="27" id="7iT-gY-qYL"/>
+                                                    </constraints>
+                                                </view>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMe-t4-bNt" userLabel="State Text Field">
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="L3j-Mj-ETr" secondAttribute="bottom" constant="8" id="Ko0-Ho-KFE"/>
+                                        <constraint firstItem="L3j-Mj-ETr" firstAttribute="top" secondItem="4Sw-yO-25u" secondAttribute="top" constant="8" id="Nym-EB-kxV"/>
+                                        <constraint firstAttribute="trailing" secondItem="L3j-Mj-ETr" secondAttribute="trailing" constant="15" id="WOW-L5-9uI"/>
+                                        <constraint firstItem="L3j-Mj-ETr" firstAttribute="leading" secondItem="4Sw-yO-25u" secondAttribute="leading" constant="8" id="ub8-mm-q0I"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="stateTextField" destination="QMe-t4-bNt" id="D2M-LM-mkt"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="zipCell" id="k4l-l1-1Au" customClass="ZipTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="382" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="428" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4l-l1-1Au" id="X3d-cJ-dlz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -293,7 +331,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="120" id="KT7-MR-qzF" customClass="DescriptionTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="426" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="472" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KT7-MR-qzF" id="a3u-qt-nUL">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -336,7 +374,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="moreInfoCell" rowHeight="120" id="Ros-dI-Qhk" customClass="MoreInfoTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="546" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="592" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ros-dI-Qhk" id="MOU-PD-QmJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -379,7 +417,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" rowHeight="120" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="666" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="712" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uho-qG-WnE" id="tOr-oI-gga">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
