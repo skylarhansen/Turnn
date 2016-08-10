@@ -45,6 +45,10 @@ class CreateEventViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func unwindToCreateEvent(segue: UIStoryboardSegue) {
+        
+    }
    
     func createEventWithEventInfo(completion: (success: Bool) -> Void) {
         if let title = titleCell.titleTextField.text where title.characters.count > 0 , let time = timeCell.timeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories {
@@ -199,6 +203,17 @@ class CreateEventViewController: UITableViewController {
             default:
                 return 50
             }
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "addCategories" {
+            let navController = segue.destinationViewController as? UINavigationController
+            let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
+            categoryVC?.mode = .Save
         }
     }
 }
