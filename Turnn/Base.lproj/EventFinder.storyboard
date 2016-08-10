@@ -166,7 +166,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="eventsTableView" destination="q20-6C-VJU" id="oSa-SA-6dZ"/>
                         <outlet property="mapView" destination="6Cd-RV-GFB" id="Spk-kw-HHX"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                     </connections>
