@@ -9,9 +9,22 @@
 import UIKit
 import Mapbox
 
-class EventDetailViewController: UIViewController, MGLMapViewDelegate {
+class EventDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGLMapViewDelegate {
     
-    var event: Event? 
+    var event: Event?
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var mapView: MGLMapView!
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var eventEndTimeLabel: UILabel!
+    @IBOutlet var categoryImageViews: [UIImageView]!
+    @IBOutlet weak var categoryImageHolderView: UIView!
+    @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +35,7 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         
         backgroundImageView.addSubview(visualEffectView)
         
-        let visualEffectView2 = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        let visualEffectView2 = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
         
         visualEffectView2.frame = eventImageView.bounds
         
@@ -34,65 +47,62 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         mapView.layer.cornerRadius = mapView.frame.width/2
         mapView.clipsToBounds = true
         
-//        let point = MGLPointAnnotation()
-//        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
-//        point.title = "Dev Mountain"
-//        point.subtitle = "341 Main St Salt Lake City, U.S.A"
-//        
-//        mapView.addAnnotation(point)
-
-    }
-   
-    // MARK: - Outlets
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var mapView: MGLMapView!
-    @IBOutlet weak var eventImageView: UIImageView!
-    
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventTimeLabel: UILabel!
-    @IBOutlet weak var eventEndTimeLabel: UILabel!
-   
-    @IBOutlet var categoryImageViews: [UIImageView]!
-    
-    func updateCategoryIcons(event: Event) {
+        let point = MGLPointAnnotation()
+        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
+        point.title = "Dev Mountain"
+        point.subtitle = "341 Main St Salt Lake City, U.S.A"
         
-        var imageArray: [UIImage] = []
-        for category in event.categories {
-            guard let unwrappedCategory = Categories(rawValue: category), let image = unwrappedCategory.selectedImage else {
-                print("error: \(NSLocalizedDescriptionKey)")
-                return
-            }
-            imageArray.append(image)
+        mapView.addAnnotation(point)
+        
+        
+        categoryImageHolderView.backgroundColor = UIColor.turnnGray()
+        
+        for imageView in categoryImageViews {
+            imageView.hidden = true
         }
         
-        for (index, image) in imageArray.enumerate() {
-            
+        if let event = event {
+            updateEventDetail(event)
+        }
+        
+        let string = NSAttributedString(string: "Back", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        backButton.setAttributedTitle(string, forState: .Normal)
+        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
+        backButton.layer.borderWidth = 1
+        backButton.layer.cornerRadius = 8
+        backButton.layer.masksToBounds = true
+    }
+    
+    func loadImageViews(images: [UIImage]) {
+        for (index, image) in images.enumerate() {
+            categoryImageViews[index].hidden = false
             categoryImageViews[index].image = image
         }
     }
     
     func updateEventDetail(event: Event) {
-        eventImageView.image = event.image
+        //eventImageView.image = event.image
         eventTitleLabel.text = event.title
-        eventTimeLabel.text = "\(event.startTime)"
+        eventTimeLabel.text = "\(event.startTime.dateFormat())"
+        loadImageViews(event.loadCategoriesForEvent())
         if event.endTime == event.endTime {
-            eventTimeLabel.text = "\(event.endTime)" } else {
-               eventEndTimeLabel.text = "" }
-        }
+            eventTimeLabel.text = "\(event.endTime.dateFormat())" } else {
+            eventEndTimeLabel.text = "" }
+    }
     
-  
+    // MARK: - Action Buttons -
+    
+    @IBAction func backButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: tableView data source functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 5
     }
     
@@ -100,28 +110,38 @@ class EventDetailViewController: UIViewController, MGLMapViewDelegate {
         switch indexPath.row {
             
         case 0:
-            let HostDetailCell = tableView.dequeueReusableCellWithIdentifier("hostDetailCell", forIndexPath: indexPath)
-            return HostDetailCell ?? UITableViewCell()
+            let hostDetailCell = tableView.dequeueReusableCellWithIdentifier("hostDetailCell", forIndexPath: indexPath) as? HostDetailTableViewCell
+            hostDetailCell?.hostNameLabel.text = (event?.host.firstName)! + (event?.host.lastName)!
+            return hostDetailCell ?? UITableViewCell()
             
         case 1:
-            let PriceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath)
-            return PriceDetailCell ?? UITableViewCell()
+            let priceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath) as? PriceDetailTableViewCell
+            if let price = event?.price {
+                priceDetailCell?.priceNumberLabel.text = "\(price)"
+            } else {
+                priceDetailCell?.priceNumberLabel.text = "Free"
+            }
+            return priceDetailCell ?? UITableViewCell()
             
         case 2:
-            let LocationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath)
-            return LocationDetailCell ?? UITableViewCell()
+            let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
+            locationDetailCell?.streetNumberLabel.text = event?.location.address
+            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
+            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
+            return locationDetailCell ?? UITableViewCell()
             
         case 3:
-            let DescriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath)
-            return DescriptionDetailCell ?? UITableViewCell()
+            let descriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath) as? DescriptionDetailTableViewCell
+            descriptionDetailCell?.descriptionTextView.text = event?.eventDescription
+            return descriptionDetailCell ?? UITableViewCell()
             
         case 4:
-            let MoreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath)
-            return MoreInfoDetailCell ?? UITableViewCell()
+            let moreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath) as? MoreInfoDetailTableViewCell
+            moreInfoDetailCell?.moreInfoTextView.text = event?.eventDescription
+            return moreInfoDetailCell ?? UITableViewCell()
             
         default:
             return UITableViewCell()
         }
     }
-    
 }

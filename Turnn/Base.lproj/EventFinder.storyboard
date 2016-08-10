@@ -127,7 +127,6 @@
                                                     <outletCollection property="categoryImages" destination="nEi-E6-Qox" collectionClass="NSMutableArray" id="Oye-Gd-LhW"/>
                                                     <outletCollection property="categoryImages" destination="wSt-Y0-ik0" collectionClass="NSMutableArray" id="9YF-st-ldx"/>
                                                     <outletCollection property="categoryImages" destination="FtZ-Ub-dKP" collectionClass="NSMutableArray" id="UJO-pv-9L5"/>
-                                                    <segue destination="W7b-bk-Bqp" kind="show" identifier="toDetailSegue" id="YFg-8W-8VV"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -162,6 +161,7 @@
                     <connections>
                         <outlet property="mapView" destination="6Cd-RV-GFB" id="Spk-kw-HHX"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
+                        <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
