@@ -66,7 +66,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func displayEvents() {
         for event in events {
             let point = MGLPointAnnotation()
-            point.coordinate = CLLocationCoordinate2D(
+            point.coordinate = CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude)
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
