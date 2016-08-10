@@ -57,15 +57,14 @@ class SignInSignUpViewController: UIViewController {
                 GeoFireController.queryEventsForRadius(miles: 5.0) { (keys) in
                     
                     if let keys = keys {
+                
                         
-                        let key = keys[1]
-                        
-                        GeoFireController.getEventIdsForLocationIdentifiers([key], completion: { (ids) in
+                        GeoFireController.getEventIdsForLocationIdentifiers(keys, completion: { (ids) in
                             if let ids = ids {
                                 EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
                                     print(events)
                                     if let events = events {
-                                        print("EVENT RETRIEVED: \(events[0])")
+                                        print("EVENT RETRIEVED: \(events)")
                                     } else {
                                         print("Dang it!!!")
                                     }
@@ -142,6 +141,34 @@ class SignInSignUpViewController: UIViewController {
         }
     }
     
+    func signUp() {
+        if let firstName = firstNameField.text where firstNameField.text != "",
+            let email = emailField.text where emailField.text != "",
+            let password = passwordField.text where passwordField.text != "" {
+        
+            UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user) in
+                UserController.shared.currentUser = user
+            })
+
+            if UserController.shared.currentUser != nil {
+                self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+            }
+            else {
+            }
+        }
+    }
+
+    func login() {
+        let email = emailField.text ?? ""
+        let password = passwordField.text ?? ""
+        UserController.authUser(email, password: password, completion: { (user) in
+            UserController.shared.currentUser = user
+        })
+                if UserController.shared.currentUser != nil {
+                        self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+                    }
+        
+            }
     
     @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
         updateLoginView()
@@ -150,28 +177,13 @@ class SignInSignUpViewController: UIViewController {
     @IBAction func loginButtonTapped(sender: AnyObject) {
         if isSignInPage == false {
             
-            if let firstName = firstNameField.text where firstNameField.text != "",
-                let email = emailField.text where emailField.text != "",
-                let password = passwordField.text where passwordField.text != "" {
-                
-                UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user) in
-                    UserController.shared.currentUser = user
-                })
-                
-            } else {
-                // Present Alert saying required fields not filled out
-            }
+            signUp()
             
+            } else {
+            
+            login()
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
 }
+    

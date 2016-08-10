@@ -66,7 +66,7 @@ class UserController {
         })
     }
     
-    private static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {
+    static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {
         FirebaseController.ref.child("users").child(identifier).observeSingleEventOfType(.Value, withBlock: { data in
             guard let dataDict = data.value as? [String: AnyObject],
                 user = User(dictionary: dataDict, identifier: data.key) else {
@@ -77,12 +77,12 @@ class UserController {
         })
     }
     
-    private static func saveUserInDefaults(user: User) {
+    static func saveUserInDefaults(user: User) {
         NSUserDefaults.standardUserDefaults().setObject(user.dictionaryCopy, forKey: UserController.currentUserKey)
         NSUserDefaults.standardUserDefaults().setObject(user.identifier!, forKey: currentUserIdKey)
     }
     
-    private static func loadFromDefaults() -> User? {
+    static func loadFromDefaults() -> User? {
         let defaults = NSUserDefaults.standardUserDefaults()
         guard let userDict = defaults.objectForKey(currentUserKey) as? [String: AnyObject], userId = defaults.objectForKey(currentUserIdKey) as? String, user = User(dictionary: userDict, identifier: userId) else {
             return nil
