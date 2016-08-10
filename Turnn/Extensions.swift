@@ -89,7 +89,7 @@ extension Double {
 }
 
 extension Event {
-
+    
     func loadCategoriesForEvent() -> [UIImage] {
         var imageArray: [UIImage] = []
         for category in self.categories {
@@ -102,9 +102,18 @@ extension Event {
 }
 
 extension String {
-
+    
     static func autoformatAddressForGPSAquisition(event: Event) -> String {
         return event.location.address + ", " + event.location.city + ", " + event.location.state + ", " + event.location.zipCode
+    }
+    
+    static func printEvents(currentEvents: [Event], oldEvents: [Event]) {
+        print("\n|------------------------| \n" + "|    Retrieved Events    |")
+        print("|                         -----------------------------------------------------------")
+        print("|\tCurrent Events: \n|\t\t\(currentEvents))" + "\n|")
+        
+        print("|\tOld Events: \n|\t\t \(oldEvents)")
+        print("--------------------------------------------------------------------------------------\n")
     }
 }
 
