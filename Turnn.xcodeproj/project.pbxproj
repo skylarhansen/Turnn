@@ -55,6 +55,7 @@
 		CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */; };
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
+		CEBC61331D5BD4FC0082E017 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBC61321D5BD4FC0082E017 /* DateFormatter.swift */; };
 		CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C11F6B1D58E8FC00999A5E /* GeoFire.framework */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
@@ -127,6 +128,7 @@
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
 		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
+		CEBC61321D5BD4FC0082E017 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				95C11F681D58E4FB00999A5E /* LocationController.swift */,
 				95C11F6F1D58ED1A00999A5E /* GeoFireController.swift */,
 				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
+				CEBC61321D5BD4FC0082E017 /* DateFormatter.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				CCFE38061D5BE294007F99DD /* StateTableViewCell.swift in Sources */,
 				CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */,
 				95EC6CE41D5265A300707935 /* SignInSignUpViewController.swift in Sources */,
+				CEBC61331D5BD4FC0082E017 /* DateFormatter.swift in Sources */,
 				959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */,
 				953C11D81D52A7F5009777FC /* EventController.swift in Sources */,
 				95E595441D51460900416B2A /* MoreInfoTableViewCell.swift in Sources */,
