@@ -47,10 +47,10 @@ class GeoFireController {
         }
     }
     
-    static func queryEventsForRadius(miles radius: Double, completion: (keys: [String]?) -> Void) {
+    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?) -> Void) {
         var matchedLocationKeysArray: [String] = []
         guard let center = LocationController.sharedInstance.coreLocationManager.location else {
-            completion(keys: nil)
+            completion(currentEvents: nil, oldEvents: nil)
             return }
         
         //print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
@@ -61,9 +61,31 @@ class GeoFireController {
             
         })
         
-        circleQuery.observeReadyWithBlock({
-            completion(keys: matchedLocationKeysArray)
-        })
+        circleQuery.observeReadyWithBlock{
+            GeoFireController.getEventIdsForLocationIdentifiers(matchedLocationKeysArray, completion: { (ids) in
+                if let ids = ids {
+                    EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
+                        // print(events)
+                        if let events = events {
+                            //print("EVENT RETRIEVED: \(events)")
+                            
+                            let eventSort = events.divide({$0.endTime.timeIntervalSince1970 >= NSDate().timeIntervalSince1970})
+                            
+                            let currentEvents = eventSort.slice
+                            let oldEvents = eventSort.remainder
+                            
+                            completion(currentEvents: currentEvents, oldEvents: oldEvents)
+                        } else {
+                            print("Dang it!!!")
+                            completion(currentEvents: nil, oldEvents: nil)
+                        }
+                    })
+                } else {
+                    print("Did not get back any eventIDs")
+                    completion(currentEvents: nil, oldEvents: nil)
+                }
+            })
+        }
     }
 }
 

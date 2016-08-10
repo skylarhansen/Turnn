@@ -64,50 +64,13 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(30000), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
             
             if success {
-                GeoFireController.queryEventsForRadius(miles: 5.0) { (keys) in
-                    
-                    if let keys = keys {
                 
-                        GeoFireController.getEventIdsForLocationIdentifiers(keys, completion: { (ids) in
-                            if let ids = ids {
-                                EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
-                                   // print(events)
-                                    if let events = events {
-                                        //print("EVENT RETRIEVED: \(events)")
-                                        
-                                        let eventSort = events.divide({$0.endTime.timeIntervalSince1970 <= NSDate().timeIntervalSince1970})
-                                        
-                                        let currentEvents = eventSort.slice
-                                        
-                                        print(currentEvents)
-                                        
-                                        let oldEvents = eventSort.remainder
-                                        
-                                        print("======")
-                                        print(oldEvents)
-                                    } else {
-                                        print("Dang it!!!")
-                                    }
-                                })
-                            } else {
-                                print("Did not get back any eventIDs")
-                            }
-                        })
-                        
-                        //print("Keys:\n")
-                        for key in keys {
-                       //     print("\(key)\n")
-                        }
-                    } else {
-                        print("💩")
-                    }
-                }
             } else {
                 print("CRAP THIS SUCKS.... (just give up)!")
             }
         })
     }
-    
+
     func textFieldDidBeginEditing(textField: UITextField) {
         UIView.animateWithDuration(0.5) { 
             self.centerYConstraint.constant = -65

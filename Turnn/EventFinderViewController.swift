@@ -19,28 +19,41 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     let locationManager = CLLocationManager()
     var search: Location?
     var annotation: [MGLPointAnnotation]?
-    var events: [Event] = EventController.mockEvents() {
+    var events: [Event] = [] {
         didSet {
             if mapView != nil {
                 updateMap(mapView)
             }
         }
     }
+    
     var annotations = [MGLAnnotation]()
     var usersCurrentLocation: CLLocation? {
         return locationManager.location
     }
     
+    var loadingIndicator: UIActivityIndicatorView!
+    var loadingIndicatorView: UIView!
+    
     var selectedIndexPath: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayEvents()
-        setupTableViewUI()
-        setBackgroundForTableView()
-        updateMap(mapView)
-        fetchEvents()
         
+        self.view.layoutSubviews()
+        loadingIndicatorView = UIView(frame: CGRectMake((self.view.frame.width / 2) - 30, (self.view.frame.height / 2) - 90, 60, 60))
+        loadingIndicatorView.layer.cornerRadius = 15
+        loadingIndicatorView.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
+        loadingIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0, loadingIndicatorView.frame.width, loadingIndicatorView.frame.height))
+        loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicatorView.addSubview(loadingIndicator)
+        self.view.addSubview(loadingIndicatorView)
+        loadingIndicator.startAnimating()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
@@ -51,16 +64,33 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             self.locationManager.startUpdatingLocation()
         }
         
-        // MARK: - MOCK DATA
+        // Do this when not using mock data
+        /*
+         
+        GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
+            if let currentEvents = currentEvents, oldEvents = oldEvents {
+                String.printEvents(currentEvents, oldEvents: oldEvents)
+                self.events = currentEvents
+                self.tableView.reloadData()
+                self.loadingIndicatorView.hidden = true
+                self.loadingIndicator.stopAnimating()
+                self.displayEvents()
+                self.updateMap(self.mapView)
+            }
+        })
+         
+        */
         
-       self.events = EventController.mockEvents()
+        // Mock data to use for now
+        self.events = EventController.mockEvents()
+        self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-//        let point = MGLPointAnnotation()
-//        point.coordinate = CLLocationCoordinate2D(latitude: 40.765735, longitude: -111.890574)
-//        point.title = "Eva's Bakery"
-//        point.subtitle = "155 South Main St, Salt Lake City, U.S.A"
-//        
-//        mapView.addAnnotation(point)
+        setupTableViewUI()
+        setBackgroundForTableView()
     }
     
     func updateMap(mapView:MGLMapView){
@@ -84,13 +114,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-//    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
-//        guard annotation is MGLPointAnnotation else {
-//            return nil
-//        }
-//        
-//        return MGLAnnotationView()
-//    }
+    //    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
+    //        guard annotation is MGLPointAnnotation else {
+    //            return nil
+    //        }
+    //
+    //        return MGLAnnotationView()
+    //    }
     
     // MARK: - TableView Appearance
     
