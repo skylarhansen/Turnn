@@ -38,7 +38,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         displayEvents()
         setupTableViewUI()
         setBackgroundForTableView()
-        //fetchEvents()
+        updateMap(mapView)
+        fetchEvents()
+        
         
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
@@ -78,17 +80,17 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
-            self.mapView.addAnnotations([point])
+            self.mapView.addAnnotations(annotations)
         }
     }
     
-    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
-        guard annotation is MGLPointAnnotation else {
-            return nil
-        }
-        
-        return MGLAnnotationView()
-    }
+//    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
+//        guard annotation is MGLPointAnnotation else {
+//            return nil
+//        }
+//        
+//        return MGLAnnotationView()
+//    }
     
     // MARK: - TableView Appearance
     

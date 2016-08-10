@@ -11,6 +11,8 @@ import Mapbox
 
 class EventDetailViewController: UIViewController, MGLMapViewDelegate {
     
+    var event: Event? 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
