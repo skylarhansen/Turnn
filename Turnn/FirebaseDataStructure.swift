@@ -23,6 +23,8 @@
              - city: String
              - state: String
              - zip: String
+             - latitude: Double
+             - longitude: Double
          - startTime: Double
          - endTime: Double
          - categories
@@ -38,8 +40,7 @@
                             like location & categories)
  
  Users
-     - identifier
-     (email and password managed by Firebase directly)
+     - identifier (horked from UID in Firebase User console)
          - username: String
          - hostname: String
          - paid: Bool
