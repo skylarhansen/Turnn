@@ -11,7 +11,6 @@ import UIKit
 class CategoriesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var categoriesLabel: UILabel!
-    @IBOutlet weak var categoriesCollectionView: UICollectionView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,10 +21,10 @@ class CategoriesTableViewCell: UITableViewCell {
     
     func setupCell() {
         self.backgroundColor = .clearColor()
-        self.categoriesCollectionView.layer.cornerRadius = 8
-        self.categoriesCollectionView.delegate = self
-        self.categoriesCollectionView.dataSource = self
-        self.categoriesCollectionView.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.85)
+//        self.categoriesCollectionView.layer.cornerRadius = 8
+//        self.categoriesCollectionView.delegate = self
+//        self.categoriesCollectionView.dataSource = self
+//        self.categoriesCollectionView.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.85)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

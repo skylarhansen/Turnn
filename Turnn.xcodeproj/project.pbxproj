@@ -267,7 +267,6 @@
 			children = (
 				8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */,
 				8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */,
-				95E595351D51460900416B2A /* CategoriesTableViewCell.swift */,
 			);
 			name = "Category Collection View";
 			sourceTree = "<group>";
@@ -288,6 +287,7 @@
 				95E5953C1D51460900416B2A /* TitleTableViewCell.swift */,
 				CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */,
 				95E5953D1D51460900416B2A /* ZipTableViewCell.swift */,
+				95E595351D51460900416B2A /* CategoriesTableViewCell.swift */,
 			);
 			name = "Create Event View";
 			sourceTree = "<group>";
