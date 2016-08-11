@@ -111,6 +111,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
+    /* SORRY! COMMENTING OUT FOR NOW, UNTIL WE GET THE MAPBOX MEMORY ISSUE RESOLVED
+    
     func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
         // This example is only concerned with point annotations.
         guard annotation is MGLPointAnnotation else {
@@ -132,8 +134,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
  return annotationView
     
    }
-
-
+*/
+    
+/*   SORRY! COMMENTING OUT FOR NOW, UNTIL WE GET THE MAPBOX MEMORY ISSUE RESOLVED
+     
     // MGLAnnotationView subclass
     class CustomAnnotationView: MGLAnnotationView {
         override func layoutSubviews() {
@@ -149,6 +153,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
+ */
+ 
     // MARK: - TableView Appearance
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
