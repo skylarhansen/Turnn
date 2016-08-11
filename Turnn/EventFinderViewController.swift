@@ -12,7 +12,6 @@ import CoreLocation
 
 class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MGLMapViewDelegate {
     
-    
     @IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -84,6 +83,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         // Mock data to use for now
         self.events = EventController.mockEvents()
         self.tableView.reloadData()
+        self.loadingIndicatorView.hidden = true
+        self.loadingIndicator.stopAnimating()
+        self.displayEvents()
+        self.updateMap(self.mapView)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -143,7 +146,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         let blurView = UIVisualEffectView(effect: blurEffect)
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
         imageView.contentMode = .Center
-        
         imageView.addSubview(blurView)
         self.tableView.backgroundView = imageView
         blurView.frame = self.view.bounds
@@ -152,7 +154,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Location Manager Delegate Methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
+       // let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
         mapView.setCenterCoordinate(center, zoomLevel: 14, animated: true)
         self.locationManager.stopUpdatingLocation()
@@ -167,14 +169,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return true
     }
     
-    // MARK: - Fetch Events -
+    // MARK: - Fetch Events -  
+    // (no longer needed, the GeofireController.queryEventsForRadius function
+    // in the viewWillAppear fetches events within a designated search radius)
     
-    func fetchEvents() {
-        EventController.fetchEvents { (events) in
-            self.events = events
-            self.tableView.reloadData()
-        }
-    }
+    //    func fetchEvents() {
+    //        EventController.fetchEvents { (events) in
+    //            self.events = events
+    //            self.tableView.reloadData()
+    //        }
+    //    }
     
     // MARK: - Table view data source -
     
@@ -202,7 +206,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     // MARK: - Navigation
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "searchCategories" {
@@ -216,11 +219,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 let event = events[indexPath.row]
                 eventDetailVC.event = event
             }
-            
         }
     }
-    
 }
-
-
-

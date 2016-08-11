@@ -61,21 +61,15 @@ class EventController {
                 }
             })
         }
-
         dispatch_group_notify(eventFetchGroup, dispatch_get_main_queue()) { 
             completion(events: events)
         }
     }
-        // grabs data at specified endpoint and initializes (attempts) an Event object
-       // FirebaseController.dataAtEndPoint(endpoint) { (data) in
-        //    guard let json = data as? [String : AnyObject] else { completion(event: nil) ; return }
-         //   guard let event = Event(dictionary: json, identifier: eventID) else //{ completion(event: nil) ; return }
-         //   self.events.append(event)
-            // Complete with initialized event
-         //   completion(event: event)
-        //}
     
     static func deleteEvent(event: Event){
+        if let identifier = event.identifier {
+            FirebaseController.ref.child("Events").child(identifier).removeValue()
+        }
         event.delete()
     }
     
@@ -93,20 +87,15 @@ class EventController {
         
         let mockLocation2 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.762524, longitude: -111.890593)
         
-        
         let mockLocation3 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.762503, longitude: -111.891835)
         
-        
         let mockLocation4 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.762592, longitude: -111.889587)
-        
         
         let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
         
         let event1 = Event(title: "Hey! 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "Nice Event Man! 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
         
-        
         let event2 = Event(title: "Hey! 2", location: mockLocation2, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,2,1,5], eventDescription: "Nice Event Man! 2", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
-        
         
         let event3 = Event(title: "Hey! 3", location: mockLocation3, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [3,6,8], eventDescription: "Nice Event Man! 3", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
         
