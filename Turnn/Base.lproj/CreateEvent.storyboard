@@ -9,7 +9,7 @@
         <scene sceneID="kUk-w4-1M7">
             <objects>
                 <tableViewController id="DS4-8K-S5U" customClass="CreateEventViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qaq-80-Bce">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qaq-80-Bce">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,10 +111,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="n8y-Hr-WGr">
-                                            <rect key="frame" x="8" y="8" width="632" height="28"/>
+                                            <rect key="frame" x="8" y="8" width="408" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZH-y7-tL5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="258" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="fhV-7x-uEe"/>
                                                     </constraints>
@@ -122,26 +122,8 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y3D-uC-e32">
-                                                    <rect key="frame" x="70" y="0.0" width="412" height="28"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="370" id="7NP-X9-TQx"/>
-                                                        <constraint firstAttribute="width" constant="492" id="chg-GT-4dD"/>
-                                                    </constraints>
-                                                    <date key="date" timeIntervalSinceReferenceDate="492631141.79429197">
-                                                        <!--2016-08-11 17:59:01 +0000-->
-                                                    </date>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="chg-GT-4dD"/>
-                                                        </mask>
-                                                    </variation>
-                                                    <connections>
-                                                        <action selector="timePickerChanged:" destination="3Wn-Tx-jZA" eventType="valueChanged" id="XFT-Eo-eHL"/>
-                                                    </connections>
-                                                </datePicker>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-Uu-CV0">
-                                                    <rect key="frame" x="482" y="0.0" width="150" height="28"/>
+                                                    <rect key="frame" x="258" y="0.0" width="150" height="28"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="Yxo-BR-5QD"/>
@@ -161,14 +143,13 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="n8y-Hr-WGr" firstAttribute="leading" secondItem="Tok-Sv-mXU" secondAttribute="leading" constant="8" id="Crg-pQ-lIC"/>
-                                        <constraint firstAttribute="trailing" secondItem="n8y-Hr-WGr" secondAttribute="trailing" constant="-40" id="O86-oM-noE"/>
+                                        <constraint firstAttribute="trailing" secondItem="n8y-Hr-WGr" secondAttribute="trailing" constant="15" id="O86-oM-noE"/>
                                         <constraint firstAttribute="bottom" secondItem="n8y-Hr-WGr" secondAttribute="bottom" constant="8" id="dQg-dC-IZr"/>
                                         <constraint firstItem="n8y-Hr-WGr" firstAttribute="top" secondItem="Tok-Sv-mXU" secondAttribute="top" constant="8" id="vG2-hy-i1m"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="timeLabel" destination="WZH-y7-tL5" id="VSx-xK-Fc0"/>
-                                    <outlet property="timePicker" destination="Y3D-uC-e32" id="0M7-x1-hho"/>
                                     <outlet property="timeTextField" destination="lEB-Uu-CV0" id="4zX-Me-V4f"/>
                                 </connections>
                             </tableViewCell>
@@ -350,19 +331,19 @@
                                                             <rect key="frame" x="3" y="3" width="564" height="0.0"/>
                                                             <subviews>
                                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Admission" translatesAutoresizingMaskIntoConstraints="NO" id="Xsx-Is-IXP">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
                                                                 </imageView>
                                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Movie" translatesAutoresizingMaskIntoConstraints="NO" id="JCL-Lc-2rk">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
                                                                 </imageView>
                                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Video Games" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-IO-Tlp">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
                                                                 </imageView>
                                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-kK-L8G">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
                                                                 </imageView>
                                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mtU-L2-fzY">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
                                                                 </imageView>
                                                             </subviews>
                                                         </stackView>

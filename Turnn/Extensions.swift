@@ -40,6 +40,14 @@ extension NSDate {
         
         return dateFormatter.stringFromDate(self)
     }
+    
+    func dateLongFormat() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        dateFormatter.dateStyle = .MediumStyle
+        
+        return dateFormatter.stringFromDate(self)
+    }
 }
 
 extension UIColor {
