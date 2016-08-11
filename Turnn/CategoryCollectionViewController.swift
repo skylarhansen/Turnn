@@ -35,6 +35,14 @@ class CategoryCollectionViewController: UICollectionViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwindToCreateEvent" {
+            if let createEventVC = segue.destinationViewController as? CreateEventViewController {
+                createEventVC.categories = self.categories
+            }
+        }
+    }
+    
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         
         dismissViewControllerAnimated(true, completion: nil)

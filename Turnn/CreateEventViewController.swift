@@ -29,7 +29,18 @@ class CreateEventViewController: UITableViewController {
     var moreInfoCell: MoreInfoTableViewCell!
     var stateCell: StateTableViewCell!
     
-    var categories: [Int]?
+    var categories: [Int]? {
+        didSet {
+            if locationSelected {
+                let indexPath = NSIndexPath(forRow: 9, inSection: 0)
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                
+            } else {
+                let indexPath = NSIndexPath(forRow: 5, inSection: 0)
+                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            }
+        }
+    }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -50,7 +61,7 @@ class CreateEventViewController: UITableViewController {
     @IBAction func unwindToCreateEvent(segue: UIStoryboardSegue) {
         
     }
-   
+    
     func createEventWithEventInfo(completion: (success: Bool) -> Void) {
         if let title = titleCell.titleTextField.text where title.characters.count > 0 , let time = timeCell.timeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories, let state = stateCell.stateTextField.text {
             
@@ -58,7 +69,7 @@ class CreateEventViewController: UITableViewController {
             
             EventController.createEvent(title, location: location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo, completion: { (success) in
             })
-
+            
         } else {
             print("So Sorry, could not create Event because something was nil")
             completion(success: false)
@@ -141,6 +152,9 @@ class CreateEventViewController: UITableViewController {
                 return moreInfoCell ?? UITableViewCell()
             case 9:
                 let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                if let categories = categories {
+                    categoriesCell?.updateWith(categories)
+                }
                 return categoriesCell ?? UITableViewCell()
             default:
                 return UITableViewCell()
@@ -164,6 +178,9 @@ class CreateEventViewController: UITableViewController {
                 return moreInfoCell ?? UITableViewCell()
             case 5:
                 let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                if let categories = categories {
+                    categoriesCell?.updateWith(categories)
+                }
                 return categoriesCell ?? UITableViewCell()
             default:
                 return UITableViewCell()

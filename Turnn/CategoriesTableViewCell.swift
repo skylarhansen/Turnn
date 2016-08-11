@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol ImagesSetDelegate: class {
+    func imagesSet()
+}
+
 class CategoriesTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var categoriesView: UIView!
+    @IBOutlet var categoryImageViews: [UIImageView]!
+    @IBOutlet weak var addCategoriesButton: UIButton!
+    
+    weak var imagesSetDelegate: ImagesSetDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,9 +27,40 @@ class CategoriesTableViewCell: UITableViewCell {
         setupCell()
     }
     
+    func loadImageViews(images: [UIImage], completion: (success: Bool) -> Void) {
+        for (index, image) in images.enumerate() {
+            categoryImageViews[index].hidden = false
+            categoryImageViews[index].image = image
+        }
+    }
+    
+    func loadCategoriesForEvent(categories: [Int]) -> [UIImage] {
+        var imageArray: [UIImage] = []
+        for category in categories {
+            if let image = Categories(rawValue: category)?.selectedImage {
+                imageArray.append(image)
+            }
+        }
+        return imageArray
+    }
+    
+    func updateWith(categories: [Int]) {
+        if categories.count > 0 {
+            addCategoriesButton.setTitle("Edit Categories", forState: .Normal)
+            for imageView in categoryImageViews {
+                imageView.hidden = true
+            }
+            self.categoriesView.hidden = false
+            loadImageViews(loadCategoriesForEvent(categories)) { _ in
+            }
+        }
+    }
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.categoriesView.layer.cornerRadius = 8
+        self.categoriesView.hidden = true
+        self.categoriesView.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -35,32 +73,5 @@ class CategoriesTableViewCell: UITableViewCell {
                 self.backgroundColor = .clearColor()
             }
         }
-    }
-}
-
-extension CategoriesTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("exampleCell", forIndexPath: indexPath) as? ExampleCollectionViewCell
-        cell?.backgroundColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)
-        return cell ?? UICollectionViewCell()
-    }
-}
-
-extension CategoriesTableViewCell: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 25
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(35, 35)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 }
