@@ -182,7 +182,7 @@ enum Categories: Int {
         case .Hackathon:
             return "Hackathon"
         case .Hiking:
-            return "Outdoor"
+            return "Outdoors"
         case .Holiday:
             return "Holiday"
         case .Movie:

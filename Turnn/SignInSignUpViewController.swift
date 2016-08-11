@@ -149,27 +149,26 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         
             UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user) in
                 UserController.shared.currentUser = user
+                if UserController.shared.currentUser != nil {
+                    self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+                } else {
+                    // GENERAL SIGNUP FAIL HANDLING
+                }
             })
-
-            if UserController.shared.currentUser != nil {
-                self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
-            }
-            else {
-            }
         }
     }
 
     func login() {
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
+        
         UserController.authUser(email, password: password, completion: { (user) in
             UserController.shared.currentUser = user
-        })
-                if UserController.shared.currentUser != nil {
-                        self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
-                    }
-        
+            if UserController.shared.currentUser != nil {
+                self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
             }
+        })
+    }
     
     @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
         updateLoginView()

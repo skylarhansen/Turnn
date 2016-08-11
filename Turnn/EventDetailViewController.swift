@@ -111,7 +111,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         case 0:
             let hostDetailCell = tableView.dequeueReusableCellWithIdentifier("hostDetailCell", forIndexPath: indexPath) as? HostDetailTableViewCell
-            hostDetailCell?.hostNameLabel.text = (event?.host.firstName)! + (event?.host.lastName)!
+            hostDetailCell?.hostNameLabel.text = (event?.host.firstName)! + " " + (event?.host.lastName)!
             return hostDetailCell ?? UITableViewCell()
             
         case 1:

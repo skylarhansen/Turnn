@@ -67,9 +67,9 @@ class UserController {
     }
     
     static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {
-        FirebaseController.ref.child("users").child(identifier).observeSingleEventOfType(.Value, withBlock: { data in
+        FirebaseController.ref.child("Users").child(identifier).observeSingleEventOfType(.Value, withBlock: { data in
             guard let dataDict = data.value as? [String: AnyObject],
-                user = User(dictionary: dataDict, identifier: data.key) else {
+                user = User(dictionary: dataDict, identifier: identifier) else {
                     completion(user: nil)
                     return
             }

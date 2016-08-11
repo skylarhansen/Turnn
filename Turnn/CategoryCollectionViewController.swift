@@ -29,9 +29,18 @@ class CategoryCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         handleMode()
+        setUpNavigationUI()
         
         collectionView?.allowsMultipleSelection = true
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwindToCreateEvent" {
+            if let createEventVC = segue.destinationViewController as? CreateEventViewController {
+                createEventVC.categories = self.categories
+            }
+        }
     }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
@@ -50,6 +59,12 @@ class CategoryCollectionViewController: UICollectionViewController {
     
     func handleMode() {
         doneButton.title = mode.rawValue
+    }
+    
+    func setUpNavigationUI() {
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
     }
     
     // MARK: UICollectionViewDataSource

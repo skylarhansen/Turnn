@@ -9,7 +9,7 @@
         <scene sceneID="kUk-w4-1M7">
             <objects>
                 <tableViewController id="DS4-8K-S5U" customClass="CreateEventViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qaq-80-Bce">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qaq-80-Bce">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,11 +61,6 @@
                                     <exclude reference="vku-EC-7Il"/>
                                 </mask>
                             </variation>
-                        </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="kxJ-ac-Ltd">
-                            <rect key="frame" x="0.0" y="832" width="600" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="titleCell" id="PBm-WC-RMY" customClass="TitleTableViewCell" customModule="Turnn" customModuleProvider="target">
@@ -321,8 +316,87 @@
                                     <outlet property="stateTextField" destination="QMe-t4-bNt" id="D2M-LM-mkt"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" rowHeight="100" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="428" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uho-qG-WnE" id="tOr-oI-gga">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tkH-ZN-Ntv">
+                                            <rect key="frame" x="15" y="8" width="570" height="33"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-VJ-UYf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="33"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHx-Mb-LLb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="570" height="33"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="tintColor" red="0.0" green="0.66274509800000003" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <state key="normal" title="Add Categories"/>
+                                                            <connections>
+                                                                <segue destination="SEr-ea-aBL" kind="presentation" identifier="addCategories" id="Aud-Rv-Y02"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="AmD-TO-kMd"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBz-9Q-sZ7">
+                                                    <rect key="frame" x="0.0" y="33" width="570" height="0.0"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-FM-fj4">
+                                                            <rect key="frame" x="3" y="3" width="564" height="0.0"/>
+                                                            <subviews>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Admission" translatesAutoresizingMaskIntoConstraints="NO" id="Xsx-Is-IXP">
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                </imageView>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Movie" translatesAutoresizingMaskIntoConstraints="NO" id="JCL-Lc-2rk">
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                </imageView>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Video Games" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-IO-Tlp">
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                </imageView>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-kK-L8G">
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                </imageView>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mtU-L2-fzY">
+                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="50"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="0.55172413793103448" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="ARH-FM-fj4" firstAttribute="top" secondItem="BBz-9Q-sZ7" secondAttribute="top" constant="3" id="0a8-Cp-tKH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ARH-FM-fj4" secondAttribute="trailing" constant="3" id="8Aq-5q-UQK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ARH-FM-fj4" secondAttribute="bottom" constant="3" id="HP6-ue-66i"/>
+                                                        <constraint firstItem="ARH-FM-fj4" firstAttribute="leading" secondItem="BBz-9Q-sZ7" secondAttribute="leading" constant="3" id="cLS-UO-Ff4"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="tkH-ZN-Ntv" secondAttribute="trailing" constant="15" id="6Ax-ft-XhD"/>
+                                        <constraint firstItem="tkH-ZN-Ntv" firstAttribute="leading" secondItem="tOr-oI-gga" secondAttribute="leading" constant="15" id="ItA-1I-ea2"/>
+                                        <constraint firstItem="tkH-ZN-Ntv" firstAttribute="top" secondItem="tOr-oI-gga" secondAttribute="top" constant="8" id="iin-Ht-6IO"/>
+                                        <constraint firstAttribute="bottom" secondItem="tkH-ZN-Ntv" secondAttribute="bottom" constant="8" id="l87-zA-mRO"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addCategoriesButton" destination="nHx-Mb-LLb" id="QYr-Lp-Qmh"/>
+                                    <outlet property="categoriesView" destination="BBz-9Q-sZ7" id="ten-5E-83o"/>
+                                    <outletCollection property="categoryImageViews" destination="bfU-kK-L8G" collectionClass="NSMutableArray" id="0e9-FB-knF"/>
+                                    <outletCollection property="categoryImageViews" destination="Q3s-IO-Tlp" collectionClass="NSMutableArray" id="MKC-K0-Va7"/>
+                                    <outletCollection property="categoryImageViews" destination="JCL-Lc-2rk" collectionClass="NSMutableArray" id="53D-aB-0th"/>
+                                    <outletCollection property="categoryImageViews" destination="Xsx-Is-IXP" collectionClass="NSMutableArray" id="FDt-8L-qZX"/>
+                                    <outletCollection property="categoryImageViews" destination="mtU-L2-fzY" collectionClass="NSMutableArray" id="eqo-jT-REZ"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="zipCell" id="k4l-l1-1Au" customClass="ZipTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="428" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="528" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4l-l1-1Au" id="X3d-cJ-dlz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -360,7 +434,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="120" id="KT7-MR-qzF" customClass="DescriptionTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="472" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="572" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KT7-MR-qzF" id="a3u-qt-nUL">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -403,7 +477,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="moreInfoCell" rowHeight="120" id="Ros-dI-Qhk" customClass="MoreInfoTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="592" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="692" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ros-dI-Qhk" id="MOU-PD-QmJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -443,46 +517,6 @@
                                 <connections>
                                     <outlet property="moreInfoLabel" destination="RHj-IZ-3Gi" id="uKa-TG-V2P"/>
                                     <outlet property="moreInfoTextView" destination="52h-ZP-U3J" id="QcS-fO-3xv"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" rowHeight="120" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="712" width="600" height="120"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uho-qG-WnE" id="tOr-oI-gga">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tkH-ZN-Ntv">
-                                            <rect key="frame" x="15" y="8" width="570" height="104"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52s-wf-8hI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="9HA-UQ-YqQ"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHx-Mb-LLb">
-                                                    <rect key="frame" x="0.0" y="33" width="570" height="71"/>
-                                                    <state key="normal" title="Add Categories"/>
-                                                    <connections>
-                                                        <segue destination="SEr-ea-aBL" kind="presentation" identifier="addCategories" id="Aud-Rv-Y02"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="tkH-ZN-Ntv" secondAttribute="trailing" constant="15" id="6Ax-ft-XhD"/>
-                                        <constraint firstItem="tkH-ZN-Ntv" firstAttribute="leading" secondItem="tOr-oI-gga" secondAttribute="leading" constant="15" id="ItA-1I-ea2"/>
-                                        <constraint firstItem="tkH-ZN-Ntv" firstAttribute="top" secondItem="tOr-oI-gga" secondAttribute="top" constant="8" id="iin-Ht-6IO"/>
-                                        <constraint firstAttribute="bottom" secondItem="tkH-ZN-Ntv" secondAttribute="bottom" constant="8" id="l87-zA-mRO"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="categoriesLabel" destination="52s-wf-8hI" id="DIN-e9-gH6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -535,4 +569,9 @@
             <point key="canvasLocation" x="232" y="268"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Admission" width="8" height="17"/>
+        <image name="Movie" width="26" height="25"/>
+        <image name="Video Games" width="40" height="18"/>
+    </resources>
 </document>

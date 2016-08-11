@@ -12,12 +12,11 @@ class HostDetailTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     @IBOutlet weak var hostLabel: UILabel!
     @IBOutlet weak var hostNameLabel: UILabel!
-
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -26,7 +25,7 @@ class HostDetailTableViewCell: UITableViewCell {
     }
     
     func updateHostWithEvent(event: Event) {
-        hostNameLabel.text = event.host.firstName + " " + (event.host.lastName ?? "")
+        hostNameLabel.text = "\(event.host.firstName)  \((event.host.lastName ?? ""))"
     }
 
 }
