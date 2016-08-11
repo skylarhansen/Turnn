@@ -12,7 +12,7 @@ class DescriptionDetailTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+     
     }
 
     @IBOutlet weak var descriptionLabel: UILabel!

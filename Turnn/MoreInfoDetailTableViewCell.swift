@@ -12,7 +12,10 @@ class MoreInfoDetailTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+//        moreInfoLabel.layer.borderColor = UIColor.turnnBlue().CGColor
+//        moreInfoLabel.layer.borderWidth = 1
+//        moreInfoLabel.layer.cornerRadius = 3
+//        moreInfoLabel.layer.masksToBounds = true
     }
 
     @IBOutlet weak var moreInfoLabel: UILabel!
