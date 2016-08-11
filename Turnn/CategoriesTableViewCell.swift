@@ -11,7 +11,8 @@ import UIKit
 class CategoriesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var categoriesLabel: UILabel!
-
+    @IBOutlet weak var categoriesView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,10 +22,7 @@ class CategoriesTableViewCell: UITableViewCell {
     
     func setupCell() {
         self.backgroundColor = .clearColor()
-//        self.categoriesCollectionView.layer.cornerRadius = 8
-//        self.categoriesCollectionView.delegate = self
-//        self.categoriesCollectionView.dataSource = self
-//        self.categoriesCollectionView.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.85)
+        self.categoriesView.layer.cornerRadius = 8
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -38,7 +36,6 @@ class CategoriesTableViewCell: UITableViewCell {
             }
         }
     }
-
 }
 
 extension CategoriesTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {

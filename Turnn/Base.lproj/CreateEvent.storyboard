@@ -62,11 +62,6 @@
                                 </mask>
                             </variation>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="kxJ-ac-Ltd">
-                            <rect key="frame" x="0.0" y="832" width="600" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="titleCell" id="PBm-WC-RMY" customClass="TitleTableViewCell" customModule="Turnn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="162" width="600" height="44"/>
@@ -416,45 +411,41 @@
                                     <outlet property="moreInfoTextView" destination="52h-ZP-U3J" id="QcS-fO-3xv"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" rowHeight="120" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="712" width="600" height="120"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" rowHeight="100" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="712" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uho-qG-WnE" id="tOr-oI-gga">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tkH-ZN-Ntv">
-                                            <rect key="frame" x="15" y="8" width="570" height="104"/>
+                                            <rect key="frame" x="15" y="8" width="570" height="84"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-VJ-UYf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="30"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52s-wf-8hI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="88" height="25"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="25" id="9HA-UQ-YqQ"/>
-                                                                <constraint firstAttribute="width" constant="88" id="EdQ-eL-zt8"/>
-                                                            </constraints>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHx-Mb-LLb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="119" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHx-Mb-LLb">
-                                                            <rect key="frame" x="88" y="0.0" width="22" height="25"/>
                                                             <color key="tintColor" red="0.0" green="0.66274509800000003" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <state key="normal" title="Add Categories"/>
                                                             <connections>
                                                                 <segue destination="SEr-ea-aBL" kind="presentation" identifier="addCategories" id="Aud-Rv-Y02"/>
                                                             </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EYL-Zk-VOP">
-                                                            <rect key="frame" x="110" y="0.0" width="460" height="25"/>
+                                                            <rect key="frame" x="119" y="0.0" width="451" height="30"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="AmD-TO-kMd"/>
+                                                    </constraints>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TGB-RO-jz4">
-                                                    <rect key="frame" x="0.0" y="33" width="570" height="71"/>
-                                                </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBz-9Q-sZ7">
+                                                    <rect key="frame" x="0.0" y="38" width="570" height="46"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.55172413793103448" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -466,7 +457,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="categoriesLabel" destination="52s-wf-8hI" id="DIN-e9-gH6"/>
+                                    <outlet property="categoriesView" destination="BBz-9Q-sZ7" id="ten-5E-83o"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
