@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class CreateEventViewController: UITableViewController {
     
@@ -65,9 +67,14 @@ class CreateEventViewController: UITableViewController {
     func createEventWithEventInfo(completion: (success: Bool) -> Void) {
         if let title = titleCell.titleTextField.text where title.characters.count > 0 , let time = timeCell.timeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories, let state = stateCell.stateTextField.text {
             
-            let location = Location(address: address, city: city, state: state, zipCode: zip, latitude: 43.000, longitude: -111.00)
+            let location = Location(address: address, city: city, state: state, zipCode: zip)
             
-            EventController.createEvent(title, location: location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo, completion: { (success) in
+            
+            EventController.createEvent(title, location: location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo, completion: { (success) in
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+
             })
             
         } else {

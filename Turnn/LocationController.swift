@@ -26,8 +26,10 @@ class LocationController {
     }
     
     // Enter address to get GPS for Event
-    func forwardGeocoding(address: String, completion: (location: CLLocation?, error: String?) -> Void) {
+    func forwardGeocoding(event: Event, completion: (location: CLLocation?, error: String?) -> Void) {
         var coordinate: CLLocationCoordinate2D?
+        var event = event
+        let address = String.autoformatAddressForGPSAquisition(event)
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
                 print(error)
@@ -40,6 +42,9 @@ class LocationController {
                 //print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
                 
                 if let coordinate = coordinate {
+                    event.location.latitude = coordinate.latitude
+                    event.location.longitude = coordinate.longitude
+                    event.save()
                     completion(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), error: nil)
                 } else {
                     completion(location: nil, error: "Could not unwrap a value for coordinate")

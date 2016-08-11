@@ -22,6 +22,7 @@ class TitleTableViewCell: UITableViewCell {
     
     func setupCell() {
         self.backgroundColor = .clearColor()
+        self.titleTextField.text = "Hackathon"
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

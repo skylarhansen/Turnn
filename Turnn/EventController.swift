@@ -16,14 +16,14 @@ class EventController {
 
     static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: Double? = 0.0, contactInfo: String? = "", image: UIImage?, host: User, moreInfo: String?, completion: (success: Bool) -> Void)
     {
-        //guard let host = UserController.sharedController.currentUser
-           // else { NSLog("there is no current user logged in"); return }
+        guard let host = UserController.shared.currentUser else { NSLog("there is no current user logged in"); return }
         
         var event = Event(title: title, location: location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: eventDescription, passwordProtected: passwordProtected, password: password, price: price,contactInfo: contactInfo, image: image, host: host, moreInfo: moreInfo)
         
         event.save()
         
-        LocationController.sharedInstance.forwardGeocoding(String.autoformatAddressForGPSAquisition(event)) { (location, error) in
+        LocationController.sharedInstance.forwardGeocoding(event) { (location, error) in
+            print(error)
             if let GPS = location {
                 GeoFireController.setLocation(event.identifier!, location: GPS) { (success, savedLocation) in
                     savedLocation?.updateChildValues(["EventID" : event.identifier!])

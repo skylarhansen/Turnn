@@ -23,6 +23,7 @@ class MoreInfoTableViewCell: UITableViewCell {
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.moreInfoTextView.layer.cornerRadius = 8
+        self.moreInfoTextView.text = "MORE INFORMATION"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

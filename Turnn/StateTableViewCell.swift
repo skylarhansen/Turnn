@@ -21,6 +21,7 @@ class StateTableViewCell: UITableViewCell {
     
     func setupCell() {
         self.backgroundColor = .clearColor()
+        self.stateTextField.text = "UT"
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

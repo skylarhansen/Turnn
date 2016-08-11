@@ -22,6 +22,7 @@ class CityTableViewCell: UITableViewCell {
     
     func setupCell() {
         self.backgroundColor = .clearColor()
+        self.cityTextField.text = "Salt Lake City"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

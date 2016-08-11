@@ -22,6 +22,7 @@ class AddressTableViewCell: UITableViewCell {
     
     func setupCell() {
         self.backgroundColor = .clearColor()
+        self.addressTextField.text = "341 S Main St"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

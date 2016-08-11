@@ -22,6 +22,7 @@ class ZipTableViewCell: UITableViewCell {
     
     func setupCell() {
         self.backgroundColor = .clearColor()
+        self.zipTextField.text = "84111"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

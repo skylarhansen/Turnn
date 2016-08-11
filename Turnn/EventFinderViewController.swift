@@ -54,7 +54,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.delegate = self
         self.view.addSubview(mapView)
         
-        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
             
             self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
             }, completion: nil)
@@ -68,25 +68,27 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             self.locationManager.startUpdatingLocation()
         }
         setupTableViewUI()
-         
+        
+         /*
         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
             if let currentEvents = currentEvents, oldEvents = oldEvents {
                 String.printEvents(currentEvents, oldEvents: oldEvents)
                 self.events = currentEvents
-                self.tableView.reloadData()
                 self.loadingIndicatorView.hidden = true
                 self.loadingIndicator.stopAnimating()
                 self.displayEvents()
+                self.tableView.reloadData()
             }
         })
          
-        /**/
+        */
         
         // Mock data to use for now
-//        self.events = EventController.mockEvents()
-//        self.tableView.reloadData()
-//        self.loadingIndicatorView.hidden = true
-//        self.loadingIndicator.stopAnimating()
+        self.events = EventController.mockEvents()
+        self.displayEvents()
+        self.tableView.reloadData()
+        self.loadingIndicatorView.hidden = true
+        self.loadingIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -103,7 +105,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func displayEvents() {
         for event in events {
             let point = MKPointAnnotation()
-            point.coordinate = CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude)
+            if let latitude = event.location.latitude, longitude = event.location.longitude {
+                point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            }
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
