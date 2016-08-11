@@ -7,26 +7,21 @@
 //
 
 import UIKit
-import Mapbox
+import MapKit
 import CoreLocation
 
-class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MGLMapViewDelegate {
+class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
-    @IBOutlet weak var mapView: MGLMapView!
+    @IBOutlet weak var mapViewPlaceholderView: UIView!
+    var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
     let locationManager = CLLocationManager()
     var search: Location?
-    var annotation: [MGLPointAnnotation]?
-    var events: [Event] = [] {
-        didSet {
-            if mapView != nil {
-                updateMap(mapView)
-            }
-        }
-    }
+    var annotation: [MKPointAnnotation]?
+    var events: [Event] = []
     
-    var annotations = [MGLAnnotation]()
+    var annotations = [MKAnnotation]()
     var usersCurrentLocation: CLLocation? {
         return locationManager.location
     }
@@ -39,7 +34,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.layoutSubviews()
         loadingIndicatorView = UIView(frame: CGRectMake((self.view.frame.width / 2) - 30, (self.view.frame.height / 2) - 90, 60, 60))
         loadingIndicatorView.layer.cornerRadius = 15
         loadingIndicatorView.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
@@ -54,17 +48,26 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.view.layoutSubviews()
+        self.mapView = MKMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height))
+        self.mapView.tintColor = UIColor.turnnBlue()
+        self.mapView.delegate = self
+        self.view.addSubview(mapView)
+        
+        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
+            
+            self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
+            }, completion: nil)
+        
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
         
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             self.locationManager.startUpdatingLocation()
         }
-        
-        // Do this when not using mock data
-        /*
+        setupTableViewUI()
          
         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
             if let currentEvents = currentEvents, oldEvents = oldEvents {
@@ -74,41 +77,32 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.loadingIndicatorView.hidden = true
                 self.loadingIndicator.stopAnimating()
                 self.displayEvents()
-                self.updateMap(self.mapView)
             }
         })
          
-        */
+        /**/
         
         // Mock data to use for now
-        self.events = EventController.mockEvents()
-        self.tableView.reloadData()
-        self.loadingIndicatorView.hidden = true
-        self.loadingIndicator.stopAnimating()
-        self.displayEvents()
-        self.updateMap(self.mapView)
+//        self.events = EventController.mockEvents()
+//        self.tableView.reloadData()
+//        self.loadingIndicatorView.hidden = true
+//        self.loadingIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        setupTableViewUI()
-        setBackgroundForTableView()
     }
     
-    func updateMap(mapView:MGLMapView){
-        if let annotations = mapView.annotations {
-            for i in annotations {
-                mapView.addAnnotation(i)
-                mapView.removeAnnotation(i)
-                mapView.showAnnotations( annotations , animated: false)
-            }
-        }
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.mapView.delegate = nil
+        self.mapView.removeFromSuperview()
+        self.mapView = nil
     }
     
     func displayEvents() {
         for event in events {
-            let point = MGLPointAnnotation()
+            let point = MKPointAnnotation()
             point.coordinate = CLLocationCoordinate2D(latitude: event.location.latitude, longitude: event.location.longitude)
             point.title = event.title
             point.subtitle = event.location.address
@@ -116,14 +110,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             self.mapView.addAnnotations(annotations)
         }
     }
-    
-    //    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
-    //        guard annotation is MGLPointAnnotation else {
-    //            return nil
-    //        }
-    //
-    //        return MGLAnnotationView()
-    //    }
     
     // MARK: - TableView Appearance
     
@@ -137,17 +123,20 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.navigationController?.navigationBar.tintColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)
         self.tableView.separatorColor = .whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        setBackgroundForTableView()
+        setBackgroundAndTableView()
     }
     
-    func setBackgroundForTableView() {
+    func setBackgroundAndTableView() {
         
+        self.tableView.backgroundColor = .clearColor()
         let blurEffect = UIBlurEffect(style: .Dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
         imageView.contentMode = .Center
         imageView.addSubview(blurView)
-        self.tableView.backgroundView = imageView
+        imageView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        self.view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
         blurView.frame = self.view.bounds
     }
     
@@ -156,7 +145,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
        // let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        mapView.setCenterCoordinate(center, zoomLevel: 14, animated: true)
+        mapView.setCenterCoordinate(center, animated: true)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let region = MKCoordinateRegionMake(center, span)
+        self.mapView.setRegion(region, animated: false)
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -164,21 +156,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
     }
     
-    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        print("UPDATED")
+    }
+    
+    func mapView(mapView: MKMapView, annotationCanShowCallout annotation: MKAnnotation) -> Bool {
         // Always try to show a callout when an annotation is tapped.
         return true
     }
-    
-    // MARK: - Fetch Events -  
-    // (no longer needed, the GeofireController.queryEventsForRadius function
-    // in the viewWillAppear fetches events within a designated search radius)
-    
-    //    func fetchEvents() {
-    //        EventController.fetchEvents { (events) in
-    //            self.events = events
-    //            self.tableView.reloadData()
-    //        }
-    //    }
     
     // MARK: - Table view data source -
     
