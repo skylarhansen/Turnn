@@ -132,16 +132,15 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         if annotationView == nil {
             annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
             annotationView!.frame = CGRectMake(0, 40, 25, 25)
-    
-  // Set the annotation view’s background color to a value determined by its longitude.
+            
+            // Set the annotation view’s background color to a value determined by its longitude.
             _ = CGFloat(annotation.coordinate.longitude) / 100
             annotationView!.backgroundColor = UIColor(hue: 0.10, saturation: 0.64, brightness: 0.98, alpha: 1.00)
         }
- return annotationView
+        return annotationView
+        
+    }
     
-   }
-
-
     // MGLAnnotationView subclass
     class CustomAnnotationView: MGLAnnotationView {
         override func layoutSubviews() {

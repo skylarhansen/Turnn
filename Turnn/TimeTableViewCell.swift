@@ -12,11 +12,21 @@ class TimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
+    @IBOutlet weak var timePicker: UIDatePicker!
+    let timeFormatter = NSDateFormatter()
 
+    @IBAction func timePickerChanged(sender: AnyObject) {
+        setDateAndTime()
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupCell()
+    }
+    
+    func setDateAndTime() {
+        timeFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        timeTextField.text = timeFormatter.stringFromDate(timePicker.date)
     }
     
     func setupCell() {

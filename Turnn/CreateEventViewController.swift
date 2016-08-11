@@ -204,6 +204,7 @@ class CreateEventViewController: UITableViewController {
                 return 120
             case 5:
                 return 200
+            case 1: return 100
             default:
                 return 50
             }

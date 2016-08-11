@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yjm-zq-GYo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yjm-zq-GYo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -108,7 +108,7 @@
                                     <outlet property="titleTextField" destination="Cd1-sJ-EnD" id="gWM-P2-FOg"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="timeCell" id="3Wn-Tx-jZA" customClass="TimeTableViewCell" customModule="Turnn" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="timeCell" rowHeight="44" id="3Wn-Tx-jZA" customClass="TimeTableViewCell" customModule="Turnn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="206" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Wn-Tx-jZA" id="Tok-Sv-mXU">
@@ -116,36 +116,65 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="n8y-Hr-WGr">
-                                            <rect key="frame" x="8" y="8" width="577" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="632" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZH-y7-tL5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="YqQ-zK-0Xq"/>
+                                                        <constraint firstAttribute="width" constant="70" id="fhV-7x-uEe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0c8-kL-FUj">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Y3D-uC-e32">
+                                                    <rect key="frame" x="70" y="0.0" width="412" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="370" id="7NP-X9-TQx"/>
+                                                        <constraint firstAttribute="width" constant="492" id="chg-GT-4dD"/>
+                                                    </constraints>
+                                                    <date key="date" timeIntervalSinceReferenceDate="492631141.79429197">
+                                                        <!--2016-08-11 17:59:01 +0000-->
+                                                    </date>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="chg-GT-4dD"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <connections>
+                                                        <action selector="timePickerChanged:" destination="3Wn-Tx-jZA" eventType="valueChanged" id="XFT-Eo-eHL"/>
+                                                    </connections>
+                                                </datePicker>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-Uu-CV0">
+                                                    <rect key="frame" x="482" y="0.0" width="150" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="Yxo-BR-5QD"/>
+                                                        <constraint firstAttribute="width" constant="70" id="iwD-fZ-sEt"/>
+                                                        <constraint firstAttribute="height" constant="28" id="yJl-jG-Rc2"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="iwD-fZ-sEt"/>
+                                                        </mask>
+                                                    </variation>
                                                 </textField>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="n8y-Hr-WGr" firstAttribute="top" secondItem="Tok-Sv-mXU" secondAttribute="top" constant="8" id="F8a-1L-jHv"/>
-                                        <constraint firstItem="n8y-Hr-WGr" firstAttribute="leading" secondItem="Tok-Sv-mXU" secondAttribute="leading" constant="8" id="HwE-Uc-Ol7"/>
-                                        <constraint firstAttribute="bottom" secondItem="n8y-Hr-WGr" secondAttribute="bottom" constant="8" id="lmK-mO-MGw"/>
-                                        <constraint firstAttribute="trailing" secondItem="n8y-Hr-WGr" secondAttribute="trailing" constant="15" id="qaZ-Hs-Dwc"/>
+                                        <constraint firstItem="n8y-Hr-WGr" firstAttribute="leading" secondItem="Tok-Sv-mXU" secondAttribute="leading" constant="8" id="Crg-pQ-lIC"/>
+                                        <constraint firstAttribute="trailing" secondItem="n8y-Hr-WGr" secondAttribute="trailing" constant="-40" id="O86-oM-noE"/>
+                                        <constraint firstAttribute="bottom" secondItem="n8y-Hr-WGr" secondAttribute="bottom" constant="8" id="dQg-dC-IZr"/>
+                                        <constraint firstItem="n8y-Hr-WGr" firstAttribute="top" secondItem="Tok-Sv-mXU" secondAttribute="top" constant="8" id="vG2-hy-i1m"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="timeLabel" destination="WZH-y7-tL5" id="VSx-xK-Fc0"/>
-                                    <outlet property="timeTextField" destination="0c8-kL-FUj" id="27Z-jv-bO9"/>
+                                    <outlet property="timePicker" destination="Y3D-uC-e32" id="0M7-x1-hho"/>
+                                    <outlet property="timeTextField" destination="lEB-Uu-CV0" id="4zX-Me-V4f"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="locationTitleCell" id="JMg-V9-4b7" customClass="LocationTableViewCell" customModule="Turnn" customModuleProvider="target">
@@ -477,7 +506,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LP4-e8-mEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="268"/>
+            <point key="canvasLocation" x="1452" y="319"/>
         </scene>
         <!--Category-->
         <scene sceneID="UQ7-YZ-Cyi">
