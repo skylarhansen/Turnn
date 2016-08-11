@@ -152,24 +152,58 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                 if UserController.shared.currentUser != nil {
                     self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
                 } else {
-                    // GENERAL SIGNUP FAIL HANDLING
-                }
+                /*
+                    if let error = error {
+                    if error != nil {
+                        
+                        if let errCode = FIRAuthErrorCode(rawValue: NS.code) {
+                            
+                            switch errCode {
+                            case .ErrorCodeInvalidEmail:
+                                print("invalid email")
+                            case .ErrorCodeEmailAlreadyInUse:
+                                print("in use")
+                            default:
+                                print("Create User Error: \(error)")
+                            }
+                        }
+                        }
+                    }
+                        }}
             })
-        }
-    }
+            }}
+            }*/
+            }
+            
+            })}}
 
     func login() {
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
         
-        UserController.authUser(email, password: password, completion: { (user) in
-            UserController.shared.currentUser = user
+        UserController.authUser(email, password: password, completion: { (user, error) in
+            UserController.shared.currentUser = user; _ = error
             if UserController.shared.currentUser != nil {
                 self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
-            }
-        })
-    }
-    
+            } else {
+                    if error != nil {
+            
+                        if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
+                            
+                            switch errCode {
+                            case .ErrorCodeInvalidEmail:
+                                print("\(error)invalid email SECRET CODE")
+                            case .ErrorCodeEmailAlreadyInUse:
+                                print("email in use SECRET CODE")
+                            default:
+                                print("Create User Error: \(error)")
+                            }
+                        }
+                    }
+                }
+            })
+        }
+
     @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
         updateLoginView()
     }
