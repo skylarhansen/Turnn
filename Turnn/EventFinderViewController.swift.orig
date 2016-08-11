@@ -64,11 +64,26 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             self.locationManager.startUpdatingLocation()
         }
         setupTableViewUI()
          
+<<<<<<< HEAD
+         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
+         if let currentEvents = currentEvents, oldEvents = oldEvents {
+         String.printEvents(currentEvents, oldEvents: oldEvents)
+         self.events = currentEvents
+         self.tableView.reloadData()
+         self.loadingIndicatorView.hidden = true
+         self.loadingIndicator.stopAnimating()
+         self.displayEvents()
+         self.updateMap(self.mapView)
+         }
+         })
+         
+         */
+=======
         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
             if let currentEvents = currentEvents, oldEvents = oldEvents {
                 String.printEvents(currentEvents, oldEvents: oldEvents)
@@ -81,6 +96,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         })
          
         /**/
+>>>>>>> feature/fix_sign_in_sign_up
         
         // Mock data to use for now
 //        self.events = EventController.mockEvents()
@@ -93,11 +109,24 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         super.viewDidAppear(animated)
     }
     
+<<<<<<< HEAD
+    func updateMap(mapView:MGLMapView){
+        if let annotations = mapView.annotations {
+            for i in annotations {
+                mapView.addAnnotation(i)
+                mapView.removeAnnotation(i)
+                mapView.showAnnotations( annotations , animated: false)
+                mapView.showsUserLocation = true
+                mapView.userTrackingMode = MGLUserTrackingMode(rawValue: 2)!
+            }
+        }
+=======
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         self.mapView.delegate = nil
         self.mapView.removeFromSuperview()
         self.mapView = nil
+>>>>>>> feature/fix_sign_in_sign_up
     }
     
     func displayEvents() {
@@ -111,6 +140,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
+<<<<<<< HEAD
     func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
         // This example is only concerned with point annotations.
         guard annotation is MGLPointAnnotation else {
@@ -149,6 +179,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
+=======
+>>>>>>> feature/fix_sign_in_sign_up
     // MARK: - TableView Appearance
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -181,12 +213,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Location Manager Delegate Methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       // let location = locations.last
+        // let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
+<<<<<<< HEAD
+        mapView.setCenterCoordinate(center, zoomLevel: 12, animated: true)
+=======
         mapView.setCenterCoordinate(center, animated: true)
         let span = MKCoordinateSpanMake(0.005, 0.005)
         let region = MKCoordinateRegionMake(center, span)
         self.mapView.setRegion(region, animated: false)
+>>>>>>> feature/fix_sign_in_sign_up
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -203,6 +239,20 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return true
     }
     
+<<<<<<< HEAD
+    // MARK: - Fetch Events -
+    // (no longer needed, the GeofireController.queryEventsForRadius function
+    // in the viewWillAppear fetches events within a designated search radius)
+    
+    //    func fetchEvents() {
+    //        EventController.fetchEvents { (events) in
+    //            self.events = events
+    //            self.tableView.reloadData()
+    //        }
+    //    }
+    
+=======
+>>>>>>> feature/fix_sign_in_sign_up
     // MARK: - Table view data source -
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

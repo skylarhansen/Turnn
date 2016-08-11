@@ -51,6 +51,7 @@ class User: FirebaseType {
         
         self.firstName = firstName
         self.lastName = lastName
+        self.events = events
         self.paid = paid
         self.eventIds = events.flatMap { $0.identifier }
         self.identifier = identifier
@@ -67,7 +68,7 @@ class User: FirebaseType {
             self.eventIds = eventIds
         }
 
-        
+        self.identifier = identifier
         self.firstName = firstName
         self.lastName = lastName
         self.paid = paid
