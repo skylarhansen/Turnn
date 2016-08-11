@@ -32,6 +32,16 @@ public func - (lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
     return lhs.timeIntervalSinceDate(rhs)
 }
 
+extension NSDate {
+    
+    func dateFormat() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .ShortStyle
+        
+        return dateFormatter.stringFromDate(self)
+    }
+}
+
 extension UIColor {
     
     class func turnnGray() -> UIColor {
