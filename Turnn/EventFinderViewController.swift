@@ -66,19 +66,19 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         // Do this when not using mock data
         /*
          
-        GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
-            if let currentEvents = currentEvents, oldEvents = oldEvents {
-                String.printEvents(currentEvents, oldEvents: oldEvents)
-                self.events = currentEvents
-                self.tableView.reloadData()
-                self.loadingIndicatorView.hidden = true
-                self.loadingIndicator.stopAnimating()
-                self.displayEvents()
-                self.updateMap(self.mapView)
-            }
-        })
+         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
+         if let currentEvents = currentEvents, oldEvents = oldEvents {
+         String.printEvents(currentEvents, oldEvents: oldEvents)
+         self.events = currentEvents
+         self.tableView.reloadData()
+         self.loadingIndicatorView.hidden = true
+         self.loadingIndicator.stopAnimating()
+         self.displayEvents()
+         self.updateMap(self.mapView)
+         }
+         })
          
-        */
+         */
         
         // Mock data to use for now
         self.events = EventController.mockEvents()
@@ -102,6 +102,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 mapView.addAnnotation(i)
                 mapView.removeAnnotation(i)
                 mapView.showAnnotations( annotations , animated: false)
+                mapView.showsUserLocation = true
+                mapView.userTrackingMode = MGLUserTrackingMode(rawValue: 2)!
             }
         }
     }
@@ -117,13 +119,43 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    //    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
-    //        guard annotation is MGLPointAnnotation else {
-    //            return nil
-    //        }
-    //
-    //        return MGLAnnotationView()
-    //    }
+    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
+        // This example is only concerned with point annotations.
+        guard annotation is MGLPointAnnotation else {
+            return nil
+        }
+        
+        let reuseIdentifier = "\(annotation.coordinate.longitude)"
+        
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+        
+        if annotationView == nil {
+            annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
+            annotationView!.frame = CGRectMake(0, 40, 25, 25)
+    
+  // Set the annotation view’s background color to a value determined by its longitude.
+            _ = CGFloat(annotation.coordinate.longitude) / 100
+            annotationView!.backgroundColor = UIColor(hue: 0.10, saturation: 0.64, brightness: 0.98, alpha: 1.00)
+        }
+ return annotationView
+    
+   }
+
+
+    // MGLAnnotationView subclass
+    class CustomAnnotationView: MGLAnnotationView {
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            
+            // Force the annotation view to maintain a constant size when the map is tilted.
+            scalesWithViewingDistance = false
+            
+            // Use CALayer’s corner radius to turn this view into a circle.
+            layer.cornerRadius = frame.width / 2
+            layer.borderWidth = 2
+            layer.borderColor = UIColor.whiteColor().CGColor
+        }
+    }
     
     // MARK: - TableView Appearance
     
@@ -154,9 +186,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Location Manager Delegate Methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       // let location = locations.last
+        // let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        mapView.setCenterCoordinate(center, zoomLevel: 14, animated: true)
+        mapView.setCenterCoordinate(center, zoomLevel: 13, animated: true)
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -169,7 +201,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return true
     }
     
-    // MARK: - Fetch Events -  
+    // MARK: - Fetch Events -
     // (no longer needed, the GeofireController.queryEventsForRadius function
     // in the viewWillAppear fetches events within a designated search radius)
     
