@@ -182,7 +182,7 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         let password = passwordField.text ?? ""
         
         UserController.authUser(email, password: password, completion: { (user, error) in
-            UserController.shared.currentUser = user; _ = error
+            UserController.shared.currentUser = user
             if UserController.shared.currentUser != nil {
                 self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
             } else {
@@ -195,6 +195,9 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                                 print("\(error)invalid email SECRET CODE")
                             case .ErrorCodeEmailAlreadyInUse:
                                 print("email in use SECRET CODE")
+                            case .ErrorCodeUserNotFound:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "User not found! 💩")
+                                print()
                             default:
                                 print("Create User Error: \(error)")
                             }
@@ -217,6 +220,13 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
             
             login()
         }
+    }
+    
+    func createAlert(title: String, message: String = "") {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        alert.addAction(okayAction)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }
