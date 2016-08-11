@@ -188,7 +188,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        mapView.setCenterCoordinate(center, zoomLevel: 13, animated: true)
+        mapView.setCenterCoordinate(center, zoomLevel: 12, animated: true)
         self.locationManager.stopUpdatingLocation()
     }
     
