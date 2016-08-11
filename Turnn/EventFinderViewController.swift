@@ -228,6 +228,19 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return eventCell ?? UITableViewCell()
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as? EFHeaderCellTableViewCell
+        headerCell?.backgroundColor = UIColor.turnnGray()
+        headerCell?.headerLabel.text = "Events"
+        headerCell?.headerLabel.textColor = UIColor.turnnWhite()
+        headerCell?.layer.borderWidth = 1
+        headerCell?.layer.borderColor = UIColor.turnnBlue().CGColor
+        headerCell?.layer.masksToBounds = false
+        headerCell?.layer.cornerRadius = 5
+        headerCell?.clipsToBounds = true
+        return headerCell
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedIndexPath = indexPath
         self.performSegueWithIdentifier("toDetailSegue", sender: nil)

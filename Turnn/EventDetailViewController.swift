@@ -115,20 +115,21 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             return hostDetailCell ?? UITableViewCell()
             
         case 1:
-            let priceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath) as? PriceDetailTableViewCell
-            if let price = event?.price {
-                priceDetailCell?.priceNumberLabel.text = "\(price)"
-            } else {
-                priceDetailCell?.priceNumberLabel.text = "Free"
-            }
-            return priceDetailCell ?? UITableViewCell()
-            
-        case 2:
             let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
             locationDetailCell?.streetNumberLabel.text = event?.location.address
             locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
             locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
             return locationDetailCell ?? UITableViewCell()
+            
+        case 2:
+            let priceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath) as? PriceDetailTableViewCell
+            if let price = event?.price {
+                priceDetailCell?.priceNumberLabel.text = "$\(price)"
+            } else {
+                priceDetailCell?.priceNumberLabel.text = "Free"
+            }
+            return priceDetailCell ?? UITableViewCell()
+            
             
         case 3:
             let descriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath) as? DescriptionDetailTableViewCell
