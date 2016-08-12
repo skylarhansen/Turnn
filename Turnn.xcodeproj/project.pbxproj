@@ -53,6 +53,7 @@
 		CCE9DF051D58EA7200363A98 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9DF041D58EA7200363A98 /* Mapbox.framework */; };
 		CCE9DF061D58EA7200363A98 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9DF041D58EA7200363A98 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCFE38061D5BE294007F99DD /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */; };
+		CCFE38081D5E4149007F99DD /* EndTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */; };
 		CE2ADC841D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */; };
 		CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52B9971D525E4E00E1C7E9 /* Categories.swift */; };
 		CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */; };
@@ -128,6 +129,7 @@
 		CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CCE9DF041D58EA7200363A98 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
+		CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndTimeTableViewCell.swift; sourceTree = "<group>"; };
 		CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
 		CE52B9971D525E4E00E1C7E9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				95E5953A1D51460900416B2A /* MoreInfoTableViewCell.swift */,
 				959163311D524DD900C23C24 /* PriceTableViewCell.swift */,
 				95E5953B1D51460900416B2A /* TimeTableViewCell.swift */,
+				CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */,
 				95E5953C1D51460900416B2A /* TitleTableViewCell.swift */,
 				CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */,
 				95E5953D1D51460900416B2A /* ZipTableViewCell.swift */,
@@ -518,6 +521,7 @@
 				CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */,
 				8C1C608B1D4FFAAF0015FAC5 /* Event.swift in Sources */,
 				95E595421D51460900416B2A /* ExampleCollectionViewCell.swift in Sources */,
+				CCFE38081D5E4149007F99DD /* EndTimeTableViewCell.swift in Sources */,
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
 				95E595431D51460900416B2A /* LocationTableViewCell.swift in Sources */,
 				95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */,
