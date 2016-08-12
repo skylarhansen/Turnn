@@ -67,6 +67,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         let string = NSAttributedString(string: "Back to Events", attributes: [NSForegroundColorAttributeName: UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)])
         backButton.setAttributedTitle(string, forState: .Normal)
+        backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
 //        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
 //        backButton.layer.borderWidth = 1
 //        backButton.layer.cornerRadius = 8

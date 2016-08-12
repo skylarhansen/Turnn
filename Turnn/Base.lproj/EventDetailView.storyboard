@@ -94,6 +94,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUb-zK-FRN">
+                                                    <rect key="frame" x="132" y="17" width="235" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPO-Zs-P1a">
                                                     <rect key="frame" x="15" y="20" width="50" height="20"/>
                                                     <constraints>
@@ -103,12 +109,6 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="1" height="1"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUb-zK-FRN">
-                                                    <rect key="frame" x="132" y="17" width="235" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -389,11 +389,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwC-bP-BSW">
-                                <rect key="frame" x="8" y="29" width="114" height="28"/>
+                                <rect key="frame" x="8" y="29" width="150" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="gdQ-c3-Cjy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Back to Events">
                                     <color key="titleColor" red="0.0" green="0.66274509800000003" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -425,7 +425,7 @@
                             <constraint firstAttribute="trailing" secondItem="s8i-2x-d6t" secondAttribute="trailing" id="tct-gr-AjH"/>
                             <constraint firstItem="JSA-cY-EmY" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" constant="8" id="tkp-Ze-AHW"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="JSA-cY-EmY" secondAttribute="bottom" constant="14" id="wv4-qy-GAN"/>
-                            <constraint firstItem="lh9-bf-VqD" firstAttribute="leading" secondItem="vwC-bP-BSW" secondAttribute="trailing" constant="113" id="xHU-A9-V8c"/>
+                            <constraint firstItem="lh9-bf-VqD" firstAttribute="leading" secondItem="vwC-bP-BSW" secondAttribute="trailing" constant="77" id="xHU-A9-V8c"/>
                             <constraint firstItem="JSA-cY-EmY" firstAttribute="top" secondItem="iCa-MI-9Mm" secondAttribute="bottom" constant="17" id="zLb-Ja-vvU"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="RRb-xc-SVF" secondAttribute="bottom" id="zQa-ha-BCy"/>
                             <constraint firstAttribute="trailing" secondItem="RRb-xc-SVF" secondAttribute="trailing" id="zzu-0Y-3Wg"/>
