@@ -7,21 +7,21 @@
 //
 
 import UIKit
-import MapKit
+import Mapbox
 import CoreLocation
 
-class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MGLMapViewDelegate {
     
     @IBOutlet weak var mapViewPlaceholderView: UIView!
-    var mapView: MKMapView!
+    var mapView: MGLMapView!
     @IBOutlet weak var tableView: UITableView!
     
     let locationManager = CLLocationManager()
     var search: Location?
-    var annotation: [MKPointAnnotation]?
+    var annotation: [MGLPointAnnotation]?
     var events: [Event] = []
     
-    var annotations = [MKAnnotation]()
+    var annotations = [MGLAnnotation]()
     var usersCurrentLocation: CLLocation? {
         return locationManager.location
     }
@@ -43,14 +43,17 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         loadingIndicatorView.addSubview(loadingIndicator)
         self.view.addSubview(loadingIndicatorView)
         loadingIndicator.startAnimating()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        let styleURL = NSURL(string: "mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk")
+        
         self.view.layoutSubviews()
-        self.mapView = MKMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height))
-        self.mapView.tintColor = UIColor.turnnBlue()
+        self.mapView = MGLMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height), styleURL: styleURL)
+//        self.mapView.tintColor = UIColor.turnnBlue()
         self.mapView.delegate = self
         self.view.addSubview(mapView)
         
@@ -103,7 +106,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func displayEvents() {
         for event in events {
-            let point = MKPointAnnotation()
+            let point = MGLPointAnnotation()
             if let latitude = event.location.latitude, longitude = event.location.longitude {
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
@@ -114,7 +117,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    /* SORRY! COMMENTING OUT FOR NOW, UNTIL WE GET THE MAPBOX MEMORY ISSUE RESOLVED
+    
     
     func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
         // This example is only concerned with point annotations.
@@ -137,9 +140,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
  return annotationView
     
    }
-*/
+
     
-/*   SORRY! COMMENTING OUT FOR NOW, UNTIL WE GET THE MAPBOX MEMORY ISSUE RESOLVED
+
      
     // MGLAnnotationView subclass
     class CustomAnnotationView: MGLAnnotationView {
@@ -156,7 +159,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
- */
+ 
  
     // MARK: - TableView Appearance
     
@@ -193,9 +196,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
        // let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
         mapView.setCenterCoordinate(center, animated: true)
-        let span = MKCoordinateSpanMake(0.005, 0.005)
-        let region = MKCoordinateRegionMake(center, span)
-        self.mapView.setRegion(region, animated: false)
+        _ = MGLCoordinateSpanMake(0.005, 0.005)
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -203,11 +204,11 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
     }
     
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func mapViewUpdated(mapView: MGLMapView, didUpdateUserLocation userLocation: MGLUserLocation) {
         print("UPDATED")
     }
     
-    func mapView(mapView: MKMapView, annotationCanShowCallout annotation: MKAnnotation) -> Bool {
+    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         // Always try to show a callout when an annotation is tapped.
         return true
     }

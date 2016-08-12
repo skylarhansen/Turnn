@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-import MapKit
+import Mapbox
 
 class CreateEventViewController: UITableViewController {
     
