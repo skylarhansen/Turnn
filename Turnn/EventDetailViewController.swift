@@ -54,6 +54,8 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         mapView.addAnnotation(point)
         
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         categoryImageHolderView.backgroundColor = UIColor.turnnGray()
         
@@ -65,12 +67,13 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             updateEventDetail(event)
         }
         
-        let string = NSAttributedString(string: "Back", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        let string = NSAttributedString(string: "Back to Events", attributes: [NSForegroundColorAttributeName: UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)])
         backButton.setAttributedTitle(string, forState: .Normal)
-        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
-        backButton.layer.borderWidth = 1
-        backButton.layer.cornerRadius = 8
-        backButton.layer.masksToBounds = true
+        backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+//        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
+//        backButton.layer.borderWidth = 1
+//        backButton.layer.cornerRadius = 8
+//        backButton.layer.masksToBounds = true
     }
     
     func loadImageViews(images: [UIImage]) {
@@ -156,12 +159,12 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         case 3:
             let descriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath) as? DescriptionDetailTableViewCell
-            descriptionDetailCell?.descriptionTextView.text = event?.eventDescription
+            descriptionDetailCell?.detailedDescriptionLabel.text = event?.eventDescription
             return descriptionDetailCell ?? UITableViewCell()
             
         case 4:
             let moreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath) as? MoreInfoDetailTableViewCell
-            moreInfoDetailCell?.moreInfoTextView.text = event?.eventDescription
+            moreInfoDetailCell?.moreInfoDetailLabel.text = event?.eventDescription
             return moreInfoDetailCell ?? UITableViewCell()
             
         default:
