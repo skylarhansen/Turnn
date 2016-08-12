@@ -13,25 +13,23 @@ class TurnnButton: UIButton {
     
     @IBInspectable var cornerRadius: CGFloat = 8 {
         didSet {
-            setupView()
+        setupView()
         }
     }
     
     @IBInspectable var borderWidth: CGFloat = 1 {
         didSet {
-            setupView()
+        setupView()
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         setupView()
     }
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        
         setupView()
     }
     

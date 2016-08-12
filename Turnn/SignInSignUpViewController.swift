@@ -27,6 +27,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBOutlet weak var forgetPasswordButtonOutlet: UIButton!
+    
     @IBOutlet weak var haveAccountLabel: UILabel!
     @IBOutlet weak var signUpOrInButtonOutlet: UIButton!
     
@@ -55,7 +57,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        forgetPasswordButtonOutlet.hidden = false
+        forgetPasswordButtonOutlet.enabled = true
         setDelegatesForTextFields()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
@@ -133,6 +136,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                 }
                 self.haveAccountLabel.text = "Already have an account?"
             }
+            forgetPasswordButtonOutlet.hidden = true
+            forgetPasswordButtonOutlet.enabled = false
             loginOrSignUpButtonOutlet.setTitle("Create Account", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign In", forState: .Normal)
             isSignInPage = false
@@ -146,6 +151,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                 }
                 self.haveAccountLabel.text = "Don't have an account?"
             }
+            forgetPasswordButtonOutlet.hidden = false
+            forgetPasswordButtonOutlet.enabled = true
             loginOrSignUpButtonOutlet.setTitle("Login", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
             isSignInPage = true
@@ -239,6 +246,27 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func forgetPasswordButtonTapped(sender: AnyObject) {
+        let prompt = UIAlertController.init(title: "Reset Password", message: "Please enter the email address associated with your Turnn account:", preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction.init(title: "Submit", style: UIAlertActionStyle.Default) { (action) in
+            let userInput = prompt.textFields![0].text
+            if (userInput!.isEmpty) {
+                return
+            }
+            FIRAuth.auth()?.sendPasswordResetWithEmail(userInput!) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+            }
+            self.createAlert("Request Sent", message: "If address is associated with a Turnn account, you should receive a password reset email within a few minutes.")
+        }
+        prompt.addTextFieldWithConfigurationHandler(nil)
+        prompt.addAction(okAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        prompt.addAction(cancelAction)
+        presentViewController(prompt, animated: true, completion: nil)
+    }
     func createAlert(title: String, message: String = "") {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)

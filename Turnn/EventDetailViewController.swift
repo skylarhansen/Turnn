@@ -95,8 +95,31 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func backButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    @IBAction func locationButtonTapped(sender: AnyObject) {
+        presentAlertController()
+    }
+    // MARK: - Alert Controller
+    func presentAlertController() {
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
+            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
+                return
+            }
+            
+            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        actionSheet.addAction(mapsAction)
+        actionSheet.addAction(cancelAction)
+        
+        presentViewController(actionSheet, animated: true, completion: nil)
+    }
     
-    // MARK: tableView data source functions
+    // MARK: - tableView data source functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1

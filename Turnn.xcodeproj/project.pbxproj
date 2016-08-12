@@ -31,6 +31,7 @@
 		959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959163311D524DD900C23C24 /* PriceTableViewCell.swift */; };
 		95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */; };
 		95C11F691D58E4FB00999A5E /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C11F681D58E4FB00999A5E /* LocationController.swift */; };
+		95CC83161D5E516A00F075F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */; };
 		95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595341D51460900416B2A /* AddressTableViewCell.swift */; };
 		95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595351D51460900416B2A /* CategoriesTableViewCell.swift */; };
 		95E595401D51460900416B2A /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595361D51460900416B2A /* CityTableViewCell.swift */; };
@@ -108,6 +109,7 @@
 		95C11F681D58E4FB00999A5E /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		95C11F6B1D58E8FC00999A5E /* GeoFire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = GeoFire.framework; path = "/Users/stevecox/Library/Developer/Xcode/DerivedData/Turnn-foaetydfadotywevccjqntortlwn/Build/Products/Debug-iphonesimulator/GeoFire/GeoFire.framework"; sourceTree = "<absolute>"; };
 		95C11F6F1D58ED1A00999A5E /* GeoFireController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoFireController.swift; sourceTree = "<group>"; };
+		95CC83151D5E516A00F075F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95E595341D51460900416B2A /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		95E595351D51460900416B2A /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		95E595361D51460900416B2A /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
@@ -200,7 +202,11 @@
 		8C72A2CF1D510DC1008301CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				CCFE38091D5E4BB8007F99DD /* LaunchScreen.storyboard */,
+=======
+				95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */,
+>>>>>>> 61a42a15dd0996c552fed678b0441e30ae0f8712
 				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
 				CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */,
 				957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */,
@@ -366,7 +372,11 @@
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
+<<<<<<< HEAD
 						DevelopmentTeam = 35L3J99R6J;
+=======
+						DevelopmentTeam = 6WAXYB4E4V;
+>>>>>>> 61a42a15dd0996c552fed678b0441e30ae0f8712
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -398,9 +408,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95CC83161D5E516A00F075F4 /* LaunchScreen.storyboard in Resources */,
 				957C4FE01D5250B600596A18 /* EventDetailView.storyboard in Resources */,
 				957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */,
+<<<<<<< HEAD
 				CCFE380A1D5E4BB8007F99DD /* LaunchScreen.storyboard in Resources */,
+=======
+>>>>>>> 61a42a15dd0996c552fed678b0441e30ae0f8712
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
@@ -603,6 +617,14 @@
 			name = CreateEvent.storyboard;
 			sourceTree = "<group>";
 		};
+		95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95CC83151D5E516A00F075F4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -713,7 +735,11 @@
 				INFOPLIST_FILE = Turnn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.anything.Turnn;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnnn;
+>>>>>>> 61a42a15dd0996c552fed678b0441e30ae0f8712
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -734,7 +760,11 @@
 				INFOPLIST_FILE = Turnn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.anything.Turnn;
+=======
+				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnnn;
+>>>>>>> 61a42a15dd0996c552fed678b0441e30ae0f8712
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
