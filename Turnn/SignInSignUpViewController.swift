@@ -123,7 +123,7 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
             }
             self.haveAccountLabel.text = "Already have an account?"
             }
-            loginOrSignUpButtonOutlet.setTitle("CREATE ACCOUNT", forState: .Normal)
+            loginOrSignUpButtonOutlet.setTitle("Create Account", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign In", forState: .Normal)
             isSignInPage = false
         } else {
@@ -136,7 +136,7 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
             }
             self.haveAccountLabel.text = "Don't have an account?"
             }
-            loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
+            loginOrSignUpButtonOutlet.setTitle("Login", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
             isSignInPage = true
         }
