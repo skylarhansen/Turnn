@@ -29,15 +29,15 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
         
-        visualEffectView.frame = backgroundImageView.bounds
+        visualEffectView.frame = self.view.bounds
         
         backgroundImageView.addSubview(visualEffectView)
         
-        let visualEffectView2 = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        let visualEffectView2 = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
         
-        visualEffectView2.frame = eventImageView.bounds
+        visualEffectView2.frame = self.view.bounds
         
         eventImageView.addSubview(visualEffectView2)
         

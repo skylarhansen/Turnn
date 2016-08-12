@@ -233,7 +233,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCellWithIdentifier("HeaderCell") as? EFHeaderCellTableViewCell
+        let headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? EFHeaderCellTableViewCell
         headerCell?.backgroundColor = UIColor.turnnGray()
         headerCell?.headerLabel.text = "Events"
         headerCell?.headerLabel.textColor = UIColor.turnnWhite()
