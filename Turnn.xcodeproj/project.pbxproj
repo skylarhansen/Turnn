@@ -340,6 +340,7 @@
 				25C2D18FFF78F5179103C3DD /* 📦 Embed Pods Frameworks */,
 				893027E04A42795F53862DFF /* 📦 Copy Pods Resources */,
 				CCE9DF071D58EA7200363A98 /* Embed Frameworks */,
+				8CF6EE831D5E2C9400CEF288 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -362,6 +363,7 @@
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = V9YMV3Q9VL;
 					};
 				};
 			};
@@ -462,6 +464,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Turnn/Pods-Turnn-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8CF6EE831D5E2C9400CEF288 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework/strip-frameworks.sh\"";
 		};
 		9E1CF88A41ABADD27FE9110B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
