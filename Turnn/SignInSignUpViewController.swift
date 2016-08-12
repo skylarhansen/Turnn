@@ -55,6 +55,10 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !Reachability.isConnectedToNetwork() {
+            self.create
+        }
         setDelegatesForTextFields()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
