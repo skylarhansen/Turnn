@@ -2,7 +2,7 @@
 //  TurnnButton.swift
 //  Turnn
 //
-//  Created by Steve Cox on 8/11/16.
+//  Created by Justin Smith on 8/11/16.
 //  Copyright © 2016 Skylar Hansen. All rights reserved.
 //
 

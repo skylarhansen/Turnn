@@ -80,7 +80,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.tableView.reloadData()
             }
         })
-         
         */
         
         // Mock data to use for now

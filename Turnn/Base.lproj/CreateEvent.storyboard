@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Ubuntu-R.ttf">
+            <string>Ubuntu</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Turnn-->
         <scene sceneID="kUk-w4-1M7">
@@ -30,7 +35,7 @@
                                         <constraint firstAttribute="width" constant="200" id="8Vf-ce-nXf"/>
                                         <constraint firstAttribute="height" constant="35" id="Vy8-7K-89P"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                    <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>

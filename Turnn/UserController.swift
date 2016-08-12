@@ -28,19 +28,19 @@ class UserController {
         return currentUserId
     }
     
-    static func createUser(firstName: String, lastName: String, paid: Bool, email: String, password: String, completion: (user: User?) -> Void) {
+    static func createUser(firstName: String, lastName: String, paid: Bool, email: String, password: String, completion: (user: User?, error: NSError?) -> Void) {
         FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
             if let error = error {
                 print("There was error while creating user: \(error.localizedDescription)")
-                completion(user: nil)
+                completion(user: nil, error: error)
             } else if let firebaseUser = user {
                 var user = User(firstName: firstName, lastName: lastName, paid: paid, identifier: firebaseUser.uid)
                 user.save()
                 UserController.shared.currentUser = user
                 UserController.saveUserInDefaults(user)
-                completion(user: user)
+                completion(user: user, error: error)
             } else {
-                completion(user: nil)
+                completion(user: nil, error: error)
             }
         })
     }
