@@ -102,7 +102,6 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
-    
     }
     
     
@@ -172,6 +171,11 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
                     self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+                    self.emailField.text = ""
+                    self.passwordField.text = ""
+                    self.firstNameField.text = ""
+                    self.lastNameField.text = ""
+                    self.updateLoginView()
                 } else {
                     if error != nil {
                         
@@ -207,6 +211,10 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
             UserController.shared.currentUser = user
             if UserController.shared.currentUser != nil {
                 self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+                self.emailField.text = ""
+                self.passwordField.text = ""
+                self.firstNameField.text = ""
+                self.lastNameField.text = ""
             } else {
                 if error != nil {
                     

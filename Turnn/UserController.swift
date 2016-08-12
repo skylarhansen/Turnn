@@ -68,7 +68,7 @@ class UserController {
     
     static func logOutUser(){
         try! FIRAuth.auth()!.signOut()
-        UserController.shared.currentUser = nil
+        clearLocallySavedUserOnLogout()
     }
     
     static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {
@@ -80,6 +80,13 @@ class UserController {
             }
             completion(user: user)
         })
+    }
+    
+    static func clearLocallySavedUserOnLogout(){
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.removeObjectForKey(UserController.currentUserKey)
+        defaults.removeObjectForKey(currentUserIdKey)
+        defaults.synchronize()
     }
     
     static func saveUserInDefaults(user: User) {
