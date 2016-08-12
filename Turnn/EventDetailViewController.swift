@@ -65,12 +65,12 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             updateEventDetail(event)
         }
         
-        let string = NSAttributedString(string: "Back", attributes: [NSForegroundColorAttributeName: UIColor.whiteColor()])
+        let string = NSAttributedString(string: "Back to Events", attributes: [NSForegroundColorAttributeName: UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)])
         backButton.setAttributedTitle(string, forState: .Normal)
-        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
-        backButton.layer.borderWidth = 1
-        backButton.layer.cornerRadius = 8
-        backButton.layer.masksToBounds = true
+//        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
+//        backButton.layer.borderWidth = 1
+//        backButton.layer.cornerRadius = 8
+//        backButton.layer.masksToBounds = true
     }
     
     func loadImageViews(images: [UIImage]) {
