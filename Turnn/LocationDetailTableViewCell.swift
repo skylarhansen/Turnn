@@ -10,6 +10,7 @@ import UIKit
 
 class LocationDetailTableViewCell: UITableViewCell {
 
+    var event: Event?
     override func awakeFromNib() {
         super.awakeFromNib()
   
