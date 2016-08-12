@@ -20,6 +20,7 @@
 		950DC8501D51045500601BC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC84F1D51045500601BC5 /* Extensions.swift */; };
 		950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */; };
 		9516EC701D554ADF00A144BC /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516EC6F1D554ADF00A144BC /* UserController.swift */; };
+		953A91E81D5D4B43008756F2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953A91E71D5D4B43008756F2 /* Reachability.swift */; };
 		953C11D81D52A7F5009777FC /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953C11D71D52A7F5009777FC /* EventController.swift */; };
 		955D18621D5D474E0010C73A /* TurnnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955D18611D5D474E0010C73A /* TurnnButton.swift */; };
 		956EF9A21D53FC8B000389A6 /* FirebaseDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */; };
@@ -94,6 +95,7 @@
 		950DC84F1D51045500601BC5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignInSignUp.storyboard; sourceTree = "<group>"; };
 		9516EC6F1D554ADF00A144BC /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		953A91E71D5D4B43008756F2 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		953C11D71D52A7F5009777FC /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		955D18611D5D474E0010C73A /* TurnnButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnButton.swift; sourceTree = "<group>"; };
 		956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataStructure.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				8C044AA71D4FBF76002754B5 /* AppDelegate.swift */,
 				950DC84F1D51045500601BC5 /* Extensions.swift */,
 				956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */,
+				953A91E71D5D4B43008756F2 /* Reachability.swift */,
 				8C72A2D21D510DEC008301CC /* Models */,
 				8C72A2D11D510DDA008301CC /* Controllers */,
 				8C72A2D01D510DCB008301CC /* View Controllers */,
@@ -535,6 +538,7 @@
 				95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */,
 				CCE9DEB71D52989C00363A98 /* HostDetailTableViewCell.swift in Sources */,
 				9591632E1D524DA500C23C24 /* EventDetailViewController.swift in Sources */,
+				953A91E81D5D4B43008756F2 /* Reachability.swift in Sources */,
 				95E595401D51460900416B2A /* CityTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

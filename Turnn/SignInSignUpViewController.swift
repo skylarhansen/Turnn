@@ -55,12 +55,13 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setDelegatesForTextFields()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
         loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
-
+        
 //        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(30000), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
 //            
 //            if success {
@@ -69,15 +70,19 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
 //                print("CRAP THIS SUCKS.... (just give up)!")
 //            }
 //        })
+        
+//        if !Reachability.isConnectedToNetwork() {
+//            self.createAlert("Connection Failed", message: "Not able to connect to the network. Please test you connection and try again.")
+//        }
     }
-
+    
     func textFieldDidBeginEditing(textField: UITextField) {
-        UIView.animateWithDuration(0.5) { 
+        UIView.animateWithDuration(0.5) {
             self.centerYConstraint.constant = -65
             self.view.layoutIfNeeded()
         }
     }
-
+    
     @IBAction func tappedOutsideTextFields(sender: AnyObject) {
         
         self.view.endEditing(true)
@@ -115,28 +120,28 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     func updateLoginView() {
         if isSignInPage == true  {
             UIView.animateWithDuration(0.25){
-            self.conditionalLabels.forEach {
-                $0.hidden = false
+                self.conditionalLabels.forEach {
+                    $0.hidden = false
+                }
+                self.conditionalFields.forEach {
+                    $0.hidden = false
+                }
+                self.haveAccountLabel.text = "Already have an account?"
             }
-            self.conditionalFields.forEach {
-                $0.hidden = false
-            }
-            self.haveAccountLabel.text = "Already have an account?"
-            }
-            loginOrSignUpButtonOutlet.setTitle("Create Account", forState: .Normal)
+            loginOrSignUpButtonOutlet.setTitle("CREATE ACCOUNT", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign In", forState: .Normal)
             isSignInPage = false
         } else {
             UIView.animateWithDuration(0.25){
-            self.conditionalLabels.forEach {
-                $0.hidden = true
+                self.conditionalLabels.forEach {
+                    $0.hidden = true
+                }
+                self.conditionalFields.forEach {
+                    $0.hidden = true
+                }
+                self.haveAccountLabel.text = "Don't have an account?"
             }
-            self.conditionalFields.forEach {
-                $0.hidden = true
-            }
-            self.haveAccountLabel.text = "Don't have an account?"
-            }
-            loginOrSignUpButtonOutlet.setTitle("Login", forState: .Normal)
+            loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
             signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
             isSignInPage = true
         }
@@ -146,26 +151,65 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         if let firstName = firstNameField.text where firstNameField.text != "",
             let email = emailField.text where emailField.text != "",
             let password = passwordField.text where passwordField.text != "" {
-        
+            
             UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user) in
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
                     self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
                 } else {
-                    // GENERAL SIGNUP FAIL HANDLING
+                    /*
+                     if let error = error {
+                     if error != nil {
+                     
+                     if let errCode = FIRAuthErrorCode(rawValue: NS.code) {
+                     
+                     switch errCode {
+                     case .ErrorCodeInvalidEmail:
+                     print("invalid email")
+                     case .ErrorCodeEmailAlreadyInUse:
+                     print("in use")
+                     default:
+                     print("Create User Error: \(error)")
+                     }
+                     }
+                     }
+                     }
+                     }}
+                     })
+                     }}
+                     }*/
                 }
-            })
-        }
-    }
-
+                
+            })}}
+    
     func login() {
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
         
-        UserController.authUser(email, password: password, completion: { (user) in
+        UserController.authUser(email, password: password, completion: { (user, error) in
             UserController.shared.currentUser = user
             if UserController.shared.currentUser != nil {
                 self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+            } else {
+                if error != nil {
+                    
+                    if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
+                        
+                        switch errCode {
+                        case .ErrorCodeInvalidEmail:
+                            print("\(error)invalid email SECRET CODE")
+                        case .ErrorCodeEmailAlreadyInUse:
+                            print("email in use SECRET CODE")
+                        case .ErrorCodeNetworkError:
+                            self.createAlert("Connection Failed", message: "Not able to connect to the network. Please test your connection and try again.")
+                        case .ErrorCodeUserNotFound:
+                            self.createAlert("Error: \(errCode.rawValue)", message: "User not found! 💩")
+                            print()
+                        default:
+                            print("Create User Error: \(error)")
+                        }
+                    }
+                }
             }
         })
     }
@@ -179,11 +223,18 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
             
             signUp()
             
-            } else {
+        } else {
             
             login()
         }
     }
-
+    
+    func createAlert(title: String, message: String = "") {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        alert.addAction(okayAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
 }
     

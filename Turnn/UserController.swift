@@ -45,23 +45,23 @@ class UserController {
         })
     }
     
-    static func authUser(email: String, password: String, completion: (user: User?) -> Void) {
+    static func authUser(email: String, password: String, completion: (user: User?, error: NSError?) -> Void) {
         FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (firebaseUser, error) in
             if let error = error {
                 print("Wasn't able log user in: \(error.localizedDescription)")
-                completion(user: nil)
+                completion(user: nil, error: error)
             } else if let firebaseUser = firebaseUser {
                 UserController.fetchUserForIdentifier(firebaseUser.uid, completion: { (user) in
                     guard let user = user else {
-                        completion(user: nil)
+                        completion(user: nil, error: error)
                         return
                     }
                     UserController.shared.currentUser = user
                     UserController.saveUserInDefaults(user)
-                    completion(user: user)
+                    completion(user: user, error: error)
                 })
             } else {
-                completion(user: nil)
+                completion(user: nil, error: error)
             }
         })
     }
