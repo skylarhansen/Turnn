@@ -43,7 +43,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         loadingIndicatorView.addSubview(loadingIndicator)
         self.view.addSubview(loadingIndicatorView)
         loadingIndicator.startAnimating()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -53,9 +52,11 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         self.view.layoutSubviews()
         self.mapView = MGLMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height), styleURL: styleURL)
-//        self.mapView.tintColor = UIColor.turnnBlue()
+        
         self.mapView.delegate = self
         self.view.addSubview(mapView)
+        self.mapView.tintColor = UIColor.turnnBlue()
+
         
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
             
@@ -72,18 +73,18 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         setupTableViewUI()
         
-         /*
-        GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
-            if let currentEvents = currentEvents, oldEvents = oldEvents {
-                String.printEvents(currentEvents, oldEvents: oldEvents)
-                self.events = currentEvents
-                self.loadingIndicatorView.hidden = true
-                self.loadingIndicator.stopAnimating()
-                self.displayEvents()
-                self.tableView.reloadData()
-            }
-        })
-        */
+        /*
+         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
+         if let currentEvents = currentEvents, oldEvents = oldEvents {
+         String.printEvents(currentEvents, oldEvents: oldEvents)
+         self.events = currentEvents
+         self.loadingIndicatorView.hidden = true
+         self.loadingIndicator.stopAnimating()
+         self.displayEvents()
+         self.tableView.reloadData()
+         }
+         })
+         */
         
         // Mock data to use for now
         self.events = EventController.mockEvents()
@@ -110,14 +111,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             if let latitude = event.location.latitude, longitude = event.location.longitude {
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
+        
+            mapView.userTrackingMode = MGLUserTrackingMode(rawValue: 2)!
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
             self.mapView.addAnnotations(annotations)
         }
     }
-    
-    
     
     func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
         // This example is only concerned with point annotations.
@@ -132,18 +133,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         if annotationView == nil {
             annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
             annotationView!.frame = CGRectMake(0, 40, 25, 25)
-    
-  // Set the annotation view’s background color to a value determined by its longitude.
+            
+            // Set the annotation view’s background color to a value determined by its longitude.
             _ = CGFloat(annotation.coordinate.longitude) / 100
             annotationView!.backgroundColor = UIColor(hue: 0.10, saturation: 0.64, brightness: 0.98, alpha: 1.00)
         }
- return annotationView
+        return annotationView
+    }
     
-   }
-
-    
-
-     
     // MGLAnnotationView subclass
     class CustomAnnotationView: MGLAnnotationView {
         override func layoutSubviews() {
@@ -159,8 +156,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
- 
- 
     // MARK: - TableView Appearance
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -193,9 +188,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Location Manager Delegate Methods
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-       // let location = locations.last
+        // let location = locations.last
         let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        mapView.setCenterCoordinate(center, animated: true)
+        self.mapView.setCenterCoordinate(center, zoomLevel: 12, animated: true)
         _ = MGLCoordinateSpanMake(0.005, 0.005)
         self.locationManager.stopUpdatingLocation()
     }

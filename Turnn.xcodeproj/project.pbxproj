@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C044AA71D4FBF76002754B5 /* AppDelegate.swift */; };
 		8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C044AAE1D4FBF76002754B5 /* Assets.xcassets */; };
-		8C044AB21D4FBF76002754B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */; };
 		8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */; };
 		8C1C608B1D4FFAAF0015FAC5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C608A1D4FFAAF0015FAC5 /* Event.swift */; };
 		8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C608E1D4FFC610015FAC5 /* User.swift */; };
@@ -54,6 +53,7 @@
 		CCE9DF061D58EA7200363A98 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9DF041D58EA7200363A98 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCFE38061D5BE294007F99DD /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */; };
 		CCFE38081D5E4149007F99DD /* EndTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */; };
+		CCFE380A1D5E4BB8007F99DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCFE38091D5E4BB8007F99DD /* LaunchScreen.storyboard */; };
 		CE2ADC841D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */; };
 		CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52B9971D525E4E00E1C7E9 /* Categories.swift */; };
 		CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */; };
@@ -84,7 +84,6 @@
 		8C044AA41D4FBF76002754B5 /* Turnn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turnn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C044AA71D4FBF76002754B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8C044AAE1D4FBF76002754B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8C044AB11D4FBF76002754B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C044AB31D4FBF76002754B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C1C608A1D4FFAAF0015FAC5 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -130,6 +129,7 @@
 		CCE9DF041D58EA7200363A98 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
 		CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndTimeTableViewCell.swift; sourceTree = "<group>"; };
+		CCFE38091D5E4BB8007F99DD /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
 		CE52B9971D525E4E00E1C7E9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		8C72A2CF1D510DC1008301CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */,
+				CCFE38091D5E4BB8007F99DD /* LaunchScreen.storyboard */,
 				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
 				CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */,
 				957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */,
@@ -366,7 +366,7 @@
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = V9YMV3Q9VL;
+						DevelopmentTeam = 35L3J99R6J;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -400,7 +400,7 @@
 			files = (
 				957C4FE01D5250B600596A18 /* EventDetailView.storyboard in Resources */,
 				957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */,
-				8C044AB21D4FBF76002754B5 /* LaunchScreen.storyboard in Resources */,
+				CCFE380A1D5E4BB8007F99DD /* LaunchScreen.storyboard in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
@@ -570,14 +570,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8C044AB01D4FBF76002754B5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8C044AB11D4FBF76002754B5 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -721,7 +713,7 @@
 				INFOPLIST_FILE = Turnn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anything.Turnn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -742,7 +734,7 @@
 				INFOPLIST_FILE = Turnn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.anything.Turnn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
