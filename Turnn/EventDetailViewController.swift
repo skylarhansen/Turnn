@@ -54,6 +54,8 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         mapView.addAnnotation(point)
         
+        tableView.estimatedRowHeight = 120
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         categoryImageHolderView.backgroundColor = UIColor.turnnGray()
         
@@ -134,12 +136,12 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         case 3:
             let descriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath) as? DescriptionDetailTableViewCell
-            descriptionDetailCell?.descriptionTextView.text = event?.eventDescription
+            descriptionDetailCell?.detailedDescriptionLabel.text = event?.eventDescription
             return descriptionDetailCell ?? UITableViewCell()
             
         case 4:
             let moreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath) as? MoreInfoDetailTableViewCell
-            moreInfoDetailCell?.moreInfoTextView.text = event?.eventDescription
+            moreInfoDetailCell?.moreInfoDetailLabel.text = event?.eventDescription
             return moreInfoDetailCell ?? UITableViewCell()
             
         default:
