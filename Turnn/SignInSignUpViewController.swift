@@ -56,23 +56,24 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !Reachability.isConnectedToNetwork() {
-            self.create
-        }
         setDelegatesForTextFields()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
         loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
         
-        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(30000), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
-            
-            if success {
-                
-            } else {
-                print("CRAP THIS SUCKS.... (just give up)!")
-            }
-        })
+//        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(30000), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
+//            
+//            if success {
+//                
+//            } else {
+//                print("CRAP THIS SUCKS.... (just give up)!")
+//            }
+//        })
+        
+//        if !Reachability.isConnectedToNetwork() {
+//            self.createAlert("Connection Failed", message: "Not able to connect to the network. Please test you connection and try again.")
+//        }
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -199,6 +200,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                             print("\(error)invalid email SECRET CODE")
                         case .ErrorCodeEmailAlreadyInUse:
                             print("email in use SECRET CODE")
+                        case .ErrorCodeNetworkError:
+                            self.createAlert("Connection Failed", message: "Not able to connect to the network. Please test your connection and try again.")
                         case .ErrorCodeUserNotFound:
                             self.createAlert("Error: \(errCode.rawValue)", message: "User not found! 💩")
                             print()
