@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Turnn-->
@@ -181,19 +182,28 @@
                                 <segue destination="lKW-UX-92g" kind="presentation" identifier="searchCategories" id="bp8-id-lIa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c9p-2Y-r8r">
-                            <connections>
-                                <segue destination="SHe-GN-2xC" kind="show" identifier="createEvent" id="osa-ll-IqP"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="c9p-2Y-r8r">
+                                <connections>
+                                    <segue destination="SHe-GN-2xC" kind="show" identifier="createEvent" id="osa-ll-IqP"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Log Out" id="THX-iJ-NiI">
+                                <connections>
+                                    <action selector="logOutButtonTapped:" destination="68G-yD-Hdw" id="aaQ-9o-E6c"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapViewPlaceholderView" destination="6Cd-RV-GFB" id="TzC-16-rUx"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                         <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
+                        <segue destination="A7A-N2-rFU" kind="unwind" identifier="unwindToSignIn" unwindAction="unwindToSignIn:" id="ezK-en-SHF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="A7A-N2-rFU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1351" y="482"/>
         </scene>

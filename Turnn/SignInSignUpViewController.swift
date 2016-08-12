@@ -101,6 +101,10 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
+    
+    }
+    
     
     func setupViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)

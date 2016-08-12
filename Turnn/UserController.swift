@@ -66,6 +66,11 @@ class UserController {
         })
     }
     
+    static func logOutUser(){
+        try! FIRAuth.auth()!.signOut()
+        UserController.shared.currentUser = nil
+    }
+    
     static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {
         FirebaseController.ref.child("Users").child(identifier).observeSingleEventOfType(.Value, withBlock: { data in
             guard let dataDict = data.value as? [String: AnyObject],

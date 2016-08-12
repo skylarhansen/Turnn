@@ -247,6 +247,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     // MARK: - Navigation
     
+    @IBAction func logOutButtonTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("unwindToSignIn", sender: self)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "searchCategories" {
