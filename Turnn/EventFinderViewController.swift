@@ -235,7 +235,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         headerCell?.layer.borderWidth = 1
         headerCell?.layer.borderColor = UIColor.turnnBlue().CGColor
         headerCell?.layer.masksToBounds = false
-        headerCell?.layer.cornerRadius = 5
+        //headerCell?.layer.cornerRadius = 5
         headerCell?.clipsToBounds = true
         return headerCell
     }
