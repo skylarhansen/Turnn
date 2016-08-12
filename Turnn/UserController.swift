@@ -53,15 +53,15 @@ class UserController {
             } else if let firebaseUser = firebaseUser {
                 UserController.fetchUserForIdentifier(firebaseUser.uid, completion: { (user) in
                     guard let user = user else {
-                        completion(user: nil, error: error!)
+                        completion(user: nil, error: error)
                         return
                     }
                     UserController.shared.currentUser = user
                     UserController.saveUserInDefaults(user)
-                    completion(user: user, error: error!)
+                    completion(user: user, error: error)
                 })
             } else {
-                completion(user: nil, error: error!)
+                completion(user: nil, error: error)
             }
         })
     }
