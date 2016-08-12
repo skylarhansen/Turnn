@@ -118,7 +118,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="n8y-Hr-WGr">
                                             <rect key="frame" x="8" y="8" width="220" height="30"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZH-y7-tL5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZH-y7-tL5">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="fhV-7x-uEe"/>
@@ -168,7 +168,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="8kp-Ph-sUH">
                                             <rect key="frame" x="8" y="8" width="220" height="30"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-7T-xXU">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-7T-xXU">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="MQR-Ax-peR"/>
@@ -204,9 +204,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="endTimeLabel" destination="2FY-7T-xXU" id="h4K-yp-oxp"/>
                                     <outlet property="endTimeTextField" destination="pvN-Tx-c1j" id="Htv-AD-aEc"/>
-                                    <outlet property="timeLabel" destination="2FY-7T-xXU" id="lNn-dm-2mg"/>
-                                    <outlet property="timeTextField" destination="pvN-Tx-c1j" id="dye-mI-afe"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="locationTitleCell" id="JMg-V9-4b7" customClass="LocationTableViewCell" customModule="Turnn" customModuleProvider="target">
@@ -315,26 +314,25 @@
                                     <outlet property="spacerView" destination="1cq-Li-lHL" id="naO-oJ-MG2"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="stateCell" rowHeight="46" id="ORf-CF-ZDn" userLabel="stateCell" customClass="StateTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="426" width="600" height="46"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="stateCell" id="ORf-CF-ZDn" userLabel="stateCell" customClass="StateTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="426" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ORf-CF-ZDn" id="4Sw-yO-25u">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="45.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3j-Mj-ETr">
-                                            <rect key="frame" x="8" y="9" width="577" height="51"/>
+                                            <rect key="frame" x="8" y="8" width="577" height="28"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy2-ob-yUB" userLabel="Spacer View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="51"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="70" id="7Xg-RU-QBm"/>
-                                                        <constraint firstAttribute="height" constant="51" id="7iT-gY-qYL"/>
+                                                        <constraint firstAttribute="width" constant="70" id="TtU-hp-kXX"/>
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMe-t4-bNt" userLabel="State Text Field">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="51"/>
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="28"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -343,10 +341,10 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="L3j-Mj-ETr" secondAttribute="bottom" constant="-14.5" id="Ko0-Ho-KFE"/>
-                                        <constraint firstItem="L3j-Mj-ETr" firstAttribute="top" secondItem="4Sw-yO-25u" secondAttribute="top" constant="9" id="Nym-EB-kxV"/>
-                                        <constraint firstAttribute="trailing" secondItem="L3j-Mj-ETr" secondAttribute="trailing" constant="15" id="WOW-L5-9uI"/>
-                                        <constraint firstItem="L3j-Mj-ETr" firstAttribute="leading" secondItem="4Sw-yO-25u" secondAttribute="leading" constant="8" id="ub8-mm-q0I"/>
+                                        <constraint firstItem="L3j-Mj-ETr" firstAttribute="top" secondItem="4Sw-yO-25u" secondAttribute="top" constant="8" id="7yE-8n-qxl"/>
+                                        <constraint firstItem="L3j-Mj-ETr" firstAttribute="leading" secondItem="4Sw-yO-25u" secondAttribute="leading" constant="8" id="Uwj-wG-fB7"/>
+                                        <constraint firstAttribute="trailing" secondItem="L3j-Mj-ETr" secondAttribute="trailing" constant="15" id="d7Q-Di-XbZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="L3j-Mj-ETr" secondAttribute="bottom" constant="8" id="zKh-sj-zAL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -354,7 +352,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="zipCell" id="k4l-l1-1Au" customClass="ZipTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="472" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="470" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4l-l1-1Au" id="X3d-cJ-dlz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -392,7 +390,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="120" id="KT7-MR-qzF" customClass="DescriptionTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="516" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="514" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KT7-MR-qzF" id="a3u-qt-nUL">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -435,7 +433,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="moreInfoCell" rowHeight="120" id="Ros-dI-Qhk" customClass="MoreInfoTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="636" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="634" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ros-dI-Qhk" id="MOU-PD-QmJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
@@ -478,7 +476,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" rowHeight="100" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="756" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="754" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uho-qG-WnE" id="tOr-oI-gga">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
@@ -592,7 +590,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LP4-e8-mEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="319"/>
+            <point key="canvasLocation" x="1439" y="183"/>
         </scene>
         <!--Category-->
         <scene sceneID="UQ7-YZ-Cyi">

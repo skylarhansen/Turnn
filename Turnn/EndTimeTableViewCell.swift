@@ -10,6 +10,8 @@ import UIKit
 
 class EndTimeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var endTimeLabel: UILabel!
+   
     @IBOutlet weak var endTimeTextField: UITextField!
     
     override func awakeFromNib() {

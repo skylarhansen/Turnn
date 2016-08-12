@@ -64,7 +64,7 @@ class CreateEventViewController: UITableViewController {
     }
     
     func createEventWithEventInfo(completion: (success: Bool) -> Void) {
-        if let title = titleCell.titleTextField.text where title.characters.count > 0 , let _ = timeCell.timeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories, let state = stateCell.stateTextField.text {
+        if let title = titleCell.titleTextField.text where title.characters.count > 0 , let _ = timeCell.timeTextField.text, let _ = endTimeCell.endTimeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories, let state = stateCell.stateTextField.text {
             
             let location = Location(address: address, city: city, state: state, zipCode: zip)
             
@@ -72,9 +72,7 @@ class CreateEventViewController: UITableViewController {
                 if success {
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
-
             })
-            
         } else {
             print("So Sorry, could not create Event because something was nil")
             completion(success: false)
@@ -134,7 +132,7 @@ class CreateEventViewController: UITableViewController {
             case 1:
                 timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
                 return timeCell ?? UITableViewCell()
-            case 2:  
+            case 2:
                 endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
                 return endTimeCell ?? UITableViewCell()
             case 3:
@@ -207,10 +205,10 @@ class CreateEventViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 2 && !self.locationSelected {
+        if indexPath.row == 3 && !self.locationSelected {
             self.locationSelected = !self.locationSelected
             tableView.beginUpdates()
-            let indexPaths = [NSIndexPath(forRow: 3, inSection: 0), NSIndexPath(forRow: 4, inSection: 0), NSIndexPath(forRow: 5, inSection: 0), NSIndexPath(forRow: 6, inSection: 0)]
+            let indexPaths = [NSIndexPath(forRow: 4, inSection: 0), NSIndexPath(forRow: 5, inSection: 0), NSIndexPath(forRow: 6, inSection: 0), NSIndexPath(forRow: 7, inSection: 0)]
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Middle)
             tableView.endUpdates()
         }
@@ -219,18 +217,18 @@ class CreateEventViewController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if locationSelected {
             switch indexPath.row {
-            case 7...8:
+            case 8...9:
                 return 120
-            case 9:
+            case 10:
                 return 100
             default:
                 return 50
             }
         } else {
             switch indexPath.row {
-            case 3...4:
+            case 4...5:
                 return 120
-            case 5:
+            case 6:
                 return 100
             default:
                 return 50
