@@ -43,10 +43,9 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     var isSignInPage = true
     
+    //let dummyLocation = Location(address: "341 S Main Street", city: "Salt Lake City", state: "UT", zipCode: "84111", latitude: 40.761819, longitude: -111.890561)
     
-    let dummyLocation = Location(address: "341 S Main Street", city: "Salt Lake City", state: "UT", zipCode: "84111", latitude: 40.761819, longitude: -111.890561)
-    
-    let dummyUser = User(firstName: "Andrew", lastName: "Madsen", events: [], paid: true, identifier: "fake_id")
+    //let dummyUser = User(firstName: "Andrew", lastName: "Madsen", events: [], paid: true, identifier: "fake_id")
     
     func setDelegatesForTextFields() {
         emailField.delegate = self
@@ -62,7 +61,7 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         setDelegatesForTextFields()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
-        loginOrSignUpButtonOutlet.setTitle("LOGIN", forState: .Normal)
+        loginOrSignUpButtonOutlet.setTitle("Login", forState: .Normal)
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
 
         
@@ -101,7 +100,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
+    static func unwindToSignIn(segue: UIStoryboardSegue) {
+        
     }
     
     

@@ -69,6 +69,7 @@ class UserController {
     static func logOutUser(){
         try! FIRAuth.auth()!.signOut()
         clearLocallySavedUserOnLogout()
+        UserController.shared.currentUser = nil
     }
     
     static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {

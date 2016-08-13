@@ -190,7 +190,7 @@
                             </barButtonItem>
                             <barButtonItem title="Log Out" id="THX-iJ-NiI">
                                 <connections>
-                                    <action selector="logOutButtonTapped:" destination="68G-yD-Hdw" id="aaQ-9o-E6c"/>
+                                    <action selector="logOutButtonTapped:" destination="68G-yD-Hdw" id="lYp-z1-B10"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -200,6 +200,7 @@
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                         <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
                         <segue destination="A7A-N2-rFU" kind="unwind" identifier="unwindToSignIn" unwindAction="unwindToSignIn:" id="ezK-en-SHF"/>
+                        <segue destination="ADo-ch-5Qm" kind="presentation" identifier="nonUnwindToLogin" id="YC7-dz-tzp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,6 +241,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxD-wh-P4G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="614" y="482"/>
+        </scene>
+        <!--SignInSignUp-->
+        <scene sceneID="vgK-yl-gig">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignInSignUp" id="ADo-ch-5Qm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gqz-TL-rFR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1699.5" y="62"/>
         </scene>
         <!--Category-->
         <scene sceneID="4pm-sl-BTF">

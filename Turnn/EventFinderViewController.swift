@@ -12,6 +12,8 @@ import CoreLocation
 
 class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MGLMapViewDelegate {
     
+    let signInSignUpVC = SignInSignUpViewController()
+    
     @IBOutlet weak var mapViewPlaceholderView: UIView!
     var mapView: MGLMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -33,7 +35,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadingIndicatorView = UIView(frame: CGRectMake((self.view.frame.width / 2) - 30, (self.view.frame.height / 2) - 90, 60, 60))
         loadingIndicatorView.layer.cornerRadius = 15
         loadingIndicatorView.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
@@ -248,7 +249,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Navigation
     
     @IBAction func logOutButtonTapped(sender: AnyObject) {
-        self.performSegueWithIdentifier("unwindToSignIn", sender: self)
+    
+        UserController.logOutUser()
+        
+    // THE BELOW LINE WILL EXECUTE IF AND ONLY IF THE USER LOGGED IN DURING THIS SESSION---AKA ONLY IF THE SIGNINSIGNUPVIEWCONTROLLER IS LOADED BEFORE THIS CODE IS EXECUTED. We have the App Delegate skipping over the signinsignup view controller if the user is already logged in---so maybe the received "unwindToSignIn" on the signinsignup view controller is a mystery when that page is skipped over. temp workaround is two lines below
+        //self.performSegueWithIdentifier("unwindToSignIn", sender: self)
+        //temp workaround, using "present modally" to storyboard ref
+        
+        self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -265,5 +273,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 eventDetailVC.event = event
             }
         }
+        
     }
 }
