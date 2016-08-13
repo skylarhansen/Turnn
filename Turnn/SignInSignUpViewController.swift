@@ -162,11 +162,10 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func signUp() {
+    func signUp(completion: (success: Bool) -> Void) {
         if let firstName = firstNameField.text where firstNameField.text != "",
             let email = emailField.text where emailField.text != "",
             let password = passwordField.text where passwordField.text != "" {
-            
             UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user, error) in
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
@@ -178,11 +177,10 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                     self.updateLoginView()
                 } else {
                     if error != nil {
-                        
                         if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
-                            
                             switch errCode {
-                                
+                            case .ErrorCodeTooManyRequests:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Too many recent account creation attempts from your device. Please wait a little while and try again.")
                             case .ErrorCodeInvalidEmail:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Invalid email address, please correct the address you entered and again.")
                             case .ErrorCodeWeakPassword:
@@ -194,19 +192,19 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                             case .ErrorCodeNetworkError:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Not able to connect to the network. Please test your connection and try again.")
                             default:
-                                self.createAlert("Error: \(errCode.rawValue)", message: "Login failed due to an unexpected error. 💩")
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Account creation failed due to an unexpected error. 💩")
                             }
                         }
                     }
                 }
             })
+            completion(success: true)
         }
     }
     
-    func login() {
+    func login(completion: (success: Bool) -> Void) {
         let email = emailField.text ?? ""
         let password = passwordField.text ?? ""
-        
         UserController.authUser(email, password: password, completion: { (user, error) in
             UserController.shared.currentUser = user
             if UserController.shared.currentUser != nil {
@@ -217,11 +215,10 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                 self.lastNameField.text = ""
             } else {
                 if error != nil {
-                    
                     if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
-                        
                         switch errCode {
-                            
+                        case .ErrorCodeTooManyRequests:
+                            self.createAlert("Error: \(errCode.rawValue)", message: "Too many recent login attempts from your device. Please wait a little while and try again.")
                         case .ErrorCodeInvalidEmail:
                             self.createAlert("Error: \(errCode.rawValue)", message: "Invalid email address, please try again.")
                         case .ErrorCodeWrongPassword:
@@ -241,6 +238,7 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         })
+         completion(success: true)
     }
     
     @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
@@ -248,13 +246,15 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
+        self.signUpOrInButtonOutlet.enabled = false
         if isSignInPage == false {
-            
-            signUp()
-            
+            signUp({ (success) in
+                self.signUpOrInButtonOutlet.enabled = true
+            })
         } else {
-            
-            login()
+            login({ (success) in
+                self.signUpOrInButtonOutlet.enabled = true
+            })
         }
     }
     
