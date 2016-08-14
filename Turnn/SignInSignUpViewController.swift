@@ -63,24 +63,23 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         haveAccountLabel.text = "Don't have an account?"
         loginOrSignUpButtonOutlet.setTitle("Login", forState: .Normal)
         signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
-
         
         // DUMMY EVENT CREATOR BELOW:
         
-//        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(30000), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
-//            
-//            if success {
-//                
-//            } else {
-//                print("CRAP THIS SUCKS.... (just give up)!")
-//            }
-//        })
+        //        EventController.createEvent("test event", location: dummyLocation, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(30000), categories: [Categories.Drinking.rawValue, Categories.Hackathon.rawValue, Categories.VideoGames.rawValue], eventDescription: "this is the best event there ever was", passwordProtected: false, password: nil, price: 10750.00, contactInfo: "1-800-coolest-party", image: nil, host: dummyUser, moreInfo: "this party requires that you bring glow sticks", completion: { (success) in
+        //
+        //            if success {
+        //
+        //            } else {
+        //                print("CRAP THIS SUCKS.... (just give up)!")
+        //            }
+        //        })
         
         // GENERAL NETWORK CONNECTIVELY ERROR MESSAGE ALERT SETUP BELOW--BUT DIDN'T WORK WHEN IT WAS TESTED THU 11 AUG 6PM
         
-//        if !Reachability.isConnectedToNetwork() {
-//            self.createAlert("Connection Failed", message: "Not able to connect to the network. Please test you connection and try again.")
-//        }
+        //        if !Reachability.isConnectedToNetwork() {
+        //            self.createAlert("Connection Failed", message: "Not able to connect to the network. Please test you connection and try again.")
+        //        }
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -163,12 +162,14 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func signUp(completion: (success: Bool) -> Void) {
+        
         if let firstName = firstNameField.text where firstNameField.text != "",
             let email = emailField.text where emailField.text != "",
             let password = passwordField.text where passwordField.text != "" {
             UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user, error) in
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
+                    completion(success: true)
                     self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
                     self.emailField.text = ""
                     self.passwordField.text = ""
@@ -196,64 +197,105 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                             }
                         }
                     }
+                    completion(success: false)
                 }
             })
-            completion(success: true)
         }
+        completion(success: false)
     }
     
-    func login(completion: (success: Bool) -> Void) {
-        let email = emailField.text ?? ""
-        let password = passwordField.text ?? ""
-        UserController.authUser(email, password: password, completion: { (user, error) in
-            UserController.shared.currentUser = user
-            if UserController.shared.currentUser != nil {
-                self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
-                self.emailField.text = ""
-                self.passwordField.text = ""
-                self.firstNameField.text = ""
-                self.lastNameField.text = ""
-            } else {
-                if error != nil {
-                    if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
-                        switch errCode {
-                        case .ErrorCodeTooManyRequests:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "Too many recent login attempts from your device. Please wait a little while and try again.")
-                        case .ErrorCodeInvalidEmail:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "Invalid email address, please try again.")
-                        case .ErrorCodeWrongPassword:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "Invalid password, please try again. If you forgot your password, please use the 'forgot password' button below.")
-                        case .ErrorCodeUserDisabled:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "Your account has been disabled, likely for the creation of inappropriate events.")
-                        case .ErrorCodeInternalError:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "Internal error. Please try again.")
-                        case .ErrorCodeNetworkError:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "Not able to connect to the network. Please test your connection and try again.")
-                        case .ErrorCodeUserNotFound:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "User not found! The account may not exist yet. Choose 'sign up' at the bottom of the page to create an account.")
-                        default:
-                            self.createAlert("Error: \(errCode.rawValue)", message: "Login failed due to an unexpected error. 💩")
+    func login(completion: (winsuccess: Bool) -> Void) {
+        
+        if let email = emailField.text where emailField.text != "",
+            let password = passwordField.text where passwordField.text != "" {
+            UserController.authUser(email, password: password, completion: { (user, error) in
+                UserController.shared.currentUser = user
+                if UserController.shared.currentUser != nil {
+                    completion(winsuccess: true)
+                    self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+                    self.emailField.text = ""
+                    self.passwordField.text = ""
+                    self.firstNameField.text = ""
+                    self.lastNameField.text = ""
+                } else {
+                    if error != nil {
+                        if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
+                            switch errCode {
+                            case .ErrorCodeTooManyRequests:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Too many recent login attempts from your device. Please wait a little while and try again.")
+                            case .ErrorCodeInvalidEmail:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Invalid email address, please try again.")
+                            case .ErrorCodeWrongPassword:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Invalid password, please try again. If you forgot your password, please use the 'forgot password' button below.")
+                            case .ErrorCodeUserDisabled:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Your account has been disabled, likely for the creation of inappropriate events.")
+                            case .ErrorCodeInternalError:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Internal error. Please try again.")
+                            case .ErrorCodeNetworkError:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Not able to connect to the network. Please test your connection and try again.")
+                            case .ErrorCodeUserNotFound:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "User not found! The account may not exist yet. Choose 'sign up' at the bottom of the page to create an account.")
+                            default:
+                                self.createAlert("Error: \(errCode.rawValue)", message: "Login failed due to an unexpected error. 💩")
+                            }
                         }
                     }
+                    completion(winsuccess: false)
                 }
-            }
-        })
-         completion(success: true)
+            })
+        }
+        completion(winsuccess: false)
     }
+    
     
     @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
         updateLoginView()
     }
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
-        self.signUpOrInButtonOutlet.enabled = false
+            self.loginOrSignUpButtonOutlet.enabled = false
+        
         if isSignInPage == false {
+    
             signUp({ (success) in
-                self.signUpOrInButtonOutlet.enabled = true
+                if success == true {
+                    
+                    let seconds = 3.0
+                    let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                        
+                        self.loginOrSignUpButtonOutlet.enabled = true
+                    })
+                    
+                }
+                
+                if success == false {
+                    
+                    self.loginOrSignUpButtonOutlet.enabled = true
+                }
+                
             })
         } else {
             login({ (success) in
-                self.signUpOrInButtonOutlet.enabled = true
+                if success == true {
+    
+                    let seconds = 3.0
+                    let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    
+                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                        
+                        self.loginOrSignUpButtonOutlet.enabled = true
+                    })
+                    
+                }
+                
+                if success == false {
+                    
+                    self.loginOrSignUpButtonOutlet.enabled = true
+                }
             })
         }
     }
