@@ -8,8 +8,9 @@
 
 import UIKit
 import Mapbox
+import MessageUI
 
-class EventDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGLMapViewDelegate {
+class EventDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGLMapViewDelegate, MFMailComposeViewControllerDelegate {
     
     var event: Event?
     
@@ -166,6 +167,51 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         default:
             return UITableViewCell()
+        }
+    }
+    
+    // MARK: - REPORTING, outlet is currently disconnected, ALSO
+    // DO NOT USE WITH MOCK DATA, our mock data events don't have identifiers,
+    // it will cause a crash. can leave optional but then it will
+    // print odd text in email report when we use the REAL DATA
+    
+    @IBAction func reportButtonTapped(sender: AnyObject) {
+        reportEvent()
+    }
+    
+    func showSendMailErrorAlert(){
+        let sendMailErrorAlert =
+            UIAlertController(title: "Couldn't Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .Alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel){ (action) in print(action)}
+        sendMailErrorAlert.addAction(dismissAction)
+        self.presentViewController(sendMailErrorAlert, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func reportEvent(){
+        if event != nil {
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            alert.addAction(UIAlertAction(title: "Report event as inappropriate", style: .Destructive) { action in
+                
+                if MFMailComposeViewController.canSendMail() {
+                    let composeVC = MFMailComposeViewController()
+                    composeVC.mailComposeDelegate = self
+                    composeVC.setToRecipients(["report@honestbadger.com"])
+                    composeVC.setSubject("Inappropriate Event Report")
+                    composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid\(self.event!.identifier!)\nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
+                    
+                    self.presentViewController(composeVC, animated: true, completion: nil)
+                } else {
+                    self.showSendMailErrorAlert()
+                }
+                
+                })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { action in
+                })
+            presentViewController(alert, animated: true, completion: nil)
         }
     }
 }
