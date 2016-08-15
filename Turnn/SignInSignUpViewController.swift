@@ -100,7 +100,6 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     static func unwindToSignIn(segue: UIStoryboardSegue) {
-        
     }
     
     
@@ -118,10 +117,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     func setBackgroundForView() {
         let blurEffect = UIBlurEffect(style: .Dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
-        
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
         imageView.contentMode = .Center
-        
         imageView.addSubview(blurView)
         self.view.insertSubview(imageView, atIndex: 0)
         blurView.frame = imageView.frame
@@ -161,21 +158,20 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func signUp(completion: (success: Bool) -> Void) {
-        
-        if let firstName = firstNameField.text where firstNameField.text != "",
+    func signUp() {
+         if let firstName = firstNameField.text where firstNameField.text != "",
             let email = emailField.text where emailField.text != "",
             let password = passwordField.text where passwordField.text != "" {
             UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user, error) in
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
-                    completion(success: true)
                     self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
                     self.emailField.text = ""
                     self.passwordField.text = ""
                     self.firstNameField.text = ""
                     self.lastNameField.text = ""
                     self.updateLoginView()
+                    self.loginOrSignUpButtonOutlet.enabled = true
                 } else {
                     if error != nil {
                         if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
@@ -196,27 +192,27 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Account creation failed due to an unexpected error. 💩")
                             }
                         }
+                        self.loginOrSignUpButtonOutlet.enabled = true
                     }
-                    completion(success: false)
                 }
             })
+         } else {
+            self.loginOrSignUpButtonOutlet.enabled = true
         }
-        completion(success: false)
     }
     
-    func login(completion: (winsuccess: Bool) -> Void) {
-        
-        if let email = emailField.text where emailField.text != "",
+    func login() {
+         if let email = emailField.text where emailField.text != "",
             let password = passwordField.text where passwordField.text != "" {
             UserController.authUser(email, password: password, completion: { (user, error) in
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
-                    completion(winsuccess: true)
                     self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
                     self.emailField.text = ""
                     self.passwordField.text = ""
                     self.firstNameField.text = ""
                     self.lastNameField.text = ""
+                    self.loginOrSignUpButtonOutlet.enabled = true
                 } else {
                     if error != nil {
                         if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
@@ -239,14 +235,14 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Login failed due to an unexpected error. 💩")
                             }
                         }
+                       self.loginOrSignUpButtonOutlet.enabled = true
                     }
-                    completion(winsuccess: false)
                 }
             })
+         } else {
+            self.loginOrSignUpButtonOutlet.enabled = true
         }
-        completion(winsuccess: false)
     }
-    
     
     @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
         updateLoginView()
@@ -254,49 +250,10 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
             self.loginOrSignUpButtonOutlet.enabled = false
-        
         if isSignInPage == false {
-    
-            signUp({ (success) in
-                if success == true {
-                    
-                    let seconds = 3.0
-                    let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                    
-                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                        
-                        self.loginOrSignUpButtonOutlet.enabled = true
-                    })
-                    
-                }
-                
-                if success == false {
-                    
-                    self.loginOrSignUpButtonOutlet.enabled = true
-                }
-                
-            })
+            signUp()
         } else {
-            login({ (success) in
-                if success == true {
-    
-                    let seconds = 3.0
-                    let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
-                    let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                    
-                    dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-                        
-                        self.loginOrSignUpButtonOutlet.enabled = true
-                    })
-                    
-                }
-                
-                if success == false {
-                    
-                    self.loginOrSignUpButtonOutlet.enabled = true
-                }
-            })
+            login()
         }
     }
     
@@ -321,6 +278,7 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         prompt.addAction(cancelAction)
         presentViewController(prompt, animated: true, completion: nil)
     }
+    
     func createAlert(title: String, message: String = "") {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
