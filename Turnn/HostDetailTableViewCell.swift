@@ -27,5 +27,4 @@ class HostDetailTableViewCell: UITableViewCell {
     func updateHostWithEvent(event: Event) {
         hostNameLabel.text = "\(event.host.firstName)  \((event.host.lastName ?? ""))"
     }
-
 }

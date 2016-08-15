@@ -17,7 +17,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var mapView: MGLMapView!
+    //@IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
@@ -41,19 +41,19 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         eventImageView.addSubview(visualEffectView2)
         
-        mapView.layer.borderWidth = 3
-        mapView.layer.borderColor = UIColor.blackColor().CGColor
-        mapView.layer.masksToBounds = false
-        mapView.layer.cornerRadius = mapView.frame.width/2
-        mapView.clipsToBounds = true
+//        mapView.layer.borderWidth = 3
+//        mapView.layer.borderColor = UIColor.blackColor().CGColor
+//        mapView.layer.masksToBounds = false
+//        mapView.layer.cornerRadius = mapView.frame.width/2
+//        mapView.clipsToBounds = true
         
-        let point = MGLPointAnnotation()
-        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
-        point.title = "Dev Mountain"
-        point.subtitle = "341 Main St Salt Lake City, U.S.A"
-        
-        mapView.addAnnotation(point)
-        
+//        let point = MGLPointAnnotation()
+//        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
+//        point.title = "Dev Mountain"
+//        point.subtitle = "341 Main St Salt Lake City, U.S.A"
+//        
+//        mapView.addAnnotation(point)
+//        
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
