@@ -16,6 +16,8 @@
 		8C1C60931D5002860015FAC5 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1C60921D5002860015FAC5 /* FirebaseController.swift */; };
 		8C72A2CD1D510D50008301CC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */; };
 		8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */; };
+		8CC7E5001D623699000C694D /* MoreInfoDetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7E4FF1D623699000C694D /* MoreInfoDetailLabel.swift */; };
+		8CC7E5021D623768000C694D /* DetailedDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC7E5011D623768000C694D /* DetailedDescriptionLabel.swift */; };
 		950DC8501D51045500601BC5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DC84F1D51045500601BC5 /* Extensions.swift */; };
 		950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */; };
 		9516EC701D554ADF00A144BC /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516EC6F1D554ADF00A144BC /* UserController.swift */; };
@@ -92,6 +94,8 @@
 		8C1C60921D5002860015FAC5 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
+		8CC7E4FF1D623699000C694D /* MoreInfoDetailLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoDetailLabel.swift; sourceTree = "<group>"; };
+		8CC7E5011D623768000C694D /* DetailedDescriptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedDescriptionLabel.swift; sourceTree = "<group>"; };
 		950DC84F1D51045500601BC5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		950DC8541D510CC200601BC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Turnn/Base.lproj/SignInSignUp.storyboard; sourceTree = "<group>"; };
 		9516EC6F1D554ADF00A144BC /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -321,7 +325,9 @@
 				CCE9DEB81D5298A700363A98 /* PriceDetailTableViewCell.swift */,
 				CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */,
 				CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */,
+				8CC7E5011D623768000C694D /* DetailedDescriptionLabel.swift */,
 				CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */,
+				8CC7E4FF1D623699000C694D /* MoreInfoDetailLabel.swift */,
 			);
 			name = "Event Detail View";
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
 				95E595431D51460900416B2A /* LocationTableViewCell.swift in Sources */,
 				95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */,
+				8CC7E5021D623768000C694D /* DetailedDescriptionLabel.swift in Sources */,
 				8C72A2CD1D510D50008301CC /* CategoryCollectionViewCell.swift in Sources */,
 				959163301D524DC700C23C24 /* HostTableViewCell.swift in Sources */,
 				CCFE38061D5BE294007F99DD /* StateTableViewCell.swift in Sources */,
@@ -557,6 +564,7 @@
 				95FDAF9D1D5A41E000191DE4 /* GeoFireController.swift in Sources */,
 				CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */,
 				CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */,
+				8CC7E5001D623699000C694D /* MoreInfoDetailLabel.swift in Sources */,
 				950DC8501D51045500601BC5 /* Extensions.swift in Sources */,
 				95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */,
 				95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */,
