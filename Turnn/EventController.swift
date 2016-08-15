@@ -92,7 +92,7 @@ class EventController {
         
         let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
         
-        let event1 = Event(title: "Hey! 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "I'm testing to see what this will look like if I put a really long string into the box so here goes: Tim Duncan, Tony Parker, Manu Ginobili, Kawhi Leonard, Gregg Popovich 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event1 = Event(title: "There's an event that's a 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "I'm testing to see what this will look like if I put a really long string into the box so here goes: Tim Duncan, Tony Parker, Manu Ginobili, Kawhi Leonard, Gregg Popovich 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
         
         let event2 = Event(title: "Hey! 2", location: mockLocation2, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,2,1,5], eventDescription: "Nice Event Man! 2", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
         

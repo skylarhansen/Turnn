@@ -18,6 +18,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     //@IBOutlet weak var mapView: MGLMapView!
+    @IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
@@ -41,11 +42,11 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         eventImageView.addSubview(visualEffectView2)
         
-//        mapView.layer.borderWidth = 3
-//        mapView.layer.borderColor = UIColor.blackColor().CGColor
-//        mapView.layer.masksToBounds = false
-//        mapView.layer.cornerRadius = mapView.frame.width/2
-//        mapView.clipsToBounds = true
+        mapImageView.layer.borderWidth = 3
+        mapImageView.layer.borderColor = UIColor.blackColor().CGColor
+        mapImageView.layer.masksToBounds = false
+        mapImageView.layer.cornerRadius = mapImageView.frame.width/2
+        mapImageView.clipsToBounds = true
         
 //        let point = MGLPointAnnotation()
 //        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
@@ -70,10 +71,6 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         let string = NSAttributedString(string: "Back to Events", attributes: [NSForegroundColorAttributeName: UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)])
         backButton.setAttributedTitle(string, forState: .Normal)
         backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-//        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
-//        backButton.layer.borderWidth = 1
-//        backButton.layer.cornerRadius = 8
-//        backButton.layer.masksToBounds = true
     }
     
     func loadImageViews(images: [UIImage]) {
