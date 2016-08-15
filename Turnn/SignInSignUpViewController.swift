@@ -82,6 +82,20 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         //        }
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        if textField == emailField {
+            return newLength <= 35
+        } else if textField == passwordField {
+            return newLength <= 25
+        } else if textField == firstNameField {
+            return newLength <= 25
+        } else if textField == lastNameField {
+            return newLength <= 25
+        }
+        return true
+    }
+
     func textFieldDidBeginEditing(textField: UITextField) {
         UIView.animateWithDuration(0.5) {
             self.centerYConstraint.constant = -65
