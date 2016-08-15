@@ -76,7 +76,7 @@
                                     <constraint firstItem="ykc-uP-z6k" firstAttribute="leading" secondItem="s8i-2x-d6t" secondAttribute="leading" constant="35" id="rsf-F7-3Fj"/>
                                 </constraints>
                             </view>
-                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" sectionIndexMinimumDisplayRowCount="-1" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Lr-va-uyx">
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="-1" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Lr-va-uyx">
                                 <rect key="frame" x="0.0" y="224" width="375" height="443"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -84,6 +84,8 @@
                                     <constraint firstAttribute="width" constant="375" id="C3x-NK-kOR"/>
                                     <constraint firstAttribute="height" constant="439" id="Juq-AU-s9p"/>
                                 </constraints>
+                                <color key="separatorColor" red="0.0" green="0.59215686270000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hostDetailCell" id="7mc-70-XVi" customClass="HostDetailTableViewCell" customModule="Turnn" customModuleProvider="target">
