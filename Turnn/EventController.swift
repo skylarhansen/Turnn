@@ -46,6 +46,21 @@ class EventController {
         })
     }
     
+    static func filterEventsByCategories(events: [Event], categories: [Int]) -> [Event]? {
+        let filteredEvents = NSMutableSet()
+        for event in events {
+            for eventCategory in event.categories {
+                for category in categories {
+                    if category == eventCategory {
+                        filteredEvents.addObject(event)
+                    }
+                }
+            }
+        }
+        
+        return filteredEvents.allObjects as? [Event]
+    }
+    
     // Gets particular events with identifiers -> Completes with [Event]
     static func fetchEventsThatMatchQuery(eventIDs: [String], completion: (events: [Event]?) -> Void) {
         var events: [Event] = []
