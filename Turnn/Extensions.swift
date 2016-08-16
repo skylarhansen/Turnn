@@ -53,7 +53,7 @@ extension NSDate {
 extension UIColor {
     
     class func turnnGray() -> UIColor {
-        return UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
+        return UIColor(red: 0.184, green: 0.184, blue: 0.184, alpha: 1.00)
     }
     
     class func turnnBlue() -> UIColor {
@@ -104,6 +104,11 @@ extension Double {
         return result
         
     }
+    
+    func makeMeters() -> Double {
+        let result = self * 1609.344
+        return result
+    }
 }
 
 extension Event {
@@ -121,8 +126,12 @@ extension Event {
 
 extension String {
     
-    static func autoformatAddressForGPSAquisition(event: Event) -> String {
+    static func autoformatAddressForGPSAquisitionWith(event: Event) -> String {
         return event.location.address + ", " + event.location.city + ", " + event.location.state + ", " + event.location.zipCode
+    }
+    
+    static func autoformatAddressForGPSAquistionWith(address: String, city: String, state: String, zipCode: String) -> String {
+        return address + ", " + city + ", " + state + ", " + zipCode
     }
     
     static func printEvents(currentEvents: [Event], oldEvents: [Event]) {

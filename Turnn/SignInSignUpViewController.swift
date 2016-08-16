@@ -118,8 +118,8 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     
     func setupViewUI() {
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.184, green: 0.184, blue: 0.184, alpha: 1.00)
+        self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         setBackgroundForView()
     }

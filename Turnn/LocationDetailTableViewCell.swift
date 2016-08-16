@@ -17,7 +17,7 @@ class LocationDetailTableViewCell: UITableViewCell {
     }
 
     
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var addressLabel: TurnnCopyableLabel!
     @IBOutlet weak var streetNumberLabel: UILabel!
     @IBOutlet weak var cityStateLabel: UILabel!
     @IBOutlet weak var zipcodeLabel: UILabel!
@@ -29,8 +29,9 @@ class LocationDetailTableViewCell: UITableViewCell {
     }
     
     func updateLocationWithEvent(event: Event) {
-        streetNumberLabel.text = event.location.address
-        cityStateLabel.text = "\(event.location.city), \(event.location.state)"
-        zipcodeLabel.text = event.location.zipCode
+        addressLabel.text = "\(event.location.address)\n\(event.location.city), \(event.location.state)\n\(event.location.zipCode)"
+        //        streetNumberLabel.text = event.location.address
+        //        cityStateLabel.text = "\(event.location.city), \(event.location.state)"
+        //        zipcodeLabel.text = event.location.zipCode
     }
 }

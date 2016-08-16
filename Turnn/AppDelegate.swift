@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         FIRApp.configure()
         if UserController.shared.currentUser == nil {
         let storyboard = UIStoryboard(name: "SignInSignUp", bundle: nil)

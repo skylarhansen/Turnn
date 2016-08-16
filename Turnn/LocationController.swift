@@ -29,7 +29,7 @@ class LocationController {
     func forwardGeocoding(event: Event, completion: (location: CLLocation?, error: String?) -> Void) {
         var coordinate: CLLocationCoordinate2D?
         var event = event
-        let address = String.autoformatAddressForGPSAquisition(event)
+        let address = String.autoformatAddressForGPSAquisitionWith(event)
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
                 print(error)
@@ -54,4 +54,29 @@ class LocationController {
             }
         })
     }
+    
+    func forwardGeocoding(address: String, completion: (location: CLLocation?, error: String?) -> Void) {
+        var coordinate: CLLocationCoordinate2D?
+        CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+                completion(location: nil, error: "\(error?.localizedDescription)")
+            }
+            if placemarks?.count > 0 {
+                let placemark = placemarks?[0]
+                let location = placemark?.location
+                coordinate = location?.coordinate
+                //print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                
+                if let coordinate = coordinate {
+                    completion(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), error: nil)
+                } else {
+                    completion(location: nil, error: "Could not unwrap a value for coordinate")
+                }
+            } else {
+                completion(location: nil, error: "Placemark Count <= 0")
+            }
+        })
+    }
+
 }
