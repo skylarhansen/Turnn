@@ -142,9 +142,10 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         case 1:
             let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
-            locationDetailCell?.streetNumberLabel.text = event?.location.address
-            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
-            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
+            locationDetailCell?.updateLocationWithEvent(event!)
+//            locationDetailCell?.streetNumberLabel.text = event?.location.address
+//            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
+//            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
             return locationDetailCell ?? UITableViewCell()
             
         case 2:

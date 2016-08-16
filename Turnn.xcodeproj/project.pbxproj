@@ -60,6 +60,7 @@
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
 		CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C11F6B1D58E8FC00999A5E /* GeoFire.framework */; };
+		DB315C271D638F6000A07DCE /* TurnnCopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C261D638F6000A07DCE /* TurnnCopyableLabel.swift */; };
 		DB36A3671D6220CA000B65C5 /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36A3661D6220CA000B65C5 /* LogOutView.swift */; };
 		DB36A3691D62D22B000B65C5 /* EventRadiusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36A3681D62D22B000B65C5 /* EventRadiusButton.swift */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
@@ -137,6 +138,7 @@
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
 		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
+		DB315C261D638F6000A07DCE /* TurnnCopyableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnCopyableLabel.swift; sourceTree = "<group>"; };
 		DB36A3661D6220CA000B65C5 /* LogOutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
 		DB36A3681D62D22B000B65C5 /* EventRadiusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRadiusButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -322,6 +324,7 @@
 		CE52B9961D525AF500E1C7E9 /* Event Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				DB315C261D638F6000A07DCE /* TurnnCopyableLabel.swift */,
 				9591632D1D524DA500C23C24 /* EventDetailViewController.swift */,
 				CCE9DEB61D52989C00363A98 /* HostDetailTableViewCell.swift */,
 				CCE9DEB81D5298A700363A98 /* PriceDetailTableViewCell.swift */,
@@ -542,6 +545,7 @@
 				95E595451D51460900416B2A /* TimeTableViewCell.swift in Sources */,
 				956EF9A21D53FC8B000389A6 /* FirebaseDataStructure.swift in Sources */,
 				95E595461D51460900416B2A /* TitleTableViewCell.swift in Sources */,
+				DB315C271D638F6000A07DCE /* TurnnCopyableLabel.swift in Sources */,
 				95E595411D51460900416B2A /* DescriptionTableViewCell.swift in Sources */,
 				95C11F691D58E4FB00999A5E /* LocationController.swift in Sources */,
 				CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */,
