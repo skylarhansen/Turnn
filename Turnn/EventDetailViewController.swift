@@ -20,7 +20,6 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var backgroundImageView: UIImageView!
     //@IBOutlet weak var mapView: MGLMapView!
     @IBOutlet weak var mapImageView: UIImageView!
-    @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventEndTimeLabel: UILabel!
@@ -31,17 +30,11 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
         
         visualEffectView.frame = self.view.bounds
         
         backgroundImageView.addSubview(visualEffectView)
-        
-        let visualEffectView2 = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
-        
-        visualEffectView2.frame = self.view.bounds
-        
-        eventImageView.addSubview(visualEffectView2)
         
         mapImageView.layer.borderWidth = 3
         mapImageView.layer.borderColor = UIColor.blackColor().CGColor
@@ -49,13 +42,6 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         mapImageView.layer.cornerRadius = mapImageView.frame.width/2
         mapImageView.clipsToBounds = true
         
-//        let point = MGLPointAnnotation()
-//        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
-//        point.title = "Dev Mountain"
-//        point.subtitle = "341 Main St Salt Lake City, U.S.A"
-//        
-//        mapView.addAnnotation(point)
-//        
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
