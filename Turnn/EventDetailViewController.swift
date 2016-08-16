@@ -31,7 +31,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
         
         visualEffectView.frame = self.view.bounds
         
@@ -49,13 +49,6 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
 //        mapImageView.layer.cornerRadius = mapImageView.frame.width/2
 //        mapImageView.clipsToBounds = true
         
-//        let point = MGLPointAnnotation()
-//        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
-//        point.title = "Dev Mountain"
-//        point.subtitle = "341 Main St Salt Lake City, U.S.A"
-//        
-//        mapView.addAnnotation(point)
-//        
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
