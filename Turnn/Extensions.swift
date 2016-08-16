@@ -53,7 +53,7 @@ extension NSDate {
 extension UIColor {
     
     class func turnnGray() -> UIColor {
-        return UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
+        return UIColor(red: 0.184, green: 0.184, blue: 0.184, alpha: 1.00)
     }
     
     class func turnnBlue() -> UIColor {
@@ -103,6 +103,11 @@ extension Double {
         let result = self * 1.60934
         return result
         
+    }
+    
+    func makeMeters() -> Double {
+        let result = self * 1609.344
+        return result
     }
 }
 

@@ -7,23 +7,35 @@
 //
 
 import UIKit
-import Mapbox
+import MapKit
 import CoreLocation
 
-class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MGLMapViewDelegate {
+class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
     let signInSignUpVC = SignInSignUpViewController()
     
     @IBOutlet weak var mapViewPlaceholderView: UIView!
-    var mapView: MGLMapView!
+    var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var moreOptionsButton: UIBarButtonItem!
+    var moreOptionsOn = false
+    
+    var adjustMilesView: LogOutView!
+    var logOutView: LogOutView!
+    var topMilesButton: EventRadiusButton!
+    var midMilesButton: EventRadiusButton!
+    var lowMilesButton: EventRadiusButton!
+    var lowestMilesButton: EventRadiusButton!
     
     let locationManager = CLLocationManager()
     var search: Location?
-    var annotation: [MGLPointAnnotation]?
+    var annotation: [MKPointAnnotation]?
     var events: [Event] = []
     
-    var annotations = [MGLAnnotation]()
+    var mapCenter: CLLocationCoordinate2D!
+    
+    var annotations = [MKAnnotation]()
     var usersCurrentLocation: CLLocation? {
         return locationManager.location
     }
@@ -32,6 +44,15 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var loadingIndicatorView: UIView!
     
     var selectedIndexPath: NSIndexPath?
+    
+    enum Miles: Int {
+        case Fifteen = 15
+        case Ten = 10
+        case Five = 5
+        case One = 1
+    }
+    
+    var selectedRadius: Miles = .Five
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +70,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        let styleURL = NSURL(string: "mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk")
+        //let styleURL = NSURL(string: "mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk")
         
         self.view.layoutSubviews()
-        self.mapView = MGLMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height), styleURL: styleURL)
+        self.mapView = MKMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height))
         
         self.mapView.delegate = self
         self.view.addSubview(mapView)
@@ -72,6 +93,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.startUpdatingLocation()
         }
+        
         setupTableViewUI()
         
         /*
@@ -101,19 +123,19 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        self.mapView.delegate = nil
-        self.mapView.removeFromSuperview()
-        self.mapView = nil
+        //self.mapView.delegate = nil
+        //self.mapView.removeFromSuperview()
+        //self.mapView = nil
     }
     
     func displayEvents() {
         for event in events {
-            let point = MGLPointAnnotation()
+            let point = MKPointAnnotation()
             if let latitude = event.location.latitude, longitude = event.location.longitude {
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
         
-            mapView.userTrackingMode = MGLUserTrackingMode(rawValue: 2)!
+            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
@@ -121,34 +143,34 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    func mapView(mapView: MGLMapView, viewForAnnotation annotation: MGLAnnotation) -> MGLAnnotationView? {
-        // This example is only concerned with point annotations.
-        guard annotation is MGLPointAnnotation else {
-            return nil
-        }
-        
-        let reuseIdentifier = "\(annotation.coordinate.longitude)"
-        
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
-        
-        if annotationView == nil {
-            annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
-            annotationView!.frame = CGRectMake(0, 40, 25, 25)
-            
-            // Set the annotation view’s background color to a value determined by its longitude.
-            _ = CGFloat(annotation.coordinate.longitude) / 100
-            annotationView!.backgroundColor = UIColor(hue: 0.10, saturation: 0.64, brightness: 0.98, alpha: 1.00)
-        }
-        return annotationView
-    }
+//    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//        // This example is only concerned with point annotations.
+//        guard annotation is MKPointAnnotation else {
+//            return nil
+//        }
+//        
+//        //let reuseIdentifier = "\(annotation.coordinate.longitude)"
+//        
+//        //var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseIdentifier)
+//        
+////        if annotationView == nil {
+////            annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
+////            annotationView!.frame = CGRectMake(0, 40, 25, 25)
+////            
+////            // Set the annotation view’s background color to a value determined by its longitude.
+////            _ = CGFloat(annotation.coordinate.longitude) / 100
+////            annotationView!.backgroundColor = UIColor(hue: 0.10, saturation: 0.64, brightness: 0.98, alpha: 1.00)
+////        }
+////        return annotationView
+//    }
     
     // MGLAnnotationView subclass
-    class CustomAnnotationView: MGLAnnotationView {
+    class CustomAnnotationView: MKAnnotationView {
         override func layoutSubviews() {
             super.layoutSubviews()
             
             // Force the annotation view to maintain a constant size when the map is tilted.
-            scalesWithViewingDistance = false
+            //scalesWithViewingDistance = false
             
             // Use CALayer’s corner radius to turn this view into a circle.
             layer.cornerRadius = frame.width / 2
@@ -165,8 +187,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func setupTableViewUI() {
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)
+        self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
+        self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
         self.tableView.separatorColor = .whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         setBackgroundAndTableView()
@@ -190,9 +212,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // let location = locations.last
-        let center = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        self.mapView.setCenterCoordinate(center, zoomLevel: 12, animated: true)
-        _ = MGLCoordinateSpanMake(0.005, 0.005)
+        mapCenter = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
+        self.mapView.setCenterCoordinate(mapCenter, animated: true)
+        _ = MKCoordinateSpanMake(0.005, 0.005)
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -200,11 +222,11 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
     }
     
-    func mapViewUpdated(mapView: MGLMapView, didUpdateUserLocation userLocation: MGLUserLocation) {
+    func mapViewUpdated(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("UPDATED")
     }
     
-    func mapView(mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
+    func mapView(mapView: MKMapView, annotationCanShowCallout annotation: MKAnnotation) -> Bool {
         // Always try to show a callout when an annotation is tapped.
         return true
     }
@@ -228,18 +250,18 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return eventCell ?? UITableViewCell()
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? EFHeaderCellTableViewCell
-        headerCell?.backgroundColor = UIColor.turnnGray()
-        headerCell?.headerLabel.text = "Events"
-        headerCell?.headerLabel.textColor = UIColor.turnnWhite()
-        headerCell?.layer.borderWidth = 1
-        headerCell?.layer.borderColor = UIColor.turnnBlue().CGColor
-        headerCell?.layer.masksToBounds = false
-        //headerCell?.layer.cornerRadius = 5
-        headerCell?.clipsToBounds = true
-        return headerCell
-    }
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? EFHeaderCellTableViewCell
+//        headerCell?.backgroundColor = UIColor.turnnGray()
+//        headerCell?.headerLabel.text = "Events"
+//        headerCell?.headerLabel.textColor = UIColor.turnnWhite()
+//        headerCell?.layer.borderWidth = 1
+//        headerCell?.layer.borderColor = UIColor.turnnBlue().CGColor
+//        headerCell?.layer.masksToBounds = false
+//        //headerCell?.layer.cornerRadius = 5
+//        headerCell?.clipsToBounds = true
+//        return headerCell
+//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedIndexPath = indexPath
@@ -248,15 +270,26 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     // MARK: - Navigation
     
-    @IBAction func logOutButtonTapped(sender: AnyObject) {
+    @IBAction func moreOptionsButtonTapped(sender: AnyObject) {
     
-        UserController.logOutUser()
+        moreOptionsOn = !moreOptionsOn
         
-    // THE BELOW LINE WILL EXECUTE IF AND ONLY IF THE USER LOGGED IN DURING THIS SESSION---AKA ONLY IF THE SIGNINSIGNUPVIEWCONTROLLER IS LOADED BEFORE THIS CODE IS EXECUTED. We have the App Delegate skipping over the signinsignup view controller if the user is already logged in---so maybe the received "unwindToSignIn" on the signinsignup view controller is a mystery when that page is skipped over. temp workaround is two lines below
+        addAccessoryViews(moreOptionsOn)
+    }
+    
+    func categoriesButtonTapped() {
+        self.performSegueWithIdentifier("toCategoriesSegue", sender: nil)
+    }
+    
+    func logoutButtonTapped() {
+        print("logged out tapped")
+        //UserController.logOutUser()
+        
+        // THE BELOW LINE WILL EXECUTE IF AND ONLY IF THE USER LOGGED IN DURING THIS SESSION---AKA ONLY IF THE SIGNINSIGNUPVIEWCONTROLLER IS LOADED BEFORE THIS CODE IS EXECUTED. We have the App Delegate skipping over the signinsignup view controller if the user is already logged in---so maybe the received "unwindToSignIn" on the signinsignup view controller is a mystery when that page is skipped over. temp workaround is two lines below
         //self.performSegueWithIdentifier("unwindToSignIn", sender: self)
         //temp workaround, using "present modally" to storyboard ref
         
-        self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
+        //self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -275,4 +308,137 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         
     }
+    
+    func addAccessoryViews(show: Bool) {
+        if show {
+            logOutView = LogOutView(frame: CGRectMake(self.mapViewPlaceholderView.frame.width + 5, 78, self.mapViewPlaceholderView.frame.width + 20, 35))
+            //adjustMilesView = LogOutView(frame: CGRectMake(self.mapViewPlaceholderView.frame.width + 5, 123, self.mapViewPlaceholderView.frame.width + 20, 35))
+
+            let filterButton = UIButton(frame: CGRectMake(0,0,logOutView.frame.width / 2 - 20, logOutView.frame.height))
+            filterButton.setTitle("Filter", forState: .Normal)
+            filterButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            filterButton.addTarget(self, action: #selector(categoriesButtonTapped), forControlEvents: .TouchUpInside)
+            
+            let logoutButton = UIButton(frame: CGRectMake(self.logOutView.frame.width / 2 - 20,0, self.logOutView.frame.width / 2 - 20, logOutView.frame.height))
+            logoutButton.setTitle("Log Out", forState: .Normal)
+            logoutButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            
+            topMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width + 5, 123, 40, 40))
+            topMilesButton.setTitle("15", forState: .Normal)
+            topMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            topMilesButton.tag = Miles.Fifteen.rawValue
+            topMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+            
+            midMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width + 5, 123, 40, 40))
+            midMilesButton.setTitle("10", forState: .Normal)
+            midMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            midMilesButton.tag = Miles.Ten.rawValue
+            midMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+            
+            lowMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width + 5, 123, 40, 40))
+            lowMilesButton.setTitle("5", forState: .Normal)
+            lowMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            lowMilesButton.tag = Miles.Five.rawValue
+            lowMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+            
+            lowestMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width + 5, 123, 40, 40))
+            lowestMilesButton.setTitle("1", forState: .Normal)
+            lowestMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            lowestMilesButton.tag = Miles.One.rawValue
+            lowestMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+            
+            //self.view.addSubview(adjustMilesView)
+            self.view.addSubview(logOutView)
+            self.logOutView.addSubview(filterButton)
+            self.logOutView.addSubview(logoutButton)
+            self.view.addSubview(topMilesButton)
+            self.view.addSubview(midMilesButton)
+            self.view.addSubview(lowMilesButton)
+            self.view.addSubview(lowestMilesButton)
+            
+            UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
+                self.logOutView.alpha = 0.9
+                self.logOutView.frame = CGRect(x: 10, y: 78, width: self.view.frame.width + 20, height: 35)
+                self.topMilesButton.frame = CGRectMake(self.view.frame.width - 275, 123, 40, 40)
+                self.midMilesButton.frame = CGRectMake(self.view.frame.width - 205, 123, 40, 40)
+                self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 135, 123, 40, 40)
+                self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 65, 123, 40, 40)
+                
+                //self.adjustMilesView.alpha = 0.9
+                //self.adjustMilesView.frame = CGRect(x: 10, y: 123, width: self.view.frame.width + 20, height: 35)
+                }, completion: nil)
+        } else {
+            dismissAccessoryViews()
+        }
+    }
+    
+    func changeRadius(sender: UIButton) {
+        self.moreOptionsOn = false
+        switch sender.tag {
+        case Miles.Fifteen.rawValue:
+            self.selectedRadius = Miles.Fifteen
+            dismissAccessoryViews()
+            let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(Miles.Fifteen.rawValue).makeMeters(), Double(Miles.Fifteen.rawValue).makeMeters())
+            self.mapView.setRegion(region, animated: true)
+            print(self.selectedRadius)
+            break
+        case Miles.Ten.rawValue:
+            self.selectedRadius = Miles.Ten
+            dismissAccessoryViews()
+            let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(Miles.Ten.rawValue).makeMeters(), Double(Miles.Ten.rawValue).makeMeters())
+            self.mapView.setRegion(region, animated: true)
+            print(self.selectedRadius)
+            break
+        case Miles.Five.rawValue:
+            self.selectedRadius = Miles.Five
+            dismissAccessoryViews()
+            let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(Miles.Five.rawValue).makeMeters(), Double(Miles.Five.rawValue).makeMeters())
+            self.mapView.setRegion(region, animated: true)
+            print(self.selectedRadius)
+            break
+        case Miles.One.rawValue:
+            self.selectedRadius = Miles.One
+            dismissAccessoryViews()
+            let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(Miles.One.rawValue).makeMeters(), Double(Miles.One.rawValue).makeMeters())
+            self.mapView.setRegion(region, animated: true)
+            print(self.selectedRadius)
+            break
+        default:
+            break
+        }
+    }
+    
+    func dismissAccessoryViews() {
+        UIView.animateWithDuration(0.4, animations: {
+            self.logOutView.alpha = 0.0
+            self.logOutView.frame = CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 78, width: self.view.frame.width + 20, height: 35)
+            self.topMilesButton.frame = CGRectMake(self.view.frame.width + 5, 123, 40, 40)
+            self.midMilesButton.frame = CGRectMake(self.view.frame.width + 5, 123, 40, 40)
+            self.lowMilesButton.frame = CGRectMake(self.view.frame.width + 5, 123, 40, 40)
+            self.lowestMilesButton.frame = CGRectMake(self.view.frame.width + 5, 123, 40, 40)
+            //self.adjustMilesView.alpha = 0.0
+            //self.adjustMilesView.frame = CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 123, width: self.view.frame.width + 20, height: 35)
+            }, completion: { _ in
+                self.logOutView.removeFromSuperview()
+                self.topMilesButton.removeFromSuperview()
+                self.midMilesButton.removeFromSuperview()
+                self.lowMilesButton.removeFromSuperview()
+                self.lowestMilesButton.removeFromSuperview()
+                //self.adjustMilesView.removeFromSuperview()
+        })
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
