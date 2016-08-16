@@ -34,16 +34,19 @@ class EventController {
         }
     }
     
-    static func fetchEvents(completion: (events: [Event]) -> Void){
-        eventData.observeEventType(.Value, withBlock: { (dataSnapshot) in
-            guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
-                completion(events: [])
-                return
-            }
-            let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
-            completion(events: events)
-        })
-    }
+//      NOT NECESSARY LONG-TERM, IS A WAY TO CONSTANTLY OBSERVE ALL EVENTS, REGARDLESS OF LOCATION.
+//          may be helpful for testing events without having to be crazy particular about radius
+//
+//    static func fetchEvents(completion: (events: [Event]) -> Void){
+//        eventData.observeEventType(.Value, withBlock: { (dataSnapshot) in
+//            guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
+//                completion(events: [])
+//                return
+//            }
+//            let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
+//            completion(events: events)
+//        })
+//    }
     
     // Gets particular events with identifiers -> Completes with [Event]
     static func fetchEventsThatMatchQuery(eventIDs: [String], completion: (events: [Event]?) -> Void) {
