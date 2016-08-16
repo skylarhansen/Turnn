@@ -21,8 +21,8 @@ class EventRadiusButton: UIButton {
     }
     
     func setupView() {
-        self.makeCircular()
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = true
         self.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.9)
-        self.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
     }
 }
