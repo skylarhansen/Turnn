@@ -20,7 +20,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var backgroundImageView: UIImageView!
     //@IBOutlet weak var mapView: MGLMapView!
     //@IBOutlet weak var mapImageView: UIImageView!
-    @IBOutlet weak var eventImageView: UIImageView!
+    //@IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventEndTimeLabel: UILabel!
@@ -41,7 +41,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         visualEffectView2.frame = self.view.bounds
         
-        eventImageView.addSubview(visualEffectView2)
+        //eventImageView.addSubview(visualEffectView2)
         
 //        mapImageView.layer.borderWidth = 3
 //        mapImageView.layer.borderColor = UIColor.blackColor().CGColor

@@ -26,7 +26,6 @@
 		955D18621D5D474E0010C73A /* TurnnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955D18611D5D474E0010C73A /* TurnnButton.swift */; };
 		956EF9A21D53FC8B000389A6 /* FirebaseDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */; };
 		957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FDB1D5250AC00596A18 /* Category.storyboard */; };
-		957C4FE01D5250B600596A18 /* EventDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */; };
 		957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */; };
 		9591632E1D524DA500C23C24 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632D1D524DA500C23C24 /* EventDetailViewController.swift */; };
 		959163301D524DC700C23C24 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632F1D524DC700C23C24 /* HostTableViewCell.swift */; };
@@ -65,6 +64,7 @@
 		DB315C291D63BD5100A07DCE /* EventRadiusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */; };
 		DB315C2B1D63BD8300A07DCE /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2A1D63BD8300A07DCE /* LogOutView.swift */; };
 		DB315C2D1D63BDA000A07DCE /* TurnnCopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */; };
+		DB315C321D63D14D00A07DCE /* EventDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB315C301D63D14D00A07DCE /* EventDetailView.storyboard */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +107,6 @@
 		955D18611D5D474E0010C73A /* TurnnButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnButton.swift; sourceTree = "<group>"; };
 		956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataStructure.swift; sourceTree = "<group>"; };
 		957C4FDC1D5250AC00596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Category.storyboard; sourceTree = "<group>"; };
-		957C4FDF1D5250B600596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventDetailView.storyboard; sourceTree = "<group>"; };
 		957C4FE21D5250BB00596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateEvent.storyboard; sourceTree = "<group>"; };
 		9591632D1D524DA500C23C24 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		9591632F1D524DC700C23C24 /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
@@ -145,6 +144,7 @@
 		DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRadiusButton.swift; sourceTree = "<group>"; };
 		DB315C2A1D63BD8300A07DCE /* LogOutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
 		DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnCopyableLabel.swift; sourceTree = "<group>"; };
+		DB315C311D63D14D00A07DCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventDetailView.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,8 +212,8 @@
 			children = (
 				95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */,
 				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
+				DB315C301D63D14D00A07DCE /* EventDetailView.storyboard */,
 				CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */,
-				957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */,
 				957C4FDB1D5250AC00596A18 /* Category.storyboard */,
 				957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */,
 			);
@@ -414,11 +414,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				95CC83161D5E516A00F075F4 /* LaunchScreen.storyboard in Resources */,
-				957C4FE01D5250B600596A18 /* EventDetailView.storyboard in Resources */,
 				957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
+				DB315C321D63D14D00A07DCE /* EventDetailView.storyboard in Resources */,
 				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
 				CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */,
 				95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */,
@@ -607,14 +607,6 @@
 			name = Category.storyboard;
 			sourceTree = "<group>";
 		};
-		957C4FDE1D5250B600596A18 /* EventDetailView.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				957C4FDF1D5250B600596A18 /* Base */,
-			);
-			name = EventDetailView.storyboard;
-			sourceTree = "<group>";
-		};
 		957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -637,6 +629,14 @@
 				CE52B99A1D52AC0C00E1C7E9 /* Base */,
 			);
 			name = EventFinder.storyboard;
+			sourceTree = "<group>";
+		};
+		DB315C301D63D14D00A07DCE /* EventDetailView.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB315C311D63D14D00A07DCE /* Base */,
+			);
+			name = EventDetailView.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
