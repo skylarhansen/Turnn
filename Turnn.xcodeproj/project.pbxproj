@@ -62,6 +62,9 @@
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
 		CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C11F6B1D58E8FC00999A5E /* GeoFire.framework */; };
+		DB315C291D63BD5100A07DCE /* EventRadiusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */; };
+		DB315C2B1D63BD8300A07DCE /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2A1D63BD8300A07DCE /* LogOutView.swift */; };
+		DB315C2D1D63BDA000A07DCE /* TurnnCopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +142,9 @@
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
 		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
+		DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRadiusButton.swift; sourceTree = "<group>"; };
+		DB315C2A1D63BD8300A07DCE /* LogOutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
+		DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnCopyableLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				CE9C29961D51565F00158B14 /* EventFinderViewController.swift */,
+				DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */,
+				DB315C2A1D63BD8300A07DCE /* LogOutView.swift */,
 				CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */,
 				CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */,
 			);
@@ -320,6 +328,7 @@
 		CE52B9961D525AF500E1C7E9 /* Event Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */,
 				9591632D1D524DA500C23C24 /* EventDetailViewController.swift */,
 				CCE9DEB61D52989C00363A98 /* HostDetailTableViewCell.swift */,
 				CCE9DEB81D5298A700363A98 /* PriceDetailTableViewCell.swift */,
@@ -372,7 +381,7 @@
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = V9YMV3Q9VL;
+						DevelopmentTeam = 4637N428EN;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -537,6 +546,7 @@
 				8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */,
 				8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */,
 				9516EC701D554ADF00A144BC /* UserController.swift in Sources */,
+				DB315C291D63BD5100A07DCE /* EventRadiusButton.swift in Sources */,
 				8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */,
 				CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */,
 				95E595451D51460900416B2A /* TimeTableViewCell.swift in Sources */,
@@ -551,6 +561,7 @@
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
 				95E595431D51460900416B2A /* LocationTableViewCell.swift in Sources */,
 				95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */,
+				DB315C2D1D63BDA000A07DCE /* TurnnCopyableLabel.swift in Sources */,
 				8CC7E5021D623768000C694D /* DetailedDescriptionLabel.swift in Sources */,
 				8C72A2CD1D510D50008301CC /* CategoryCollectionViewCell.swift in Sources */,
 				959163301D524DC700C23C24 /* HostTableViewCell.swift in Sources */,
@@ -560,6 +571,7 @@
 				959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */,
 				953C11D81D52A7F5009777FC /* EventController.swift in Sources */,
 				95E595441D51460900416B2A /* MoreInfoTableViewCell.swift in Sources */,
+				DB315C2B1D63BD8300A07DCE /* LogOutView.swift in Sources */,
 				955D18621D5D474E0010C73A /* TurnnButton.swift in Sources */,
 				95FDAF9D1D5A41E000191DE4 /* GeoFireController.swift in Sources */,
 				CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */,

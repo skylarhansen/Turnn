@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import Mapbox
+import MapKit
 import MessageUI
 
-class EventDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGLMapViewDelegate, MFMailComposeViewControllerDelegate {
+class EventDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, MFMailComposeViewControllerDelegate {
     
     var event: Event?
     
@@ -19,7 +19,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     //@IBOutlet weak var mapView: MGLMapView!
-    @IBOutlet weak var mapImageView: UIImageView!
+    //@IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
@@ -43,11 +43,11 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         eventImageView.addSubview(visualEffectView2)
         
-        mapImageView.layer.borderWidth = 3
-        mapImageView.layer.borderColor = UIColor.blackColor().CGColor
-        mapImageView.layer.masksToBounds = false
-        mapImageView.layer.cornerRadius = mapImageView.frame.width/2
-        mapImageView.clipsToBounds = true
+//        mapImageView.layer.borderWidth = 3
+//        mapImageView.layer.borderColor = UIColor.blackColor().CGColor
+//        mapImageView.layer.masksToBounds = false
+//        mapImageView.layer.cornerRadius = mapImageView.frame.width/2
+//        mapImageView.clipsToBounds = true
         
 //        let point = MGLPointAnnotation()
 //        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
@@ -96,29 +96,29 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func backButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    @IBAction func locationButtonTapped(sender: AnyObject) {
-        presentAlertController()
-    }
+//    @IBAction func locationButtonTapped(sender: AnyObject) {
+//        presentAlertController()
+//    }
     // MARK: - Alert Controller
-    func presentAlertController() {
-        
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
-            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
-                return
-            }
-            
-            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
-            UIApplication.sharedApplication().openURL(url)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        actionSheet.addAction(mapsAction)
-        actionSheet.addAction(cancelAction)
-        
-        presentViewController(actionSheet, animated: true, completion: nil)
-    }
+//    func presentAlertController() {
+//        
+//        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+//        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
+//            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
+//                return
+//            }
+//            
+//            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+//            UIApplication.sharedApplication().openURL(url)
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        
+//        actionSheet.addAction(mapsAction)
+//        actionSheet.addAction(cancelAction)
+//        
+//        presentViewController(actionSheet, animated: true, completion: nil)
+//    }
     
     // MARK: - tableView data source functions
     

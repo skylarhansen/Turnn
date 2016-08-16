@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Delegate-->
+        <!--Event Detail View Controller-->
         <scene sceneID="rap-3h-VYh">
             <objects>
                 <viewController id="DeV-nU-JC0" customClass="EventDetailViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,7 +369,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lh9-bf-VqD" customClass="MGLMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lh9-bf-VqD">
                                 <rect key="frame" x="235" y="20" width="125" height="125"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.070313461120000004" green="0.78432720899999997" blue="0.86106544730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -377,22 +377,6 @@
                                     <constraint firstAttribute="width" constant="125" id="61z-xN-I4w"/>
                                     <constraint firstAttribute="height" constant="125" id="SSb-9C-xE0"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsUserLocation" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="zoomLevel">
-                                        <real key="value" value="14"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="latitude">
-                                        <real key="value" value="40.761823"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="longitude">
-                                        <real key="value" value="-111.89059399999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="delegate" destination="DeV-nU-JC0" id="FdV-eU-wQ1"/>
-                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENT NAME" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-MI-9Mm">
                                 <rect key="frame" x="8" y="70" width="173" height="32"/>
@@ -455,7 +439,6 @@
                         <outlet property="eventImageView" destination="RRb-xc-SVF" id="Kcf-n1-p4H"/>
                         <outlet property="eventTimeLabel" destination="JSA-cY-EmY" id="n0l-qV-tCz"/>
                         <outlet property="eventTitleLabel" destination="iCa-MI-9Mm" id="SEx-sF-NN4"/>
-                        <outlet property="mapView" destination="lh9-bf-VqD" id="af5-ns-n6E"/>
                         <outlet property="tableView" destination="1Lr-va-uyx" id="K1g-kt-h5C"/>
                         <outletCollection property="categoryImageViews" destination="EAy-zV-7V3" collectionClass="NSMutableArray" id="2LZ-vz-af4"/>
                         <outletCollection property="categoryImageViews" destination="emn-sb-Fqd" collectionClass="NSMutableArray" id="w7t-Ty-7OX"/>

@@ -69,7 +69,7 @@ class CreateEventViewController: UITableViewController {
             
             location = Location(address: address, city: city, state: state, zipCode: zip)
             
-            self.createSnapShotOfLocation({ (success, image) in
+            EventController.createSnapShotOfLocation(location) { (success, image) in
                 if success && image != nil {
                     EventController.createEvent(title, location: self.location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo, completion: { (success) in
                         if success {
@@ -77,7 +77,7 @@ class CreateEventViewController: UITableViewController {
                         }
                     })
                 }
-            })
+            }
             
         } else {
             print("So Sorry, could not create Event because something was nil")
@@ -250,46 +250,6 @@ class CreateEventViewController: UITableViewController {
             let navController = segue.destinationViewController as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
             categoryVC?.mode = .Save
-        }
-    }
-    
-    func createSnapShotOfLocation(completion: (success: Bool, image: UIImage?) -> Void) {
-        let address = String.autoformatAddressForGPSAquistionWith(location.address, city: location.city, state: location.state, zipCode: location.zipCode)
-        LocationController.sharedInstance.forwardGeocoding(address) { (location, error) in
-            let center = CLLocationCoordinate2DMake(location?.coordinate.latitude ?? 0.0, location?.coordinate.longitude ?? 0.0)
-            let region = MKCoordinateRegionMakeWithDistance(center, 1.0.makeMeters(), 1.0.makeMeters())
-            let options = MKMapSnapshotOptions()
-            options.region = region
-            options.scale = UIScreen.mainScreen().scale
-            
-            
-            let snapshotter = MKMapSnapshotter(options: options)
-            snapshotter.startWithCompletionHandler { snapshot, error in
-                guard let snapshot = snapshot else {
-                    print("Snapshot error: \(error)")
-                    completion(success: false, image: nil)
-                    return
-                }
-                    
-                    let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
-                    let image = snapshot.image
-                    
-                    UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
-                    image.drawAtPoint(CGPoint.zero)
-                    
-                    let visibleRect = CGRect(origin: CGPoint.zero, size: image.size)
-                        var point = snapshot.pointForCoordinate(location!.coordinate)
-                        if visibleRect.contains(point) {
-                            point.x = point.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
-                            point.y = point.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
-                            pin.image?.drawAtPoint(point)
-                    }
-                    
-                    let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
-                    UIGraphicsEndImageContext()
-                    completion(success: true, image: compositeImage)
-                }
-            
         }
     }
 }
