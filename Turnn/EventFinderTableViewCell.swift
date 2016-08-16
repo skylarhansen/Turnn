@@ -37,8 +37,15 @@ class EventFinderTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
+        
+        if selected == true {
+            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            
+            UIView.animateWithDuration(0.5) {
+                self.backgroundColor = .clearColor()
+            }
+        }
     }
-
 }

@@ -126,8 +126,12 @@ extension Event {
 
 extension String {
     
-    static func autoformatAddressForGPSAquisition(event: Event) -> String {
+    static func autoformatAddressForGPSAquisitionWith(event: Event) -> String {
         return event.location.address + ", " + event.location.city + ", " + event.location.state + ", " + event.location.zipCode
+    }
+    
+    static func autoformatAddressForGPSAquistionWith(address: String, city: String, state: String, zipCode: String) -> String {
+        return address + ", " + city + ", " + state + ", " + zipCode
     }
     
     static func printEvents(currentEvents: [Event], oldEvents: [Event]) {

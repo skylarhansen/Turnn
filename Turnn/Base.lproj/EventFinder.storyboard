@@ -64,7 +64,7 @@
                                             <outlet property="headerLabel" destination="xeC-XD-hKI" id="Vl9-fu-2he"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" id="78y-5W-Pyx" customClass="EventFinderTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" id="78y-5W-Pyx" customClass="EventFinderTableViewCell" customModule="Turnn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="53" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="78y-5W-Pyx" id="lE8-qf-Cse">

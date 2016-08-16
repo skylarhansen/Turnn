@@ -192,10 +192,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     // MARK: - TableView Appearance
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
-    }
+//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+//        cell.separatorInset = UIEdgeInsetsZero
+//        cell.layoutMargins = UIEdgeInsetsZero
+//    }
     
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
@@ -246,17 +246,17 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Table view data source -
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return events.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
         
-        let event = events[indexPath.row]
+        let event = events[indexPath.section]
         eventCell?.updateWithEvent(event)
         
         return eventCell ?? UITableViewCell()
@@ -274,6 +274,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     //        headerCell?.clipsToBounds = true
     //        return headerCell
     //    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.5
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 0.5))
+        view.backgroundColor = UIColor.whiteColor()
+        return view
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedIndexPath = indexPath
