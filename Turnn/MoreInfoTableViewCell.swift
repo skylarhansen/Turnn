@@ -20,6 +20,10 @@ class MoreInfoTableViewCell: UITableViewCell {
         setupCell()
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.moreInfoTextView.layer.cornerRadius = 8

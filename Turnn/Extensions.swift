@@ -48,6 +48,16 @@ extension NSDate {
         
         return dateFormatter.stringFromDate(self)
     }
+    
+    static func dateFromString(string: String) -> NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        if let date = dateFormatter.dateFromString(string) {
+            return date
+        } else {
+            return nil
+        }
+    }
 }
 
 extension UIColor {
@@ -62,6 +72,10 @@ extension UIColor {
     
     class func turnnWhite() -> UIColor {
         return UIColor(red: 0.941, green: 1.000, blue: 1.000, alpha: 1.00)
+    }
+    
+    class func error() -> UIColor {
+        return UIColor(red: 1.000, green: 0.227, blue: 0.318, alpha: 1.00)
     }
 }
 

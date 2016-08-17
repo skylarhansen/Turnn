@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleTableViewCell: UITableViewCell {
+class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
@@ -21,8 +21,13 @@ class TitleTableViewCell: UITableViewCell {
     }
     
     func setupCell() {
+        self.titleTextField.delegate = self
         self.backgroundColor = .clearColor()
         self.titleTextField.text = "Hackathon"
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
