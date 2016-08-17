@@ -56,9 +56,6 @@ class CreateEventViewController: UITableViewController {
         }
     }
     
-    @IBAction func unwindToCreateEvent(segue: UIStoryboardSegue) {
-        
-    }
     
     func createAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)

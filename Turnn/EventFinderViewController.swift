@@ -248,10 +248,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.setRegion(region, animated: false)
     }
     
-    @IBAction func unwindToEventFinder(segue: UIStoryboardSegue) {
-        
-    }
-    
     func mapViewUpdated(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("UPDATED")
     }
@@ -332,6 +328,19 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         //self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
     
+    
+   // var filteredEvents = EventController.filterEventsByCategories([Event], categories: [Int])
+    
+    @IBAction func unwindFromCategory(segue: UIStoryboardSegue) {
+        if segue.identifier == "UnwindFromCategoryIdentifier" {
+            let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
+            let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
+            self.mapView.removeAnnotations(annotations)
+//            self.mapView.addAnnotations(annotations)
+            
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "searchCategories" {
@@ -345,6 +354,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 let event = events[indexPath.section]
                 eventDetailVC.event = event
             }
+        }
+        
+        if segue.identifier == "toCategoriesSegue" {
+            let navController = segue.destinationViewController as? UINavigationController
+            let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
+            categoryVC?.mode = .Search
         }
     }
 }
