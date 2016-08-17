@@ -17,12 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
 
+
         FIRApp.configure()
         if UserController.shared.currentUser == nil {
         let storyboard = UIStoryboard(name: "SignInSignUp", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("SignInSignUp")
         self.window?.rootViewController = vc
         }
+        
+        sleep(2)
         return true
     }
 

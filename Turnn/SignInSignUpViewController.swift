@@ -121,22 +121,12 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.184, green: 0.184, blue: 0.184, alpha: 1.00)
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        setBackgroundForView()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
     
-    func setBackgroundForView() {
-        let blurEffect = UIBlurEffect(style: .Dark)
-        let blurView = UIVisualEffectView(effect: blurEffect)
-        let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
-        imageView.contentMode = .Center
-        imageView.addSubview(blurView)
-        self.view.insertSubview(imageView, atIndex: 0)
-        blurView.frame = imageView.frame
-    }
     
     func updateLoginView() {
         if isSignInPage == true  {
