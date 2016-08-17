@@ -324,7 +324,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         if segue.identifier == "toDetailSegue" {
             if let eventDetailVC = segue.destinationViewController as? EventDetailViewController, let indexPath = self.selectedIndexPath {
-                let event = events[indexPath.row]
+                let event = events[indexPath.section]
                 eventDetailVC.event = event
             }
         }
