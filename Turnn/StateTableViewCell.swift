@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StateTableViewCell: UITableViewCell {
+class StateTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var stateTextField: UITextField!
    
@@ -20,8 +20,13 @@ class StateTableViewCell: UITableViewCell {
     }
     
     func setupCell() {
+        self.stateTextField.delegate = self
         self.backgroundColor = .clearColor()
         self.stateTextField.text = "UT"
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

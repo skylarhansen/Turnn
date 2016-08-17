@@ -50,12 +50,8 @@ class CreateEventViewController: UITableViewController {
     
     @IBAction func createEventButtonTapped(sender: AnyObject) {
         createEventWithEventInfo { (success) in
-            self.dismissViewControllerAnimated(true, completion: nil)
             if !success {
-                let alertController = UIAlertController(title: "Missing Required Information", message: "Double check your event's required fields!", preferredStyle: .Alert)
-                alertController.addAction(UIAlertAction(title: "Okie dokes", style: .Cancel, handler: nil))
                 
-                self.presentViewController(alertController, animated: true, completion: nil)
             }
         }
     }
@@ -64,25 +60,81 @@ class CreateEventViewController: UITableViewController {
         
     }
     
+    func createAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
     func createEventWithEventInfo(completion: (success: Bool) -> Void) {
-        if let title = titleCell.titleTextField.text where title.characters.count > 0 , let _ = timeCell.timeTextField.text, let _ = endTimeCell.endTimeTextField.text, let address = addressCell.addressTextField.text where address.characters.count > 0, let city = cityCell.cityTextField.text, let zip = zipCell.zipTextField.text, let description = descriptionCell.descriptionTextView.text, let moreInfo = moreInfoCell.moreInfoTextView.text, let categories = categories, let state = stateCell.stateTextField.text {
-            
-            location = Location(address: address, city: city, state: state, zipCode: zip)
-            
-            EventController.createSnapShotOfLocation(location) { (success, image) in
-                if success && image != nil {
-                    EventController.createEvent(title, location: self.location, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: categories, eventDescription: description, passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: moreInfo, completion: { (success) in
-                        if success {
-                            self.dismissViewControllerAnimated(true, completion: nil)
+        if locationSelected {
+            if let title = titleCell.titleTextField.text where title.characters.count > 0 {
+                if let startTime = timeCell.date {
+                    if let endTime = endTimeCell.date {
+                        if let address = addressCell.addressTextField.text where address.characters.count > 0 {
+                            if let city = cityCell.cityTextField.text where cityCell.cityTextField.text != "" {
+                                if let zip = zipCell.zipTextField.text where zipCell.zipTextField.text != "" {
+                                    if let categories = categories {
+                                        if let state = stateCell.stateTextField.text where stateCell.stateTextField.text != "" {
+                                            location = Location(address: address, city: city, state: state, zipCode: zip)
+                                            
+                                            EventController.createSnapShotOfLocation(location) { (success, image) in
+                                                if success && image != nil {
+                                                    EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success) in
+                                                        if success {
+                                                            self.dismissViewControllerAnimated(true, completion: nil)
+                                                        }
+                                                    })
+                                                }
+                                            }
+                                        } else {
+                                            createAlert("Missing State", message: "Please be sure to include the state as part of your address")
+                                            hightlightTextFieldForError(self.stateCell.stateTextField)
+                                        }
+                                    } else {
+                                        createAlert("Missing Categories", message: "Please be sure to inclue at least one category for your event")
+                                    }
+                                } else {
+                                    createAlert("Missing Zip", message: "Please be sure to include the zip as part of your address")
+                                    hightlightTextFieldForError(self.zipCell.zipTextField)
+                                }
+                            } else {
+                                createAlert("Missing City", message: "Please be sure to include the city as part of your address")
+                                hightlightTextFieldForError(self.cityCell.cityTextField)
+                            }
+                        } else {
+                            createAlert("Missing Address", message: "Please be sure to include an address for the event")
+                            hightlightTextFieldForError(self.addressCell.addressTextField)
                         }
-                    })
+                    } else {
+                        createAlert("No End Date", message: "Please enter a end date for your event")
+                        hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
+                    }
+                } else {
+                    createAlert("No Start Date", message: "Please enter a starting date for your event")
+                    hightlightTextFieldForError(self.timeCell.timeTextField)
                 }
+            } else {
+                createAlert("No Title", message: "Please enter a title for your event")
+                hightlightTextFieldForError(self.titleCell.titleTextField)
             }
-            
         } else {
-            print("So Sorry, could not create Event because something was nil")
-            completion(success: false)
+            createAlert("Event Location", message: "Please be sure to include a location by tapping on \"Location\" and completing the required fields")
         }
+    }
+    
+    func hightlightTextFieldForError(textfield: UITextField) {
+        textfield.layer.borderWidth = 1.5
+        textfield.layer.borderColor = UIColor.error().CGColor
+        textfield.layer.cornerRadius = 4
+        textfield.layer.masksToBounds = true
+        
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 0.4
+        animation.values = [-5.0, 5.0, -5.0, 5.0, -5.0, 5.0, -2.0, 2.0, 0.0 ]
+        textfield.layer.addAnimation(animation, forKey: "shake")
     }
     
     func setupTableViewUI() {

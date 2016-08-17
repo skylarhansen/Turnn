@@ -8,11 +8,15 @@
 
 import UIKit
 
-class PriceTableViewCell: UITableViewCell {
+class PriceTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

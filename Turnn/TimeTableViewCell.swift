@@ -12,6 +12,7 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
+    var date: NSDate?
       override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -19,6 +20,7 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
       
     func setupCell() {
+        self.timeTextField.delegate = self
         self.backgroundColor = .clearColor()
         setupTextfieldInputView()
     }
@@ -33,8 +35,13 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.timeTextField.inputView = datePicker
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
     func dateUpdated(datePicker: UIDatePicker) {
         print(datePicker.date)
+        self.date = datePicker.date
         self.timeTextField.text = datePicker.date.dateLongFormat()
     }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZipTableViewCell: UITableViewCell {
+class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var spacerView: UIView!
@@ -21,8 +21,13 @@ class ZipTableViewCell: UITableViewCell {
     }
     
     func setupCell() {
+        self.zipTextField.delegate = self
         self.backgroundColor = .clearColor()
         self.zipTextField.text = "84111"
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

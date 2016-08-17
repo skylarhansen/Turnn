@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddressTableViewCell: UITableViewCell {
+class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var spacerView: UIView!
@@ -20,7 +20,12 @@ class AddressTableViewCell: UITableViewCell {
         setupCell()
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
     func setupCell() {
+        self.addressTextField.delegate = self
         self.backgroundColor = .clearColor()
         self.addressTextField.text = "341 S Main St"
     }

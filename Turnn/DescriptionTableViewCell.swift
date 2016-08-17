@@ -20,6 +20,10 @@ class DescriptionTableViewCell: UITableViewCell {
         setupCell()
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.descriptionTextView.layer.cornerRadius = 8
