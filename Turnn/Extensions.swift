@@ -123,6 +123,7 @@ extension Double {
         let result = self * 1609.344
         return result
     }
+
 }
 
 extension Event {

@@ -103,25 +103,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         
         setupTableViewUI()
-        
-        
-        GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents, matchingLocationKeys) in
-            if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys {
-                String.printEvents(currentEvents, oldEvents: oldEvents)
-                self.events = currentEvents
-                self.loadingIndicatorView.hidden = true
-                self.loadingIndicator.stopAnimating()
-                self.displayEvents()
-                self.tableView.reloadData()
-                self.oldEvents = oldEvents
-                self.matchingLocationKeys = matchingLocationKeys
-            }
-        })
-        
-//        print(events)
-//        print(oldEvents)
-//        print(matchingLocationKeys)
-//        
+        updateQuery()
+
+//
 //        NEXT TWO FUNCTIONS DELETE OLD EVENTS AND THEIR MATCHING LOCATIONS
 //        BUT LET'S LEAVE IT NOW FOR NOW PER JUSTIN'S DATA CONFLICT ADVICE
 //
@@ -140,6 +124,22 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
 //        self.tableView.reloadData()
 //        self.loadingIndicatorView.hidden = true
 //        self.loadingIndicator.stopAnimating()
+    }
+    
+    func updateQuery(){
+        
+        GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys) in
+            if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys {
+                String.printEvents(currentEvents, oldEvents: oldEvents)
+                self.events = currentEvents
+                self.loadingIndicatorView.hidden = true
+                self.loadingIndicator.stopAnimating()
+                self.displayEvents()
+                self.tableView.reloadData()
+                self.oldEvents = oldEvents
+                self.matchingLocationKeys = matchingLocationKeys
+            }
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -165,7 +165,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             
-            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
@@ -472,6 +471,7 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -499,6 +499,7 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -526,6 +527,7 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -553,6 +555,7 @@ extension EventFinderViewController {
                         self.topMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()

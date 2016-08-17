@@ -51,10 +51,10 @@ class GeoFireController {
             completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil)
             return }
         
-        //print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
+        print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
         let circleQuery = geofire.queryAtLocation(center, withRadius: radius.makeKilometers())
         circleQuery.observeEventType(.KeyEntered, withBlock: { (key, location) in
-            //print("Key '\(key)' entered the search area and is at location '\(location)'")
+            print("Key '\(key)' entered the search area and is at location '\(location)'")
             matchedLocationKeysArray.append(key)
         })
         
