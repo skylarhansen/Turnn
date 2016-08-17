@@ -14,6 +14,8 @@ class HostTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    
     @IBOutlet weak var hostNameLabel: UILabel!
 
     override func setSelected(selected: Bool, animated: Bool) {

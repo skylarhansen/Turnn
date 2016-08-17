@@ -8,11 +8,12 @@
 
 import UIKit
 
-class EndTimeTableViewCell: UITableViewCell {
+class EndTimeTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var endTimeLabel: UILabel!
-   
     @IBOutlet weak var endTimeTextField: UITextField!
+    
+    var date: NSDate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +21,7 @@ class EndTimeTableViewCell: UITableViewCell {
     }
     
     func setupCell() {
+        self.endTimeTextField.delegate = self
         self.backgroundColor = .clearColor()
         setupTextfieldInputView()
     }
@@ -34,8 +36,13 @@ class EndTimeTableViewCell: UITableViewCell {
         self.endTimeTextField.inputView = datePicker
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
     func dateUpdated(datePicker: UIDatePicker) {
         print(datePicker.date)
+        self.date = datePicker.date
         self.endTimeTextField.text = datePicker.date.dateLongFormat()
     }
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityTableViewCell: UITableViewCell {
+class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var spacerView: UIView!
@@ -20,7 +20,12 @@ class CityTableViewCell: UITableViewCell {
         setupCell()
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
     func setupCell() {
+        self.cityTextField.delegate = self
         self.backgroundColor = .clearColor()
         self.cityTextField.text = "Salt Lake City"
     }
