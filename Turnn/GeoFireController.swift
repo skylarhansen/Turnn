@@ -29,7 +29,6 @@ class GeoFireController {
     
     static func getEventIdsForLocationIdentifiers(ids: [String], completion: (ids: [String]?) -> Void) {
         var eventIDs: [String] = []
-        
         let eventIDFetch = dispatch_group_create()
         for id in ids {
             dispatch_group_enter(eventIDFetch)
@@ -46,6 +45,23 @@ class GeoFireController {
         }
     }
     
+    static func getLocationIdsForEventIdentifiers(ids: [String], completion: (ids: [String]?) -> Void) {
+        var locationIDs: [String] = []
+        let locationIDFetch = dispatch_group_create()
+        for id in ids {
+            dispatch_group_enter(locationIDFetch)
+            FirebaseController.ref.queryOrderedByChild("Location").queryEqualToValue(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
+                    locationIDs.append(locationID)
+                    dispatch_group_leave(locationIDFetch)
+                }
+            })
+        }
+        dispatch_group_notify(locationIDFetch, dispatch_get_main_queue()) {
+            completion(ids: locationIDs)
+        }
+    }
+
     static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?) -> Void) {
         var matchedLocationKeysArray: [String] = []
         guard let center = LocationController.sharedInstance.coreLocationManager.location else {
@@ -57,7 +73,6 @@ class GeoFireController {
         circleQuery.observeEventType(.KeyEntered, withBlock: { (key, location) in
             //print("Key '\(key)' entered the search area and is at location '\(location)'")
             matchedLocationKeysArray.append(key)
-            
         })
         
         circleQuery.observeReadyWithBlock{
@@ -86,6 +101,9 @@ class GeoFireController {
             })
         }
     }
+    
+    
+    
 }
 
 //        circleQuery.observeEventType(.KeyExited, withBlock: { (key, location: CLLocation!) in

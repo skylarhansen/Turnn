@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import Mapbox
+import MapKit
+import MessageUI
 
-class EventDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MGLMapViewDelegate {
+class EventDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, MFMailComposeViewControllerDelegate {
     
     var event: Event?
     
@@ -18,7 +19,8 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     //@IBOutlet weak var mapView: MGLMapView!
-    @IBOutlet weak var eventImageView: UIImageView!
+    //@IBOutlet weak var mapImageView: UIImageView!
+    //@IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventEndTimeLabel: UILabel!
@@ -29,7 +31,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
         
         visualEffectView.frame = self.view.bounds
         
@@ -39,21 +41,14 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         visualEffectView2.frame = self.view.bounds
         
-        eventImageView.addSubview(visualEffectView2)
+        //eventImageView.addSubview(visualEffectView2)
         
-//        mapView.layer.borderWidth = 3
-//        mapView.layer.borderColor = UIColor.blackColor().CGColor
-//        mapView.layer.masksToBounds = false
-//        mapView.layer.cornerRadius = mapView.frame.width/2
-//        mapView.clipsToBounds = true
+//        mapImageView.layer.borderWidth = 3
+//        mapImageView.layer.borderColor = UIColor.blackColor().CGColor
+//        mapImageView.layer.masksToBounds = false
+//        mapImageView.layer.cornerRadius = mapImageView.frame.width/2
+//        mapImageView.clipsToBounds = true
         
-//        let point = MGLPointAnnotation()
-//        point.coordinate = CLLocationCoordinate2D(latitude: 40.761823, longitude: -111.890594)
-//        point.title = "Dev Mountain"
-//        point.subtitle = "341 Main St Salt Lake City, U.S.A"
-//        
-//        mapView.addAnnotation(point)
-//        
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -70,10 +65,6 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         let string = NSAttributedString(string: "Back to Events", attributes: [NSForegroundColorAttributeName: UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)])
         backButton.setAttributedTitle(string, forState: .Normal)
         backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-//        backButton.layer.borderColor = UIColor.turnnWhite().CGColor
-//        backButton.layer.borderWidth = 1
-//        backButton.layer.cornerRadius = 8
-//        backButton.layer.masksToBounds = true
     }
     
     func loadImageViews(images: [UIImage]) {
@@ -98,29 +89,29 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func backButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    @IBAction func locationButtonTapped(sender: AnyObject) {
-        presentAlertController()
-    }
+//    @IBAction func locationButtonTapped(sender: AnyObject) {
+//        presentAlertController()
+//    }
     // MARK: - Alert Controller
-    func presentAlertController() {
-        
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
-            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
-                return
-            }
-            
-            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
-            UIApplication.sharedApplication().openURL(url)
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        
-        actionSheet.addAction(mapsAction)
-        actionSheet.addAction(cancelAction)
-        
-        presentViewController(actionSheet, animated: true, completion: nil)
-    }
+//    func presentAlertController() {
+//        
+//        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+//        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
+//            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
+//                return
+//            }
+//            
+//            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+//            UIApplication.sharedApplication().openURL(url)
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        
+//        actionSheet.addAction(mapsAction)
+//        actionSheet.addAction(cancelAction)
+//        
+//        presentViewController(actionSheet, animated: true, completion: nil)
+//    }
     
     // MARK: - tableView data source functions
     
@@ -142,9 +133,10 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         case 1:
             let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
-            locationDetailCell?.streetNumberLabel.text = event?.location.address
-            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
-            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
+            locationDetailCell?.updateLocationWithEvent(event!)
+//            locationDetailCell?.streetNumberLabel.text = event?.location.address
+//            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
+//            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
             return locationDetailCell ?? UITableViewCell()
             
         case 2:
@@ -169,6 +161,51 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         default:
             return UITableViewCell()
+        }
+    }
+    
+    // MARK: - REPORTING, outlet is currently disconnected, ALSO
+    // DO NOT USE WITH MOCK DATA, our mock data events don't have identifiers,
+    // it will cause a crash. can leave optional but then it will
+    // print odd text in email report when we use the REAL DATA
+    
+    @IBAction func reportButtonTapped(sender: AnyObject) {
+        reportEvent()
+    }
+    
+    func showSendMailErrorAlert(){
+        let sendMailErrorAlert =
+            UIAlertController(title: "Couldn't Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .Alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel){ (action) in print(action)}
+        sendMailErrorAlert.addAction(dismissAction)
+        self.presentViewController(sendMailErrorAlert, animated: true, completion: nil)
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func reportEvent(){
+        if event != nil {
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            alert.addAction(UIAlertAction(title: "Report event as inappropriate", style: .Destructive) { action in
+                
+                if MFMailComposeViewController.canSendMail() {
+                    let composeVC = MFMailComposeViewController()
+                    composeVC.mailComposeDelegate = self
+                    composeVC.setToRecipients(["report@honestbadger.com"])
+                    composeVC.setSubject("Inappropriate Event Report")
+                    composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid\(self.event!.identifier!)\nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
+                    
+                    self.presentViewController(composeVC, animated: true, completion: nil)
+                } else {
+                    self.showSendMailErrorAlert()
+                }
+                
+                })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { action in
+                })
+            presentViewController(alert, animated: true, completion: nil)
         }
     }
 }

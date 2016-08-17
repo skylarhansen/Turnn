@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Turnn-->
@@ -44,7 +43,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9ks-3K-Jyc" id="vfQ-PH-uez">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="24.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeC-XD-hKI">
@@ -65,11 +64,11 @@
                                             <outlet property="headerLabel" destination="xeC-XD-hKI" id="Vl9-fu-2he"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" id="78y-5W-Pyx" customClass="EventFinderTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" id="78y-5W-Pyx" customClass="EventFinderTableViewCell" customModule="Turnn" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="53" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="78y-5W-Pyx" id="lE8-qf-Cse">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="u4A-ES-C7H">
@@ -177,30 +176,25 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Turnn" id="6nb-wp-L5F">
-                        <barButtonItem key="leftBarButtonItem" title="Categories" id="pRJ-Kc-nWl">
+                        <barButtonItem key="leftBarButtonItem" image="More" id="pRJ-Kc-nWl">
                             <connections>
-                                <segue destination="lKW-UX-92g" kind="presentation" identifier="searchCategories" id="bp8-id-lIa"/>
+                                <action selector="moreOptionsButtonTapped:" destination="68G-yD-Hdw" id="0wo-45-g7l"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="c9p-2Y-r8r">
-                                <connections>
-                                    <segue destination="SHe-GN-2xC" kind="show" identifier="createEvent" id="osa-ll-IqP"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Log Out" id="THX-iJ-NiI">
-                                <connections>
-                                    <action selector="logOutButtonTapped:" destination="68G-yD-Hdw" id="lYp-z1-B10"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="c9p-2Y-r8r">
+                            <connections>
+                                <segue destination="SHe-GN-2xC" kind="show" identifier="createEvent" id="osa-ll-IqP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapViewPlaceholderView" destination="6Cd-RV-GFB" id="TzC-16-rUx"/>
+                        <outlet property="moreOptionsButton" destination="pRJ-Kc-nWl" id="RNe-Sg-H65"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                         <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
                         <segue destination="A7A-N2-rFU" kind="unwind" identifier="unwindToSignIn" unwindAction="unwindToSignIn:" id="ezK-en-SHF"/>
                         <segue destination="ADo-ch-5Qm" kind="presentation" identifier="nonUnwindToLogin" id="YC7-dz-tzp"/>
+                        <segue destination="lKW-UX-92g" kind="presentation" identifier="toCategoriesSegue" id="iNS-du-VkY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,7 +208,7 @@
                 <viewControllerPlaceholder storyboardName="CreateEvent" id="SHe-GN-2xC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYp-KW-Mz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864.5" y="482"/>
+            <point key="canvasLocation" x="1855.5" y="359"/>
         </scene>
         <!--EventDetailView-->
         <scene sceneID="yTN-n7-2tc">
@@ -222,7 +216,7 @@
                 <viewControllerPlaceholder storyboardName="EventDetailView" id="W7b-bk-Bqp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fg4-gW-Vo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876.5" y="531"/>
+            <point key="canvasLocation" x="1876.5" y="434"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zng-qE-dMm">
@@ -248,7 +242,7 @@
                 <viewControllerPlaceholder storyboardName="SignInSignUp" id="ADo-ch-5Qm" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqz-TL-rFR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1699.5" y="62"/>
+            <point key="canvasLocation" x="1868" y="508"/>
         </scene>
         <!--Category-->
         <scene sceneID="4pm-sl-BTF">
@@ -258,7 +252,10 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXl-Ak-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1797" y="161"/>
+            <point key="canvasLocation" x="1855" y="585"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="More" width="24" height="6"/>
+    </resources>
 </document>

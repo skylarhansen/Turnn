@@ -7,8 +7,8 @@
 //
 
 import Foundation
+import MapKit
 import UIKit
-import CoreLocation
 
 class EventController {
     
@@ -35,16 +35,19 @@ class EventController {
         }
     }
     
-    static func fetchEvents(completion: (events: [Event]) -> Void){
-        eventData.observeEventType(.Value, withBlock: { (dataSnapshot) in
-            guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
-                completion(events: [])
-                return
-            }
-            let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
-            completion(events: events)
-        })
-    }
+//      NOT NECESSARY LONG-TERM, IS A WAY TO CONSTANTLY OBSERVE ALL EVENTS, REGARDLESS OF LOCATION.
+//          may be helpful for testing events without having to be crazy particular about radius
+//
+//    static func fetchEvents(completion: (events: [Event]) -> Void){
+//        eventData.observeEventType(.Value, withBlock: { (dataSnapshot) in
+//            guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
+//                completion(events: [])
+//                return
+//            }
+//            let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
+//            completion(events: events)
+//        })
+//    }
     
     static func filterEventsByCategories(events: [Event], categories: [Int]) -> [Event]? {
         let filteredEvents = NSMutableSet()
@@ -96,6 +99,46 @@ class EventController {
         }
     }
     
+    static func createSnapShotOfLocation(location: Location, completion: (success: Bool, image: UIImage?) -> Void) {
+        let address = String.autoformatAddressForGPSAquistionWith(location.address, city: location.city, state: location.state, zipCode: location.zipCode)
+        LocationController.sharedInstance.forwardGeocoding(address) { (location, error) in
+            let center = CLLocationCoordinate2DMake(location?.coordinate.latitude ?? 0.0, location?.coordinate.longitude ?? 0.0)
+            let region = MKCoordinateRegionMakeWithDistance(center, 1.0.makeMeters(), 1.0.makeMeters())
+            let options = MKMapSnapshotOptions()
+            options.region = region
+            options.scale = UIScreen.mainScreen().scale
+            
+            
+            let snapshotter = MKMapSnapshotter(options: options)
+            snapshotter.startWithCompletionHandler { snapshot, error in
+                guard let snapshot = snapshot else {
+                    print("Snapshot error: \(error)")
+                    completion(success: false, image: nil)
+                    return
+                }
+                
+                let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+                let image = snapshot.image
+                
+                UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
+                image.drawAtPoint(CGPoint.zero)
+                
+                let visibleRect = CGRect(origin: CGPoint.zero, size: image.size)
+                var point = snapshot.pointForCoordinate(location!.coordinate)
+                if visibleRect.contains(point) {
+                    point.x = point.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
+                    point.y = point.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
+                    pin.image?.drawAtPoint(point)
+                }
+                
+                let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                completion(success: true, image: compositeImage)
+            }
+            
+        }
+    }
+    
     static func mockEvents() -> [Event]{
         
         let mockLocation1 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.761819, longitude: -111.890561)
@@ -108,7 +151,7 @@ class EventController {
         
         let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
         
-        let event1 = Event(title: "Hey! 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "I'm testing to see what this will look like if I put a really long string into the box so here goes: Tim Duncan, Tony Parker, Manu Ginobili, Kawhi Leonard, Gregg Popovich 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event1 = Event(title: "There's an event that's a 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "I'm testing to see what this will look like if I put a really long string into the box so here goes: Tim Duncan, Tony Parker, Manu Ginobili, Kawhi Leonard, Gregg Popovich 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
         
         let event2 = Event(title: "Hey! 2", location: mockLocation2, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,2,1,5], eventDescription: "Nice Event Man! 2", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
         
