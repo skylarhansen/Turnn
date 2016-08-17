@@ -91,6 +91,12 @@ class EventController {
         event.delete()
     }
     
+    static func deleteLocation(locationID: String?){
+        if let locationID = locationID {
+            FirebaseController.ref.child("Locations").child(locationID).removeValue()
+        }
+    }
+    
     static func updateEvent(event: Event){
         if let identifier = event.identifier {
             FirebaseController.ref.child("Events").child(identifier).updateChildValues(event.dictionaryCopy)
