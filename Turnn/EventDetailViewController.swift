@@ -18,16 +18,13 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    //@IBOutlet weak var mapView: MGLMapView!
-    //@IBOutlet weak var mapImageView: UIImageView!
-    //@IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet weak var eventEndTimeLabel: UILabel!
     @IBOutlet var categoryImageViews: [UIImageView]!
     @IBOutlet weak var categoryImageHolderView: UIView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var mapButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,18 +35,11 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
         backgroundImageView.addSubview(visualEffectView)
         
-        let visualEffectView2 = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
-        
-        visualEffectView2.frame = self.view.bounds
-        
-        //eventImageView.addSubview(visualEffectView2)
-        
-//        mapImageView.layer.borderWidth = 3
-//        mapImageView.layer.borderColor = UIColor.blackColor().CGColor
-//        mapImageView.layer.masksToBounds = false
-//        mapImageView.layer.cornerRadius = mapImageView.frame.width/2
-//        mapImageView.clipsToBounds = true
-        
+        mapButton.layer.borderWidth = 3
+        mapButton.layer.borderColor = UIColor.blackColor().CGColor
+        mapButton.layer.masksToBounds = false
+        mapButton.layer.cornerRadius = mapButton.frame.width/2
+        mapButton.clipsToBounds = true
         tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -87,6 +77,9 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             eventDateLabel.text = "\(event.startTime.dateOnly()) - \(event.endTime.dateOnly())"
         }
         
+        ImageController.imageForUrl(event.imageURL!) { (image) in
+            self.mapButton.setBackgroundImage(image, forState: .Normal)
+        }
     }
     
     // MARK: - Action Buttons -
