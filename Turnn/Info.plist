@@ -24,8 +24,6 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>MGLMapboxAccessToken</key>
-	<string>pk.eyJ1IjoiZWJyZXNjaWFubyIsImEiOiJjaXJsMGd5dnAwMDNnZmZtNmNka3BwYzRsIn0._ZBEi6gcsVsdWPgluHm_kQ</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>App needs location services to see all the events happening near current location.</string>
 	<key>UIAppFonts</key>
