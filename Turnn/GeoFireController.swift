@@ -62,10 +62,15 @@ class GeoFireController {
         }
     }
 
-    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?) -> Void) {
+    // DEFINITIONS: OLDEVENTS are events whose "endTime" has passed,
+    //              FUTUREEVENTS are vents whose "startTime" is more than 24 hours away from now
+    //              CURRENTEVENTS are all other events, whose "endTime" not not passed
+    //                            and whose "startTime" is equal to or less than 24 hours away from now
+    
+    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?, futureEvents: [Event]?) -> Void) {
         var matchedLocationKeysArray: [String] = []
         guard let center = LocationController.sharedInstance.coreLocationManager.location else {
-            completion(currentEvents: nil, oldEvents: nil)
+            completion(currentEvents: nil, oldEvents: nil, futureEvents: nil)
             return }
         
         //print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
@@ -83,20 +88,25 @@ class GeoFireController {
                         if let events = events {
                             //print("EVENT RETRIEVED: \(events)")
                             
-                            let eventSort = events.divide({$0.endTime.timeIntervalSince1970 >= NSDate().timeIntervalSince1970})
+                            let eventSortOldOrNot = events.divide({$0.endTime.timeIntervalSince1970 >= NSDate().timeIntervalSince1970})
                             
-                            let currentEvents = eventSort.slice
-                            let oldEvents = eventSort.remainder
+                            let notOldEvents = eventSortOldOrNot.slice
+                            let oldEvents = eventSortOldOrNot.remainder
                             
-                            completion(currentEvents: currentEvents, oldEvents: oldEvents)
+                            let eventSortFutureOrPresent = notOldEvents.divide({$0.startTime.timeIntervalSince1970 <= NSDate().dateByAddingTimeInterval(86400).timeIntervalSince1970})
+                                
+                            let currentEvents = eventSortFutureOrPresent.slice
+                            let futureEvents = eventSortFutureOrPresent.remainder
+                            
+                            completion(currentEvents: currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
                         } else {
                             print("Dang it!!!")
-                            completion(currentEvents: nil, oldEvents: nil)
+                            completion(currentEvents: nil, oldEvents: nil, futureEvents: nil)
                         }
                     })
                 } else {
                     print("Did not get back any eventIDs")
-                    completion(currentEvents: nil, oldEvents: nil)
+                    completion(currentEvents: nil, oldEvents: nil, futureEvents: nil)
                 }
             })
         }
