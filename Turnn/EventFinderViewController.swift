@@ -143,7 +143,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
             if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
-                String.printEvents(currentEvents, oldEvents: oldEvents)
+                String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
                 
                 self.events = currentEvents
                 
@@ -154,10 +154,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 
                 self.oldEvents = oldEvents
                 self.futureEvents = futureEvents
+                //these matching location keys are tracked here
+                //for sake of deleting them at the same time
+                //as old events. they might more properly be
+                //called: "locationKeysForOldEvents"
                 self.matchingLocationKeys = matchingLocationKeys
             }
         })
-        //  OLD MOCK DATA
+        //  OLD MOCK DATA WIRE-UP
 //        self.events = EventController.mockEvents()
 //        self.displayEvents()
 //        self.tableView.reloadData()
@@ -188,7 +192,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             
-            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+            //mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)

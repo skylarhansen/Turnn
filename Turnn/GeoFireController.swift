@@ -45,23 +45,6 @@ class GeoFireController {
         }
     }
     
-    static func getLocationIdsForEventIdentifiers(ids: [String], completion: (ids: [String]?) -> Void) {
-        var locationIDs: [String] = []
-        let locationIDFetch = dispatch_group_create()
-        for id in ids {
-            dispatch_group_enter(locationIDFetch)
-            FirebaseController.ref.queryOrderedByChild("Location").queryEqualToValue(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
-                    locationIDs.append(locationID)
-                    dispatch_group_leave(locationIDFetch)
-                }
-            })
-        }
-        dispatch_group_notify(locationIDFetch, dispatch_get_main_queue()) {
-            completion(ids: locationIDs)
-        }
-    }
-
     // DEFINITIONS: OLDEVENTS are events whose "endTime" has passed,
     //              FUTUREEVENTS are vents whose "startTime" is more than 24 hours away from now
     //              CURRENTEVENTS are all other events, whose "endTime" not not passed
