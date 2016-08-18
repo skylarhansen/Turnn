@@ -27,10 +27,10 @@
                                         <rect key="frame" x="35" y="0.0" width="530" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EAy-zV-7V3">
-                                                <rect key="frame" x="0.0" y="0.0" width="101" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="emn-sb-Fqd">
-                                                <rect key="frame" x="108" y="0.0" width="101" height="50"/>
+                                                <rect key="frame" x="107" y="0.0" width="101" height="50"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Yj-e2-9De">
                                                 <rect key="frame" x="215" y="0.0" width="100" height="50"/>
@@ -39,7 +39,7 @@
                                                 <rect key="frame" x="322" y="0.0" width="101" height="50"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mwl-lX-tjk">
-                                                <rect key="frame" x="430" y="0.0" width="101" height="50"/>
+                                                <rect key="frame" x="430" y="0.0" width="100" height="50"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
@@ -358,7 +358,7 @@
                                     <outlet property="delegate" destination="DeV-nU-JC0" id="g8D-4h-uRb"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENT NAME" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-MI-9Mm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EVENT NAME" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iCa-MI-9Mm">
                                 <rect key="frame" x="4" y="89" width="444" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -377,7 +377,7 @@
                                     <action selector="backButton:" destination="DeV-nU-JC0" eventType="touchUpInside" id="z1h-Di-q1M"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSA-cY-EmY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSA-cY-EmY">
                                 <rect key="frame" x="206" y="128" width="40" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="85" id="mkq-Cc-k18"/>

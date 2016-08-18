@@ -51,8 +51,6 @@
 		CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */; };
 		CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */; };
 		CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */; };
-		CCE9DF051D58EA7200363A98 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9DF041D58EA7200363A98 /* Mapbox.framework */; };
-		CCE9DF061D58EA7200363A98 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCE9DF041D58EA7200363A98 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCFE38061D5BE294007F99DD /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */; };
 		CCFE38081D5E4149007F99DD /* EndTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */; };
 		CE2ADC841D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */; };
@@ -76,7 +74,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CCE9DF061D58EA7200363A98 /* Mapbox.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,7 +131,6 @@
 		CCE9DEBA1D5298B600363A98 /* LocationDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CCE9DEBC1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionDetailTableViewCell.swift; sourceTree = "<group>"; };
 		CCE9DEBE1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoDetailTableViewCell.swift; sourceTree = "<group>"; };
-		CCE9DF041D58EA7200363A98 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
 		CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndTimeTableViewCell.swift; sourceTree = "<group>"; };
 		CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,7 +152,6 @@
 			files = (
 				E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */,
 				CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */,
-				CCE9DF051D58EA7200363A98 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +273,6 @@
 		97A216E3475E11154D7CFAD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CCE9DF041D58EA7200363A98 /* Mapbox.framework */,
 				95C11F6B1D58E8FC00999A5E /* GeoFire.framework */,
 				6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */,
 			);

@@ -67,10 +67,10 @@ class GeoFireController {
     //              CURRENTEVENTS are all other events, whose "endTime" not not passed
     //                            and whose "startTime" is equal to or less than 24 hours away from now
     
-    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?, futureEvents: [Event]?) -> Void) {
+    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?, matchingLocationKeys: [String]?, futureEvents: [Event]?) -> Void) {
         var matchedLocationKeysArray: [String] = []
         guard let center = LocationController.sharedInstance.coreLocationManager.location else {
-            completion(currentEvents: nil, oldEvents: nil, futureEvents: nil)
+            completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil, futureEvents: nil)
             return }
         
         //print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
@@ -98,24 +98,23 @@ class GeoFireController {
                             let currentEvents = eventSortFutureOrPresent.slice
                             let futureEvents = eventSortFutureOrPresent.remainder
                             
-                            completion(currentEvents: currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
+                            completion(currentEvents: currentEvents, oldEvents: oldEvents, matchingLocationKeys: matchedLocationKeysArray, futureEvents: futureEvents)
                         } else {
                             print("Dang it!!!")
-                            completion(currentEvents: nil, oldEvents: nil, futureEvents: nil)
+                            completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil, futureEvents: nil)
                         }
                     })
                 } else {
                     print("Did not get back any eventIDs")
-                    completion(currentEvents: nil, oldEvents: nil, futureEvents: nil)
+                    completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil, futureEvents: nil)
                 }
             })
         }
     }
-    
-    
-    
 }
 
+//      METHOD TO OBSERVE KEYS 'EXITING' SEARCH RADIUS -- probably nothing we'll implement anytime soon
+//
 //        circleQuery.observeEventType(.KeyExited, withBlock: { (key, location: CLLocation!) in
 //            print("Key '\(key)' left the search area (or was deleted), previously being at location '\(location)'")
 //            let removalIndex = locationMatchArray.indexOf(key)

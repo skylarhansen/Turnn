@@ -43,7 +43,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9ks-3K-Jyc" id="vfQ-PH-uez">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="24.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeC-XD-hKI">
@@ -68,7 +68,7 @@
                                         <rect key="frame" x="0.0" y="53" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="78y-5W-Pyx" id="lE8-qf-Cse">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="u4A-ES-C7H">
@@ -192,13 +192,11 @@
                         <outlet property="moreOptionsButton" destination="pRJ-Kc-nWl" id="RNe-Sg-H65"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                         <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
-                        <segue destination="A7A-N2-rFU" kind="unwind" identifier="unwindToSignIn" unwindAction="unwindToSignIn:" id="ezK-en-SHF"/>
                         <segue destination="ADo-ch-5Qm" kind="presentation" identifier="nonUnwindToLogin" id="YC7-dz-tzp"/>
                         <segue destination="lKW-UX-92g" kind="presentation" identifier="toCategoriesSegue" id="iNS-du-VkY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="A7A-N2-rFU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1351" y="482"/>
         </scene>

@@ -11,9 +11,7 @@ import MapKit
 import CoreLocation
 
 class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
-    
-    let signInSignUpVC = SignInSignUpViewController()
-    
+
     @IBOutlet weak var mapViewPlaceholderView: UIView!
     var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -32,7 +30,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     let locationManager = CLLocationManager()
     var search: Location?
     var annotation: [MKPointAnnotation]?
+    
     var events: [Event] = []
+    var oldEvents: [Event] = []
+    var futureEvents: [Event] = []
+    
+    var matchingLocationKeys: [String] = []
     
     var mapCenter: CLLocationCoordinate2D!
     
@@ -73,14 +76,27 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.moreOptionsOn = false
-        createMapView()
         
         //let styleURL = NSURL(string: "mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk")
         
+        self.view.layoutSubviews()
+        self.mapView = MKMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height))
         
+        self.mapView.delegate = self
+        self.view.addSubview(mapView)
+        self.mapView.tintColor = UIColor.turnnBlue()
+        self.mapView.showsCompass = false
+        self.mapView.rotateEnabled = false
+        
+        
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
+            
+            self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
+            }, completion: nil)
         
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
+
         
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.delegate = self
@@ -103,14 +119,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         //        for locationKey in matchingLocationKeys{
         //            EventController.deleteLocation(locationKey)
         //        }
-        
-        
-        //        // Mock data previously used for testing
-        //        self.events = EventController.mockEvents()
-        //        self.displayEvents()
-        //        self.tableView.reloadData()
-        //        self.loadingIndicatorView.hidden = true
-        //        self.loadingIndicator.stopAnimating()
+
     }
     
     func createMapView() {
@@ -132,38 +141,28 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func updateQuery(){
         
-        GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys) in
-            if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys {
+        GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
+            if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
                 String.printEvents(currentEvents, oldEvents: oldEvents)
+                
                 self.events = currentEvents
+                
                 self.loadingIndicatorView.hidden = true
                 self.loadingIndicator.stopAnimating()
                 self.displayEvents()
                 self.tableView.reloadData()
+                
                 self.oldEvents = oldEvents
+                self.futureEvents = futureEvents
                 self.matchingLocationKeys = matchingLocationKeys
             }
         })
-        
-        /*
-         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
-         if let currentEvents = currentEvents, oldEvents = oldEvents {
-         String.printEvents(currentEvents, oldEvents: oldEvents)
-         self.events = currentEvents
-         self.loadingIndicatorView.hidden = true
-         self.loadingIndicator.stopAnimating()
-         self.displayEvents()
-         self.tableView.reloadData()
-         }
-         })
-         */
-        
-        // Mock data to use for now
-        self.events = EventController.mockEvents()
-        self.displayEvents()
-        self.tableView.reloadData()
-        self.loadingIndicatorView.hidden = true
-        self.loadingIndicator.stopAnimating()
+        //  OLD MOCK DATA
+//        self.events = EventController.mockEvents()
+//        self.displayEvents()
+//        self.tableView.reloadData()
+//        self.loadingIndicatorView.hidden = true
+//        self.loadingIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -348,13 +347,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func logoutButtonTapped() {
         print("logged out tapped")
-        //UserController.logOutUser()
-        
-        // THE BELOW LINE WILL EXECUTE IF AND ONLY IF THE USER LOGGED IN DURING THIS SESSION---AKA ONLY IF THE SIGNINSIGNUPVIEWCONTROLLER IS LOADED BEFORE THIS CODE IS EXECUTED. We have the App Delegate skipping over the signinsignup view controller if the user is already logged in---so maybe the received "unwindToSignIn" on the signinsignup view controller is a mystery when that page is skipped over. temp workaround is two lines below
-        //self.performSegueWithIdentifier("unwindToSignIn", sender: self)
-        //temp workaround, using "present modally" to storyboard ref
-        
-        //self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
+        UserController.logOutUser()
+        self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
 
     func presentAlert() {
@@ -514,6 +508,7 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -541,6 +536,7 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -568,6 +564,7 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -595,6 +592,7 @@ extension EventFinderViewController {
                         self.topMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
+                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -618,14 +616,3 @@ extension EventFinderViewController {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
