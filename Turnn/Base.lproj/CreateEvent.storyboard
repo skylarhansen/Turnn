@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yjm-zq-GYo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yjm-zq-GYo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -475,21 +475,21 @@
                                     <outlet property="moreInfoTextView" destination="52h-ZP-U3J" id="QcS-fO-3xv"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="754" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoriesCell" rowHeight="95" id="uho-qG-WnE" customClass="CategoriesTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="754" width="600" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uho-qG-WnE" id="tOr-oI-gga">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="94.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tkH-ZN-Ntv">
-                                            <rect key="frame" x="15" y="8" width="570" height="33"/>
+                                            <rect key="frame" x="15" y="8" width="570" height="79"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-VJ-UYf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="33"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="570" height="30"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHx-Mb-LLb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="570" height="33"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="570" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="tintColor" red="0.0" green="0.66274509800000003" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                             <state key="normal" title="Add Categories"/>
@@ -502,45 +502,48 @@
                                                         <constraint firstAttribute="height" constant="30" id="AmD-TO-kMd"/>
                                                     </constraints>
                                                 </stackView>
-                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBz-9Q-sZ7">
-                                                    <rect key="frame" x="0.0" y="33" width="570" height="0.0"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBz-9Q-sZ7">
+                                                    <rect key="frame" x="0.0" y="38" width="570" height="41"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-FM-fj4">
-                                                            <rect key="frame" x="3" y="3" width="564" height="0.0"/>
+                                                            <rect key="frame" x="3" y="0.0" width="564" height="41"/>
                                                             <subviews>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Admission" translatesAutoresizingMaskIntoConstraints="NO" id="Xsx-Is-IXP">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xsx-Is-IXP">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="107" height="41"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Movie" translatesAutoresizingMaskIntoConstraints="NO" id="JCL-Lc-2rk">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JCL-Lc-2rk">
+                                                                    <rect key="frame" x="114" y="0.0" width="108" height="41"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Video Games" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-IO-Tlp">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-IO-Tlp">
+                                                                    <rect key="frame" x="229" y="0.0" width="107" height="41"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-kK-L8G">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="1440" id="0d5-ek-EcO"/>
-                                                                    </constraints>
+                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-kK-L8G">
+                                                                    <rect key="frame" x="343" y="0.0" width="107" height="41"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mtU-L2-fzY">
-                                                                    <rect key="frame" x="-18" y="-70" width="0.0" height="1440"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mtU-L2-fzY">
+                                                                    <rect key="frame" x="457" y="0.0" width="107" height="41"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="Xsx-Is-IXP" firstAttribute="leading" secondItem="ARH-FM-fj4" secondAttribute="leading" constant="-18" id="9Md-be-ByC"/>
                                                                 <constraint firstItem="JCL-Lc-2rk" firstAttribute="top" secondItem="ARH-FM-fj4" secondAttribute="top" constant="-70" id="TGR-ug-BbO"/>
                                                             </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="9Md-be-ByC"/>
+                                                                    <exclude reference="TGR-ug-BbO"/>
+                                                                </mask>
+                                                            </variation>
                                                         </stackView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="0.55172413793103448" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="ARH-FM-fj4" firstAttribute="top" secondItem="BBz-9Q-sZ7" secondAttribute="top" constant="3" id="0a8-Cp-tKH"/>
+                                                        <constraint firstItem="ARH-FM-fj4" firstAttribute="top" secondItem="BBz-9Q-sZ7" secondAttribute="top" id="0a8-Cp-tKH"/>
                                                         <constraint firstAttribute="trailing" secondItem="ARH-FM-fj4" secondAttribute="trailing" constant="3" id="8Aq-5q-UQK"/>
                                                         <constraint firstAttribute="bottom" secondItem="ARH-FM-fj4" secondAttribute="bottom" constant="-3" id="AOX-fM-Pzp"/>
                                                         <constraint firstAttribute="bottom" secondItem="ARH-FM-fj4" secondAttribute="bottom" constant="3" id="HP6-ue-66i"/>
                                                         <constraint firstItem="ARH-FM-fj4" firstAttribute="leading" secondItem="BBz-9Q-sZ7" secondAttribute="leading" constant="3" id="cLS-UO-Ff4"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ARH-FM-fj4" secondAttribute="bottom" constant="-3" id="fI0-gG-gc1"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ARH-FM-fj4" secondAttribute="bottom" id="fI0-gG-gc1"/>
                                                     </constraints>
                                                     <variation key="default">
                                                         <mask key="constraints">
@@ -590,7 +593,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LP4-e8-mEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1439" y="183"/>
+            <point key="canvasLocation" x="1401" y="182"/>
         </scene>
         <!--Category-->
         <scene sceneID="UQ7-YZ-Cyi">
@@ -598,7 +601,7 @@
                 <viewControllerPlaceholder storyboardName="Category" id="SEr-ea-aBL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybg-fc-JU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1458" y="268"/>
+            <point key="canvasLocation" x="1872" y="182"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ECy-Y0-ucx">
@@ -619,9 +622,4 @@
             <point key="canvasLocation" x="232" y="268"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Admission" width="8" height="17"/>
-        <image name="Movie" width="26" height="25"/>
-        <image name="Video Games" width="40" height="18"/>
-    </resources>
 </document>

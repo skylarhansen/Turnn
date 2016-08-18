@@ -316,7 +316,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "searchCategories" {
+        if segue.identifier == "toCategoriesSegue" {
             let navController = segue.destinationViewController as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
             categoryVC?.mode = .Search
