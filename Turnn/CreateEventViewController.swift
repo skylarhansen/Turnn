@@ -81,7 +81,25 @@ class CreateEventViewController: UITableViewController {
                                             
                                             EventController.createSnapShotOfLocation(location) { (success, image) in
                                                 if success && image != nil {
-                                                    EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success) in
+                                                    ImageController.saveImage(image!, completion: { (imageURL) in
+                                                        if let imageURL = imageURL {
+                                                            EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: imageURL, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success) in
+                                                                if success {
+                                                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                                                }
+                                                            })
+                                                        } else {
+                                                            print("Wasn't able to get an imageURL... Image may not have saved. Creating event without screenshot of map.")
+                                                            EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success) in
+                                                                if success {
+                                                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                                                }
+                                                            })
+                                                        }
+                                                    })
+                                                } else {
+                                                    print("Wasn't able create a snapshot... Creating event without screenshot of map.")
+                                                    EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success) in
                                                         if success {
                                                             self.dismissViewControllerAnimated(true, completion: nil)
                                                         }
