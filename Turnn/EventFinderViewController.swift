@@ -33,8 +33,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var search: Location?
     var annotation: [MKPointAnnotation]?
     var events: [Event] = []
-    var oldEvents: [Event] = []
-    var matchingLocationKeys: [String] = []
     
     var mapCenter: CLLocationCoordinate2D!
     
@@ -103,43 +101,26 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         
         setupTableViewUI()
-        updateQuery()
-
-//
-//        NEXT TWO FUNCTIONS DELETE OLD EVENTS AND THEIR MATCHING LOCATIONS
-//        BUT LET'S LEAVE IT NOW FOR NOW PER JUSTIN'S DATA CONFLICT ADVICE
-//
-//        for event in oldEvents{
-//            EventController.deleteEvent(event)
-//        }
-//        
-//        for locationKey in matchingLocationKeys{
-//            EventController.deleteLocation(locationKey)
-//        }
         
+        /*
+         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
+         if let currentEvents = currentEvents, oldEvents = oldEvents {
+         String.printEvents(currentEvents, oldEvents: oldEvents)
+         self.events = currentEvents
+         self.loadingIndicatorView.hidden = true
+         self.loadingIndicator.stopAnimating()
+         self.displayEvents()
+         self.tableView.reloadData()
+         }
+         })
+         */
         
-//        // Mock data previously used for testing
-//        self.events = EventController.mockEvents()
-//        self.displayEvents()
-//        self.tableView.reloadData()
-//        self.loadingIndicatorView.hidden = true
-//        self.loadingIndicator.stopAnimating()
-    }
-    
-    func updateQuery(){
-        
-        GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys) in
-            if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys {
-                String.printEvents(currentEvents, oldEvents: oldEvents)
-                self.events = currentEvents
-                self.loadingIndicatorView.hidden = true
-                self.loadingIndicator.stopAnimating()
-                self.displayEvents()
-                self.tableView.reloadData()
-                self.oldEvents = oldEvents
-                self.matchingLocationKeys = matchingLocationKeys
-            }
-        })
+        // Mock data to use for now
+        self.events = EventController.mockEvents()
+        self.displayEvents()
+        self.tableView.reloadData()
+        self.loadingIndicatorView.hidden = true
+        self.loadingIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -165,6 +146,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             
+            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
@@ -248,6 +230,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.setRegion(region, animated: false)
     }
     
+    @IBAction func unwindToEventFinder(segue: UIStoryboardSegue) {
+        
+    }
+    
     func mapViewUpdated(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("UPDATED")
     }
@@ -328,19 +314,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         //self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
     
-    
-   // var filteredEvents = EventController.filterEventsByCategories([Event], categories: [Int])
-    
-    @IBAction func unwindFromCategory(segue: UIStoryboardSegue) {
-        if segue.identifier == "UnwindFromCategoryIdentifier" {
-            let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
-            let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
-            self.mapView.removeAnnotations(annotations)
-//            self.mapView.addAnnotations(annotations)
-            
-        }
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "searchCategories" {
@@ -354,12 +327,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 let event = events[indexPath.section]
                 eventDetailVC.event = event
             }
-        }
-        
-        if segue.identifier == "toCategoriesSegue" {
-            let navController = segue.destinationViewController as? UINavigationController
-            let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
-            categoryVC?.mode = .Search
         }
     }
 }
@@ -486,7 +453,6 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -514,7 +480,6 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -542,7 +507,6 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -570,7 +534,6 @@ extension EventFinderViewController {
                         self.topMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()

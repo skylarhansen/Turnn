@@ -44,17 +44,34 @@ class GeoFireController {
             completion(ids: eventIDs)
         }
     }
+    
+    static func getLocationIdsForEventIdentifiers(ids: [String], completion: (ids: [String]?) -> Void) {
+        var locationIDs: [String] = []
+        let locationIDFetch = dispatch_group_create()
+        for id in ids {
+            dispatch_group_enter(locationIDFetch)
+            FirebaseController.ref.queryOrderedByChild("Location").queryEqualToValue(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
+                    locationIDs.append(locationID)
+                    dispatch_group_leave(locationIDFetch)
+                }
+            })
+        }
+        dispatch_group_notify(locationIDFetch, dispatch_get_main_queue()) {
+            completion(ids: locationIDs)
+        }
+    }
 
-    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?, matchingLocationKeys: [String]?) -> Void) {
+    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?) -> Void) {
         var matchedLocationKeysArray: [String] = []
         guard let center = LocationController.sharedInstance.coreLocationManager.location else {
-            completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil)
+            completion(currentEvents: nil, oldEvents: nil)
             return }
         
-        print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
+        //print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
         let circleQuery = geofire.queryAtLocation(center, withRadius: radius.makeKilometers())
         circleQuery.observeEventType(.KeyEntered, withBlock: { (key, location) in
-            print("Key '\(key)' entered the search area and is at location '\(location)'")
+            //print("Key '\(key)' entered the search area and is at location '\(location)'")
             matchedLocationKeysArray.append(key)
         })
         
@@ -71,15 +88,15 @@ class GeoFireController {
                             let currentEvents = eventSort.slice
                             let oldEvents = eventSort.remainder
                             
-                            completion(currentEvents: currentEvents, oldEvents: oldEvents, matchingLocationKeys: matchedLocationKeysArray)
+                            completion(currentEvents: currentEvents, oldEvents: oldEvents)
                         } else {
                             print("Dang it!!!")
-                            completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil)
+                            completion(currentEvents: nil, oldEvents: nil)
                         }
                     })
                 } else {
                     print("Did not get back any eventIDs")
-                    completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil)
+                    completion(currentEvents: nil, oldEvents: nil)
                 }
             })
         }
@@ -88,8 +105,7 @@ class GeoFireController {
     
     
 }
-//      METHOD TO OBSERVE KEYS 'EXITING' SEARCH RADIUS -- probably nothing we'll implement anytime soon
-//
+
 //        circleQuery.observeEventType(.KeyExited, withBlock: { (key, location: CLLocation!) in
 //            print("Key '\(key)' left the search area (or was deleted), previously being at location '\(location)'")
 //            let removalIndex = locationMatchArray.indexOf(key)

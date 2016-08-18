@@ -61,6 +61,7 @@
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
 		CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C11F6B1D58E8FC00999A5E /* GeoFire.framework */; };
+		DB044B6B1D65206E0082E4C3 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB044B6A1D65206E0082E4C3 /* ImageController.swift */; };
 		DB315C291D63BD5100A07DCE /* EventRadiusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */; };
 		DB315C2B1D63BD8300A07DCE /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2A1D63BD8300A07DCE /* LogOutView.swift */; };
 		DB315C2D1D63BDA000A07DCE /* TurnnCopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */; };
@@ -141,6 +142,7 @@
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
 		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
+		DB044B6A1D65206E0082E4C3 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRadiusButton.swift; sourceTree = "<group>"; };
 		DB315C2A1D63BD8300A07DCE /* LogOutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
 		DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnCopyableLabel.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				95C11F681D58E4FB00999A5E /* LocationController.swift */,
 				95C11F6F1D58ED1A00999A5E /* GeoFireController.swift */,
 				8C1C60921D5002860015FAC5 /* FirebaseController.swift */,
+				DB044B6A1D65206E0082E4C3 /* ImageController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -381,7 +384,7 @@
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 35L3J99R6J;
+						DevelopmentTeam = 4637N428EN;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -557,6 +560,7 @@
 				CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */,
 				8C1C608B1D4FFAAF0015FAC5 /* Event.swift in Sources */,
 				95E595421D51460900416B2A /* ExampleCollectionViewCell.swift in Sources */,
+				DB044B6B1D65206E0082E4C3 /* ImageController.swift in Sources */,
 				CCFE38081D5E4149007F99DD /* EndTimeTableViewCell.swift in Sources */,
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
 				95E595431D51460900416B2A /* LocationTableViewCell.swift in Sources */,

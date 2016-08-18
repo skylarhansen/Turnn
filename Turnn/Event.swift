@@ -36,7 +36,7 @@ class Event: FirebaseType {
     var password: String?
     var price: Double?
     var contactInfo: String?
-    var image: UIImage?
+    var imageURL: String?
     var identifier: String?
     var host: User
     var moreInfo: String?
@@ -65,7 +65,7 @@ class Event: FirebaseType {
             dictionary.updateValue(contactInfo, forKey: contactInfoKey)
         }
         
-        if let image = image {
+        if let image = imageURL {
             dictionary.updateValue(image, forKey: imageKey)
         }
         
@@ -75,7 +75,7 @@ class Event: FirebaseType {
         return dictionary
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool, password: String?, price: Double?, contactInfo: String?, image: UIImage?, host: User, moreInfo: String?) {
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool, password: String?, price: Double?, contactInfo: String?, imageURL: String?, host: User, moreInfo: String?) {
         
         self.title = title
         self.location = location
@@ -86,8 +86,8 @@ class Event: FirebaseType {
         self.passwordProtected = passwordProtected
         self.password = password
         self.price = price
+        self.imageURL = imageURL
         self.contactInfo = contactInfo
-        self.image = image
         self.host = host
         self.moreInfo = moreInfo
         self.identifier = nil
@@ -126,8 +126,8 @@ class Event: FirebaseType {
             self.contactInfo = contactInfo
         }
         
-        if let image = dictionary[imageKey] as? UIImage {
-            self.image = image
+        if let image = dictionary[imageKey] as? String {
+            self.imageURL = image
         }
         
         if let moreInfo = dictionary[moreInfoKey] as? String {
