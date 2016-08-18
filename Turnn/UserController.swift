@@ -83,6 +83,21 @@ class UserController {
         })
     }
     
+    static func isLoggedInServerTest(completion: (success: Bool, error: NSError?) -> Void) {
+        if let currentUser = FIRAuth.auth()?.currentUser {
+            currentUser.getTokenForcingRefresh(true) { (idToken, error) in
+                if let error = error {
+                    completion(success: false, error: error)
+                    print(error.localizedDescription)
+                } else {
+                    completion(success: true, error: nil)
+                }
+            }
+        } else {
+            completion(success: false, error: nil)
+        }
+    }
+    
     static func clearLocallySavedUserOnLogout(){
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey(UserController.currentUserKey)

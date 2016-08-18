@@ -8,9 +8,11 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class FirebaseController {
     static let ref = FIRDatabase.database().reference()
+    static let storage = FIRStorage.storage().reference()
 }
 
 protocol FirebaseType {

@@ -8,17 +8,12 @@
 
 import UIKit
 
-//protocol CategoryCollectionViewControllerDelegate: class {
-//    func categoriesSelected(categories: [Int])
-//}
-
 private let reuseIdentifier = "categoryCell"
 
 class CategoryCollectionViewController: UICollectionViewController {
     
     var doneButtonTitle = "Search"
     var categories: [Int] = []
-//    weak var delegate: CategoryCollectionViewControllerDelegate?
     
     enum ButtonMode: String {
         case Search
@@ -40,23 +35,25 @@ class CategoryCollectionViewController: UICollectionViewController {
         
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "unwindToCreateEvent" {
-//            if let createEventVC = segue.destinationViewController as? CreateEventViewController {
-//                createEventVC.categories = self.categories
-//            }
-//        }
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "unwindToCreateEvent" {
+            if let createEventVC = segue.destinationViewController as? CreateEventViewController {
+                createEventVC.categories = self.categories
+            }
+        }
+    }
     
     @IBAction func cancelButtonTapped(sender: AnyObject) {
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
+        
         if mode == .Search {
-            self.performSegueWithIdentifier("UnwindFromCategoryIdentifier", sender: self)
+            self.performSegueWithIdentifier("unwindToEventFinder", sender: self)
         } else if mode == .Save {
-            self.performSegueWithIdentifier("unwindPlease", sender: self)
+            self.performSegueWithIdentifier("unwindToCreateEvent", sender: self)
         }
     }
     

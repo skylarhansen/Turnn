@@ -33,8 +33,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var search: Location?
     var annotation: [MKPointAnnotation]?
     var events: [Event] = []
-    var oldEvents: [Event] = []
-    var matchingLocationKeys: [String] = []
     
     var mapCenter: CLLocationCoordinate2D!
     
@@ -91,6 +89,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         
         setupTableViewUI()
+<<<<<<< HEAD
         updateQuery()
         
         //
@@ -145,6 +144,28 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.matchingLocationKeys = matchingLocationKeys
             }
         })
+=======
+        
+        /*
+         GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
+         if let currentEvents = currentEvents, oldEvents = oldEvents {
+         String.printEvents(currentEvents, oldEvents: oldEvents)
+         self.events = currentEvents
+         self.loadingIndicatorView.hidden = true
+         self.loadingIndicator.stopAnimating()
+         self.displayEvents()
+         self.tableView.reloadData()
+         }
+         })
+         */
+        
+        // Mock data to use for now
+        self.events = EventController.mockEvents()
+        self.displayEvents()
+        self.tableView.reloadData()
+        self.loadingIndicatorView.hidden = true
+        self.loadingIndicator.stopAnimating()
+>>>>>>> c42b7db76c8da5b91d2e6532957e5b2c31f36da7
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -170,6 +191,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             
+            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
@@ -253,6 +275,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.setRegion(region, animated: false)
     }
     
+    @IBAction func unwindToEventFinder(segue: UIStoryboardSegue) {
+        
+    }
+    
     func mapViewUpdated(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("UPDATED")
     }
@@ -333,6 +359,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         //self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
     
+<<<<<<< HEAD
     func presentAlert() {
         let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
         let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
@@ -352,9 +379,11 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
+=======
+>>>>>>> c42b7db76c8da5b91d2e6532957e5b2c31f36da7
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "searchCategories" {
+        if segue.identifier == "toCategoriesSegue" {
             let navController = segue.destinationViewController as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
             categoryVC?.mode = .Search
@@ -365,12 +394,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 let event = events[indexPath.section]
                 eventDetailVC.event = event
             }
-        }
-        
-        if segue.identifier == "toCategoriesSegue" {
-            let navController = segue.destinationViewController as? UINavigationController
-            let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
-            categoryVC?.mode = .Search
         }
     }
 }
@@ -497,7 +520,6 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -525,7 +547,6 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -553,7 +574,6 @@ extension EventFinderViewController {
                         self.lowestMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()
@@ -581,7 +601,6 @@ extension EventFinderViewController {
                         self.topMilesButton.hidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
-                updateQuery()
                 print(self.selectedRadius)
             } else {
                 addRadiusViews()

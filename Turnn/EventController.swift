@@ -14,11 +14,11 @@ class EventController {
     
     static let eventData = FirebaseController.ref.child("Events")
 
-    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: Double? = 0.0, contactInfo: String? = "", image: UIImage?, host: User, moreInfo: String?, completion: (success: Bool) -> Void)
+    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: Double? = 0.0, contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool) -> Void)
     {
         guard let host = UserController.shared.currentUser else { NSLog("there is no current user logged in"); return }
         
-        var event = Event(title: title, location: location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: eventDescription, passwordProtected: passwordProtected, password: password, price: price,contactInfo: contactInfo, image: image, host: host, moreInfo: moreInfo)
+        var event = Event(title: title, location: location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: eventDescription, passwordProtected: passwordProtected, password: password, price: price,contactInfo: contactInfo, imageURL: imageURL, host: host, moreInfo: moreInfo)
         
         event.save()
         
@@ -49,21 +49,6 @@ class EventController {
 //        })
 //    }
     
-    static func filterEventsByCategories(events: [Event], categories: [Int]) -> [Event]? {
-        let filteredEvents = NSMutableSet()
-        for event in events {
-            for eventCategory in event.categories {
-                for category in categories {
-                    if category == eventCategory {
-                        filteredEvents.addObject(event)
-                    }
-                }
-            }
-        }
-        
-        return filteredEvents.allObjects as? [Event]
-    }
-    
     // Gets particular events with identifiers -> Completes with [Event]
     static func fetchEventsThatMatchQuery(eventIDs: [String], completion: (events: [Event]?) -> Void) {
         var events: [Event] = []
@@ -89,12 +74,6 @@ class EventController {
             FirebaseController.ref.child("Events").child(identifier).removeValue()
         }
         event.delete()
-    }
-    
-    static func deleteLocation(locationID: String?){
-        if let locationID = locationID {
-            FirebaseController.ref.child("Locations").child(locationID).removeValue()
-        }
     }
     
     static func updateEvent(event: Event){
@@ -157,13 +136,13 @@ class EventController {
         
         let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
         
-        let event1 = Event(title: "There's an event that's a 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "I'm testing to see what this will look like if I put a really long string into the box so here goes: Tim Duncan, Tony Parker, Manu Ginobili, Kawhi Leonard, Gregg Popovich 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event1 = Event(title: "There's an event that's a 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "I'm testing to see what this will look like if I put a really long string into the box so here goes: Tim Duncan, Tony Parker, Manu Ginobili, Kawhi Leonard, Gregg Popovich 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
         
-        let event2 = Event(title: "Hey! 2", location: mockLocation2, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,2,1,5], eventDescription: "Nice Event Man! 2", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event2 = Event(title: "Hey! 2", location: mockLocation2, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,2,1,5], eventDescription: "Nice Event Man! 2", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
         
-        let event3 = Event(title: "Hey! 3", location: mockLocation3, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [3,6,8], eventDescription: "Nice Event Man! 3", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event3 = Event(title: "Hey! 3", location: mockLocation3, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [3,6,8], eventDescription: "Nice Event Man! 3", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
         
-        let event4 = Event(title: "Hey! 4", location: mockLocation4, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [2,9], eventDescription: "Nice Event Man! 4", passwordProtected: false, password: nil, price: nil, contactInfo: nil, image: nil, host: mockUser, moreInfo: nil)
+        let event4 = Event(title: "Hey! 4", location: mockLocation4, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [2,9], eventDescription: "Nice Event Man! 4", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
         
         return [event1, event2, event3, event4]
     }
