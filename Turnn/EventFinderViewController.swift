@@ -75,9 +75,46 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.moreOptionsOn = false
+        createMapView()
         
         //let styleURL = NSURL(string: "mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk")
         
+        
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        self.mapView.showsUserLocation = true
+        
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
+        }
+        
+        setupTableViewUI()
+        updateQuery()
+        
+        //
+        //        NEXT TWO FUNCTIONS DELETE OLD EVENTS AND THEIR MATCHING LOCATIONS
+        //        BUT LET'S LEAVE IT NOW FOR NOW PER JUSTIN'S DATA CONFLICT ADVICE
+        //
+        //        for event in oldEvents{
+        //            EventController.deleteEvent(event)
+        //        }
+        //
+        //        for locationKey in matchingLocationKeys{
+        //            EventController.deleteLocation(locationKey)
+        //        }
+        
+        
+        //        // Mock data previously used for testing
+        //        self.events = EventController.mockEvents()
+        //        self.displayEvents()
+        //        self.tableView.reloadData()
+        //        self.loadingIndicatorView.hidden = true
+        //        self.loadingIndicator.stopAnimating()
+    }
+    
+    func createMapView() {
         self.view.layoutSubviews()
         self.mapView = MKMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height))
         
@@ -92,38 +129,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             
             self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
             }, completion: nil)
-        
-        self.locationManager.requestWhenInUseAuthorization()
-        self.mapView.showsUserLocation = true
-        
-        if CLLocationManager.locationServicesEnabled() {
-            self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.startUpdatingLocation()
-        }
-        
-        setupTableViewUI()
-        updateQuery()
-
-//
-//        NEXT TWO FUNCTIONS DELETE OLD EVENTS AND THEIR MATCHING LOCATIONS
-//        BUT LET'S LEAVE IT NOW FOR NOW PER JUSTIN'S DATA CONFLICT ADVICE
-//
-//        for event in oldEvents{
-//            EventController.deleteEvent(event)
-//        }
-//        
-//        for locationKey in matchingLocationKeys{
-//            EventController.deleteLocation(locationKey)
-//        }
-        
-        
-//        // Mock data previously used for testing
-//        self.events = EventController.mockEvents()
-//        self.displayEvents()
-//        self.tableView.reloadData()
-//        self.loadingIndicatorView.hidden = true
-//        self.loadingIndicator.stopAnimating()
     }
     
     func updateQuery(){
@@ -210,10 +215,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     // MARK: - TableView Appearance
     
-//    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-//        cell.separatorInset = UIEdgeInsetsZero
-//        cell.layoutMargins = UIEdgeInsetsZero
-//    }
+    //    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    //        cell.separatorInset = UIEdgeInsetsZero
+    //        cell.layoutMargins = UIEdgeInsetsZero
+    //    }
     
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
@@ -328,16 +333,22 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         //self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
     
-    
-   // var filteredEvents = EventController.filterEventsByCategories([Event], categories: [Int])
+    func presentAlert() {
+        let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
+        let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+        
+        alertController.addAction(dismissAction)
+    }
     
     @IBAction func unwindFromCategory(segue: UIStoryboardSegue) {
         if segue.identifier == "UnwindFromCategoryIdentifier" {
             let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
             let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
-            self.mapView.removeAnnotations(annotations)
-//            self.mapView.addAnnotations(annotations)
-            
+            if filteredEvents != nil {
+                displayEvents()
+            } else {
+                presentAlert()
+            }
         }
     }
     
