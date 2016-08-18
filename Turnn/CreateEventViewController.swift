@@ -22,6 +22,7 @@ class CreateEventViewController: UITableViewController {
     var titleCell: TitleTableViewCell!
     var timeCell: TimeTableViewCell!
     var endTimeCell: EndTimeTableViewCell!
+    var priceCell: PriceTableViewCell!
     var locationCell: LocationTableViewCell!
     var addressCell: AddressTableViewCell!
     var cityCell: CityTableViewCell!
@@ -212,27 +213,30 @@ class CreateEventViewController: UITableViewController {
                 endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
                 return endTimeCell ?? UITableViewCell()
             case 3:
+                priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
+                return priceCell ?? UITableViewCell()
+            case 4:
                 locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
                 return locationCell ?? UITableViewCell()
-            case 4:
+            case 5:
                 addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
                 return addressCell ?? UITableViewCell()
-            case 5:
+            case 6:
                 cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
                 return cityCell ?? UITableViewCell()
-            case 6:
+            case 7:
                 stateCell = tableView.dequeueReusableCellWithIdentifier("stateCell", forIndexPath: indexPath) as? StateTableViewCell
                 return stateCell ?? UITableViewCell()
-            case 7:
+            case 8:
                 zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
                 return zipCell ?? UITableViewCell()
-            case 8:
+            case 9:
                 descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
                 return descriptionCell ?? UITableViewCell()
-            case 9:
+            case 10:
                 moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
                 return moreInfoCell ?? UITableViewCell()
-            case 10:
+            case 11:
                 let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
                 if let categories = categories {
                     categoriesCell?.updateWith(categories)
@@ -253,15 +257,18 @@ class CreateEventViewController: UITableViewController {
                 endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
                 return endTimeCell ?? UITableViewCell()
             case 3:
+                priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
+                return priceCell ?? UITableViewCell()
+            case 4:
                 locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
                 return locationCell ?? UITableViewCell()
-            case 4:
+            case 5:
                 descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
                 return descriptionCell ?? UITableViewCell()
-            case 5:
+            case 6:
                 moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
                 return moreInfoCell ?? UITableViewCell()
-            case 6:
+            case 7:
                 let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
                 if let categories = categories {
                     categoriesCell?.updateWith(categories)
