@@ -49,6 +49,13 @@ extension NSDate {
         return dateFormatter.stringFromDate(self)
     }
     
+    func dateOnly() -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .MediumStyle
+        
+        return dateFormatter.stringFromDate(self)
+    }
+    
     static func dateFromString(string: String) -> NSDate? {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"

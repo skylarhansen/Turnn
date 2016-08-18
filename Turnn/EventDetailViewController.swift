@@ -23,6 +23,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     //@IBOutlet weak var eventImageView: UIImageView!
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventEndTimeLabel: UILabel!
     @IBOutlet var categoryImageViews: [UIImageView]!
     @IBOutlet weak var categoryImageHolderView: UIView!
@@ -75,13 +76,17 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func updateEventDetail(event: Event) {
-        //eventImageView.image = event.image
+        
         eventTitleLabel.text = event.title
-        eventTimeLabel.text = "\(event.startTime.dateFormat())"
+        eventTimeLabel.text = "\(event.startTime.dateFormat()) - \(event.endTime.dateFormat())"
         loadImageViews(event.loadCategoriesForEvent())
-        if event.endTime == event.endTime {
-            eventTimeLabel.text = "\(event.endTime.dateFormat())" } else {
-            eventEndTimeLabel.text = "" }
+        
+        if event.startTime.dateOnly() == event.endTime.dateOnly() {
+            eventDateLabel.text = event.startTime.dateOnly()
+        } else {
+            eventDateLabel.text = "\(event.startTime.dateOnly()) - \(event.endTime.dateOnly())"
+        }
+        
     }
     
     // MARK: - Action Buttons -

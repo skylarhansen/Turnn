@@ -188,7 +188,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             
-            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+//            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
