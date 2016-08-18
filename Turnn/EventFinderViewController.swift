@@ -363,7 +363,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
             let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
             if filteredEvents != nil {
-                displayEvents()
+                updateQuery()
             } else {
                 presentAlert()
             }
