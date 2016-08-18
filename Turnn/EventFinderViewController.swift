@@ -89,7 +89,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         
         setupTableViewUI()
-<<<<<<< HEAD
+
         updateQuery()
         
         //
@@ -144,7 +144,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.matchingLocationKeys = matchingLocationKeys
             }
         })
-=======
         
         /*
          GeoFireController.queryEventsForRadius(miles: 5.0, completion: { (currentEvents, oldEvents) in
@@ -165,7 +164,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.tableView.reloadData()
         self.loadingIndicatorView.hidden = true
         self.loadingIndicator.stopAnimating()
->>>>>>> c42b7db76c8da5b91d2e6532957e5b2c31f36da7
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -358,8 +356,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         //self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
-    
-<<<<<<< HEAD
+
     func presentAlert() {
         let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
         let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
@@ -378,9 +375,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             }
         }
     }
-    
-=======
->>>>>>> c42b7db76c8da5b91d2e6532957e5b2c31f36da7
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toCategoriesSegue" {
