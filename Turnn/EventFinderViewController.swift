@@ -145,6 +145,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
                 String.printEvents(currentEvents, oldEvents: oldEvents)
                 
+                self.mapView.removeAnnotations(self.annotations)
+                self.annotations = []
                 self.events = currentEvents
                 
                 self.loadingIndicatorView.hidden = true
@@ -188,12 +190,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             }
             
-            mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+            self.mapView.rotateEnabled = false
+            self.mapView.showsCompass = false
             point.title = event.title
             point.subtitle = event.location.address
             annotations.append(point)
-            self.mapView.addAnnotations(annotations)
         }
+        self.mapView.addAnnotations(annotations)
     }
     
     //    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
