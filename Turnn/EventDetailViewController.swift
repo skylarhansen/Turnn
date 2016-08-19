@@ -87,29 +87,40 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func backButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-//    @IBAction func locationButtonTapped(sender: AnyObject) {
-//        presentAlertController()
-//    }
+    
+    @IBAction func mapButtonTapped(sender: AnyObject) {
+        guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.longitude else {
+            return
+        }
+        let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+        UIApplication.sharedApplication().openURL(url)
+    }
+    
+    
+    @IBAction func locationButtonTapped(sender: AnyObject) {
+        presentAlertController()
+    }
     // MARK: - Alert Controller
-//    func presentAlertController() {
-//        
-//        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-//        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
-//            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
-//                return
-//            }
-//            
-//            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
-//            UIApplication.sharedApplication().openURL(url)
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//        
-//        actionSheet.addAction(mapsAction)
-//        actionSheet.addAction(cancelAction)
-//        
-//        presentViewController(actionSheet, animated: true, completion: nil)
-//    }
+    
+    func presentAlertController() {
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
+            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
+                return
+            }
+            
+            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        actionSheet.addAction(mapsAction)
+        actionSheet.addAction(cancelAction)
+        
+        presentViewController(actionSheet, animated: true, completion: nil)
+    }
     
     // MARK: - tableView data source functions
     
@@ -132,9 +143,9 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case 1:
             let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
             locationDetailCell?.updateLocationWithEvent(event!)
-//            locationDetailCell?.streetNumberLabel.text = event?.location.address
-//            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
-//            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
+            //            locationDetailCell?.streetNumberLabel.text = event?.location.address
+            //            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
+            //            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
             return locationDetailCell ?? UITableViewCell()
             
         case 2:
