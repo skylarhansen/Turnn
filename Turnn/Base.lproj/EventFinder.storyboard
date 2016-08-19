@@ -192,13 +192,21 @@
                         <outlet property="moreOptionsButton" destination="pRJ-Kc-nWl" id="RNe-Sg-H65"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                         <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
-                        <segue destination="ADo-ch-5Qm" kind="presentation" identifier="nonUnwindToLogin" id="YC7-dz-tzp"/>
                         <segue destination="lKW-UX-92g" kind="presentation" identifier="toCategoriesSegue" id="iNS-du-VkY"/>
+                        <segue destination="rnA-q4-7n6" kind="presentation" identifier="ToMyEventsSegue" modalTransitionStyle="crossDissolve" id="giu-Ib-Y9x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c12-pt-nuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1351" y="482"/>
+        </scene>
+        <!--MyEvents-->
+        <scene sceneID="CPS-gV-yZR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyEvents" id="rnA-q4-7n6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y30-te-mdc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1855.5" y="578"/>
         </scene>
         <!--CreateEvent-->
         <scene sceneID="7Ks-RW-YOI">
@@ -206,7 +214,7 @@
                 <viewControllerPlaceholder storyboardName="CreateEvent" id="SHe-GN-2xC" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYp-KW-Mz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1855.5" y="359"/>
+            <point key="canvasLocation" x="1864.5" y="358"/>
         </scene>
         <!--EventDetailView-->
         <scene sceneID="yTN-n7-2tc">
@@ -234,14 +242,6 @@
             </objects>
             <point key="canvasLocation" x="614" y="482"/>
         </scene>
-        <!--SignInSignUp-->
-        <scene sceneID="vgK-yl-gig">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SignInSignUp" id="ADo-ch-5Qm" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gqz-TL-rFR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1868" y="508"/>
-        </scene>
         <!--Category-->
         <scene sceneID="4pm-sl-BTF">
             <objects>
@@ -250,7 +250,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oXl-Ak-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1855" y="585"/>
+            <point key="canvasLocation" x="1855" y="507"/>
         </scene>
     </scenes>
     <resources>

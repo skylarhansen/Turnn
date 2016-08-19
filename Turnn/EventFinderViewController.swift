@@ -22,6 +22,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     var adjustMilesView: LogOutView!
     var logOutView: LogOutView!
+    var myEventsView: LogOutView!
     var topMilesButton: EventRadiusButton!
     var midMilesButton: EventRadiusButton!
     var lowMilesButton: EventRadiusButton!
@@ -402,11 +403,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.performSegueWithIdentifier("toCategoriesSegue", sender: nil)
     }
     
-    func logoutButtonTapped() {
-
-        print("logged out tapped")
-        UserController.logOutUser()
-        self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
+    func showAllEvents() {
+        self.isFiltered = false
+        updateQuery()
+        tableView.reloadData()
+    }
+    
+    func myEventsButtonTapped() {
+        self.performSegueWithIdentifier("ToMyEventsSegue", sender: nil)
     }
     
     func presentAlert() {
@@ -507,25 +511,35 @@ extension EventFinderViewController {
     func addAccessoryView(show: Bool) {
         if show {
             logOutView = LogOutView(frame: CGRectMake(self.mapViewPlaceholderView.frame.width + 5, 78, self.mapViewPlaceholderView.frame.width + 20, 35))
+            myEventsView = LogOutView(frame: CGRectMake(self.mapViewPlaceholderView.frame.width + 5, 123, self.view.frame.width / 2, 35))
             
             let filterButton = UIButton(frame: CGRectMake(0,0,logOutView.frame.width / 2 - 20, logOutView.frame.height))
             filterButton.setTitle("Filter", forState: .Normal)
             filterButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
             filterButton.addTarget(self, action: #selector(categoriesButtonTapped), forControlEvents: .TouchUpInside)
             
-            let logoutButton = UIButton(frame: CGRectMake(self.logOutView.frame.width / 2 - 20,0, self.logOutView.frame.width / 2 - 20, logOutView.frame.height))
-            logoutButton.setTitle("Log Out", forState: .Normal)
-            logoutButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-            logoutButton.addTarget(self, action: #selector(logoutButtonTapped), forControlEvents: .TouchUpInside)
+            let showAllButton = UIButton(frame: CGRectMake(self.logOutView.frame.width / 2 - 20,0, self.logOutView.frame.width / 2 - 20, logOutView.frame.height))
+            showAllButton.setTitle("Show All Events", forState: .Normal)
+            showAllButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            showAllButton.addTarget(self, action: #selector(showAllEvents), forControlEvents: .TouchUpInside)
+            
+            let myEventsButton = UIButton(frame: CGRectMake(20,0, self.myEventsView.frame.width - 10, logOutView.frame.height))
+            myEventsButton.setTitle("My Events", forState: .Normal)
+            myEventsButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            myEventsButton.addTarget(self, action: #selector(myEventsButtonTapped), forControlEvents: .TouchUpInside)
             
             self.logOutView.addSubview(filterButton)
-            self.logOutView.addSubview(logoutButton)
+            self.logOutView.addSubview(showAllButton)
+            self.myEventsView.addSubview(myEventsButton)
             self.view.addSubview(logOutView)
+            self.view.addSubview(myEventsView)
             
             UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
                 self.logOutView.alpha = 0.9
-                
+                self.myEventsView.alpha = 0.9
+
                 self.logOutView.frame = CGRect(x: 10, y: 78, width: self.view.frame.width + 20, height: 35)
+                self.myEventsView.frame = CGRect(x: (self.view.frame.width / 2) - 10, y: 123, width: (self.view.frame.width / 2) + 40, height: 35)
                 }, completion: nil)
             
         } else {
@@ -655,12 +669,12 @@ extension EventFinderViewController {
     func dismissAccessoryViews() {
         UIView.animateWithDuration(0.4, animations: {
             self.logOutView.alpha = 0.0
+            self.myEventsView.alpha = 0.0
             self.logOutView.frame = CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 78, width: self.view.frame.width + 20, height: 35)
-            //self.adjustMilesView.alpha = 0.0
-            //self.adjustMilesView.frame = CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 123, width: self.view.frame.width + 20, height: 35)
+            self.myEventsView.frame = CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 123, width: self.view.frame.width / 2, height: 35)
             }, completion: { _ in
                 self.logOutView.removeFromSuperview()
-                //self.adjustMilesView.removeFromSuperview()
+                self.myEventsView.removeFromSuperview()
         })
     }
 }
