@@ -198,19 +198,36 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func displayEvents() {
-        for event in events {
-            let point = MKPointAnnotation()
-            if let latitude = event.location.latitude, longitude = event.location.longitude {
-                point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        if isFiltered {
+            for event in filteredEvents {
+                let point = MKPointAnnotation()
+                if let latitude = event.location.latitude, longitude = event.location.longitude {
+                    point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                }
+                
+                self.mapView.rotateEnabled = false
+                self.mapView.showsCompass = false
+                point.title = event.title
+                point.subtitle = event.location.address
+                annotations.append(point)
             }
+            self.mapView.addAnnotations(annotations)
             
-            self.mapView.rotateEnabled = false
-            self.mapView.showsCompass = false
-            point.title = event.title
-            point.subtitle = event.location.address
-            annotations.append(point)
+        } else {
+            for event in events {
+                let point = MKPointAnnotation()
+                if let latitude = event.location.latitude, longitude = event.location.longitude {
+                    point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                }
+                
+                self.mapView.rotateEnabled = false
+                self.mapView.showsCompass = false
+                point.title = event.title
+                point.subtitle = event.location.address
+                annotations.append(point)
+            }
+            self.mapView.addAnnotations(annotations)
         }
-        self.mapView.addAnnotations(annotations)
     }
     
     //    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
