@@ -2,21 +2,19 @@
 //  PriceTableViewCell.swift
 //  Turnn
 //
-//  Created by Eva Marie Bresciano on 8/2/16.
+//  Created by Tyler on 8/19/16.
 //  Copyright © 2016 Skylar Hansen. All rights reserved.
 //
 
 import UIKit
 
-class PriceTableViewCell: UITableViewCell, UITextFieldDelegate {
+class PriceTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var priceTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        textField.layer.borderWidth = 0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -26,3 +24,4 @@ class PriceTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
 }
+
