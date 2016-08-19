@@ -34,6 +34,7 @@ class GeoFireController {
             dispatch_group_enter(eventIDFetch)
             FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
+                    print(snapshot.value)
                     eventIDs.append(eventID)
                     dispatch_group_leave(eventIDFetch)
                 }

@@ -19,7 +19,7 @@ class UserController {
     static let shared = UserController()
     
     // TODO: Uncomment when we have a user object
-    var currentUser = UserController.loadFromDefaults()
+    var currentUser: User? = UserController.loadFromDefaults()
     
     var currentUserId: String {
         guard let currentUser = currentUser, currentUserId = currentUser.identifier else {
@@ -43,6 +43,23 @@ class UserController {
                 completion(user: nil, error: error)
             }
         })
+    }
+    
+    static func updateEventIDsForCurrentUser(eventID: String?, completion: (success: Bool) -> Void) {
+        if let eventID = eventID {
+            if UserController.shared.currentUser?.eventIds?.count > 0 {
+                UserController.shared.currentUser?.eventIds?.append(eventID)
+                UserController.shared.currentUser?.save()
+                completion(success: true)
+            } else {
+                UserController.shared.currentUser?.eventIds = [eventID]
+                UserController.shared.currentUser?.save()
+                completion(success: true)
+            }
+        } else {
+            print("Could not update User: EventID was nil")
+            completion(success: false)
+        }
     }
     
     static func authUser(email: String, password: String, completion: (user: User?, error: NSError?) -> Void) {
@@ -90,6 +107,7 @@ class UserController {
                     completion(success: false, error: error)
                     print(error.localizedDescription)
                 } else {
+                    UserController.shared.currentUser = loadFromDefaults()
                     completion(success: true, error: nil)
                 }
             }
@@ -112,9 +130,13 @@ class UserController {
     
     static func loadFromDefaults() -> User? {
         let defaults = NSUserDefaults.standardUserDefaults()
-        guard let userDict = defaults.objectForKey(currentUserKey) as? [String: AnyObject], userId = defaults.objectForKey(currentUserIdKey) as? String, user = User(dictionary: userDict, identifier: userId) else {
+        guard let userId = defaults.objectForKey(currentUserIdKey) as? String else {
             return nil
         }
-        return user
+        
+        fetchUserForIdentifier(userId) { (user) in
+            UserController.shared.currentUser = user
+        }
+        return nil
     }
 }
