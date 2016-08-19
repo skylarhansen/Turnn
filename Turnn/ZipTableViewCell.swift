@@ -23,11 +23,18 @@ class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupCell() {
         self.zipTextField.delegate = self
         self.backgroundColor = .clearColor()
-        self.zipTextField.text = "84111"
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.layer.borderWidth = 0
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        if textField == zipTextField {
+            return newLength <= 10
+        }
+        return true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

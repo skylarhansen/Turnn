@@ -34,7 +34,7 @@ class Event: FirebaseType {
     var eventDescription: String?
     var passwordProtected: Bool
     var password: String?
-    var price: Double?
+    var price: String?
     var contactInfo: String?
     var imageURL: String?
     var identifier: String?
@@ -75,7 +75,7 @@ class Event: FirebaseType {
         return dictionary
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool, password: String?, price: Double?, contactInfo: String?, imageURL: String?, host: User, moreInfo: String?) {
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool, password: String?, price: String?, contactInfo: String?, imageURL: String?, host: User, moreInfo: String?) {
         
         self.title = title
         self.location = location
@@ -119,7 +119,7 @@ class Event: FirebaseType {
             }
         }
         
-        if let price = dictionary[priceKey] as? Double {
+        if let price = dictionary[priceKey] as? String {
             self.price = price
         }
         if let contactInfo = dictionary[contactInfoKey] as? String {

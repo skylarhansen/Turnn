@@ -30,7 +30,6 @@
 		957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FE11D5250BB00596A18 /* CreateEvent.storyboard */; };
 		9591632E1D524DA500C23C24 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632D1D524DA500C23C24 /* EventDetailViewController.swift */; };
 		959163301D524DC700C23C24 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591632F1D524DC700C23C24 /* HostTableViewCell.swift */; };
-		959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959163311D524DD900C23C24 /* PriceTableViewCell.swift */; };
 		95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */; };
 		95C11F691D58E4FB00999A5E /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C11F681D58E4FB00999A5E /* LocationController.swift */; };
 		95CC83161D5E516A00F075F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */; };
@@ -57,6 +56,8 @@
 		CE2ADC841D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */; };
 		CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE52B9971D525E4E00E1C7E9 /* Categories.swift */; };
 		CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */; };
+		CE5761AF1D67678B00022EE6 /* PriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5761AE1D67678B00022EE6 /* PriceTableViewCell.swift */; };
+		CE5761B11D676C5C00022EE6 /* CurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5761B01D676C5C00022EE6 /* CurrencyTextField.swift */; };
 		CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */; };
 		CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9C29961D51565F00158B14 /* EventFinderViewController.swift */; };
 		CEE1A0D11D593822000D4C1E /* GeoFire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95C11F6B1D58E8FC00999A5E /* GeoFire.framework */; };
@@ -110,7 +111,6 @@
 		957C4FE21D5250BB00596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateEvent.storyboard; sourceTree = "<group>"; };
 		9591632D1D524DA500C23C24 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		9591632F1D524DC700C23C24 /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
-		959163311D524DD900C23C24 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
 		95C11F681D58E4FB00999A5E /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		95C11F6B1D58E8FC00999A5E /* GeoFire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = GeoFire.framework; path = "/Users/stevecox/Library/Developer/Xcode/DerivedData/Turnn-foaetydfadotywevccjqntortlwn/Build/Products/Debug-iphonesimulator/GeoFire/GeoFire.framework"; sourceTree = "<absolute>"; };
 		95C11F6F1D58ED1A00999A5E /* GeoFireController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoFireController.swift; sourceTree = "<group>"; };
@@ -138,6 +138,8 @@
 		CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
 		CE52B9971D525E4E00E1C7E9 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		CE52B99A1D52AC0C00E1C7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventFinder.storyboard; sourceTree = "<group>"; };
+		CE5761AE1D67678B00022EE6 /* PriceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceTableViewCell.swift; sourceTree = "<group>"; };
+		CE5761B01D676C5C00022EE6 /* CurrencyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyTextField.swift; sourceTree = "<group>"; };
 		CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderTableViewCell.swift; sourceTree = "<group>"; };
 		CE9C29961D51565F00158B14 /* EventFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFinderViewController.swift; sourceTree = "<group>"; };
 		DB044B6A1D65206E0082E4C3 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
@@ -302,13 +304,14 @@
 				9591632F1D524DC700C23C24 /* HostTableViewCell.swift */,
 				95E595391D51460900416B2A /* LocationTableViewCell.swift */,
 				95E5953A1D51460900416B2A /* MoreInfoTableViewCell.swift */,
-				959163311D524DD900C23C24 /* PriceTableViewCell.swift */,
 				95E5953B1D51460900416B2A /* TimeTableViewCell.swift */,
 				CCFE38071D5E4149007F99DD /* EndTimeTableViewCell.swift */,
 				95E5953C1D51460900416B2A /* TitleTableViewCell.swift */,
 				CCFE38051D5BE294007F99DD /* StateTableViewCell.swift */,
 				95E5953D1D51460900416B2A /* ZipTableViewCell.swift */,
 				95E595351D51460900416B2A /* CategoriesTableViewCell.swift */,
+				CE5761AE1D67678B00022EE6 /* PriceTableViewCell.swift */,
+				CE5761B01D676C5C00022EE6 /* CurrencyTextField.swift */,
 			);
 			name = "Create Event View";
 			sourceTree = "<group>";
@@ -380,7 +383,7 @@
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 35L3J99R6J;
+						DevelopmentTeam = 6WAXYB4E4V;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -530,6 +533,7 @@
 				CE2ADC841D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift in Sources */,
 				CE9C29951D51564300158B14 /* EventFinderTableViewCell.swift in Sources */,
 				8C1C608F1D4FFC610015FAC5 /* User.swift in Sources */,
+				CE5761B11D676C5C00022EE6 /* CurrencyTextField.swift in Sources */,
 				8C72A2CE1D510D50008301CC /* CategoryCollectionViewController.swift in Sources */,
 				9516EC701D554ADF00A144BC /* UserController.swift in Sources */,
 				DB315C291D63BD5100A07DCE /* EventRadiusButton.swift in Sources */,
@@ -555,7 +559,6 @@
 				CCFE38061D5BE294007F99DD /* StateTableViewCell.swift in Sources */,
 				CE52B9981D525E4E00E1C7E9 /* Categories.swift in Sources */,
 				95EC6CE41D5265A300707935 /* SignInSignUpViewController.swift in Sources */,
-				959163321D524DD900C23C24 /* PriceTableViewCell.swift in Sources */,
 				8C8E57B31D666B5F00FD20E7 /* NetworkController.swift in Sources */,
 				953C11D81D52A7F5009777FC /* EventController.swift in Sources */,
 				95E595441D51460900416B2A /* MoreInfoTableViewCell.swift in Sources */,
@@ -566,6 +569,7 @@
 				CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */,
 				8CC7E5001D623699000C694D /* MoreInfoDetailLabel.swift in Sources */,
 				950DC8501D51045500601BC5 /* Extensions.swift in Sources */,
+				CE5761AF1D67678B00022EE6 /* PriceTableViewCell.swift in Sources */,
 				95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */,
 				95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */,
 				CCE9DEB71D52989C00363A98 /* HostDetailTableViewCell.swift in Sources */,

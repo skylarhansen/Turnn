@@ -22,11 +22,18 @@ class StateTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupCell() {
         self.stateTextField.delegate = self
         self.backgroundColor = .clearColor()
-        self.stateTextField.text = "UT"
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.layer.borderWidth = 0
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        if textField == stateTextField {
+            return newLength <= 15
+        }
+        return true
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

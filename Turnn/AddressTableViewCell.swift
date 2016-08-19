@@ -24,10 +24,17 @@ class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
         textField.layer.borderWidth = 0
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        if textField == addressTextField {
+            return newLength <= 45
+        }
+        return true
+    }
+    
     func setupCell() {
         self.addressTextField.delegate = self
         self.backgroundColor = .clearColor()
-        self.addressTextField.text = "341 S Main St"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

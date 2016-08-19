@@ -158,7 +158,7 @@ extension String {
     static func printEvents(currentEvents: [Event], oldEvents: [Event], futureEvents: [Event]) {
         print("\n|------------------------| \n" + "|    RETRIEVED EVENTS    |")
         print("|                         -----------------------------------------------------------")
-        print("|\tCurrent Events: \n|\t\t\(currentEvents)" + "\n|")
+        print("|\tCurrent Events: \n|\t\t \(currentEvents)" + "\n|")
         print("|\tOld Events: \n|\t\t \(oldEvents)" + "\n|")
         print("|\tFuture Events: \n|\t\t \(futureEvents)" + "\n|")
         print("--------------------------------------------------------------------------------------\n")

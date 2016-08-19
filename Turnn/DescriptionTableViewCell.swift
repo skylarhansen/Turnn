@@ -8,26 +8,38 @@
 
 import UIKit
 
-class DescriptionTableViewCell: UITableViewCell {
+class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+        descriptionTextView.delegate = self
+        descriptionTextView.text = " Briefly describe your event"
+        descriptionTextView.textColor = UIColor.grayColor()
         setupCell()
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        textField.layer.borderWidth = 0
+    func textViewDidBeginEditing(textView: UITextView) {
+        if descriptionTextView.textColor == UIColor.grayColor() {
+            descriptionTextView.text = nil
+            descriptionTextView.textColor = UIColor.blackColor()
+        }
+        textView.layer.borderWidth = 0
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let newLength = textView.text!.characters.count + text.characters.count - range.length
+        if textView == descriptionTextView {
+            return newLength <= 175
+        }
+        return true
     }
     
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.descriptionTextView.layer.cornerRadius = 8
-        self.descriptionTextView.text = "Description! Woot Woot"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

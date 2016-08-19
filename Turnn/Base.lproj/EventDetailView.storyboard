@@ -153,6 +153,13 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TvI-fj-Ye4">
+                                                    <rect key="frame" x="147" y="10" width="443" height="60"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="locationButtonTapped:" destination="DeV-nU-JC0" eventType="touchUpInside" id="SzB-Su-brc"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -415,6 +422,9 @@
                                 <state key="normal">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="mapButtonTapped:" destination="DeV-nU-JC0" eventType="touchUpInside" id="NXl-Xo-oNB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
