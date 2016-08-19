@@ -15,6 +15,8 @@ class CreateEventViewController: UITableViewController {
     var locationSelected: Bool = false
     var priceSelected: Bool = false
     
+    @IBOutlet weak var createEventButtonOutlet: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableViewUI()
@@ -51,9 +53,10 @@ class CreateEventViewController: UITableViewController {
     }
     
     @IBAction func createEventButtonTapped(sender: AnyObject) {
+        createEventButtonOutlet.enabled = false
         createEventWithEventInfo { (success) in
             if !success {
-                
+        self.createEventButtonOutlet.enabled = true
             }
         }
     }
@@ -64,15 +67,18 @@ class CreateEventViewController: UITableViewController {
                 if category == Categories.Admission.rawValue {
                     priceSelected = true
                     tableView.reloadData()
+                } else {
+                    priceSelected = false
+                    tableView.reloadData()
                 }
             }
         }
     }
     
     func createAlert(title: String, message: String) {
+        createEventButtonOutlet.enabled = true
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
-        
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -516,23 +522,45 @@ class CreateEventViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if locationSelected {
-            switch indexPath.row {
-            case 8...9:
-                return 120
-            case 11:
-                return 100
-            default:
-                return 50
+        if priceSelected {
+            if locationSelected {
+                switch indexPath.row {
+                case 8...9:
+                    return 120
+                case 11:
+                    return 100
+                default:
+                    return 50
+                }
+            } else {
+                switch indexPath.row {
+                case 4...5:
+                    return 120
+                case 7:
+                    return 100
+                default:
+                    return 50
+                }
             }
         } else {
-            switch indexPath.row {
-            case 4...5:
-                return 120
-            case 7:
-                return 100
-            default:
-                return 50
+            if locationSelected {
+                switch indexPath.row {
+                case 8...9:
+                    return 120
+                case 10:
+                    return 100
+                default:
+                    return 50
+                }
+            } else {
+                switch indexPath.row {
+                case 4...5:
+                    return 120
+                case 6:
+                    return 100
+                default:
+                    return 50
+                }
             }
         }
     }
@@ -548,4 +576,3 @@ class CreateEventViewController: UITableViewController {
         }
     }
 }
-

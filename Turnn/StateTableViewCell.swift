@@ -22,7 +22,6 @@ class StateTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupCell() {
         self.stateTextField.delegate = self
         self.backgroundColor = .clearColor()
-        self.stateTextField.text = "UT"
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

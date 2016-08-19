@@ -40,7 +40,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notice: Future events won't appear in Finder 'til 24 hrs out." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-V2-51J">
-                                    <rect key="frame" x="40" y="57" width="520" height="25"/>
+                                    <rect key="frame" x="30" y="57" width="540" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="Mua-Ju-Sg1"/>
                                     </constraints>
@@ -51,10 +51,10 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="Hry-V2-51J" firstAttribute="leading" secondItem="n3q-8h-8Mv" secondAttribute="leading" constant="40" id="17E-if-V32"/>
+                                <constraint firstItem="Hry-V2-51J" firstAttribute="leading" secondItem="n3q-8h-8Mv" secondAttribute="leading" constant="30" id="17E-if-V32"/>
                                 <constraint firstAttribute="bottom" secondItem="Hry-V2-51J" secondAttribute="bottom" constant="8" id="62R-hn-Lpe"/>
                                 <constraint firstItem="wqC-06-0AI" firstAttribute="leading" secondItem="n3q-8h-8Mv" secondAttribute="leading" constant="20" id="MmD-bR-8ge"/>
-                                <constraint firstAttribute="trailing" secondItem="Hry-V2-51J" secondAttribute="trailing" constant="40" id="R82-QR-zG7"/>
+                                <constraint firstAttribute="trailing" secondItem="Hry-V2-51J" secondAttribute="trailing" constant="30" id="R82-QR-zG7"/>
                                 <constraint firstAttribute="trailing" secondItem="wqC-06-0AI" secondAttribute="trailing" constant="20" id="VIf-Db-mGP"/>
                                 <constraint firstAttribute="bottom" secondItem="wqC-06-0AI" secondAttribute="bottom" id="WTz-fu-fGj"/>
                                 <constraint firstItem="TCh-ED-Lw0" firstAttribute="centerY" secondItem="n3q-8h-8Mv" secondAttribute="centerY" constant="-15" id="fUL-fb-QnX"/>
@@ -91,7 +91,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-sJ-EnD">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-sJ-EnD">
                                                     <rect key="frame" x="70" y="0.0" width="507" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -131,7 +131,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-Uu-CV0">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Start Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-Uu-CV0">
                                                     <rect key="frame" x="70" y="0.0" width="150" height="30"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -181,7 +181,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-Tx-c1j">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event End Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-Tx-c1j">
                                                     <rect key="frame" x="70" y="0.0" width="150" height="30"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -642,7 +642,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="createEventButtonOutlet" destination="vjE-1c-plR" id="0cB-vY-Ria"/>
+                        <outlet property="createEventButtonOutlet" destination="vjE-1c-plR" id="KjK-Un-SPK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LP4-e8-mEx" userLabel="First Responder" sceneMemberID="firstResponder"/>

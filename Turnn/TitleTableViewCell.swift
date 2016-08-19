@@ -23,7 +23,6 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupCell() {
         self.titleTextField.delegate = self
         self.backgroundColor = .clearColor()
-        self.titleTextField.text = "Hackathon"
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

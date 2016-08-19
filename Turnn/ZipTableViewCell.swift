@@ -23,7 +23,6 @@ class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupCell() {
         self.zipTextField.delegate = self
         self.backgroundColor = .clearColor()
-        self.zipTextField.text = "84111"
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

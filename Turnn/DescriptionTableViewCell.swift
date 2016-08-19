@@ -27,7 +27,6 @@ class DescriptionTableViewCell: UITableViewCell {
     func setupCell() {
         self.backgroundColor = .clearColor()
         self.descriptionTextView.layer.cornerRadius = 8
-        self.descriptionTextView.text = "Description! Woot Woot"
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
