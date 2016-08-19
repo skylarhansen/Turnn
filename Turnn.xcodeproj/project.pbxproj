@@ -383,11 +383,7 @@
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
-<<<<<<< HEAD
-						DevelopmentTeam = 6WAXYB4E4V;
-=======
 						DevelopmentTeam = V9YMV3Q9VL;
->>>>>>> feature/reportEventButton
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
