@@ -25,6 +25,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var categoryImageHolderView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var actionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,29 +88,29 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func backButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-//    @IBAction func locationButtonTapped(sender: AnyObject) {
-//        presentAlertController()
-//    }
+    //    @IBAction func locationButtonTapped(sender: AnyObject) {
+    //        presentAlertController()
+    //    }
     // MARK: - Alert Controller
-//    func presentAlertController() {
-//        
-//        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-//        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
-//            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
-//                return
-//            }
-//            
-//            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
-//            UIApplication.sharedApplication().openURL(url)
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//        
-//        actionSheet.addAction(mapsAction)
-//        actionSheet.addAction(cancelAction)
-//        
-//        presentViewController(actionSheet, animated: true, completion: nil)
-//    }
+    //    func presentAlertController() {
+    //
+    //        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+    //        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
+    //            guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
+    //                return
+    //            }
+    //
+    //            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+    //            UIApplication.sharedApplication().openURL(url)
+    //        }
+    //
+    //        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+    //
+    //        actionSheet.addAction(mapsAction)
+    //        actionSheet.addAction(cancelAction)
+    //
+    //        presentViewController(actionSheet, animated: true, completion: nil)
+    //    }
     
     // MARK: - tableView data source functions
     
@@ -132,9 +133,9 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case 1:
             let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
             locationDetailCell?.updateLocationWithEvent(event!)
-//            locationDetailCell?.streetNumberLabel.text = event?.location.address
-//            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
-//            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
+            //            locationDetailCell?.streetNumberLabel.text = event?.location.address
+            //            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
+            //            locationDetailCell?.zipcodeLabel.text = event?.location.zipCode
             return locationDetailCell ?? UITableViewCell()
             
         case 2:
@@ -167,9 +168,11 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     // it will cause a crash. can leave optional but then it will
     // print odd text in email report when we use the REAL DATA
     
-    @IBAction func reportButtonTapped(sender: AnyObject) {
+    
+    @IBAction func actionButtonTapped(sender: AnyObject) {
         reportEvent()
     }
+    
     
     func showSendMailErrorAlert(){
         let sendMailErrorAlert =
@@ -193,7 +196,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
                     composeVC.mailComposeDelegate = self
                     composeVC.setToRecipients(["report@honestbadger.com"])
                     composeVC.setSubject("Inappropriate Event Report")
-                    composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid\(self.event!.identifier!)\nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
+                    composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid:\(self.event!.identifier!) \nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
                     
                     self.presentViewController(composeVC, animated: true, completion: nil)
                 } else {

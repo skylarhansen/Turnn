@@ -141,5 +141,6 @@ class Event: FirebaseType {
         self.categories = categories
         self.passwordProtected = passwordProtected
         self.host = host
+        self.identifier = identifier
     }
 }
