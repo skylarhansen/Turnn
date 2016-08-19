@@ -28,6 +28,14 @@ class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.layer.borderWidth = 0
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        if textField == zipTextField {
+            return newLength <= 10
+        }
+        return true
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

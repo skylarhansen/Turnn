@@ -29,6 +29,14 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
         textField.layer.borderWidth = 0
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        if textField == titleTextField {
+            return newLength <= 25
+        }
+        return true
+    }
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

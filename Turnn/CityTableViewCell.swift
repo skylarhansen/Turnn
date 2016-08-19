@@ -24,6 +24,14 @@ class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
         textField.layer.borderWidth = 0
     }
     
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        if textField == cityTextField {
+            return newLength <= 20
+        }
+        return true
+    }
+    
     func setupCell() {
         self.cityTextField.delegate = self
         self.backgroundColor = .clearColor()
