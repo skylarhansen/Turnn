@@ -13,6 +13,7 @@ import MapKit
 class CreateEventViewController: UITableViewController {
     
     var locationSelected: Bool = false
+    var priceSelected: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,14 @@ class CreateEventViewController: UITableViewController {
     }
     
     @IBAction func unwindToCreateEvent(segue: UIStoryboardSegue) {
-        
+        if let categories = categories {
+            for category in categories {
+                if category == Categories.Admission.rawValue {
+                    priceSelected = true
+                    tableView.reloadData()
+                }
+            }
+        }
     }
     
     func createAlert(title: String, message: String) {
@@ -193,90 +201,177 @@ class CreateEventViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if locationSelected {
-            return 11
+        if priceSelected {
+            
+            if locationSelected {
+                return 12
+            } else {
+                return 8
+            }
         } else {
-            return 7
+            
+            if locationSelected {
+                return 11
+            } else {
+                return 7
+            }
         }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if locationSelected {
-            switch indexPath.row {
-            case 0:
-                titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
-                return titleCell ?? UITableViewCell()
-            case 1:
-                timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
-                return timeCell ?? UITableViewCell()
-            case 2:
-                endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
-                return endTimeCell ?? UITableViewCell()
-            case 3:
-                priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
-                return priceCell ?? UITableViewCell()
-            case 4:
-                locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
-                return locationCell ?? UITableViewCell()
-            case 5:
-                addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
-                return addressCell ?? UITableViewCell()
-            case 6:
-                cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
-                return cityCell ?? UITableViewCell()
-            case 7:
-                stateCell = tableView.dequeueReusableCellWithIdentifier("stateCell", forIndexPath: indexPath) as? StateTableViewCell
-                return stateCell ?? UITableViewCell()
-            case 8:
-                zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
-                return zipCell ?? UITableViewCell()
-            case 9:
-                descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
-                return descriptionCell ?? UITableViewCell()
-            case 10:
-                moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
-                return moreInfoCell ?? UITableViewCell()
-            case 11:
-                let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
-                if let categories = categories {
-                    categoriesCell?.updateWith(categories)
+        if priceSelected {
+            if locationSelected {
+                switch indexPath.row {
+                case 0:
+                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    return titleCell ?? UITableViewCell()
+                case 1:
+                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    return timeCell ?? UITableViewCell()
+                case 2:
+                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    return endTimeCell ?? UITableViewCell()
+                case 3:
+                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    return locationCell ?? UITableViewCell()
+                case 4:
+                    addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
+                    return addressCell ?? UITableViewCell()
+                case 5:
+                    cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
+                    return cityCell ?? UITableViewCell()
+                case 6:
+                    stateCell = tableView.dequeueReusableCellWithIdentifier("stateCell", forIndexPath: indexPath) as? StateTableViewCell
+                    return stateCell ?? UITableViewCell()
+                case 7:
+                    zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
+                    return zipCell ?? UITableViewCell()
+                case 8:
+                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    return descriptionCell ?? UITableViewCell()
+                case 9:
+                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    return moreInfoCell ?? UITableViewCell()
+                case 10:
+                    priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
+                    return priceCell ?? UITableViewCell()
+                case 11:
+                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    if let categories = categories {
+                        categoriesCell?.updateWith(categories)
+                    }
+                    return categoriesCell ?? UITableViewCell()
+                default:
+                    return UITableViewCell()
                 }
-                return categoriesCell ?? UITableViewCell()
-            default:
-                return UITableViewCell()
+            } else {
+                switch indexPath.row {
+                case 0:
+                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    return titleCell ?? UITableViewCell()
+                case 1:
+                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    return timeCell ?? UITableViewCell()
+                case 2:
+                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    return endTimeCell ?? UITableViewCell()
+                case 3:
+                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    return locationCell ?? UITableViewCell()
+                case 4:
+                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    return descriptionCell ?? UITableViewCell()
+                case 5:
+                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    return moreInfoCell ?? UITableViewCell()
+                case 6:
+                    priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
+                    return priceCell ?? UITableViewCell()
+                case 7:
+                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    if let categories = categories {
+                        categoriesCell?.updateWith(categories)
+                    }
+                    return categoriesCell ?? UITableViewCell()
+                default:
+                    return UITableViewCell()
+                }
             }
+
         } else {
-            switch indexPath.row {
-            case 0:
-                titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
-                return titleCell ?? UITableViewCell()
-            case 1:
-                timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
-                return timeCell ?? UITableViewCell()
-            case 2:
-                endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
-                return endTimeCell ?? UITableViewCell()
-            case 3:
-                priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
-                return priceCell ?? UITableViewCell()
-            case 4:
-                locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
-                return locationCell ?? UITableViewCell()
-            case 5:
-                descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
-                return descriptionCell ?? UITableViewCell()
-            case 6:
-                moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
-                return moreInfoCell ?? UITableViewCell()
-            case 7:
-                let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
-                if let categories = categories {
-                    categoriesCell?.updateWith(categories)
+            
+            if locationSelected {
+                switch indexPath.row {
+                case 0:
+                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    return titleCell ?? UITableViewCell()
+                case 1:
+                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    return timeCell ?? UITableViewCell()
+                case 2:
+                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    return endTimeCell ?? UITableViewCell()
+                case 3:
+                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    return locationCell ?? UITableViewCell()
+                case 4:
+                    addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
+                    return addressCell ?? UITableViewCell()
+                case 5:
+                    cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
+                    return cityCell ?? UITableViewCell()
+                case 6:
+                    stateCell = tableView.dequeueReusableCellWithIdentifier("stateCell", forIndexPath: indexPath) as? StateTableViewCell
+                    return stateCell ?? UITableViewCell()
+                case 7:
+                    zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
+                    return zipCell ?? UITableViewCell()
+                case 8:
+                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    return descriptionCell ?? UITableViewCell()
+                case 9:
+                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    return moreInfoCell ?? UITableViewCell()
+                case 10:
+                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    if let categories = categories {
+                        categoriesCell?.updateWith(categories)
+                    }
+                    return categoriesCell ?? UITableViewCell()
+                default:
+                    return UITableViewCell()
                 }
-                return categoriesCell ?? UITableViewCell()
-            default:
-                return UITableViewCell()
+            } else {
+                switch indexPath.row {
+                case 0:
+                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    return titleCell ?? UITableViewCell()
+                case 1:
+                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    return timeCell ?? UITableViewCell()
+                case 2:
+                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    return endTimeCell ?? UITableViewCell()
+                case 3:
+                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    return locationCell ?? UITableViewCell()
+                case 4:
+                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    return descriptionCell ?? UITableViewCell()
+                case 5:
+                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    return moreInfoCell ?? UITableViewCell()
+                case 6:
+                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    if let categories = categories {
+                        categoriesCell?.updateWith(categories)
+                    }
+                    return categoriesCell ?? UITableViewCell()
+                default:
+                    return UITableViewCell()
+                }
             }
+
         }
     }
     
@@ -302,7 +397,7 @@ class CreateEventViewController: UITableViewController {
             switch indexPath.row {
             case 8...9:
                 return 120
-            case 10:
+            case 11:
                 return 100
             default:
                 return 50
@@ -311,7 +406,7 @@ class CreateEventViewController: UITableViewController {
             switch indexPath.row {
             case 4...5:
                 return 120
-            case 6:
+            case 7:
                 return 100
             default:
                 return 50
