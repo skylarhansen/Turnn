@@ -14,7 +14,7 @@ class EventController {
     
     static let eventData = FirebaseController.ref.child("Events")
 
-    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: Double? = 0.0, contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool) -> Void)
+    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: Double? = 0.0, contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool, eventID: String?) -> Void)
     {
         guard let host = UserController.shared.currentUser else { NSLog("there is no current user logged in"); return }
         
@@ -22,15 +22,17 @@ class EventController {
         
         event.save()
         
-        LocationController.sharedInstance.forwardGeocoding(event) { (location, error) in
-            print(error)
-            if let GPS = location {
-                GeoFireController.setLocation(event.identifier!, location: GPS) { (success, savedLocation) in
-                    savedLocation?.updateChildValues(["EventID" : event.identifier!])
-                    completion(success: true)
+        if let eventID = event.identifier {
+            LocationController.sharedInstance.forwardGeocoding(event) { (location, error) in
+                print(error)
+                if let GPS = location {
+                    GeoFireController.setLocation(eventID, location: GPS) { (success, savedLocation) in
+                        savedLocation?.updateChildValues(["EventID" : eventID])
+                        completion(success: true, eventID: eventID)
+                    }
+                } else {
+                    completion(success: false, eventID: eventID)
                 }
-            } else {
-                completion(success: false)
             }
         }
     }
@@ -48,6 +50,20 @@ class EventController {
 //            completion(events: events)
 //        })
 //    }
+    
+    static func fetchEventsForUserID(uid: String, completion: (events: [Event]?) -> Void) {
+        let users = FirebaseController.ref.child("Users")
+        users.child("events").observeEventType(.Value, withBlock: { (snapshot) in
+            if let eventIDDictionary = snapshot.value as? [String : AnyObject] {
+                let eventIDs = Array(eventIDDictionary.keys)
+                fetchEventsThatMatchQuery(eventIDs, completion: { (events) in
+                    completion(events: events)
+                })
+            } else {
+                completion(events: nil)
+            }
+        })
+    }
     
     // Gets particular events with identifiers -> Completes with [Event]
     static func fetchEventsThatMatchQuery(eventIDs: [String], completion: (events: [Event]?) -> Void) {

@@ -35,14 +35,11 @@ class User: FirebaseType {
         var dictionary: [String: AnyObject] = [firstNameKey: firstName, paidKey: paid]
         
         if let lastName = lastName {
-        dictionary.updateValue(lastName, forKey: lastNameKey)
+            dictionary.updateValue(lastName, forKey: lastNameKey)
         }
         
-        if let events = events {
-        let eventIds = events.flatMap { $0.identifier }
-        let eventDictionary: [String: AnyObject] = [eventsKey: eventIds.map { [$0: true] }]
-        dictionary.updateValue(eventDictionary, forKey: eventsKey)
-            
+        if let events = eventIds {
+            dictionary.updateValue(events, forKey: eventsKey)
         }
         return dictionary
     }
@@ -63,9 +60,9 @@ class User: FirebaseType {
             lastName = dictionary[lastNameKey] as? String,
             paid = dictionary[paidKey] as? Bool else { return nil }
         
-        if let eventDictionary = dictionary[eventsKey] as? [String: AnyObject] {
-            let eventIds = eventDictionary.map({$0.0})
+        if let eventIds = dictionary[eventsKey] as? [String] {
             self.eventIds = eventIds
+            print(eventIds)
         }
 
         self.identifier = identifier
