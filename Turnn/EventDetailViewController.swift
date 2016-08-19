@@ -25,6 +25,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var categoryImageHolderView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var actionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,9 +179,11 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     // it will cause a crash. can leave optional but then it will
     // print odd text in email report when we use the REAL DATA
     
-    @IBAction func reportButtonTapped(sender: AnyObject) {
+    
+    @IBAction func actionButtonTapped(sender: AnyObject) {
         reportEvent()
     }
+    
     
     func showSendMailErrorAlert(){
         let sendMailErrorAlert =
@@ -204,7 +207,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
                     composeVC.mailComposeDelegate = self
                     composeVC.setToRecipients(["report@honestbadger.com"])
                     composeVC.setSubject("Inappropriate Event Report")
-                    composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid\(self.event!.identifier!)\nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
+                    composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid:\(self.event!.identifier!) \nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
                     
                     self.presentViewController(composeVC, animated: true, completion: nil)
                 } else {
