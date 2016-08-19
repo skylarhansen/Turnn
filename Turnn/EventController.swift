@@ -14,7 +14,7 @@ class EventController {
     
     static let eventData = FirebaseController.ref.child("Events")
 
-    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: Double? = 0.0, contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool, eventID: String?) -> Void)
+    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: String? = "Free", contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool, eventID: String?) -> Void)
     {
         guard let host = UserController.shared.currentUser else { NSLog("there is no current user logged in"); return }
         

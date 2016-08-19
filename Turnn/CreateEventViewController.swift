@@ -77,97 +77,200 @@ class CreateEventViewController: UITableViewController {
     }
     
     func createEventWithEventInfo(completion: (success: Bool) -> Void) {
-        if locationSelected {
-            if let title = titleCell.titleTextField.text where title.characters.count > 0 {
-                if let startTime = timeCell.date {
-                    if let endTime = endTimeCell.date {
-                        if let address = addressCell.addressTextField.text where address.characters.count > 0 {
-                            if let city = cityCell.cityTextField.text where cityCell.cityTextField.text != "" {
-                                if let zip = zipCell.zipTextField.text where zipCell.zipTextField.text != "" {
-                                    if let categories = categories {
-                                        if let state = stateCell.stateTextField.text where stateCell.stateTextField.text != "" {
-                                            location = Location(address: address, city: city, state: state, zipCode: zip)
-                                            
-                                            EventController.createSnapShotOfLocation(location) { (success, image) in
-                                                if success && image != nil {
-                                                    ImageController.saveImage(image!, completion: { (imageURL) in
-                                                        if let imageURL = imageURL {
-                                                            EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: imageURL, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
-                                                                if success {
-                                                                    if let eventID = eventID {
-                                                                        UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
-                                                                            if success {
-                                                                                self.dismissViewControllerAnimated(true, completion: nil)
-                                                                            } else {
-                                                                                self.createAlert("An Error Occurred", message: "Please contact the app developer")
-                                                                            }
-                                                                        })
-                                                                    }
-                                                                }
-                                                            })
-                                                        } else {
-                                                            print("Wasn't able to get an imageURL... Image may not have saved. Creating event without screenshot of map.")
-                                                            EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
-                                                                if success {
-                                                                    UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
-                                                                        if success {
-                                                                            self.dismissViewControllerAnimated(true, completion: nil)
-                                                                        } else {
-                                                                            self.createAlert("An Error Occurred", message: "Please contact the app developer")
-                                                                        }
-                                                                    })
-                                                                }
-                                                            })
-                                                        }
-                                                    })
-                                                } else {
-                                                    print("Wasn't able create a snapshot... Creating event without screenshot of map.")
-                                                    EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
-                                                        if success {
-                                                            UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
-                                                                if success {
-                                                                    self.dismissViewControllerAnimated(true, completion: nil)
-                                                                } else {
-                                                                    self.createAlert("An Error Occurred", message: "Please contact the app developer")
-                                                                }
-                                                            })
-                                                        }
-                                                    })
-                                                }
-                                            }
-                                        } else {
-                                            createAlert("Missing State", message: "Please be sure to include the state as part of your address")
-                                            hightlightTextFieldForError(self.stateCell.stateTextField)
-                                        }
-                                    } else {
-                                        createAlert("Missing Categories", message: "Please be sure to inclue at least one category for your event")
-                                    }
-                                } else {
-                                    createAlert("Missing Zip", message: "Please be sure to include the zip as part of your address")
-                                    hightlightTextFieldForError(self.zipCell.zipTextField)
-                                }
-                            } else {
-                                createAlert("Missing City", message: "Please be sure to include the city as part of your address")
-                                hightlightTextFieldForError(self.cityCell.cityTextField)
-                            }
-                        } else {
-                            createAlert("Missing Address", message: "Please be sure to include an address for the event")
-                            hightlightTextFieldForError(self.addressCell.addressTextField)
-                        }
-                    } else {
-                        createAlert("No End Date", message: "Please enter a end date for your event")
-                        hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
-                    }
-                } else {
+        if priceSelected {
+            if locationSelected {
+                guard let title = titleCell.titleTextField.text where title.characters.count > 0 else {
+                    createAlert("No Title", message: "Please enter a title for your event")
+                    hightlightTextFieldForError(self.titleCell.titleTextField)
+                    return
+                }
+                guard let startTime = timeCell.date else {
                     createAlert("No Start Date", message: "Please enter a starting date for your event")
                     hightlightTextFieldForError(self.timeCell.timeTextField)
+                    return
                 }
+                guard let endTime = endTimeCell.date else {
+                    createAlert("No End Date", message: "Please enter a end date for your event")
+                    hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
+                    return
+                }
+                guard let address = addressCell.addressTextField.text where address.characters.count > 0 else {
+                    createAlert("Missing Address", message: "Please be sure to include an address for the event")
+                    hightlightTextFieldForError(self.addressCell.addressTextField)
+                    return
+                }
+                guard let city = cityCell.cityTextField.text where cityCell.cityTextField.text != "" else {
+                    createAlert("Missing City", message: "Please be sure to include the city as part of your address")
+                    hightlightTextFieldForError(self.cityCell.cityTextField)
+                    return
+                }
+                guard let zip = zipCell.zipTextField.text where zipCell.zipTextField.text != "" else {
+                    createAlert("Missing Zip", message: "Please be sure to include the zip as part of your address")
+                    hightlightTextFieldForError(self.zipCell.zipTextField)
+                    return
+                }
+                guard let categories = categories else {
+                    createAlert("Missing Categories", message: "Please be sure to inclue at least one category for your event")
+                    return
+                }
+                guard let state = stateCell.stateTextField.text where stateCell.stateTextField.text != "" else {
+                    createAlert("Missing State", message: "Please be sure to include the state as part of your address")
+                    hightlightTextFieldForError(self.stateCell.stateTextField)
+                    return
+                }
+                guard let price = priceCell.priceTextField.text where priceCell.priceTextField.text != "$0.00" else {
+                    createAlert("Pricing Error", message: "You selected admission price. Please enter a price greater than $0")
+                    hightlightTextFieldForError(self.priceCell.priceTextField)
+                    return
+                }
+                location = Location(address: address, city: city, state: state, zipCode: zip)
+                
+                EventController.createSnapShotOfLocation(location) { (success, image) in
+                    if success && image != nil {
+                        ImageController.saveImage(image!, completion: { (imageURL) in
+                            guard let imageURL = imageURL else {
+                                print("Wasn't able to get an imageURL... Image may not have saved. Creating event without screenshot of map.")
+                                EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: price, contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
+                                    if success {
+                                        UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
+                                            if success {
+                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                            } else {
+                                                self.createAlert("An Error Occurred", message: "Please contact the app developer")
+                                            }
+                                        })
+                                    }
+                                })
+                                return
+                            }
+                            EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: price, contactInfo: nil, imageURL: imageURL, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
+                                if success {
+                                    if let eventID = eventID {
+                                        UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
+                                            if success {
+                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                            } else {
+                                                self.createAlert("An Error Occurred", message: "Please contact the app developer")
+                                            }
+                                        })
+                                    }
+                                }
+                            })
+                        })
+                    } else {
+                        print("Wasn't able create a snapshot... Creating event without screenshot of map.")
+                        EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: price, contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
+                            if success {
+                                UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
+                                    if success {
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    } else {
+                                        self.createAlert("An Error Occurred", message: "Please contact the app developer")
+                                    }
+                                })
+                            }
+                        })
+                    }
+                }
+                
             } else {
-                createAlert("No Title", message: "Please enter a title for your event")
-                hightlightTextFieldForError(self.titleCell.titleTextField)
+                createAlert("Event Location", message: "Please be sure to include a location by tapping on \"Location\" and completing the required fields")
             }
         } else {
-            createAlert("Event Location", message: "Please be sure to include a location by tapping on \"Location\" and completing the required fields")
+            if locationSelected {
+                guard let title = titleCell.titleTextField.text where title.characters.count > 0 else {
+                    createAlert("No Title", message: "Please enter a title for your event")
+                    hightlightTextFieldForError(self.titleCell.titleTextField)
+                    return
+                }
+                guard let startTime = timeCell.date else {
+                    createAlert("No Start Date", message: "Please enter a starting date for your event")
+                    hightlightTextFieldForError(self.timeCell.timeTextField)
+                    return
+                }
+                guard let endTime = endTimeCell.date else {
+                    createAlert("No End Date", message: "Please enter a end date for your event")
+                    hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
+                    return
+                }
+                guard let address = addressCell.addressTextField.text where address.characters.count > 0 else {
+                    createAlert("Missing Address", message: "Please be sure to include an address for the event")
+                    hightlightTextFieldForError(self.addressCell.addressTextField)
+                    return
+                }
+                guard let city = cityCell.cityTextField.text where cityCell.cityTextField.text != "" else {
+                    createAlert("Missing City", message: "Please be sure to include the city as part of your address")
+                    hightlightTextFieldForError(self.cityCell.cityTextField)
+                    return
+                }
+                guard let zip = zipCell.zipTextField.text where zipCell.zipTextField.text != "" else {
+                    createAlert("Missing Zip", message: "Please be sure to include the zip as part of your address")
+                    hightlightTextFieldForError(self.zipCell.zipTextField)
+                    return
+                }
+                guard let categories = categories else {
+                    createAlert("Missing Categories", message: "Please be sure to inclue at least one category for your event")
+                    return
+                }
+                guard let state = stateCell.stateTextField.text where stateCell.stateTextField.text != "" else {
+                    createAlert("Missing State", message: "Please be sure to include the state as part of your address")
+                    hightlightTextFieldForError(self.stateCell.stateTextField)
+                    return
+                }
+                
+                location = Location(address: address, city: city, state: state, zipCode: zip)
+                
+                EventController.createSnapShotOfLocation(location) { (success, image) in
+                    if success && image != nil {
+                        ImageController.saveImage(image!, completion: { (imageURL) in
+                            guard let imageURL = imageURL else {
+                                print("Wasn't able to get an imageURL... Image may not have saved. Creating event without screenshot of map.")
+                                EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: "Free", contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
+                                    if success {
+                                        UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
+                                            if success {
+                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                            } else {
+                                                self.createAlert("An Error Occurred", message: "Please contact the app developer")
+                                            }
+                                        })
+                                    }
+                                })
+                                return
+                            }
+                            EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: "Free", contactInfo: nil, imageURL: imageURL, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
+                                if success {
+                                    if let eventID = eventID {
+                                        UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
+                                            if success {
+                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                            } else {
+                                                self.createAlert("An Error Occurred", message: "Please contact the app developer")
+                                            }
+                                        })
+                                    }
+                                }
+                            })
+                        })
+                    } else {
+                        print("Wasn't able create a snapshot... Creating event without screenshot of map.")
+                        EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: "Free", contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
+                            if success {
+                                UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
+                                    if success {
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    } else {
+                                        self.createAlert("An Error Occurred", message: "Please contact the app developer")
+                                    }
+                                })
+                            }
+                        })
+                    }
+                }
+                
+            } else {
+                createAlert("Event Location", message: "Please be sure to include a location by tapping on \"Location\" and completing the required fields")
+            }
         }
     }
     
@@ -317,7 +420,7 @@ class CreateEventViewController: UITableViewController {
                     return UITableViewCell()
                 }
             }
-
+            
         } else {
             
             if locationSelected {
@@ -391,7 +494,7 @@ class CreateEventViewController: UITableViewController {
                     return UITableViewCell()
                 }
             }
-
+            
         }
     }
     
