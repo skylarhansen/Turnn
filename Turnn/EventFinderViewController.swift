@@ -398,6 +398,11 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         addAccessoryView(moreOptionsOn)
     }
     
+    func searchAllButtonTapped() {
+        isFiltered = false
+        tableView.reloadData()
+    }
+
     func categoriesButtonTapped() {
         self.performSegueWithIdentifier("toCategoriesSegue", sender: nil)
     }
