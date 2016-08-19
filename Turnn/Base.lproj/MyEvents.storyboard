@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mf4-Sc-aga">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -10,16 +10,17 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Table View Controller-->
+        <!--My Events Table View Controller-->
         <scene sceneID="ukB-82-NKb">
             <objects>
-                <tableViewController id="UYH-rA-eQ8" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="XNF-hz-ahQ">
+                <tableViewController id="UYH-rA-eQ8" customClass="MyEventsTableViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="55" sectionHeaderHeight="28" sectionFooterHeight="28" id="XNF-hz-ahQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="E67-PW-gjE">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="90"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-6k-XIL">
@@ -70,8 +71,8 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myEventCell" rowHeight="55" id="OFj-tB-jgO">
-                                <rect key="frame" x="0.0" y="118" width="600" height="55"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myEventCell" rowHeight="55" id="OFj-tB-jgO" customClass="MyEventTableViewCell" customModule="Turnn" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="182" width="600" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFj-tB-jgO" id="CBp-j6-Q3t">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="54.5"/>
@@ -103,6 +104,11 @@
                                         <constraint firstAttribute="trailing" secondItem="WAr-1p-zbp" secondAttribute="trailing" constant="8" id="v8P-7J-Pnt"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="eventDateTitleLabel" destination="4r6-qk-SOE" id="jia-KY-mr7"/>
+                                    <outlet property="eventTitleLabel" destination="WAr-1p-zbp" id="mJQ-mE-I6b"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -110,8 +116,49 @@
                             <outlet property="delegate" destination="UYH-rA-eQ8" id="DWW-nh-Nlk"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="3Kt-vA-thJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="aTr-2W-RQj">
+                            <connections>
+                                <action selector="doneButtonTapped" destination="UYH-rA-eQ8" id="567-XJ-zGr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="4N8-oh-jNU">
+                            <connections>
+                                <action selector="logOutButtonTapped" destination="UYH-rA-eQ8" id="Tsc-M6-1sl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="EWq-Vy-1a4" kind="presentation" identifier="logOutSegue" id="vRY-Zt-EoE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIc-hg-Ko2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1274" y="539"/>
+        </scene>
+        <!--SignInSignUp-->
+        <scene sceneID="HUA-Ho-XYN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignInSignUp" id="EWq-Vy-1a4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEA-bc-CO5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1746" y="539"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cA0-yB-RSc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mf4-Sc-aga" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D5b-3R-6wI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UYH-rA-eQ8" kind="relationship" relationship="rootViewController" id="q1R-OE-oqc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tse-Xt-e09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="548" y="539"/>
         </scene>

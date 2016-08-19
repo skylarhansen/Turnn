@@ -66,6 +66,9 @@
 		DB315C2B1D63BD8300A07DCE /* LogOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2A1D63BD8300A07DCE /* LogOutView.swift */; };
 		DB315C2D1D63BDA000A07DCE /* TurnnCopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */; };
 		DB315C321D63D14D00A07DCE /* EventDetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB315C301D63D14D00A07DCE /* EventDetailView.storyboard */; };
+		DBFE1CD21D6793F4007D9258 /* MyEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFE1CD11D6793F4007D9258 /* MyEventTableViewCell.swift */; };
+		DBFE1CD41D679403007D9258 /* MyEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFE1CD31D679403007D9258 /* MyEventsTableViewController.swift */; };
+		DBFE1CD71D679411007D9258 /* MyEvents.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFE1CD51D679411007D9258 /* MyEvents.storyboard */; };
 		E9764153F04A22CA9D6B0924 /* Pods_Turnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +150,9 @@
 		DB315C2A1D63BD8300A07DCE /* LogOutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutView.swift; sourceTree = "<group>"; };
 		DB315C2C1D63BDA000A07DCE /* TurnnCopyableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnCopyableLabel.swift; sourceTree = "<group>"; };
 		DB315C311D63D14D00A07DCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EventDetailView.storyboard; sourceTree = "<group>"; };
+		DBFE1CD11D6793F4007D9258 /* MyEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventTableViewCell.swift; sourceTree = "<group>"; };
+		DBFE1CD31D679403007D9258 /* MyEventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsTableViewController.swift; sourceTree = "<group>"; };
+		DBFE1CD61D679411007D9258 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyEvents.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */,
+				DBFE1CD51D679411007D9258 /* MyEvents.storyboard */,
 				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
 				DB315C301D63D14D00A07DCE /* EventDetailView.storyboard */,
 				CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */,
@@ -224,6 +231,8 @@
 		8C72A2D01D510DCB008301CC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBFE1CD11D6793F4007D9258 /* MyEventTableViewCell.swift */,
+				DBFE1CD31D679403007D9258 /* MyEventsTableViewController.swift */,
 				CE52B9931D525A7C00E1C7E9 /* Category Collection View */,
 				CE52B9941D525ACC00E1C7E9 /* Create Event View */,
 				CE52B9951D525AEC00E1C7E9 /* Event Finder View */,
@@ -422,6 +431,7 @@
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
 				DB315C321D63D14D00A07DCE /* EventDetailView.storyboard in Resources */,
 				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
+				DBFE1CD71D679411007D9258 /* MyEvents.storyboard in Resources */,
 				CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */,
 				95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */,
 			);
@@ -539,10 +549,12 @@
 				DB315C291D63BD5100A07DCE /* EventRadiusButton.swift in Sources */,
 				8C1C60911D4FFCC10015FAC5 /* Location.swift in Sources */,
 				CE9C29971D51565F00158B14 /* EventFinderViewController.swift in Sources */,
+				DBFE1CD41D679403007D9258 /* MyEventsTableViewController.swift in Sources */,
 				95E595451D51460900416B2A /* TimeTableViewCell.swift in Sources */,
 				956EF9A21D53FC8B000389A6 /* FirebaseDataStructure.swift in Sources */,
 				95E595461D51460900416B2A /* TitleTableViewCell.swift in Sources */,
 				95E595411D51460900416B2A /* DescriptionTableViewCell.swift in Sources */,
+				DBFE1CD21D6793F4007D9258 /* MyEventTableViewCell.swift in Sources */,
 				95C11F691D58E4FB00999A5E /* LocationController.swift in Sources */,
 				CCE9DEBD1D5298CA00363A98 /* DescriptionDetailTableViewCell.swift in Sources */,
 				8C1C608B1D4FFAAF0015FAC5 /* Event.swift in Sources */,
@@ -629,6 +641,14 @@
 				DB315C311D63D14D00A07DCE /* Base */,
 			);
 			name = EventDetailView.storyboard;
+			sourceTree = "<group>";
+		};
+		DBFE1CD51D679411007D9258 /* MyEvents.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBFE1CD61D679411007D9258 /* Base */,
+			);
+			name = MyEvents.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

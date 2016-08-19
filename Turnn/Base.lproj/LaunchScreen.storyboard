@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="r7n-um-cof">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="r7n-um-cof">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turnn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbD-b9-Lnh">
-                                <rect key="frame" x="227" y="80" width="146" height="62"/>
+                                <rect key="frame" x="227" y="216" width="146" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gbD-b9-Lnh" secondAttribute="height" multiplier="73:31" id="RRc-dt-NgZ"/>
                                 </constraints>
@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDo-ra-K2p">
-                                <rect key="frame" x="145" y="163" width="310" height="2"/>
+                                <rect key="frame" x="145" y="299" width="310" height="2"/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.65490196079999996" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="qKK-Lm-oUm"/>
@@ -45,7 +45,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Event Finder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5I-UH-ht1">
-                                <rect key="frame" x="182.5" y="197" width="235" height="30"/>
+                                <rect key="frame" x="183" y="333" width="235" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5So-Pd-ftn"/>
                                     <constraint firstAttribute="width" constant="235" id="cA5-kU-NPw"/>
@@ -59,16 +59,22 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4Y2-cZ-vnx" firstAttribute="top" secondItem="hQp-Al-jQi" secondAttribute="bottom" id="20j-CG-PyC"/>
+                            <constraint firstItem="gbD-b9-Lnh" firstAttribute="centerY" secondItem="Af0-Ri-e9b" secondAttribute="centerY" id="4dh-e1-E9L"/>
                             <constraint firstItem="hQp-Al-jQi" firstAttribute="top" secondItem="Uqa-yX-hJA" secondAttribute="bottom" constant="-20" id="7KS-En-lkl"/>
                             <constraint firstItem="hQp-Al-jQi" firstAttribute="leading" secondItem="Af0-Ri-e9b" secondAttribute="leading" id="8BA-cn-9Fy"/>
+                            <constraint firstItem="uDo-ra-K2p" firstAttribute="centerY" secondItem="Af0-Ri-e9b" secondAttribute="centerY" id="Dw8-0U-dOc"/>
                             <constraint firstAttribute="trailing" secondItem="hQp-Al-jQi" secondAttribute="trailing" id="JyF-o1-zwp"/>
                             <constraint firstItem="h5I-UH-ht1" firstAttribute="centerX" secondItem="Af0-Ri-e9b" secondAttribute="centerX" id="N9H-mj-onE"/>
                             <constraint firstItem="uDo-ra-K2p" firstAttribute="top" secondItem="gbD-b9-Lnh" secondAttribute="bottom" constant="21" id="UP3-gN-XMW"/>
-                            <constraint firstItem="gbD-b9-Lnh" firstAttribute="top" secondItem="Uqa-yX-hJA" secondAttribute="bottom" constant="60" id="WHt-NK-rCg"/>
                             <constraint firstItem="uDo-ra-K2p" firstAttribute="centerX" secondItem="Af0-Ri-e9b" secondAttribute="centerX" id="i1U-oC-I2g"/>
                             <constraint firstItem="gbD-b9-Lnh" firstAttribute="centerX" secondItem="Af0-Ri-e9b" secondAttribute="centerX" id="qd7-EC-XsC"/>
                             <constraint firstItem="h5I-UH-ht1" firstAttribute="top" secondItem="uDo-ra-K2p" secondAttribute="bottom" constant="32" id="vae-km-OBx"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4dh-e1-E9L"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ozI-V1-m5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
