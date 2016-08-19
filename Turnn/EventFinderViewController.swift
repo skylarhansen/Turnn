@@ -403,6 +403,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func logoutButtonTapped() {
+
         print("logged out tapped")
         UserController.logOutUser()
         self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
@@ -515,6 +516,7 @@ extension EventFinderViewController {
             let logoutButton = UIButton(frame: CGRectMake(self.logOutView.frame.width / 2 - 20,0, self.logOutView.frame.width / 2 - 20, logOutView.frame.height))
             logoutButton.setTitle("Log Out", forState: .Normal)
             logoutButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
+            logoutButton.addTarget(self, action: #selector(logoutButtonTapped), forControlEvents: .TouchUpInside)
             
             self.logOutView.addSubview(filterButton)
             self.logOutView.addSubview(logoutButton)
