@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 
 class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
-
+    
     @IBOutlet weak var mapViewPlaceholderView: UIView!
     var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -56,6 +56,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         case One = 1
     }
     
+    var isFiltered = false
+    
+    var filteredEvents: [Event] = [] {
+        didSet {
+            isFiltered = true
+            
+            
+        }
+    }
+    
     var selectedRadius: Miles = .Five
     
     override func viewDidLoad() {
@@ -96,7 +106,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
-
+        
         
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.delegate = self
@@ -105,7 +115,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         
         setupTableViewUI()
-
+        
         updateQuery()
         
         //
@@ -119,7 +129,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         //        for locationKey in matchingLocationKeys{
         //            EventController.deleteLocation(locationKey)
         //        }
-
+        
     }
     
     func createMapView() {
@@ -280,7 +290,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     @IBAction func unwindToEventFinder(segue: UIStoryboardSegue) {
-        
+        if segue.identifier == "unwindToEventFinder" {
+            let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
+            let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
+            if filteredEvents != nil {
+                self.filteredEvents = filteredEvents!
+                updateQuery()
+            } else {
+                presentAlert()
+            }
+        }
     }
     
     func mapViewUpdated(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
@@ -295,7 +314,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Table view data source -
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return events.count
+        
+        if isFiltered {
+            return filteredEvents.count
+        } else {
+            return events.count
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -303,12 +327,21 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
-        
-        let event = events[indexPath.section]
-        eventCell?.updateWithEvent(event)
-        
-        return eventCell ?? UITableViewCell()
+        if isFiltered {
+            let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
+            
+            let event = filteredEvents[indexPath.section]
+            eventCell?.updateWithEvent(event)
+            
+            return eventCell ?? UITableViewCell()
+        } else {
+            let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
+            
+            let event = events[indexPath.section]
+            eventCell?.updateWithEvent(event)
+            
+            return eventCell ?? UITableViewCell()
+        }
     }
     
     //    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -357,7 +390,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         UserController.logOutUser()
         self.performSegueWithIdentifier("nonUnwindToLogin", sender: self)
     }
-
+    
     func presentAlert() {
         let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
         let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
@@ -365,17 +398,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         alertController.addAction(dismissAction)
     }
     
-    @IBAction func unwindFromCategory(segue: UIStoryboardSegue) {
-        if segue.identifier == "UnwindFromCategoryIdentifier" {
-            let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
-            let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
-            if filteredEvents != nil {
-                updateQuery()
-            } else {
-                presentAlert()
-            }
-        }
-    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toCategoriesSegue" {
@@ -623,3 +645,5 @@ extension EventFinderViewController {
         })
     }
 }
+
+
