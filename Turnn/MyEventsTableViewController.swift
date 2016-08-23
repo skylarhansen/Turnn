@@ -33,6 +33,16 @@ class MyEventsTableViewController: UITableViewController {
         setupTableViewUI()
     }
     
+    @IBAction func logOutButtonTapped() {
+        print("logged out tapped")
+        UserController.logOutUser()
+        self.performSegueWithIdentifier("logOutSegue", sender: self)
+    }
+    
+    @IBAction func doneButtonTapped() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()

@@ -53,9 +53,8 @@ class EventController {
     
     static func fetchEventsForUserID(uid: String, completion: (events: [Event]?) -> Void) {
         let users = FirebaseController.ref.child("Users")
-        users.child("events").observeEventType(.Value, withBlock: { (snapshot) in
-            if let eventIDDictionary = snapshot.value as? [String : AnyObject] {
-                let eventIDs = Array(eventIDDictionary.keys)
+        users.child(UserController.shared.currentUserId).child("events").observeEventType(.Value, withBlock: { (snapshot) in
+            if let eventIDs = snapshot.value as? [String] {
                 fetchEventsThatMatchQuery(eventIDs, completion: { (events) in
                     completion(events: events)
                 })

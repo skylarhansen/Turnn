@@ -30,7 +30,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="101" height="50"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="emn-sb-Fqd">
-                                                <rect key="frame" x="108" y="0.0" width="100" height="50"/>
+                                                <rect key="frame" x="108" y="0.0" width="101" height="50"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Yj-e2-9De">
                                                 <rect key="frame" x="215" y="0.0" width="100" height="50"/>
@@ -39,7 +39,7 @@
                                                 <rect key="frame" x="322" y="0.0" width="101" height="50"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mwl-lX-tjk">
-                                                <rect key="frame" x="430" y="0.0" width="100" height="50"/>
+                                                <rect key="frame" x="430" y="0.0" width="101" height="50"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
@@ -426,6 +426,13 @@
                                     <action selector="mapButtonTapped:" destination="DeV-nU-JC0" eventType="touchUpInside" id="NXl-Xo-oNB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hm-Lc-bxb">
+                                <rect key="frame" x="8" y="165" width="90" height="30"/>
+                                <state key="normal" title="Action Image"/>
+                                <connections>
+                                    <action selector="actionButtonTapped:" destination="DeV-nU-JC0" eventType="touchUpInside" id="VlW-bA-wbb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -436,6 +443,7 @@
                             <constraint firstItem="iCa-MI-9Mm" firstAttribute="centerY" secondItem="yM0-lH-zPT" secondAttribute="centerY" constant="-18" id="8x9-dD-xUH"/>
                             <constraint firstItem="XwR-0n-1ol" firstAttribute="centerX" secondItem="JSA-cY-EmY" secondAttribute="centerX" id="G2c-tT-3Ky"/>
                             <constraint firstItem="nP8-JE-3Rr" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" id="SEV-De-R2w"/>
+                            <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="8Hm-Lc-bxb" secondAttribute="bottom" constant="8" id="T47-NI-uTg"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" id="Ug7-Fg-QXw"/>
                             <constraint firstItem="83c-yr-PJs" firstAttribute="top" secondItem="1Lr-va-uyx" secondAttribute="bottom" id="Y3u-9O-j1P"/>
                             <constraint firstItem="s8i-2x-d6t" firstAttribute="top" secondItem="yM0-lH-zPT" secondAttribute="bottom" constant="29" id="YrS-Ed-26T"/>
@@ -447,6 +455,7 @@
                             <constraint firstItem="1Lr-va-uyx" firstAttribute="leading" secondItem="3ik-iB-e3U" secondAttribute="leading" id="muA-3s-MYV"/>
                             <constraint firstItem="83c-yr-PJs" firstAttribute="top" secondItem="nP8-JE-3Rr" secondAttribute="bottom" id="qBv-Bo-ClY"/>
                             <constraint firstItem="1Lr-va-uyx" firstAttribute="top" secondItem="s8i-2x-d6t" secondAttribute="bottom" constant="15" id="qxS-tg-5Ww"/>
+                            <constraint firstItem="s8i-2x-d6t" firstAttribute="leading" secondItem="8Hm-Lc-bxb" secondAttribute="trailing" constant="-98" id="sAH-u9-CNT"/>
                             <constraint firstAttribute="trailing" secondItem="s8i-2x-d6t" secondAttribute="trailing" id="tct-gr-AjH"/>
                             <constraint firstItem="yM0-lH-zPT" firstAttribute="leading" secondItem="iCa-MI-9Mm" secondAttribute="trailing" constant="4" id="uzo-TX-a9x"/>
                             <constraint firstAttribute="trailing" secondItem="nP8-JE-3Rr" secondAttribute="trailing" id="yIe-Ds-ybW"/>
@@ -461,6 +470,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uJc-zx-N0g"/>
                     <connections>
+                        <outlet property="actionButton" destination="8Hm-Lc-bxb" id="HQI-OP-VLS"/>
                         <outlet property="backButton" destination="vwC-bP-BSW" id="Ads-TJ-0lu"/>
                         <outlet property="backgroundImageView" destination="nP8-JE-3Rr" id="wzl-QH-neK"/>
                         <outlet property="categoryImageHolderView" destination="s8i-2x-d6t" id="3fV-PA-vKF"/>
