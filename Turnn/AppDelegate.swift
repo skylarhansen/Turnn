@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 5.0))
+        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 4.0))
         return value
     }
 
