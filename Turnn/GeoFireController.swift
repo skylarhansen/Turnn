@@ -46,6 +46,42 @@ class GeoFireController {
         }
     }
     
+    static func getSingleEventIdForLocationIdentifier(id: String, completion: (id: String?) -> Void) {
+        var eventIDtoExport: String = ""
+        let singleEventIDFetch = dispatch_group_create()
+            dispatch_group_enter(singleEventIDFetch)
+            FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
+                    print(eventID)
+                    eventIDtoExport = eventID
+                    dispatch_group_leave(singleEventIDFetch)
+                }
+            })
+        dispatch_group_notify(singleEventIDFetch, dispatch_get_main_queue()) {
+            completion(id: eventIDtoExport)
+        }
+    }
+    
+    static func getLocationIdForEventIdentifier(id: String, completion: (id: String?) -> Void) {
+        var locationID: String = ""
+        let locationIDFetch = dispatch_group_create()
+            dispatch_group_enter(locationIDFetch)
+           print(FirebaseController.ref.child("Locations").child("EventID").child(id).description())
+        
+        FirebaseController.ref.child("Locations").child("EventID").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                    print("\(snapshot.value)")
+                    locationID = ("\(snapshot.value)")
+                    dispatch_group_leave(locationIDFetch)
+                
+            })
+        
+        dispatch_group_notify(locationIDFetch, dispatch_get_main_queue()) {
+            completion(id: locationID)
+        }
+    }
+    
+    
+    
     // DEFINITIONS: OLDEVENTS are events whose "endTime" has passed,
     //              FUTUREEVENTS are vents whose "startTime" is more than 24 hours away from now
     //              CURRENTEVENTS are all other events, whose "endTime" not not passed
