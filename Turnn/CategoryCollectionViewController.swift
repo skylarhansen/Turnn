@@ -54,6 +54,7 @@ class CategoryCollectionViewController: UICollectionViewController {
             self.performSegueWithIdentifier("unwindToEventFinder", sender: self)
         } else if mode == .Save {
             self.performSegueWithIdentifier("unwindToCreateEvent", sender: self)
+            
         }
     }
     

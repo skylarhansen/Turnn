@@ -315,7 +315,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.filteredEvents = filteredEvents!
                 updateQuery()
             } else {
-                presentAlert()
+               // presentAlert()
             }
         }
     }
@@ -412,13 +412,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.isFiltered = false
         updateQuery()
         tableView.reloadData()
-    }
+        }
     
     func myEventsButtonTapped() {
         self.performSegueWithIdentifier("ToMyEventsSegue", sender: nil)
     }
     
-    func presentAlert() {
+   func presentAlert() {
         let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
         let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
         
@@ -524,7 +524,7 @@ extension EventFinderViewController {
             filterButton.addTarget(self, action: #selector(categoriesButtonTapped), forControlEvents: .TouchUpInside)
             
             let showAllButton = UIButton(frame: CGRectMake(self.logOutView.frame.width / 2 - 20,0, self.logOutView.frame.width / 2 - 20, logOutView.frame.height))
-            showAllButton.setTitle("Show All Events", forState: .Normal)
+            showAllButton.setTitle("Remove Filters", forState: .Normal)
             showAllButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
             showAllButton.addTarget(self, action: #selector(showAllEvents), forControlEvents: .TouchUpInside)
             

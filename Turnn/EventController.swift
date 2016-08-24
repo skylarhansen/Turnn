@@ -12,6 +12,10 @@ import UIKit
 
 class EventController {
     
+    var events: [Event] = []
+    
+    static let sharedController = EventController()
+    
     static let eventData = FirebaseController.ref.child("Events")
 
     static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: String? = "Free", contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool, eventID: String?) -> Void)
@@ -36,6 +40,14 @@ class EventController {
             }
         }
     }
+    
+    ////////////STEVE HERE IS THE DELETE EVENT FUNCTION SIGNATURE///////////////
+    
+    func deleteEvent(event: Event) {
+        //somefirebase events[indexOf(entry)] .delete action 
+    
+    }
+  
     
 //      NOT NECESSARY LONG-TERM, IS A WAY TO CONSTANTLY OBSERVE ALL EVENTS, REGARDLESS OF LOCATION.
 //          may be helpful for testing events without having to be crazy particular about radius
