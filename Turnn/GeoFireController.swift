@@ -15,6 +15,8 @@ import GeoFire
 class GeoFireController {
     
     static let geofire = GeoFire(firebaseRef: FirebaseController.ref.child("Locations"))
+  
+    static let eventDataPoint = FirebaseController.ref.child("Events")
     
     static func setLocation(eventID: String, location: CLLocation, completion: (success : Bool, savedLocation: FIRDatabaseReference?) -> Void) {
         let key = geofire.firebaseRef.childByAutoId().key
@@ -23,6 +25,7 @@ class GeoFireController {
                 print(error)
                 completion(success: false, savedLocation: nil)
             }
+            eventDataPoint.child(eventID).updateChildValues(["LocationID": key ])
             completion(success: true, savedLocation: geofire.firebaseRef.child(key))
         }
     }
@@ -34,7 +37,7 @@ class GeoFireController {
             dispatch_group_enter(eventIDFetch)
             FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
-                    print(snapshot.value)
+                    //print(snapshot.value)
                     eventIDs.append(eventID)
                     dispatch_group_leave(eventIDFetch)
                 }
@@ -45,6 +48,59 @@ class GeoFireController {
             completion(ids: eventIDs)
         }
     }
+    
+    static func getSingleEventIdForLocationIdentifier(id: String, completion: (id: String?) -> Void) {
+        var eventIDtoExport: String = ""
+        let singleEventIDFetch = dispatch_group_create()
+            dispatch_group_enter(singleEventIDFetch)
+            FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
+                    //print(eventID)
+                    eventIDtoExport = eventID
+                    dispatch_group_leave(singleEventIDFetch)
+                }
+            })
+        dispatch_group_notify(singleEventIDFetch, dispatch_get_main_queue()) {
+            completion(id: eventIDtoExport)
+        }
+    }
+    
+    static func getLocationIdsForEventIdentifiers(ids: [String], completion: (ids: [String]?) -> Void) {
+        var locationIDs: [String] = []
+        let locationIDFetch = dispatch_group_create()
+        for id in ids {
+            dispatch_group_enter(locationIDFetch)
+            FirebaseController.ref.child("Events").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
+                    //print(snapshot.value)
+                    locationIDs.append(locationID)
+                    dispatch_group_leave(locationIDFetch)
+                }
+            })
+        }
+        
+        dispatch_group_notify(locationIDFetch, dispatch_get_main_queue()) {
+            completion(ids: locationIDs)
+        }
+    }
+    
+    static func getSingleLocationIdForEventIdentifier(id: String, completion: (id: String?) -> Void) {
+        var locationIDtoExport: String = ""
+        let singleLocationIDFetch = dispatch_group_create()
+        dispatch_group_enter(singleLocationIDFetch)
+        FirebaseController.ref.child("Events").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
+                //print(eventID)
+                locationIDtoExport = locationID
+                dispatch_group_leave(singleLocationIDFetch)
+            }
+        })
+        dispatch_group_notify(singleLocationIDFetch, dispatch_get_main_queue()) {
+            completion(id: locationIDtoExport)
+        }
+    }
+    
+    
     
     // DEFINITIONS: OLDEVENTS are events whose "endTime" has passed,
     //              FUTUREEVENTS are vents whose "startTime" is more than 24 hours away from now
