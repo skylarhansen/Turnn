@@ -49,11 +49,13 @@ class UserController {
         if let eventID = eventID {
             if UserController.shared.currentUser?.eventIds?.count > 0 {
                 UserController.shared.currentUser?.eventIds?.append(eventID)
-                UserController.shared.currentUser?.save()
+                //UserController.shared.currentUser?.save()
+                FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(eventID).setValue(true)
                 completion(success: true)
             } else {
                 UserController.shared.currentUser?.eventIds = [eventID]
-                UserController.shared.currentUser?.save()
+                //UserController.shared.currentUser?.save()
+                FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(eventID).setValue(true)
                 completion(success: true)
             }
         } else {

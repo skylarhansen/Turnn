@@ -62,8 +62,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var filteredEvents: [Event] = [] {
         didSet {
             isFiltered = true
-            
-            
         }
     }
     
@@ -71,6 +69,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadingIndicatorView = UIView(frame: CGRectMake((self.view.frame.width / 2) - 30, (self.view.frame.height / 2) - 90, 60, 60))
         loadingIndicatorView.layer.cornerRadius = 15
         loadingIndicatorView.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
@@ -251,8 +250,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     ////        }
     ////        return annotationView
     //    }
-    
     // MGLAnnotationView subclass
+    
     class CustomAnnotationView: MKAnnotationView {
         override func layoutSubviews() {
             super.layoutSubviews()
@@ -683,5 +682,3 @@ extension EventFinderViewController {
         })
     }
 }
-
-

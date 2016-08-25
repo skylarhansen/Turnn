@@ -43,12 +43,21 @@ class EventController {
     
     ////////////STEVE HERE IS THE DELETE EVENT FUNCTION SIGNATURE///////////////
     
-    func deleteEvent(event: Event) {
-        //somefirebase events[indexOf(entry)] .delete action 
+    // // // // // // // // THANKS EVA YOU RAHRAHROCK!! // // // // // // // // 
     
+    func deleteEvent(event: Event){
+        if let identifier = event.identifier {
+            FirebaseController.ref.child("Events").child(identifier).removeValue()
+            GeoFireController.getSingleLocationIdForEventIdentifier(identifier, completion: { (id) in
+                if let locationID = id {
+                FirebaseController.ref.child("Locations").child(locationID).removeValue()
+            }
+            })
+            FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(identifier).removeValue()
+        }
+        event.delete()
     }
   
-    
 //      NOT NECESSARY LONG-TERM, IS A WAY TO CONSTANTLY OBSERVE ALL EVENTS, REGARDLESS OF LOCATION.
 //          may be helpful for testing events without having to be crazy particular about radius
 //
@@ -66,7 +75,8 @@ class EventController {
     static func fetchEventsForUserID(uid: String, completion: (events: [Event]?) -> Void) {
         let users = FirebaseController.ref.child("Users")
         users.child(UserController.shared.currentUserId).child("events").observeEventType(.Value, withBlock: { (snapshot) in
-            if let eventIDs = snapshot.value as? [String] {
+            if let eventDictionary = snapshot.value as? [String : AnyObject] {
+                let eventIDs = eventDictionary.flatMap({ ($0.0) })
                 fetchEventsThatMatchQuery(eventIDs, completion: { (events) in
                     completion(events: events)
                 })
@@ -94,13 +104,6 @@ class EventController {
         dispatch_group_notify(eventFetchGroup, dispatch_get_main_queue()) { 
             completion(events: events)
         }
-    }
-    
-    static func deleteEvent(event: Event){
-        if let identifier = event.identifier {
-            FirebaseController.ref.child("Events").child(identifier).removeValue()
-        }
-        event.delete()
     }
     
     static func updateEvent(event: Event){
