@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         FIRApp.configure()
+        
         var value: Bool = false
         UserController.isLoggedInServerTest { (success, error) in
             if success == true {

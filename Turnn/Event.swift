@@ -25,6 +25,7 @@ class Event: FirebaseType {
     private let moreInfoKey = "moreInfo"
     private let hostKey = "host"
     private let identiferKey = "eventID"
+    private let locationIDKey = "LocationID"
     
     var title: String
     var location: Location
@@ -40,6 +41,7 @@ class Event: FirebaseType {
     var identifier: String?
     var host: User
     var moreInfo: String?
+    var locationID: String?
     
     var endpoint: String {
         return "Events"
@@ -91,6 +93,7 @@ class Event: FirebaseType {
         self.host = host
         self.moreInfo = moreInfo
         self.identifier = nil
+        self.locationID = nil
     }
     
     required init?(dictionary: [String : AnyObject], identifier: String) {
@@ -102,11 +105,16 @@ class Event: FirebaseType {
             endTime = dictionary[endTimeKey] as? Double,
             categories = dictionary[categoriesKey] as? [Int],
             passwordProtected = dictionary[passwordProtectedKey] as? Bool,
+            locationID = dictionary[locationIDKey] as? String,
             hostDictionary = dictionary[hostKey] as? [String : AnyObject],
             //Change back to id if and when we make that change
             host = User(dictionary: hostDictionary, identifier: hostDictionary["firstName"] as? String ?? "") else {
                 print("COULD NOT CONVERT DICTIONARY TO EVENT")
                 return nil
+        }
+        
+        if let locationID = dictionary[locationIDKey] as? String{
+            self.locationID = locationID
         }
         
         if let eventDescription = dictionary[eventDescriptionKey] as? String {
@@ -142,5 +150,6 @@ class Event: FirebaseType {
         self.passwordProtected = passwordProtected
         self.host = host
         self.identifier = identifier
+        self.locationID = locationID
     }
 }

@@ -53,10 +53,12 @@ class CreateEventViewController: UITableViewController {
     }
     
     @IBAction func createEventButtonTapped(sender: AnyObject) {
+        removePlaceholderTextFromViews()
         createEventButtonOutlet.enabled = false
         createEventWithEventInfo { (success) in
             if !success {
         self.createEventButtonOutlet.enabled = true
+        self.reAddPlaceholderTextInViews()
             }
         }
     }
@@ -75,8 +77,25 @@ class CreateEventViewController: UITableViewController {
         }
     }
     
+    func removePlaceholderTextFromViews(){
+        if descriptionCell.descriptionTextView.text == " Briefly describe your event" {
+        descriptionCell.descriptionTextView.text = "" }
+        if moreInfoCell.moreInfoTextView.text == " If needed, explain what to bring, what to wear, etc." {
+        moreInfoCell.moreInfoTextView.text = ""
+        }
+    }
+    
+    func reAddPlaceholderTextInViews(){
+        if descriptionCell.descriptionTextView.text == "" {
+            descriptionCell.descriptionTextView.text = " Briefly describe your event" }
+        if moreInfoCell.moreInfoTextView.text == "" {
+            moreInfoCell.moreInfoTextView.text = " If needed, explain what to bring, what to wear, etc."
+        }
+    }
+    
     func createAlert(title: String, message: String) {
         createEventButtonOutlet.enabled = true
+        reAddPlaceholderTextInViews()
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alertController.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)

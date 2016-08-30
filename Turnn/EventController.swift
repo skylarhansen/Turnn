@@ -45,19 +45,32 @@ class EventController {
     
     // // // // // // // // THANKS EVA YOU RAHRAHROCK!! // // // // // // // // 
     
-    func deleteEvent(event: Event){
-        if let identifier = event.identifier {
-            FirebaseController.ref.child("Events").child(identifier).removeValue()
-            GeoFireController.getSingleLocationIdForEventIdentifier(identifier, completion: { (id) in
-                if let locationID = id {
-                FirebaseController.ref.child("Locations").child(locationID).removeValue()
+    static func getSingleEventIdForLocationIdentifier(id: String, completion: (id: String?) -> Void) {
+        var eventIDtoExport: String = ""
+        let singleEventIDFetch = dispatch_group_create()
+        dispatch_group_enter(singleEventIDFetch)
+        FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
+                eventIDtoExport = eventID
+                dispatch_group_leave(singleEventIDFetch)
             }
-            })
-            FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(identifier).removeValue()
+        })
+        dispatch_group_notify(singleEventIDFetch, dispatch_get_main_queue()) {
+            completion(id: eventIDtoExport)
         }
-        event.delete()
     }
-  
+    
+    
+    func deleteEvent(event: Event){
+        if let locationID = event.locationID {
+        FirebaseController.ref.child("Locations").child(locationID).removeValue()
+        }
+        if let identifier = event.identifier {
+        FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(identifier).removeValue()
+            event.delete()
+        }
+    }
+
 //      NOT NECESSARY LONG-TERM, IS A WAY TO CONSTANTLY OBSERVE ALL EVENTS, REGARDLESS OF LOCATION.
 //          may be helpful for testing events without having to be crazy particular about radius
 //
