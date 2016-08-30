@@ -79,15 +79,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         loadingIndicatorView.addSubview(loadingIndicator)
         self.view.addSubview(loadingIndicatorView)
         loadingIndicator.startAnimating()
-        
         createMileViews()
-        
-        
-        GeoFireController.getSingleLocationIdForEventIdentifier("-KQNKhB3-DgJRfuwrxmD", completion: { (id) in
-            if let locationID = id {
-                FirebaseController.ref.child("Locations").child(locationID).removeValue()
-            }
-        })
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -32,7 +32,7 @@ class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let newLength = textField.text!.characters.count + string.characters.count - range.length
         if textField == titleTextField {
-            return newLength <= 25
+            return newLength <= 33
         }
         return true
     }

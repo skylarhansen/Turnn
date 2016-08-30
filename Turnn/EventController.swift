@@ -107,7 +107,7 @@ class EventController {
         for eventID in eventIDs {
             dispatch_group_enter(eventFetchGroup)
             eventData.child(eventID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                print(snapshot.value!)
+               //print(snapshot.value!)
                 if let eventDictionary = snapshot.value as? [String : AnyObject], let event = Event(dictionary: eventDictionary, identifier: eventID) {
                     events.append(event)
                     dispatch_group_leave(eventFetchGroup)
