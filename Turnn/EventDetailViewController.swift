@@ -152,7 +152,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case 2:
             let priceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath) as? PriceDetailTableViewCell
             if let price = event?.price {
-                priceDetailCell?.priceNumberLabel.text = "$\(price)"
+                priceDetailCell?.priceNumberLabel.text = "\(price)"
             } else {
                 priceDetailCell?.priceNumberLabel.text = "Free"
             }

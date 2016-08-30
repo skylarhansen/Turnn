@@ -23,7 +23,7 @@ Copyright 2016 Google
 
 ## FirebaseStorage
 
-Copyright 2016 Google Inc.
+Copyright 2016 Google
 
 ## GeoFire
 
