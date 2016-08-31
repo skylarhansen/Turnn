@@ -20,6 +20,8 @@ PODS:
     - GoogleUtilities (~> 1.2)
   - FirebaseDatabase (3.0.2):
     - FirebaseAnalytics (~> 3.2)
+  - FirebaseDynamicLinks (1.2.0):
+    - FirebaseAnalytics (~> 3.3)
   - FirebaseInstanceID (1.0.8)
   - FirebaseStorage (1.0.3):
     - FirebaseAnalytics (~> 3.3)
@@ -41,6 +43,7 @@ DEPENDENCIES:
   - Firebase
   - FirebaseAuth
   - FirebaseDatabase
+  - FirebaseDynamicLinks
   - FirebaseStorage
   - GeoFire (from `https://github.com/firebase/geofire-objc.git`)
 
@@ -58,6 +61,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: d968d4d5f6aeb795cd64144337bcd233e530efc6
   FirebaseAuth: 26fd291c3b552fc9658420b867520d5ae080421c
   FirebaseDatabase: 59bea2e7dfd81b3b8b2f8e396caf1a52c2ced6f7
+  FirebaseDynamicLinks: af180be839af7cb7c267ace71e7d04e94045a5ba
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseStorage: 3992817bf405f5c1a4f8349678d22724cd0ef509
   GeoFire: ef73103b88eb026c27212c40ea16757d6ad362ea
@@ -67,6 +71,6 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
 
-PODFILE CHECKSUM: 2d0323d2263a985411a922d98b6474c15ec75d8f
+PODFILE CHECKSUM: c40afe1e6ccd2316c3f618c3919f21b3b78714a0
 
 COCOAPODS: 1.0.1
