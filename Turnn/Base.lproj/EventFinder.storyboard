@@ -17,6 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GzP-HY-ylM" userLabel="No Events PlaceholderView">
+                                <rect key="frame" x="0.0" y="338" width="600" height="262"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.070313461120000004" green="0.78432720899999997" blue="0.86106544730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Cd-RV-GFB">
                                 <rect key="frame" x="0.0" y="64" width="600" height="274"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -158,20 +163,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="width" secondItem="q20-6C-VJU" secondAttribute="width" id="01R-up-fPH"/>
                             <constraint firstItem="6Cd-RV-GFB" firstAttribute="top" secondItem="jbO-du-oSx" secondAttribute="bottom" id="1BV-q2-UEC"/>
                             <constraint firstAttribute="trailing" secondItem="q20-6C-VJU" secondAttribute="trailing" id="1gm-nd-sx2"/>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="centerY" secondItem="q20-6C-VJU" secondAttribute="centerY" id="4sY-LL-L7M"/>
+                            <constraint firstAttribute="trailing" secondItem="GzP-HY-ylM" secondAttribute="trailing" id="8nl-mB-97d"/>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="height" secondItem="q20-6C-VJU" secondAttribute="height" id="DtJ-nn-tFf"/>
                             <constraint firstItem="6Cd-RV-GFB" firstAttribute="leading" secondItem="Qbh-Gh-Scq" secondAttribute="leading" id="QXR-NR-s5d"/>
                             <constraint firstItem="6Cd-RV-GFB" firstAttribute="top" secondItem="jbO-du-oSx" secondAttribute="bottom" id="QpG-C9-Uhn"/>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="top" secondItem="6Cd-RV-GFB" secondAttribute="bottom" id="XTi-gI-PCQ"/>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="leading" secondItem="Qbh-Gh-Scq" secondAttribute="leading" id="Y6V-r9-F7x"/>
                             <constraint firstItem="q20-6C-VJU" firstAttribute="top" secondItem="6Cd-RV-GFB" secondAttribute="bottom" id="c7W-Sp-wyI"/>
                             <constraint firstItem="S1R-pt-Ur8" firstAttribute="top" secondItem="q20-6C-VJU" secondAttribute="bottom" id="iVa-bH-fwY"/>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="top" secondItem="q20-6C-VJU" secondAttribute="top" id="kjc-yU-Mdp"/>
+                            <constraint firstItem="S1R-pt-Ur8" firstAttribute="top" secondItem="GzP-HY-ylM" secondAttribute="bottom" id="lrR-V8-N5s"/>
+                            <constraint firstItem="S1R-pt-Ur8" firstAttribute="top" secondItem="GzP-HY-ylM" secondAttribute="bottom" id="mx8-RG-2FF"/>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="bottom" secondItem="q20-6C-VJU" secondAttribute="bottom" id="pO3-PR-Rai"/>
                             <constraint firstAttribute="trailing" secondItem="6Cd-RV-GFB" secondAttribute="trailing" id="uIW-qr-Z5u"/>
+                            <constraint firstItem="GzP-HY-ylM" firstAttribute="centerX" secondItem="Qbh-Gh-Scq" secondAttribute="centerX" id="xND-xN-0z4"/>
                             <constraint firstItem="q20-6C-VJU" firstAttribute="leading" secondItem="Qbh-Gh-Scq" secondAttribute="leading" id="xje-LW-agg"/>
-                            <constraint firstItem="q20-6C-VJU" firstAttribute="top" secondItem="6Cd-RV-GFB" secondAttribute="bottom" id="ztI-1v-Avl"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="QpG-C9-Uhn"/>
-                                <exclude reference="ztI-1v-Avl"/>
                             </mask>
                         </variation>
                     </view>
@@ -190,6 +204,7 @@
                     <connections>
                         <outlet property="mapViewPlaceholderView" destination="6Cd-RV-GFB" id="TzC-16-rUx"/>
                         <outlet property="moreOptionsButton" destination="pRJ-Kc-nWl" id="RNe-Sg-H65"/>
+                        <outlet property="noEventsPlaceholderView" destination="GzP-HY-ylM" id="zJW-z0-uF0"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                         <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
                         <segue destination="lKW-UX-92g" kind="presentation" identifier="toCategoriesSegue" id="iNS-du-VkY"/>

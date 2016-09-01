@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B70286C1D77A186002B70AB /* NoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B70286B1D77A186002B70AB /* NoResultsView.swift */; };
 		8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C044AA71D4FBF76002754B5 /* AppDelegate.swift */; };
 		8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C044AAE1D4FBF76002754B5 /* Assets.xcassets */; };
 		8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C1C60881D4FEFE10015FAC5 /* GoogleService-Info.plist */; };
@@ -88,6 +89,7 @@
 /* Begin PBXFileReference section */
 		1CFAC4F5E9F9AEF5DD731FFE /* Pods-Turnn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turnn.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turnn/Pods-Turnn.release.xcconfig"; sourceTree = "<group>"; };
 		35B988C46F35ED4E2176DC6F /* Pods-Turnn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turnn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Turnn/Pods-Turnn.debug.xcconfig"; sourceTree = "<group>"; };
+		3B70286B1D77A186002B70AB /* NoResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoResultsView.swift; sourceTree = "<group>"; };
 		6E75C12731541CDD74E011C9 /* Pods_Turnn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turnn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C044AA41D4FBF76002754B5 /* Turnn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turnn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C044AA71D4FBF76002754B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				CE9C29961D51565F00158B14 /* EventFinderViewController.swift */,
 				DB315C281D63BD5100A07DCE /* EventRadiusButton.swift */,
 				DB315C2A1D63BD8300A07DCE /* LogOutView.swift */,
+				3B70286B1D77A186002B70AB /* NoResultsView.swift */,
 				CE2ADC831D5D290A00D7B2C6 /* EFHeaderCellTableViewCell.swift */,
 				CE9C29941D51564300158B14 /* EventFinderTableViewCell.swift */,
 			);
@@ -577,6 +580,7 @@
 				DB315C2B1D63BD8300A07DCE /* LogOutView.swift in Sources */,
 				955D18621D5D474E0010C73A /* TurnnButton.swift in Sources */,
 				95FDAF9D1D5A41E000191DE4 /* GeoFireController.swift in Sources */,
+				3B70286C1D77A186002B70AB /* NoResultsView.swift in Sources */,
 				CCE9DEBF1D5298E600363A98 /* MoreInfoDetailTableViewCell.swift in Sources */,
 				CCE9DEBB1D5298B600363A98 /* LocationDetailTableViewCell.swift in Sources */,
 				8CC7E5001D623699000C694D /* MoreInfoDetailLabel.swift in Sources */,

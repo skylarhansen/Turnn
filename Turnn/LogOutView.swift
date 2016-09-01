@@ -22,7 +22,6 @@ class LogOutView: UIView {
         setupView()
     }
 
-    
     func setupView() {
         self.layer.cornerRadius = self.frame.height / 2
         self.layer.masksToBounds = true

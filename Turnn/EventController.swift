@@ -60,7 +60,6 @@ class EventController {
         }
     }
     
-    
     func deleteEvent(event: Event){
         if let locationID = event.locationID {
         FirebaseController.ref.child("Locations").child(locationID).removeValue()
@@ -138,11 +137,9 @@ class EventController {
                 }
             }
         }
-        
         return filteredEvents.allObjects as? [Event]
     }
 
-    
     static func createSnapShotOfLocation(location: Location, completion: (success: Bool, image: UIImage?) -> Void) {
         let address = String.autoformatAddressForGPSAquistionWith(location.address, city: location.city, state: location.state, zipCode: location.zipCode)
         LocationController.sharedInstance.forwardGeocoding(address) { (location, error) in
@@ -151,7 +148,6 @@ class EventController {
             let options = MKMapSnapshotOptions()
             options.region = region
             options.scale = UIScreen.mainScreen().scale
-            
             
             let snapshotter = MKMapSnapshotter(options: options)
             snapshotter.startWithCompletionHandler { snapshot, error in
@@ -183,27 +179,3 @@ class EventController {
         }
     }
 }
-
-//    OLD MOCK DATA
-//    static func mockEvents() -> [Event]{
-//        
-//        let mockLocation1 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.761819, longitude: -111.890561)
-//        
-//        let mockLocation2 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.762524, longitude: -111.890593)
-//        
-//        let mockLocation3 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.762503, longitude: -111.891835)
-//        
-//        let mockLocation4 = Location(address: "435 Gnarly Rd", city: "TinsleTown", state: "OR", zipCode: "84312", latitude: 40.762592, longitude: -111.889587)
-//        
-//        let mockUser = User(firstName: "Bob", lastName: "Dylan", identifier: "3456-abcd")
-//        
-//        let event1 = Event(title: "There's an event that's a 1", location: mockLocation1, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,4,3,8], eventDescription: "I'm testing to see what this will look like if I put a really long string into the box so here goes: Tim Duncan, Tony Parker, Manu Ginobili, Kawhi Leonard, Gregg Popovich 1", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
-//        
-//        let event2 = Event(title: "Hey! 2", location: mockLocation2, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [0,2,1,5], eventDescription: "Nice Event Man! 2", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
-//        
-//        let event3 = Event(title: "Hey! 3", location: mockLocation3, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [3,6,8], eventDescription: "Nice Event Man! 3", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
-//        
-//        let event4 = Event(title: "Hey! 4", location: mockLocation4, startTime: NSDate(), endTime: NSDate().dateByAddingTimeInterval(1500), categories: [2,9], eventDescription: "Nice Event Man! 4", passwordProtected: false, password: nil, price: nil, contactInfo: nil, imageURL: nil, host: mockUser, moreInfo: nil)
-//        
-//        return [event1, event2, event3, event4]
-//    }

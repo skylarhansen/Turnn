@@ -16,7 +16,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var noEventsPlaceholderView: UIView!
+    
     @IBOutlet weak var moreOptionsButton: UIBarButtonItem!
+    
     var moreOptionsOn = false
     var mileRadiusViewsOn = false
     
@@ -27,6 +30,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var midMilesButton: EventRadiusButton!
     var lowMilesButton: EventRadiusButton!
     var lowestMilesButton: EventRadiusButton!
+    
+    var noResultsView: NoResultsView!
     
     let locationManager = CLLocationManager()
     var search: Location?
@@ -66,7 +71,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     var selectedRadius: Miles = .Five
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,6 +85,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.view.addSubview(loadingIndicatorView)
         loadingIndicator.startAnimating()
         createMileViews()
+        
+        noResultsView = NoResultsView(frame: CGRectMake(0, noEventsPlaceholderView.frame.origin.y, self.view.frame.width, (self.view.frame.height - mapViewPlaceholderView.frame.height)))
+        
+        noResultsView.hidden = true
+        revealOrHideNoResultsView()
+        noResultsView.alpha = 1
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -97,7 +108,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.showsCompass = false
         self.mapView.rotateEnabled = false
         
-        
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
             
             self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
@@ -106,29 +116,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.locationManager.requestWhenInUseAuthorization()
         self.mapView.showsUserLocation = true
         
-        
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.delegate = self
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.startUpdatingLocation()
         }
-        
         setupTableViewUI()
-        
         updateQuery()
-        
-        //
-        //        NEXT TWO FUNCTIONS DELETE OLD EVENTS AND THEIR MATCHING LOCATIONS
-        //        BUT LET'S LEAVE IT NOW FOR NOW PER JUSTIN'S DATA CONFLICT ADVICE
-        //
-        //        for event in oldEvents{
-        //            EventController.deleteEvent(event)
-        //        }
-        //
-        //        for locationKey in matchingLocationKeys{
-        //            EventController.deleteLocation(locationKey)
-        //        }
-        
     }
     
     func createMapView() {
@@ -141,7 +135,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.showsCompass = false
         self.mapView.rotateEnabled = false
         
-        
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
             
             self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
@@ -149,7 +142,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func updateQuery(){
-        
         GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
             if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
                 String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
@@ -170,19 +162,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 //as old events. they might more properly be
                 //called: "locationKeysForOldEvents"
                 self.matchingLocationKeys = matchingLocationKeys
+                self.revealOrHideNoResultsView()
             }
         })
-        //  OLD MOCK DATA WIRE-UP
-//        self.events = EventController.mockEvents()
-//        self.displayEvents()
-//        self.tableView.reloadData()
-//        self.loadingIndicatorView.hidden = true
-//        self.loadingIndicator.stopAnimating()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.view.bringSubviewToFront(topMilesButton)
         self.view.bringSubviewToFront(midMilesButton)
         self.view.bringSubviewToFront(lowMilesButton)
@@ -203,7 +189,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 if let latitude = event.location.latitude, longitude = event.location.longitude {
                     point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 }
-                
                 self.mapView.rotateEnabled = false
                 self.mapView.showsCompass = false
                 point.title = event.title
@@ -211,14 +196,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 annotations.append(point)
             }
             self.mapView.addAnnotations(annotations)
-            
         } else {
             for event in events {
                 let point = MKPointAnnotation()
                 if let latitude = event.location.latitude, longitude = event.location.longitude {
                     point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 }
-                
                 self.mapView.rotateEnabled = false
                 self.mapView.showsCompass = false
                 point.title = event.title
@@ -288,7 +271,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
         imageView.contentMode = .Center
         imageView.addSubview(blurView)
-        imageView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        imageView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.width, self.view.frame.height)
         self.view.addSubview(imageView)
         self.view.sendSubviewToBack(imageView)
         blurView.frame = self.view.bounds
@@ -313,7 +296,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.filteredEvents = filteredEvents!
                 updateQuery()
             } else {
-               // presentAlert()
+                revealOrHideNoResultsView()
             }
         }
     }
@@ -330,7 +313,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Table view data source -
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         if isFiltered {
             return filteredEvents.count
         } else {
@@ -341,6 +323,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
+    var noResultsSubView: UIView!
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if isFiltered {
@@ -391,17 +375,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     // MARK: - Navigation
     
     @IBAction func moreOptionsButtonTapped(sender: AnyObject) {
-        
         moreOptionsOn = !moreOptionsOn
-        
         addAccessoryView(moreOptionsOn)
     }
     
-    func searchAllButtonTapped() {
-        isFiltered = false
-        tableView.reloadData()
-    }
-
     func categoriesButtonTapped() {
         self.performSegueWithIdentifier("toCategoriesSegue", sender: nil)
     }
@@ -416,12 +393,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.performSegueWithIdentifier("ToMyEventsSegue", sender: nil)
     }
     
-   func presentAlert() {
-        let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
-        let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-        
-        alertController.addAction(dismissAction)
-    }
+//   func presentAlert() {
+//        let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
+//        let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
+//        
+//        alertController.addAction(dismissAction)
+//    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -436,6 +413,44 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 let event = events[indexPath.section]
                 eventDetailVC.event = event
             }
+        }
+    }
+    
+    func revealOrHideNoResultsView(){
+        
+        if isFiltered == true {
+            if filteredEvents.count == 0 {
+                noResultsView.hidden = false
+                self.tableView.hidden = true
+            }
+            if filteredEvents.count > 0 {
+                noResultsView.hidden = true
+                self.tableView.hidden = false
+            } else {return}
+        }
+        
+        if isFiltered == false {
+            if events.count == 0 {
+                noResultsView.hidden = false
+                self.tableView.hidden = true
+            }
+            if events.count > 0  {
+                noResultsView.hidden = true
+                self.tableView.hidden = false
+            } else {return}
+        }
+        else {return}
+    }
+    
+    func addNoResultsView(){
+        noResultsView = NoResultsView(frame: CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.width, self.tableView.frame.height))
+        noResultsView.backgroundColor = UIColor.turnnBlue()
+        self.view.addSubview(noResultsView)
+    }
+    
+    func removeNoResultsView(){
+        if noResultsView != nil {
+           noResultsView.removeFromSuperview()
         }
     }
 }
