@@ -20,6 +20,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     @IBOutlet weak var moreOptionsButton: UIBarButtonItem!
     
+    @IBOutlet weak var noEventsLabel1: UILabel!
+    
+    @IBOutlet weak var noEventsLabel2: UILabel!
+    
+    @IBOutlet weak var noEventsButtonOutlet: UIButton!
+    
     var moreOptionsOn = false
     var mileRadiusViewsOn = false
     
@@ -30,8 +36,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var midMilesButton: EventRadiusButton!
     var lowMilesButton: EventRadiusButton!
     var lowestMilesButton: EventRadiusButton!
-    
-    var noResultsView: NoResultsView!
     
     let locationManager = CLLocationManager()
     var search: Location?
@@ -86,11 +90,12 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         loadingIndicator.startAnimating()
         createMileViews()
         
-        noResultsView = NoResultsView(frame: CGRectMake(0, noEventsPlaceholderView.frame.origin.y, self.view.frame.width, (self.view.frame.height - mapViewPlaceholderView.frame.height)))
+        noEventsLabel1.textColor = UIColor.turnnWhite().colorWithAlphaComponent(0.9)
+        noEventsLabel2.textColor = UIColor.turnnWhite().colorWithAlphaComponent(0.9)
+        noEventsButtonOutlet.tintColor = UIColor.turnnBlue()
         
-        noResultsView.hidden = true
+        noEventsPlaceholderView.hidden = true
         revealOrHideNoResultsView()
-        noResultsView.alpha = 1
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -173,6 +178,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.view.bringSubviewToFront(midMilesButton)
         self.view.bringSubviewToFront(lowMilesButton)
         self.view.bringSubviewToFront(lowestMilesButton)
+        revealOrHideNoResultsView()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -239,7 +245,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             super.layoutSubviews()
             
             // Force the annotation view to maintain a constant size when the map is tilted.
-            //scalesWithViewingDistance = false
+            // scalesWithViewingDistance = false
             
             // Use CALayer’s corner radius to turn this view into a circle.
             layer.cornerRadius = frame.width / 2
@@ -393,13 +399,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.performSegueWithIdentifier("ToMyEventsSegue", sender: nil)
     }
     
-//   func presentAlert() {
-//        let alertController = UIAlertController(title: "No events found", message: "So Sorry! No events with selected categories could be found", preferredStyle: .Alert)
-//        let dismissAction = UIAlertAction(title: "Ok", style: .Cancel, handler: nil)
-//        
-//        alertController.addAction(dismissAction)
-//    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toCategoriesSegue" {
@@ -420,38 +419,26 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         if isFiltered == true {
             if filteredEvents.count == 0 {
-                noResultsView.hidden = false
+                noEventsPlaceholderView.hidden = false
                 self.tableView.hidden = true
             }
             if filteredEvents.count > 0 {
-                noResultsView.hidden = true
+                noEventsPlaceholderView.hidden = true
                 self.tableView.hidden = false
             } else {return}
         }
         
         if isFiltered == false {
             if events.count == 0 {
-                noResultsView.hidden = false
+                noEventsPlaceholderView.hidden = false
                 self.tableView.hidden = true
             }
             if events.count > 0  {
-                noResultsView.hidden = true
+                noEventsPlaceholderView.hidden = true
                 self.tableView.hidden = false
             } else {return}
         }
         else {return}
-    }
-    
-    func addNoResultsView(){
-        noResultsView = NoResultsView(frame: CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.width, self.tableView.frame.height))
-        noResultsView.backgroundColor = UIColor.turnnBlue()
-        self.view.addSubview(noResultsView)
-    }
-    
-    func removeNoResultsView(){
-        if noResultsView != nil {
-           noResultsView.removeFromSuperview()
-        }
     }
 }
 

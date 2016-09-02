@@ -14,11 +14,8 @@ class UserController {
     static let currentUserKey = "currentUser"
     static let currentUserIdKey = "currentUserIdentifier"
     
-//    var currentUserId = "currentUser" // TODO: replace with actual current user id
-    
     static let shared = UserController()
     
-    // TODO: Uncomment when we have a user object
     var currentUser: User? = UserController.loadFromDefaults()
     
     var currentUserId: String {

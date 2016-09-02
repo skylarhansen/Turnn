@@ -22,8 +22,6 @@ class User: FirebaseType {
     var eventIds: [String]?
     //    var eventCount: Int {}
     var paid: Bool
-    //    let latitude: Double {}
-    //    let longitude: Double {}
     var identifier: String?
     
     var endpoint: String {

@@ -175,7 +175,6 @@ class EventController {
                 UIGraphicsEndImageContext()
                 completion(success: true, image: compositeImage)
             }
-            
         }
     }
 }
