@@ -57,31 +57,31 @@ class CreateEventViewController: UITableViewController {
         createEventButtonOutlet.enabled = false
         createEventWithEventInfo { (success) in
             if !success {
-        self.createEventButtonOutlet.enabled = true
-        self.reAddPlaceholderTextInViews()
+                self.createEventButtonOutlet.enabled = true
+                self.reAddPlaceholderTextInViews()
             }
         }
     }
     
     @IBAction func unwindToCreateEvent(segue: UIStoryboardSegue) {
         if let categories = categories {
-            for category in categories {
-                if category == Categories.Admission.rawValue {
-                    priceSelected = true
-                    tableView.reloadData()
-                } else {
-                    priceSelected = false
-                    tableView.reloadData()
-                }
+            
+            if categories.contains(Categories.Admission.rawValue) {
+                priceSelected = true
+                tableView.reloadData()
+            } else {
+                priceSelected = false
+                tableView.reloadData()
             }
         }
     }
     
+    
     func removePlaceholderTextFromViews(){
         if descriptionCell.descriptionTextView.text == " Briefly describe your event" {
-        descriptionCell.descriptionTextView.text = "" }
+            descriptionCell.descriptionTextView.text = "" }
         if moreInfoCell.moreInfoTextView.text == " If needed, explain what to bring, what to wear, etc." {
-        moreInfoCell.moreInfoTextView.text = ""
+            moreInfoCell.moreInfoTextView.text = ""
         }
     }
     
