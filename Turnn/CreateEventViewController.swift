@@ -115,7 +115,7 @@ class CreateEventViewController: UITableViewController {
                     return
                 }
                 guard let endTime = endTimeCell.date else {
-                    createAlert("No End Date", message: "Please enter a end date for your event")
+                    createAlert("No End Date", message: "Please enter an end date for your event")
                     hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
                     return
                 }
@@ -214,7 +214,7 @@ class CreateEventViewController: UITableViewController {
                     return
                 }
                 guard let endTime = endTimeCell.date else {
-                    createAlert("No End Date", message: "Please enter a end date for your event")
+                    createAlert("No End Date", message: "Please enter an end date for your event")
                     hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
                     return
                 }
