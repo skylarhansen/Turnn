@@ -95,7 +95,7 @@
                                                     <rect key="frame" x="70" y="0.0" width="507" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -263,7 +263,7 @@
                                                     <rect key="frame" x="70" y="0.0" width="507" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961538461543" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -301,7 +301,7 @@
                                                     <rect key="frame" x="70" y="0.0" width="507" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -443,7 +443,7 @@
                                                     <rect key="frame" x="70" y="0.0" width="507" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -480,7 +480,7 @@
                                                     <rect key="frame" x="70" y="0.0" width="507" height="27"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -520,7 +520,7 @@
                                                     <rect key="frame" x="0.0" y="33" width="570" height="70"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
@@ -563,7 +563,7 @@
                                                     <rect key="frame" x="0.0" y="33" width="570" height="70"/>
                                                     <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>

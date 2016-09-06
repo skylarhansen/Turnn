@@ -37,6 +37,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var lowMilesButton: EventRadiusButton!
     var lowestMilesButton: EventRadiusButton!
     
+    var currentFiltration: [Int] = []
+    
     let locationManager = CLLocationManager()
     var search: Location?
     var annotation: [MKPointAnnotation]?
@@ -147,19 +149,22 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func updateQuery(){
+        if isFiltered == false {
         GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
             if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
                 String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
                 
                 self.mapView.removeAnnotations(self.annotations)
                 self.annotations = []
+                
                 self.events = currentEvents
+                //can't do the line below or it'll trigger the didSet for isFiltered
+                //self.filteredEvents = EventController.filterEventsByCategories(currentEvents, categories: self.currentFiltration)!
                 
                 self.loadingIndicatorView.hidden = true
                 self.loadingIndicator.stopAnimating()
                 self.displayEvents()
                 self.tableView.reloadData()
-                
                 self.oldEvents = oldEvents
                 self.futureEvents = futureEvents
                 //these matching location keys are tracked here
@@ -170,6 +175,33 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                 self.revealOrHideNoResultsView()
             }
         })
+    }
+        if isFiltered == true {
+            GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
+                if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
+                    String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
+                    self.mapView.removeAnnotations(self.annotations)
+                    self.annotations = []
+                    
+                    self.events = currentEvents
+                    self.filteredEvents = EventController.filterEventsByCategories(currentEvents, categories: self.currentFiltration)!
+                    
+                    self.loadingIndicatorView.hidden = true
+                    self.loadingIndicator.stopAnimating()
+                    self.displayEvents()
+                    self.tableView.reloadData()
+                    
+                    self.oldEvents = oldEvents
+                    self.futureEvents = futureEvents
+                    //these matching location keys are tracked here
+                    //for sake of deleting them at the same time
+                    //as old events. they might more properly be
+                    //called: "locationKeysForOldEvents"
+                    self.matchingLocationKeys = matchingLocationKeys
+                    self.revealOrHideNoResultsView()
+                }
+            })
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -256,11 +288,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     // MARK: - TableView Appearance
     
-    //    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-    //        cell.separatorInset = UIEdgeInsetsZero
-    //        cell.layoutMargins = UIEdgeInsetsZero
-    //    }
-    
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
@@ -298,6 +325,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         if segue.identifier == "unwindToEventFinder" {
             let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
             let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
+            currentFiltration = categoryVC.categories
             if filteredEvents != nil {
                 self.filteredEvents = filteredEvents!
                 updateQuery()
@@ -349,19 +377,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             return eventCell ?? UITableViewCell()
         }
     }
-    
-    //    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //        let headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? EFHeaderCellTableViewCell
-    //        headerCell?.backgroundColor = UIColor.turnnGray()
-    //        headerCell?.headerLabel.text = "Events"
-    //        headerCell?.headerLabel.textColor = UIColor.turnnWhite()
-    //        headerCell?.layer.borderWidth = 1
-    //        headerCell?.layer.borderColor = UIColor.turnnBlue().CGColor
-    //        headerCell?.layer.masksToBounds = false
-    //        //headerCell?.layer.cornerRadius = 5
-    //        headerCell?.clipsToBounds = true
-    //        return headerCell
-    //    }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.5
