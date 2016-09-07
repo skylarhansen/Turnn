@@ -7,6 +7,8 @@
     <customFonts key="customFonts">
         <mutableArray key="Ubuntu-R.ttf">
             <string>Ubuntu</string>
+            <string>Ubuntu</string>
+            <string>Ubuntu</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -169,29 +171,75 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cd-cN-hzX" customClass="TurnnButton" customModule="Turnn" customModuleProvider="target">
-                                        <rect key="frame" x="175" y="46" width="250" height="50"/>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="5Cd-cN-hzX">
+                                        <rect key="frame" x="245" y="46" width="110" height="110"/>
+                                        <color key="backgroundColor" red="0.12549019607843137" green="0.69019607843137254" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="9FD-hd-20L"/>
-                                            <constraint firstAttribute="height" constant="50" id="a45-0G-xNd"/>
+                                            <constraint firstAttribute="width" constant="110" id="9FD-hd-20L"/>
+                                            <constraint firstAttribute="height" constant="110" id="a45-0G-xNd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="32"/>
-                                        <state key="normal" title="Create One?"/>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="20"/>
+                                        <state key="normal">
+                                            <string key="title">Create
+Event</string>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="SHe-GN-2xC" kind="show" identifier="createEvent2" id="ZfP-3R-EUr"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: Future events won't appear in Finder until 24 hrs before start time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-gv-Vip">
-                                        <rect key="frame" x="163" y="107" width="275" height="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-gv-Vip">
+                                        <rect key="frame" x="185" y="167" width="230" height="34"/>
+                                        <string key="text">Note: Future events won't appear in
+Finder until 24 hrs before start time</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="eac-NE-L71">
+                                        <rect key="frame" x="370" y="61" width="80" height="80"/>
+                                        <color key="backgroundColor" red="0.070313461120000004" green="0.78432720899999997" blue="0.86106544730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="iTF-Jk-deg"/>
+                                            <constraint firstAttribute="width" constant="80" id="nsL-rb-Kzm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
+                                        <state key="normal">
+                                            <string key="title">Change
+Filters</string>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="noEventsRemoveFiltersButtonTapped:" destination="68G-yD-Hdw" eventType="touchUpInside" id="b1T-to-vOy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="i6R-Fs-z7b">
+                                        <rect key="frame" x="150" y="61" width="80" height="80"/>
+                                        <color key="backgroundColor" red="0.070313461120000004" green="0.78432720899999997" blue="0.86106544730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="ErM-Ck-W6c"/>
+                                            <constraint firstAttribute="width" constant="80" id="qkf-XK-8ee"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="13"/>
+                                        <state key="normal">
+                                            <string key="title" base64-UTF8="YES">
+Q2hhbmdlEApSYWRpdXM
+</string>
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="noEventsChangeRadiusButtonTapped:" destination="68G-yD-Hdw" eventType="touchUpInside" id="FzZ-CV-2bB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.070313461120000004" green="0.78432720899999997" blue="0.86106544730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="5Cd-cN-hzX" firstAttribute="leading" secondItem="i6R-Fs-z7b" secondAttribute="trailing" constant="15" id="3Fn-w6-CWS"/>
                                     <constraint firstItem="5Cd-cN-hzX" firstAttribute="top" secondItem="Ls4-aa-ah8" secondAttribute="bottom" constant="10" id="CGy-7g-LrH"/>
+                                    <constraint firstItem="eac-NE-L71" firstAttribute="leading" secondItem="5Cd-cN-hzX" secondAttribute="trailing" constant="15" id="Czh-p8-1Yh"/>
+                                    <constraint firstItem="i6R-Fs-z7b" firstAttribute="centerY" secondItem="5Cd-cN-hzX" secondAttribute="centerY" id="Ohq-H2-IDg"/>
+                                    <constraint firstItem="eac-NE-L71" firstAttribute="centerY" secondItem="5Cd-cN-hzX" secondAttribute="centerY" id="iOq-Tu-vhR"/>
                                     <constraint firstItem="Ls4-aa-ah8" firstAttribute="centerX" secondItem="GzP-HY-ylM" secondAttribute="centerX" id="jAk-Ku-nIe"/>
                                     <constraint firstItem="YGB-gv-Vip" firstAttribute="top" secondItem="5Cd-cN-hzX" secondAttribute="bottom" constant="11" id="wks-oo-OU3"/>
                                 </constraints>
@@ -244,9 +292,11 @@
                         <outlet property="mapViewPlaceholderView" destination="6Cd-RV-GFB" id="TzC-16-rUx"/>
                         <outlet property="moreOptionsButton" destination="pRJ-Kc-nWl" id="RNe-Sg-H65"/>
                         <outlet property="noEventsButtonOutlet" destination="5Cd-cN-hzX" id="Ztd-hs-NmH"/>
+                        <outlet property="noEventsChangeRadiusButtonOutlet" destination="i6R-Fs-z7b" id="U3e-Rr-ujO"/>
                         <outlet property="noEventsLabel1" destination="Ls4-aa-ah8" id="he3-Vw-5NE"/>
                         <outlet property="noEventsLabel2" destination="YGB-gv-Vip" id="3Vk-XZ-Pb6"/>
                         <outlet property="noEventsPlaceholderView" destination="GzP-HY-ylM" id="zJW-z0-uF0"/>
+                        <outlet property="noEventsRemoveFiltersButtonOutlet" destination="eac-NE-L71" id="een-Gf-5KC"/>
                         <outlet property="tableView" destination="q20-6C-VJU" id="n2s-KA-Oa2"/>
                         <segue destination="W7b-bk-Bqp" kind="presentation" identifier="toDetailSegue" modalTransitionStyle="crossDissolve" id="jBW-iT-HQM"/>
                         <segue destination="lKW-UX-92g" kind="presentation" identifier="toCategoriesSegue" id="iNS-du-VkY"/>
@@ -314,6 +364,6 @@
         <image name="More" width="24" height="6"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZfP-3R-EUr"/>
+        <segue reference="osa-ll-IqP"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,6 +26,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     @IBOutlet weak var noEventsButtonOutlet: UIButton!
     
+    @IBOutlet weak var noEventsChangeRadiusButtonOutlet: UIButton!
+    
+    @IBOutlet weak var noEventsRemoveFiltersButtonOutlet: UIButton!
+    
     var moreOptionsOn = false
     var mileRadiusViewsOn = false
     
@@ -94,7 +98,28 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         noEventsLabel1.textColor = UIColor.turnnWhite().colorWithAlphaComponent(0.9)
         noEventsLabel2.textColor = UIColor.turnnWhite().colorWithAlphaComponent(0.9)
-        noEventsButtonOutlet.tintColor = UIColor.turnnBlue()
+        
+        noEventsButtonOutlet.backgroundColor = UIColor.turnnBlue().colorWithAlphaComponent(0.8)
+        noEventsChangeRadiusButtonOutlet.backgroundColor = UIColor.turnnBlue().colorWithAlphaComponent(0.8)
+        noEventsRemoveFiltersButtonOutlet.backgroundColor = UIColor.turnnBlue().colorWithAlphaComponent(0.8)
+        
+        noEventsButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
+        noEventsChangeRadiusButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
+        noEventsRemoveFiltersButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
+        
+        noEventsButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.Center
+        noEventsChangeRadiusButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.Center
+        noEventsRemoveFiltersButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.Center
+        
+        noEventsButtonOutlet.layer.cornerRadius = (noEventsButtonOutlet.frame.width / 2)
+        noEventsButtonOutlet.clipsToBounds = true
+        
+        noEventsChangeRadiusButtonOutlet.layer.cornerRadius =
+            (noEventsChangeRadiusButtonOutlet.frame.width / 2)
+        noEventsChangeRadiusButtonOutlet.clipsToBounds = true
+        
+        noEventsRemoveFiltersButtonOutlet.layer.cornerRadius = (noEventsRemoveFiltersButtonOutlet.frame.width / 2)
+        noEventsRemoveFiltersButtonOutlet.clipsToBounds = true
         
         noEventsPlaceholderView.hidden = true
         revealOrHideNoResultsView()
@@ -344,6 +369,36 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         return true
     }
     
+    // MARK: - No Events View Non-Segue Actions -
+    
+    @IBAction func noEventsChangeRadiusButtonTapped(sender: AnyObject) {
+        if mileRadiusViewsOn {
+        UIView.animateWithDuration(0.4, animations: {
+            self.topMilesButton.frame = CGRectMake(self.view.frame.width - 355, (self.view.frame.height / 2) + 20, 35, 35)
+            self.midMilesButton.frame = CGRectMake(self.view.frame.width - 355, (self.view.frame.height / 2) + 20, 35, 35)
+            self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 355, (self.view.frame.height / 2) + 20, 80, 35)
+            self.lowMilesButton.setTitle("\(self.selectedRadius.rawValue) mi", forState: .Normal)
+            self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 355, (self.view.frame.height / 2) + 20, 35, 35)
+            self.midMilesButton.alpha = 0.0
+            self.topMilesButton.alpha = 0.0
+            self.lowestMilesButton.alpha = 0.0
+            
+            }, completion: { _ in
+                self.midMilesButton.hidden = true
+                self.topMilesButton.hidden = true
+                self.lowestMilesButton.hidden = true
+        })
+        mileRadiusViewsOn = !mileRadiusViewsOn
+        } else {
+        addRadiusViews()
+        }
+    }
+    
+    @IBAction func noEventsRemoveFiltersButtonTapped(sender: AnyObject) {
+        moreOptionsOn = !moreOptionsOn
+        addAccessoryView(moreOptionsOn)
+    }
+    
     // MARK: - Table view data source -
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -406,6 +461,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func showAllEvents() {
         self.isFiltered = false
+        dismissAccessoryViews()
         updateQuery()
         tableView.reloadData()
         }

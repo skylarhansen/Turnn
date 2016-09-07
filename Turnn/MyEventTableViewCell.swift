@@ -23,17 +23,17 @@ class MyEventTableViewCell: UITableViewCell {
     }
     
     func updateWithEvent(event: Event) {
-        eventTitleLabel.text = event.title
-        eventDateTitleLabel.text = event.startTime.dateLongFormat()
+        eventTitleLabel.text = "• \(event.title)"
+        eventDateTitleLabel.text =  "  \(event.startTime.dateLongFormat())"
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
             
-            UIView.animateWithDuration(0.5) {
+            UIView.animateWithDuration(0.4) {
                 self.backgroundColor = .clearColor()
             }
         }
