@@ -166,7 +166,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
         case 4:
             let moreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath) as? MoreInfoDetailTableViewCell
-            moreInfoDetailCell?.moreInfoDetailLabel.text = event?.eventDescription
+            moreInfoDetailCell?.moreInfoDetailLabel.text = event?.moreInfo
             return moreInfoDetailCell ?? UITableViewCell()
             
         default:
