@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var value: Bool = false
         UserController.isLoggedInServerTest { (success, error) in
-            if success == true {
+            if success == true && UserController.shared.currentUser != nil{
                 self.isUserLoggedInOnServer = true
                 sleep(2)
                 value = true
