@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UHt-1v-iBx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Legal And Privacy View Controller-->
+        <scene sceneID="sGh-Gy-uMk">
+            <objects>
+                <viewController id="cqO-XU-8T3" customClass="LegalAndPrivacyViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7ge-mt-p3c"/>
+                        <viewControllerLayoutGuide type="bottom" id="P4Q-gs-316"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3YU-tk-NBf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="OBc-jN-hYj"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P4Q-gs-316" firstAttribute="top" secondItem="OBc-jN-hYj" secondAttribute="bottom" constant="-20" id="30V-01-yMh"/>
+                            <constraint firstItem="OBc-jN-hYj" firstAttribute="leading" secondItem="3YU-tk-NBf" secondAttribute="leading" constant="-20" id="gzT-qN-jmS"/>
+                            <constraint firstAttribute="trailing" secondItem="OBc-jN-hYj" secondAttribute="trailing" constant="-20" id="kQT-dU-iTY"/>
+                            <constraint firstItem="OBc-jN-hYj" firstAttribute="top" secondItem="7ge-mt-p3c" secondAttribute="bottom" constant="-20" id="mJI-QY-sK2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s0A-JE-FME">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="Coy-ic-akL">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="cqO-XU-8T3" id="WOv-Qn-kOg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lu9-6e-04L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-762" y="-1777"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0S3-9l-TUP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UHt-1v-iBx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="G62-T3-6pq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cqO-XU-8T3" kind="relationship" relationship="rootViewController" id="37z-VG-CO8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t08-0a-gZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1604" y="-1777.0614692653674"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="375" height="667"/>
+    </resources>
+</document>

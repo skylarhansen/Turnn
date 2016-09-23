@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var value: Bool = false
         UserController.isLoggedInServerTest { (success, error) in
-            if success == true && UserController.shared.currentUser != nil{
+            if success == true {
                 self.isUserLoggedInOnServer = true
+                UserController.restoreUserIdToDevice()
                 sleep(2)
                 value = true
             } else {

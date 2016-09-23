@@ -33,6 +33,8 @@
 		95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */; };
 		95C11F691D58E4FB00999A5E /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C11F681D58E4FB00999A5E /* LocationController.swift */; };
 		95CC83161D5E516A00F075F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */; };
+		95D9A3EA1D94DEE000B6FA18 /* LegalAndPrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D9A3E91D94DEE000B6FA18 /* LegalAndPrivacyViewController.swift */; };
+		95D9A3ED1D94DEFD00B6FA18 /* LegalAndPrivacy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D9A3EB1D94DEFD00B6FA18 /* LegalAndPrivacy.storyboard */; };
 		95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595341D51460900416B2A /* AddressTableViewCell.swift */; };
 		95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595351D51460900416B2A /* CategoriesTableViewCell.swift */; };
 		95E595401D51460900416B2A /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E595361D51460900416B2A /* CityTableViewCell.swift */; };
@@ -117,6 +119,8 @@
 		95C11F6B1D58E8FC00999A5E /* GeoFire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = GeoFire.framework; path = "/Users/stevecox/Library/Developer/Xcode/DerivedData/Turnn-foaetydfadotywevccjqntortlwn/Build/Products/Debug-iphonesimulator/GeoFire/GeoFire.framework"; sourceTree = "<absolute>"; };
 		95C11F6F1D58ED1A00999A5E /* GeoFireController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoFireController.swift; sourceTree = "<group>"; };
 		95CC83151D5E516A00F075F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95D9A3E91D94DEE000B6FA18 /* LegalAndPrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalAndPrivacyViewController.swift; sourceTree = "<group>"; };
+		95D9A3EC1D94DEFD00B6FA18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LegalAndPrivacy.storyboard; sourceTree = "<group>"; };
 		95E595341D51460900416B2A /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		95E595351D51460900416B2A /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		95E595361D51460900416B2A /* CityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 		8C72A2CF1D510DC1008301CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				95D9A3EB1D94DEFD00B6FA18 /* LegalAndPrivacy.storyboard */,
 				95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */,
 				DBFE1CD51D679411007D9258 /* MyEvents.storyboard */,
 				950DC8531D510CC200601BC5 /* SignInSignUp.storyboard */,
@@ -229,6 +234,7 @@
 		8C72A2D01D510DCB008301CC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				95D9A3E91D94DEE000B6FA18 /* LegalAndPrivacyViewController.swift */,
 				DBFE1CD11D6793F4007D9258 /* MyEventTableViewCell.swift */,
 				DBFE1CD31D679403007D9258 /* MyEventsTableViewController.swift */,
 				CE52B9931D525A7C00E1C7E9 /* Category Collection View */,
@@ -427,6 +433,7 @@
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
 				957C4FE31D5250BB00596A18 /* CreateEvent.storyboard in Resources */,
 				8C044AAF1D4FBF76002754B5 /* Assets.xcassets in Resources */,
+				95D9A3ED1D94DEFD00B6FA18 /* LegalAndPrivacy.storyboard in Resources */,
 				DB315C321D63D14D00A07DCE /* EventDetailView.storyboard in Resources */,
 				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
 				DBFE1CD71D679411007D9258 /* MyEvents.storyboard in Resources */,
@@ -579,6 +586,7 @@
 				8CC7E5001D623699000C694D /* MoreInfoDetailLabel.swift in Sources */,
 				950DC8501D51045500601BC5 /* Extensions.swift in Sources */,
 				CE5761AF1D67678B00022EE6 /* PriceTableViewCell.swift in Sources */,
+				95D9A3EA1D94DEE000B6FA18 /* LegalAndPrivacyViewController.swift in Sources */,
 				95E5953F1D51460900416B2A /* CategoriesTableViewCell.swift in Sources */,
 				95E595491D51461100416B2A /* CreateEventViewController.swift in Sources */,
 				CCE9DEB71D52989C00363A98 /* HostDetailTableViewCell.swift in Sources */,
@@ -622,6 +630,14 @@
 				95CC83151D5E516A00F075F4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		95D9A3EB1D94DEFD00B6FA18 /* LegalAndPrivacy.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95D9A3EC1D94DEFD00B6FA18 /* Base */,
+			);
+			name = LegalAndPrivacy.storyboard;
 			sourceTree = "<group>";
 		};
 		CE52B9991D52AC0C00E1C7E9 /* EventFinder.storyboard */ = {

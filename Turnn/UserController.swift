@@ -82,6 +82,17 @@ class UserController {
         })
     }
     
+    static func restoreUserIdToDevice(){
+    let firuserid = FIRAuth.auth()?.currentUser?.uid
+        if firuserid != nil {
+        UserController.fetchUserForIdentifier(firuserid!) { (user) in
+            guard let user = user else {return}
+            UserController.shared.currentUser = user
+            UserController.saveUserInDefaults(user)
+        }
+        }
+    }
+    
     static func logOutUser(){
         try! FIRAuth.auth()!.signOut()
         clearLocallySavedUserOnLogout()
