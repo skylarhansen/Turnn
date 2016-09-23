@@ -160,14 +160,26 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             
             
         case 3:
+            if event != nil && event?.eventDescription == "" {
+            let blankCell = UITableViewCell()
+            blankCell.hidden = true
+            return blankCell
+            } else {
             let descriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath) as? DescriptionDetailTableViewCell
             descriptionDetailCell?.detailedDescriptionLabel.text = event?.eventDescription
-            return descriptionDetailCell ?? UITableViewCell()
+                return descriptionDetailCell ?? UITableViewCell()
+            }
             
         case 4:
+            if event != nil && event?.moreInfo == "" {
+                let blankCell = UITableViewCell()
+                blankCell.hidden = true
+                return blankCell
+            } else {
             let moreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath) as? MoreInfoDetailTableViewCell
             moreInfoDetailCell?.moreInfoDetailLabel.text = event?.moreInfo
-            return moreInfoDetailCell ?? UITableViewCell()
+                return moreInfoDetailCell ?? UITableViewCell()
+            }
             
         default:
             return UITableViewCell()
