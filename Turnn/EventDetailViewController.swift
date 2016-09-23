@@ -16,16 +16,16 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - Outlets
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventTimeLabel: UILabel!
-    @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet var categoryImageViews: [UIImageView]!
-    @IBOutlet weak var categoryImageHolderView: UIView!
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var mapButton: UIButton!
-    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var backgroundImageView: UIImageView!
+    @IBOutlet weak private var eventTitleLabel: UILabel!
+    @IBOutlet weak private var eventTimeLabel: UILabel!
+    @IBOutlet weak private var eventDateLabel: UILabel!
+    @IBOutlet private var categoryImageViews: [UIImageView]!
+    @IBOutlet weak private var categoryImageHolderView: UIView!
+    @IBOutlet weak private var backButton: UIButton!
+    @IBOutlet weak private var mapButton: UIButton!
+    @IBOutlet weak private var actionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

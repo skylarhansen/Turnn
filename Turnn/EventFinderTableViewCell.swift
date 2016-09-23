@@ -11,8 +11,8 @@ import UIKit
 class EventFinderTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet var categoryImages: [UIImageView]!
+    @IBOutlet weak private var eventNameLabel: UILabel!
+    @IBOutlet private var categoryImages: [UIImageView]!
     
     func loadImageViews(images: [UIImage]) {
         for (index, image) in images.enumerate() {

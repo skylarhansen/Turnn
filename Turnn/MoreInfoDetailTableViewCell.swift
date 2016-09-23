@@ -11,7 +11,7 @@ import UIKit
 class MoreInfoDetailTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var moreInfoLabel: UILabel!
+    @IBOutlet weak private var moreInfoLabel: UILabel!
     @IBOutlet weak var moreInfoDetailLabel: UILabel!
 
     override func awakeFromNib() {

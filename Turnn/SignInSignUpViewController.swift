@@ -12,14 +12,14 @@ import FirebaseAuth
 
 class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet var conditionalLabels: [UILabel]! {
+    @IBOutlet private var conditionalLabels: [UILabel]! {
         didSet {
             conditionalLabels.forEach {
                 $0.hidden = true
             }
         }
     }
-    @IBOutlet var conditionalFields: [UITextField]! {
+    @IBOutlet private var conditionalFields: [UITextField]! {
         didSet {
             conditionalFields.forEach {
                 $0.hidden = true
@@ -27,19 +27,19 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet weak var forgetPasswordButtonOutlet: UIButton!
+    @IBOutlet weak private var forgetPasswordButtonOutlet: UIButton!
     
-    @IBOutlet weak var haveAccountLabel: UILabel!
-    @IBOutlet weak var signUpOrInButtonOutlet: UIButton!
+    @IBOutlet weak private var haveAccountLabel: UILabel!
+    @IBOutlet weak private var signUpOrInButtonOutlet: UIButton!
     
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var firstNameField: UITextField!
-    @IBOutlet weak var lastNameField: UITextField!
+    @IBOutlet weak private var emailField: UITextField!
+    @IBOutlet weak private var passwordField: UITextField!
+    @IBOutlet weak private var firstNameField: UITextField!
+    @IBOutlet weak private var lastNameField: UITextField!
     
-    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var centerYConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var loginOrSignUpButtonOutlet: UIButton!
+    @IBOutlet weak private var loginOrSignUpButtonOutlet: UIButton!
     
     var isSignInPage = true
     

@@ -14,9 +14,9 @@ protocol ImagesSetDelegate: class {
 
 class CategoriesTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var categoriesView: UIView!
-    @IBOutlet var categoryImageViews: [UIImageView]!
-    @IBOutlet weak var addCategoriesButton: UIButton!
+    @IBOutlet weak private var categoriesView: UIView!
+    @IBOutlet private var categoryImageViews: [UIImageView]!
+    @IBOutlet weak private var addCategoriesButton: UIButton!
     
     weak var imagesSetDelegate: ImagesSetDelegate?
     

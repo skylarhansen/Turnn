@@ -11,7 +11,7 @@ import UIKit
 class ZipTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var zipTextField: UITextField!
-    @IBOutlet weak var spacerView: UIView!
+    @IBOutlet weak private var spacerView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,7 +15,7 @@ class CreateEventViewController: UITableViewController {
     var locationSelected: Bool = false
     var priceSelected: Bool = false
     
-    @IBOutlet weak var createEventButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak private var createEventButtonOutlet: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()

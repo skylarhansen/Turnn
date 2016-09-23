@@ -22,7 +22,7 @@ class CategoryCollectionViewController: UICollectionViewController {
     
     var mode: ButtonMode = .Save
     
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak private var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         

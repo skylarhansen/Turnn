@@ -10,7 +10,7 @@ import UIKit
 
 class EndTimeTableViewCell: UITableViewCell, UITextFieldDelegate {
 
-    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak private var endTimeLabel: UILabel!
     @IBOutlet weak var endTimeTextField: UITextField!
     
     var date: NSDate?

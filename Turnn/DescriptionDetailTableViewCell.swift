@@ -10,7 +10,7 @@ import UIKit
 
 class DescriptionDetailTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak private var descriptionLabel: UILabel!
     @IBOutlet weak var detailedDescriptionLabel: UILabel!
 
     override func awakeFromNib() {

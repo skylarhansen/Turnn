@@ -11,7 +11,7 @@ import UIKit
 class CityTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var spacerView: UIView!
+    @IBOutlet weak private var spacerView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

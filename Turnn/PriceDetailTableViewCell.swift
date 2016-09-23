@@ -17,7 +17,7 @@ class PriceDetailTableViewCell: UITableViewCell {
         
     }
     
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak private var priceLabel: UILabel!
     @IBOutlet weak var priceNumberLabel: UILabel!
     
     override func setSelected(selected: Bool, animated: Bool) {

@@ -10,7 +10,7 @@ import UIKit
 
 class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
     var date: NSDate?
       override func awakeFromNib() {

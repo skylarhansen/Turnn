@@ -10,7 +10,7 @@ import UIKit
 
 class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
     
-    @IBOutlet weak var moreInfoLabel: UILabel!
+    @IBOutlet weak private var moreInfoLabel: UILabel!
     @IBOutlet weak var moreInfoTextView: UITextView!
 
     override func awakeFromNib() {

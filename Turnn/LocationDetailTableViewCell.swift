@@ -17,10 +17,10 @@ class LocationDetailTableViewCell: UITableViewCell {
     }
 
     
-    @IBOutlet weak var addressLabel: TurnnCopyableLabel!
-    @IBOutlet weak var streetNumberLabel: UILabel!
-    @IBOutlet weak var cityStateLabel: UILabel!
-    @IBOutlet weak var zipcodeLabel: UILabel!
+    @IBOutlet weak private var addressLabel: TurnnCopyableLabel!
+    @IBOutlet weak private var streetNumberLabel: UILabel!
+    @IBOutlet weak private var cityStateLabel: UILabel!
+    @IBOutlet weak private var zipcodeLabel: UILabel!
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

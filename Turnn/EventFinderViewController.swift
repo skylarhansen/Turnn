@@ -12,23 +12,16 @@ import CoreLocation
 
 class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
-    @IBOutlet weak var mapViewPlaceholderView: UIView!
+    @IBOutlet weak private var mapViewPlaceholderView: UIView!
     var mapView: MKMapView!
-    @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var noEventsPlaceholderView: UIView!
-    
-    @IBOutlet weak var moreOptionsButton: UIBarButtonItem!
-    
-    @IBOutlet weak var noEventsLabel1: UILabel!
-    
-    @IBOutlet weak var noEventsLabel2: UILabel!
-    
-    @IBOutlet weak var noEventsButtonOutlet: UIButton!
-    
-    @IBOutlet weak var noEventsChangeRadiusButtonOutlet: UIButton!
-    
-    @IBOutlet weak var noEventsRemoveFiltersButtonOutlet: UIButton!
+    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var noEventsPlaceholderView: UIView!
+    @IBOutlet weak private var moreOptionsButton: UIBarButtonItem!
+    @IBOutlet weak private var noEventsLabel1: UILabel!
+    @IBOutlet weak private var noEventsLabel2: UILabel!
+    @IBOutlet weak private var noEventsButtonOutlet: UIButton!
+    @IBOutlet weak private var noEventsChangeRadiusButtonOutlet: UIButton!
+    @IBOutlet weak private var noEventsRemoveFiltersButtonOutlet: UIButton!
     
     var moreOptionsOn = false
     var mileRadiusViewsOn = false

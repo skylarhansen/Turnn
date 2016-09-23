@@ -10,8 +10,8 @@ import UIKit
 
 class MyEventTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventDateTitleLabel: UILabel!
+    @IBOutlet weak private var eventTitleLabel: UILabel!
+    @IBOutlet weak private var eventDateTitleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
