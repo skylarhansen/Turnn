@@ -133,6 +133,31 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         return 5
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return UITableViewAutomaticDimension
+        case 1:
+            return UITableViewAutomaticDimension
+        case 2:
+            return UITableViewAutomaticDimension
+        case 3:
+            if event != nil && event?.eventDescription == "" {
+                return 0
+            } else {
+                return UITableViewAutomaticDimension
+            }
+        case 4:
+            if event != nil && event?.moreInfo == "" {
+                return 0
+            } else {
+            return UITableViewAutomaticDimension
+            }
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.row {
             
@@ -157,7 +182,6 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 priceDetailCell?.priceNumberLabel.text = "Free"
             }
             return priceDetailCell ?? UITableViewCell()
-            
             
         case 3:
             if event != nil && event?.eventDescription == "" {
