@@ -11,10 +11,11 @@ import UIKit
 class MyEventsTableViewController: UITableViewController {
     
     var events: [Event] = []
+    
+    let legalButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         EventController.fetchEventsForUserID(UserController.shared.currentUserId) { (events) in
             if let events = events {
                 self.events = events
@@ -23,8 +24,8 @@ class MyEventsTableViewController: UITableViewController {
                 print("EVENTS IS NIL")
             }
         }
-        
         setupTableViewUI()
+        createFloatyLegalAndPrivacyButton()
     }
     
     @IBAction func logOutButtonTapped() {
@@ -56,11 +57,36 @@ class MyEventsTableViewController: UITableViewController {
         imageView.addSubview(blurView)
         tableView.backgroundView = imageView
         blurView.frame = imageView.frame
+        createFloatyLegalAndPrivacyButton()
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        var frame = self.legalButton.frame
+        frame.origin.y = scrollView.contentOffset.y + self.tableView.frame.size.height - self.legalButton.frame.size.height
+        self.legalButton.frame = frame
+        self.view.bringSubviewToFront(self.legalButton)
+    }
+    
+    func createFloatyLegalAndPrivacyButton(){
+        self.legalButton.frame = CGRectMake(self.view.bounds.minX + 8, self.view.bounds.maxY - 110, 50, 40)
+        self.legalButton.layer.masksToBounds = true
+        self.legalButton.backgroundColor = UIColor.clearColor()
+        self.legalButton.setTitleColor(UIColor.turnnWhite(), forState: .Normal)
+        self.legalButton.setTitle("Legal &\nPrivacy", forState: .Normal)
+        self.legalButton.titleLabel?.numberOfLines = 2
+        self.legalButton.titleLabel?.textAlignment = .Center
+        self.legalButton.titleLabel?.font = UIFont.init(name: "Ubuntu", size: 11.0)
+        self.legalButton.addTarget(self, action: #selector(legalButtonTapped), forControlEvents: .TouchUpInside)
+        self.view.addSubview(self.legalButton)
+        self.view.bringSubviewToFront(self.legalButton)
+    }
+    
+    func legalButtonTapped(){
+    self.performSegueWithIdentifier("myEventsToLegalSegue", sender: nil)
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
     }
     
     override func didReceiveMemoryWarning() {
