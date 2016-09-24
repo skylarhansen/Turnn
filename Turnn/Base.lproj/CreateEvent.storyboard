@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yjm-zq-GYo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="yjm-zq-GYo">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Ubuntu-R.ttf">
+        <array key="Ubuntu-R.ttf">
             <string>Ubuntu</string>
-        </mutableArray>
+        </array>
     </customFonts>
     <scenes>
         <!--Turnn-->
@@ -17,30 +18,30 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qaq-80-Bce">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="n3q-8h-8Mv">
                             <rect key="frame" x="0.0" y="64" width="600" height="90"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wqC-06-0AI">
-                                    <rect key="frame" x="20" y="52" width="560" height="1"/>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wqC-06-0AI">
+                                    <rect key="frame" x="20" y="51.5" width="335" height="1"/>
                                     <color key="backgroundColor" red="0.0" green="0.66274509803921566" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="srH-49-ue1"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-ED-Lw0">
-                                    <rect key="frame" x="200" y="13" width="200" height="35"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Create Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-ED-Lw0">
+                                    <rect key="frame" x="87.5" y="12.5" width="200" height="35"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="8Vf-ce-nXf"/>
                                         <constraint firstAttribute="height" constant="35" id="Vy8-7K-89P"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="25"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-V2-51J">
-                                    <rect key="frame" x="30" y="57" width="540" height="25"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-V2-51J">
+                                    <rect key="frame" x="30" y="57" width="315" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="Mua-Ju-Sg1"/>
                                     </constraints>
@@ -51,7 +52,7 @@ Finder until 24 hrs before start time</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="Hry-V2-51J" firstAttribute="leading" secondItem="n3q-8h-8Mv" secondAttribute="leading" constant="30" id="17E-if-V32"/>
                                 <constraint firstAttribute="bottom" secondItem="Hry-V2-51J" secondAttribute="bottom" constant="8" id="62R-hn-Lpe"/>
@@ -67,9 +68,9 @@ Finder until 24 hrs before start time</string>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="WTz-fu-fGj"/>
                                     <exclude reference="iAC-wL-g17"/>
                                     <exclude reference="vku-EC-7Il"/>
+                                    <exclude reference="WTz-fu-fGj"/>
                                 </mask>
                             </variation>
                         </view>
@@ -82,20 +83,20 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="wWQ-qh-UGO">
-                                            <rect key="frame" x="8" y="8" width="577" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="577" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5Q-TN-1iM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="wl2-58-tAl"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cd1-sJ-EnD">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961540000001" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                                 </textField>
@@ -130,7 +131,7 @@ Finder until 24 hrs before start time</string>
                                                         <constraint firstAttribute="width" constant="70" id="fhV-7x-uEe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Start Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lEB-Uu-CV0">
@@ -180,7 +181,7 @@ Finder until 24 hrs before start time</string>
                                                         <constraint firstAttribute="width" constant="70" id="MQR-Ax-peR"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event End Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pvN-Tx-c1j">
@@ -222,12 +223,12 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="G48-cS-ZeQ">
-                                            <rect key="frame" x="8" y="8" width="584" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:      ▾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTm-Xg-J5g">
-                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -252,18 +253,18 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVW-gv-TIv">
-                                            <rect key="frame" x="8" y="8" width="577" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="577" height="28"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFt-eK-i2c">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="fmE-I4-mI8"/>
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="39u-7o-LQW">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961538461543" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961538461543" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                                 </textField>
@@ -290,18 +291,18 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKb-9d-N9f">
-                                            <rect key="frame" x="8" y="8" width="577" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="577" height="28"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cq-Li-lHL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="ElE-UE-3R5"/>
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sCi-mg-UAV">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961540000001" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                                 </textField>
@@ -328,7 +329,7 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tkH-ZN-Ntv">
-                                            <rect key="frame" x="15" y="8" width="570" height="95"/>
+                                            <rect key="frame" x="15" y="8" width="570" height="96"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHx-Mb-LLb">
                                                     <rect key="frame" x="0.0" y="0.0" width="570" height="35"/>
@@ -343,25 +344,25 @@ Finder until 24 hrs before start time</string>
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBz-9Q-sZ7">
-                                                    <rect key="frame" x="0.0" y="43" width="570" height="52"/>
+                                                    <rect key="frame" x="0.0" y="43" width="570" height="53"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-FM-fj4">
-                                                            <rect key="frame" x="3" y="0.0" width="564" height="52"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ARH-FM-fj4">
+                                                            <rect key="frame" x="3" y="0.0" width="564" height="53"/>
                                                             <subviews>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Admission" translatesAutoresizingMaskIntoConstraints="NO" id="Xsx-Is-IXP">
-                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="1440"/>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Admission" translatesAutoresizingMaskIntoConstraints="NO" id="Xsx-Is-IXP">
+                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="52"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Movie" translatesAutoresizingMaskIntoConstraints="NO" id="JCL-Lc-2rk">
-                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="1440"/>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Movie" translatesAutoresizingMaskIntoConstraints="NO" id="JCL-Lc-2rk">
+                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="52"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Video Games" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-IO-Tlp">
-                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="1440"/>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Video Games" translatesAutoresizingMaskIntoConstraints="NO" id="Q3s-IO-Tlp">
+                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="52"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-kK-L8G">
-                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="1440"/>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfU-kK-L8G">
+                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="52"/>
                                                                 </imageView>
-                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mtU-L2-fzY">
-                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="1440"/>
+                                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mtU-L2-fzY">
+                                                                    <rect key="frame" x="-18" y="-51" width="0.0" height="52"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
@@ -380,7 +381,7 @@ Finder until 24 hrs before start time</string>
                                                             </variation>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="0.55172413793103448" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55172413793103448" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="ARH-FM-fj4" firstAttribute="top" secondItem="BBz-9Q-sZ7" secondAttribute="top" constant="3" id="0a8-Cp-tKH"/>
                                                         <constraint firstAttribute="trailing" secondItem="ARH-FM-fj4" secondAttribute="trailing" constant="3" id="8Aq-5q-UQK"/>
@@ -432,18 +433,18 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3j-Mj-ETr">
-                                            <rect key="frame" x="8" y="8" width="577" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="577" height="28"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oy2-ob-yUB" userLabel="Spacer View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="TtU-hp-kXX"/>
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QMe-t4-bNt" userLabel="State Text Field">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961540000001" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardAppearance="alert"/>
                                                 </textField>
@@ -469,18 +470,18 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8f-Yg-osF">
-                                            <rect key="frame" x="8" y="8" width="577" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="577" height="28"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-wl-6ex">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="YTH-PF-yJB"/>
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jcx-GP-RLJ">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961540000001" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                 </textField>
@@ -507,7 +508,7 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qjn-zR-u8D">
-                                            <rect key="frame" x="15" y="8" width="570" height="103"/>
+                                            <rect key="frame" x="15" y="8" width="570" height="104"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEm-sT-7mV">
                                                     <rect key="frame" x="0.0" y="0.0" width="570" height="25"/>
@@ -515,12 +516,12 @@ Finder until 24 hrs before start time</string>
                                                         <constraint firstAttribute="height" constant="25" id="cYS-7U-Tar"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="382-Qk-gd1">
-                                                    <rect key="frame" x="0.0" y="33" width="570" height="70"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="0.0" y="33" width="570" height="71"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961540000001" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                                 </textView>
@@ -550,7 +551,7 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lNo-ll-tm5">
-                                            <rect key="frame" x="15" y="8" width="570" height="103"/>
+                                            <rect key="frame" x="15" y="8" width="570" height="104"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More Info:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHj-IZ-3Gi">
                                                     <rect key="frame" x="0.0" y="0.0" width="570" height="25"/>
@@ -558,12 +559,12 @@ Finder until 24 hrs before start time</string>
                                                         <constraint firstAttribute="height" constant="25" id="UBb-92-csz"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="52h-ZP-U3J">
-                                                    <rect key="frame" x="0.0" y="33" width="570" height="70"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="0.0" y="33" width="570" height="71"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961540000001" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                                 </textView>
@@ -593,10 +594,10 @@ Finder until 24 hrs before start time</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ZgD-hC-dDT">
-                                            <rect key="frame" x="8" y="8" width="577" height="27"/>
+                                            <rect key="frame" x="8" y="8" width="577" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zv-7u-R9F">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="dKX-DX-YIF"/>
                                                     </constraints>
@@ -605,8 +606,8 @@ Finder until 24 hrs before start time</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Kg-5w-mke" userLabel="Price Text Field" customClass="CurrencyTextField" customModule="Turnn" customModuleProvider="target">
-                                                    <rect key="frame" x="70" y="0.0" width="507" height="27"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.55225961540000001" colorSpace="calibratedWhite"/>
+                                                    <rect key="frame" x="70" y="0.0" width="507" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.55225961540000001" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -620,7 +621,7 @@ Finder until 24 hrs before start time</string>
                                         <constraint firstItem="ZgD-hC-dDT" firstAttribute="top" secondItem="UBx-L3-ls3" secondAttribute="top" constant="8" id="lT3-bY-GMi"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="priceTextField" destination="9Kg-5w-mke" id="mAC-xy-H7U"/>
                                 </connections>
