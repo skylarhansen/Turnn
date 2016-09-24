@@ -38,6 +38,10 @@ class EndTimeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.layer.borderWidth = 0
+        if textField.text == "" {
+            date = NSDate()
+            textField.text = NSDate().dateLongFormat()
+        }
     }
     
     func dateUpdated(datePicker: UIDatePicker) {

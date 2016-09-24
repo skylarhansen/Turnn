@@ -37,12 +37,16 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.layer.borderWidth = 0
+        if textField.text == "" {
+            date = NSDate()
+            textField.text = NSDate().dateLongFormat()
+        }
     }
     
     func dateUpdated(datePicker: UIDatePicker) {
         print(datePicker.date)
-        self.date = datePicker.date
-        self.timeTextField.text = datePicker.date.dateLongFormat()
+        date = datePicker.date
+        timeTextField.text = datePicker.date.dateLongFormat()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
