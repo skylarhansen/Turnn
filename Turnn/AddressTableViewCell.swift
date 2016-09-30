@@ -15,8 +15,6 @@ class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
         setupCell()
     }
     

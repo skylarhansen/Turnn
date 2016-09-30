@@ -35,7 +35,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Legal &amp; Privacy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ax-me-gLn">
-                                <rect key="frame" x="87" y="74" width="200" height="35"/>
+                                <rect key="frame" x="87.5" y="74" width="200" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Eik-7i-uNs"/>
                                     <constraint firstAttribute="height" constant="35" id="mZU-Ql-VdB"/>

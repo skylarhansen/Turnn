@@ -7,39 +7,15 @@
 //
 
 import UIKit
-import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var isUserLoggedInOnServer: Bool?
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
-        FIRApp.configure()
-        
-        var value: Bool = false
-        UserController.isLoggedInServerTest { (success, error) in
-            if success == true {
-                self.isUserLoggedInOnServer = true
-                UserController.restoreUserIdToDevice()
-                sleep(2)
-                value = true
-            } else {
-                self.isUserLoggedInOnServer = false
-                if UserController.shared.currentUser == nil || self.isUserLoggedInOnServer == false {
-                    let storyboard = UIStoryboard(name: "SignInSignUp", bundle: nil)
-                    let vc = storyboard.instantiateViewControllerWithIdentifier("SignInSignUp")
-                    self.window?.rootViewController = vc
-                }
-                value = false
-            }
-            
-        }
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 4.0))
-        return value
+        return true
     }
 
     func applicationWillResignActive(application: UIApplication) {

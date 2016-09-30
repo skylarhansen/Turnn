@@ -24,6 +24,10 @@
 		9516EC701D554ADF00A144BC /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9516EC6F1D554ADF00A144BC /* UserController.swift */; };
 		953A91E81D5D4B43008756F2 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953A91E71D5D4B43008756F2 /* Reachability.swift */; };
 		953C11D81D52A7F5009777FC /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953C11D71D52A7F5009777FC /* EventController.swift */; };
+		9551B4131D9DF7E9006801CE /* LoadingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9551B4111D9DF7E9006801CE /* LoadingScreen.storyboard */; };
+		9551B4151D9DF806006801CE /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551B4141D9DF806006801CE /* LoadingScreenViewController.swift */; };
+		9551B4171D9E06C7006801CE /* Turnn Type.png in Resources */ = {isa = PBXBuildFile; fileRef = 9551B4161D9E06C7006801CE /* Turnn Type.png */; };
+		9551B4191D9E0934006801CE /* Subtitle Type.png in Resources */ = {isa = PBXBuildFile; fileRef = 9551B4181D9E0934006801CE /* Subtitle Type.png */; };
 		955D18621D5D474E0010C73A /* TurnnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955D18611D5D474E0010C73A /* TurnnButton.swift */; };
 		956EF9A21D53FC8B000389A6 /* FirebaseDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */; };
 		957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FDB1D5250AC00596A18 /* Category.storyboard */; };
@@ -109,6 +113,10 @@
 		9516EC6F1D554ADF00A144BC /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		953A91E71D5D4B43008756F2 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		953C11D71D52A7F5009777FC /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		9551B4121D9DF7E9006801CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoadingScreen.storyboard; sourceTree = "<group>"; };
+		9551B4141D9DF806006801CE /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
+		9551B4161D9E06C7006801CE /* Turnn Type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turnn Type.png"; sourceTree = "<group>"; };
+		9551B4181D9E0934006801CE /* Subtitle Type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Subtitle Type.png"; sourceTree = "<group>"; };
 		955D18611D5D474E0010C73A /* TurnnButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnButton.swift; sourceTree = "<group>"; };
 		956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataStructure.swift; sourceTree = "<group>"; };
 		957C4FDC1D5250AC00596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Category.storyboard; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 		8C72A2CF1D510DC1008301CC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				9551B4111D9DF7E9006801CE /* LoadingScreen.storyboard */,
 				95D9A3EB1D94DEFD00B6FA18 /* LegalAndPrivacy.storyboard */,
 				95CC83141D5E516A00F075F4 /* LaunchScreen.storyboard */,
 				DBFE1CD51D679411007D9258 /* MyEvents.storyboard */,
@@ -234,6 +243,7 @@
 		8C72A2D01D510DCB008301CC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9551B4141D9DF806006801CE /* LoadingScreenViewController.swift */,
 				95D9A3E91D94DEE000B6FA18 /* LegalAndPrivacyViewController.swift */,
 				DBFE1CD11D6793F4007D9258 /* MyEventTableViewCell.swift */,
 				DBFE1CD31D679403007D9258 /* MyEventsTableViewController.swift */,
@@ -284,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */,
+				9551B4181D9E0934006801CE /* Subtitle Type.png */,
+				9551B4161D9E06C7006801CE /* Turnn Type.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -428,6 +440,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9551B4191D9E0934006801CE /* Subtitle Type.png in Resources */,
+				9551B4171D9E06C7006801CE /* Turnn Type.png in Resources */,
 				95CC83161D5E516A00F075F4 /* LaunchScreen.storyboard in Resources */,
 				957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
@@ -437,6 +451,7 @@
 				DB315C321D63D14D00A07DCE /* EventDetailView.storyboard in Resources */,
 				950DC8551D510CC200601BC5 /* SignInSignUp.storyboard in Resources */,
 				DBFE1CD71D679411007D9258 /* MyEvents.storyboard in Resources */,
+				9551B4131D9DF7E9006801CE /* LoadingScreen.storyboard in Resources */,
 				CE52B99B1D52AC0C00E1C7E9 /* EventFinder.storyboard in Resources */,
 				95B23C841D54EBB800FE6183 /* Ubuntu-R.ttf in Resources */,
 			);
@@ -565,6 +580,7 @@
 				95E595421D51460900416B2A /* ExampleCollectionViewCell.swift in Sources */,
 				DB044B6B1D65206E0082E4C3 /* ImageController.swift in Sources */,
 				CCFE38081D5E4149007F99DD /* EndTimeTableViewCell.swift in Sources */,
+				9551B4151D9DF806006801CE /* LoadingScreenViewController.swift in Sources */,
 				8C044AA81D4FBF76002754B5 /* AppDelegate.swift in Sources */,
 				95E595431D51460900416B2A /* LocationTableViewCell.swift in Sources */,
 				95E5953E1D51460900416B2A /* AddressTableViewCell.swift in Sources */,
@@ -606,6 +622,14 @@
 			);
 			name = SignInSignUp.storyboard;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		9551B4111D9DF7E9006801CE /* LoadingScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9551B4121D9DF7E9006801CE /* Base */,
+			);
+			name = LoadingScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		957C4FDB1D5250AC00596A18 /* Category.storyboard */ = {

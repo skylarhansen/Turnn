@@ -317,11 +317,17 @@ class CreateEventViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
         self.tableView.separatorColor = .clearColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateEventViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         setBackgroundForTableView()
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     func setBackgroundForTableView() {
