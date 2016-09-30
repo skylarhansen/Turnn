@@ -317,19 +317,14 @@ class CreateEventViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
         self.tableView.separatorColor = .clearColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateEventViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        self.tableView.keyboardDismissMode = .OnDrag
         setBackgroundForTableView()
     }
-    
+
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
+
     func setBackgroundForTableView() {
         
         let blurEffect = UIBlurEffect(style: .Dark)
@@ -537,6 +532,7 @@ class CreateEventViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        view.endEditing(true)
         if indexPath.row == 3 && !self.locationSelected {
             self.locationSelected = !self.locationSelected
             tableView.beginUpdates()

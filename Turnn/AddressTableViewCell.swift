@@ -34,7 +34,7 @@ class AddressTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.addressTextField.delegate = self
         self.backgroundColor = .clearColor()
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
