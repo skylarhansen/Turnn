@@ -116,6 +116,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         noEventsPlaceholderView.hidden = true
         revealOrHideNoResultsView()
+        if EventController.hasLoadedTheFirstTime == false {
+            updateQuery()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -147,7 +150,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             self.locationManager.startUpdatingLocation()
         }
         setupTableViewUI()
-        updateQuery()
     }
     
     func createMapView() {
@@ -167,30 +169,31 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func updateQuery(){
+        EventController.hasLoadedTheFirstTime = true
         if isFiltered == false {
-        GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
-            if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
-                String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
+            GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
+                if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
+                    String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
+                    self.mapView.removeAnnotations(self.annotations)
+                    self.annotations = []
                 
-                self.mapView.removeAnnotations(self.annotations)
-                self.annotations = []
+                    self.events = currentEvents
+                    //can't do the line below or it'll trigger the didSet for isFiltered
+                    //self.filteredEvents = EventController.filterEventsByCategories(currentEvents, categories: self.currentFiltration)!
                 
-                self.events = currentEvents
-                //can't do the line below or it'll trigger the didSet for isFiltered
-                //self.filteredEvents = EventController.filterEventsByCategories(currentEvents, categories: self.currentFiltration)!
-                
-                self.loadingIndicatorView.hidden = true
-                self.loadingIndicator.stopAnimating()
-                self.displayEvents()
-                self.tableView.reloadData()
-                self.oldEvents = oldEvents
-                self.futureEvents = futureEvents
-                //these matching location keys are tracked here
-                //for sake of deleting them at the same time
-                //as old events. they might more properly be
-                //called: "locationKeysForOldEvents"
-                self.matchingLocationKeys = matchingLocationKeys
-                self.revealOrHideNoResultsView()
+                    self.loadingIndicatorView.hidden = true
+                    self.loadingIndicator.stopAnimating()
+                    self.displayEvents()
+    
+                    self.oldEvents = oldEvents
+                    self.futureEvents = futureEvents
+                    //these matching location keys are tracked here
+                    //for sake of deleting them at the same time
+                    //as old events. they might more properly be
+                    //called: "locationKeysForOldEvents"
+                    self.matchingLocationKeys = matchingLocationKeys
+                    self.revealOrHideNoResultsView()
+                    self.tableView.reloadData()
             }
         })
     }
@@ -207,7 +210,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                     self.loadingIndicatorView.hidden = true
                     self.loadingIndicator.stopAnimating()
                     self.displayEvents()
-                    self.tableView.reloadData()
                     
                     self.oldEvents = oldEvents
                     self.futureEvents = futureEvents
@@ -217,6 +219,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                     //called: "locationKeysForOldEvents"
                     self.matchingLocationKeys = matchingLocationKeys
                     self.revealOrHideNoResultsView()
+          
+                    self.tableView.reloadData()
                 }
             })
         }
@@ -240,7 +244,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func displayEvents() {
         if isFiltered {
-            for event in filteredEvents {
+            for event in self.filteredEvents {
                 let point = MKPointAnnotation()
                 if let latitude = event.location.latitude, longitude = event.location.longitude {
                     point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -253,7 +257,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             }
             self.mapView.addAnnotations(annotations)
         } else {
-            for event in events {
+            for event in self.events {
                 let point = MKPointAnnotation()
                 if let latitude = event.location.latitude, longitude = event.location.longitude {
                     point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
@@ -393,9 +397,9 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     // MARK: - Table view data source -
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if isFiltered {
+        if isFiltered == true {
             return filteredEvents.count
         } else {
             return events.count
@@ -410,16 +414,18 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if isFiltered {
+            
             let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
             
-            let event = filteredEvents[indexPath.section]
+            let event = self.filteredEvents[indexPath.section]
             eventCell?.updateWithEvent(event)
             
             return eventCell ?? UITableViewCell()
+            
         } else {
             let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
             
-            let event = events[indexPath.section]
+            let event = self.events[indexPath.section]
             eventCell?.updateWithEvent(event)
             
             return eventCell ?? UITableViewCell()
@@ -456,8 +462,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.isFiltered = false
         dismissAccessoryViews()
         updateQuery()
-        tableView.reloadData()
-        }
+    }
     
     func myEventsButtonTapped() {
         self.performSegueWithIdentifier("ToMyEventsSegue", sender: nil)
@@ -739,6 +744,7 @@ extension EventFinderViewController {
         UIView.animateWithDuration(0.4, animations: {
             self.logOutView.alpha = 0.0
             self.myEventsView.alpha = 0.0
+            self.moreOptionsOn = false
             self.logOutView.frame = CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 78, width: self.view.frame.width + 20, height: 35)
             self.myEventsView.frame = CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 123, width: self.view.frame.width / 2, height: 35)
             }, completion: { _ in

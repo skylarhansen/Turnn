@@ -10,7 +10,6 @@ import UIKit
 
 class EventFinderTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak private var eventNameLabel: UILabel!
     @IBOutlet private var categoryImages: [UIImageView]!
     
@@ -23,15 +22,16 @@ class EventFinderTableViewCell: UITableViewCell {
     
     func updateWithEvent(event: Event) {
         eventNameLabel.text = event.title
+        for categoryImageView in categoryImages {
+            categoryImageView.hidden = true
+        }
         loadImageViews(event.loadCategoriesForEvent())
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        for categoyImageView in categoryImages {
-            categoyImageView.hidden = true
+           for categoryImageView in categoryImages {
+            categoryImageView.hidden = true
         }
     }
     
