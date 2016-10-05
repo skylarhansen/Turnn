@@ -477,9 +477,17 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
         
         if segue.identifier == "toDetailSegue" {
-            if let eventDetailVC = segue.destinationViewController as? EventDetailViewController, let indexPath = self.selectedIndexPath {
-                let event = events[indexPath.section]
-                eventDetailVC.event = event
+            if isFiltered == true {
+                if let eventDetailVC = segue.destinationViewController as? EventDetailViewController, let indexPath = self.selectedIndexPath {
+                    let event = filteredEvents[indexPath.section]
+                    eventDetailVC.event = event
+                }
+            }
+            if isFiltered == false {
+                if let eventDetailVC = segue.destinationViewController as? EventDetailViewController, let indexPath = self.selectedIndexPath {
+                    let event = events[indexPath.section]
+                    eventDetailVC.event = event
+                }
             }
         }
     }
