@@ -22,29 +22,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z2z-uQ-ubw">
-                                <rect key="frame" x="32" y="332" width="310" height="2"/>
+                                <rect key="frame" x="33" y="333" width="310" height="2"/>
                                 <color key="backgroundColor" red="0.1176470588" green="0.65490196079999996" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="310" id="dpy-sY-7nn"/>
                                     <constraint firstAttribute="height" constant="2" id="ytH-Th-35x"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Turnn Type.png" translatesAutoresizingMaskIntoConstraints="NO" id="msB-Wk-rue">
-                                <rect key="frame" x="37" y="257" width="300" height="50"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Turnn Type" translatesAutoresizingMaskIntoConstraints="NO" id="msB-Wk-rue">
+                                <rect key="frame" x="38" y="258" width="300" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="5NR-AU-9NP"/>
                                     <constraint firstAttribute="height" constant="50" id="tuh-fr-eAZ"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Subtitle Type.png" translatesAutoresizingMaskIntoConstraints="NO" id="HRt-uk-fB2">
-                                <rect key="frame" x="50" y="339" width="275" height="50"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Subtitle Type" translatesAutoresizingMaskIntoConstraints="NO" id="HRt-uk-fB2">
+                                <rect key="frame" x="50" y="340" width="275" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="O4y-X9-jwW"/>
                                     <constraint firstAttribute="height" constant="50" id="p5n-zK-oyV"/>
                                 </constraints>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qin-pK-wAc">
-                                <rect key="frame" x="163" y="399" width="50" height="50"/>
+                                <rect key="frame" x="163" y="400" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0tm-CJ-Y0w"/>
                                     <constraint firstAttribute="width" constant="50" id="Tr1-R9-O8c"/>
@@ -96,7 +96,7 @@
     </scenes>
     <resources>
         <image name="Background" width="375" height="667"/>
-        <image name="Subtitle Type.png" width="1750" height="114"/>
-        <image name="Turnn Type.png" width="756" height="204"/>
+        <image name="Subtitle Type" width="875" height="57"/>
+        <image name="Turnn Type" width="378" height="102"/>
     </resources>
 </document>

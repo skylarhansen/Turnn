@@ -36,7 +36,6 @@ class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
         }
         return true
     }
-
     
     func setupCell() {
         self.backgroundColor = .clearColor()
@@ -55,4 +54,3 @@ class MoreInfoTableViewCell: UITableViewCell, UITextViewDelegate {
         }
     }
 }
-

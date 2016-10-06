@@ -15,7 +15,6 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
     var date: NSDate?
       override func awakeFromNib() {
         super.awakeFromNib()
-        
         setupCell()
     }
       

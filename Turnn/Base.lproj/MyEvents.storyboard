@@ -25,14 +25,14 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3w-6k-XIL">
-                                    <rect key="frame" x="20" y="56" width="335" height="1"/>
+                                    <rect key="frame" x="20" y="55.5" width="335" height="1"/>
                                     <color key="backgroundColor" red="0.0" green="0.66274509800000003" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="ogd-QG-RZ7"/>
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Turnn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylR-Da-tgR">
-                                    <rect key="frame" x="87.5" y="13" width="200" height="35"/>
+                                    <rect key="frame" x="87.5" y="12.5" width="200" height="35"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="200" id="7Ef-Te-8MP"/>
                                         <constraint firstAttribute="height" constant="35" id="fpZ-Yp-QPK"/>
@@ -42,7 +42,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My Events, Swipe to Delete" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibv-2s-S7C">
-                                    <rect key="frame" x="0.0" y="65" width="375" height="21"/>
+                                    <rect key="frame" x="0.0" y="64.5" width="375" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="b6h-rq-20I"/>
                                     </constraints>
@@ -81,7 +81,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r6-qk-SOE">
-                                            <rect key="frame" x="40" y="30" width="327" height="26"/>
+                                            <rect key="frame" x="40" y="30" width="327" height="26.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>

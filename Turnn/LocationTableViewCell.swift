@@ -14,9 +14,6 @@ class LocationTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        setupCell()
     }
     
     func setupCell() {
@@ -25,8 +22,6 @@ class LocationTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
         
         if selected == true {
             self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)

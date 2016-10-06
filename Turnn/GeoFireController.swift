@@ -37,14 +37,12 @@ class GeoFireController {
             dispatch_group_enter(eventIDFetch)
             FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
-                    //print(snapshot.value)
                     eventIDs.append(eventID)
-                    dispatch_group_leave(eventIDFetch)
                 }
+                dispatch_group_leave(eventIDFetch)
             })
         }
-        
-        dispatch_group_notify(eventIDFetch, dispatch_get_main_queue()) { 
+        dispatch_group_notify(eventIDFetch, dispatch_get_main_queue()) {
             completion(ids: eventIDs)
         }
     }
@@ -55,10 +53,9 @@ class GeoFireController {
             dispatch_group_enter(singleEventIDFetch)
             FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
-                    //print(eventID)
                     eventIDtoExport = eventID
-                    dispatch_group_leave(singleEventIDFetch)
                 }
+                dispatch_group_leave(singleEventIDFetch)
             })
         dispatch_group_notify(singleEventIDFetch, dispatch_get_main_queue()) {
             completion(id: eventIDtoExport)
@@ -72,13 +69,11 @@ class GeoFireController {
             dispatch_group_enter(locationIDFetch)
             FirebaseController.ref.child("Events").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
-                    //print(snapshot.value)
                     locationIDs.append(locationID)
-                    dispatch_group_leave(locationIDFetch)
                 }
+                dispatch_group_leave(locationIDFetch)
             })
         }
-        
         dispatch_group_notify(locationIDFetch, dispatch_get_main_queue()) {
             completion(ids: locationIDs)
         }
@@ -90,10 +85,9 @@ class GeoFireController {
         dispatch_group_enter(singleLocationIDFetch)
         FirebaseController.ref.child("Events").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
-                //print(locationID)
                 locationIDtoExport = locationID
+                }
                 dispatch_group_leave(singleLocationIDFetch)
-            }
         })
         dispatch_group_notify(singleLocationIDFetch, dispatch_get_main_queue()) {
             completion(id: locationIDtoExport)
@@ -119,12 +113,13 @@ class GeoFireController {
         })
         
         circleQuery.observeReadyWithBlock{
+            print("I got this far")
             GeoFireController.getEventIdsForLocationIdentifiers(matchedLocationKeysArray, completion: { (ids) in
                 if let ids = ids {
                     EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
                         // print(events)
                         if let events = events {
-                            //print("EVENT RETRIEVED: \(events)")
+                            print("EVENT RETRIEVED: \(events)")
                             
                             let eventSortOldOrNot = events.divide({$0.endTime.timeIntervalSince1970 >= NSDate().timeIntervalSince1970})
                             

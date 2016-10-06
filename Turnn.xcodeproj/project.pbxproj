@@ -26,8 +26,6 @@
 		953C11D81D52A7F5009777FC /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953C11D71D52A7F5009777FC /* EventController.swift */; };
 		9551B4131D9DF7E9006801CE /* LoadingScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9551B4111D9DF7E9006801CE /* LoadingScreen.storyboard */; };
 		9551B4151D9DF806006801CE /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551B4141D9DF806006801CE /* LoadingScreenViewController.swift */; };
-		9551B4171D9E06C7006801CE /* Turnn Type.png in Resources */ = {isa = PBXBuildFile; fileRef = 9551B4161D9E06C7006801CE /* Turnn Type.png */; };
-		9551B4191D9E0934006801CE /* Subtitle Type.png in Resources */ = {isa = PBXBuildFile; fileRef = 9551B4181D9E0934006801CE /* Subtitle Type.png */; };
 		955D18621D5D474E0010C73A /* TurnnButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955D18611D5D474E0010C73A /* TurnnButton.swift */; };
 		956EF9A21D53FC8B000389A6 /* FirebaseDataStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */; };
 		957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957C4FDB1D5250AC00596A18 /* Category.storyboard */; };
@@ -115,8 +113,6 @@
 		953C11D71D52A7F5009777FC /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
 		9551B4121D9DF7E9006801CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoadingScreen.storyboard; sourceTree = "<group>"; };
 		9551B4141D9DF806006801CE /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
-		9551B4161D9E06C7006801CE /* Turnn Type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turnn Type.png"; sourceTree = "<group>"; };
-		9551B4181D9E0934006801CE /* Subtitle Type.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Subtitle Type.png"; sourceTree = "<group>"; };
 		955D18611D5D474E0010C73A /* TurnnButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnnButton.swift; sourceTree = "<group>"; };
 		956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataStructure.swift; sourceTree = "<group>"; };
 		957C4FDC1D5250AC00596A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Category.storyboard; sourceTree = "<group>"; };
@@ -294,8 +290,6 @@
 			isa = PBXGroup;
 			children = (
 				95F59DD51D5121EC00FEF6EE /* Ubuntu-R.ttf */,
-				9551B4181D9E0934006801CE /* Subtitle Type.png */,
-				9551B4161D9E06C7006801CE /* Turnn Type.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -402,7 +396,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Skylar Hansen";
 				TargetAttributes = {
 					8C044AA31D4FBF76002754B5 = {
@@ -440,8 +434,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9551B4191D9E0934006801CE /* Subtitle Type.png in Resources */,
-				9551B4171D9E06C7006801CE /* Turnn Type.png in Resources */,
 				95CC83161D5E516A00F075F4 /* LaunchScreen.storyboard in Resources */,
 				957C4FDD1D5250AC00596A18 /* Category.storyboard in Resources */,
 				8C1C60891D4FEFE10015FAC5 /* GoogleService-Info.plist in Resources */,
@@ -705,8 +697,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -751,8 +745,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -771,6 +767,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -783,6 +780,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = V9YMV3Q9VL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -805,6 +803,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = V9YMV3Q9VL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -54,8 +54,8 @@ class EventController {
         FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
                 eventIDtoExport = eventID
-                dispatch_group_leave(singleEventIDFetch)
             }
+            dispatch_group_leave(singleEventIDFetch)
         })
         dispatch_group_notify(singleEventIDFetch, dispatch_get_main_queue()) {
             completion(id: eventIDtoExport)
@@ -111,8 +111,8 @@ class EventController {
                //print(snapshot.value!)
                 if let eventDictionary = snapshot.value as? [String : AnyObject], let event = Event(dictionary: eventDictionary, identifier: eventID) {
                     events.append(event)
-                    dispatch_group_leave(eventFetchGroup)
                 }
+                dispatch_group_leave(eventFetchGroup)
             })
         }
         dispatch_group_notify(eventFetchGroup, dispatch_get_main_queue()) { 

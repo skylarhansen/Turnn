@@ -12,13 +12,11 @@ class LogOutView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         setupView()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupView()
     }
 

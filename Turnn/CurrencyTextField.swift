@@ -31,5 +31,3 @@ class CurrencyTextField: UITextField {
     }
     func editingChanged(sender: UITextField) { sender.text = currency }
 }
-
-

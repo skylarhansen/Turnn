@@ -15,5 +15,4 @@ class ExampleCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = 35.0 / 2.0
     }
-    
 }
