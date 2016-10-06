@@ -40,7 +40,6 @@ class CreateEventViewController: UITableViewController {
             if locationSelected {
                 let indexPath = NSIndexPath(forRow: 10, inSection: 0)
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-                
             } else {
                 let indexPath = NSIndexPath(forRow: 6, inSection: 0)
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -65,7 +64,6 @@ class CreateEventViewController: UITableViewController {
     
     @IBAction func unwindToCreateEvent(segue: UIStoryboardSegue) {
         if let categories = categories {
-            
             if categories.contains(Categories.Admission.rawValue) {
                 priceSelected = true
                 tableView.reloadData()
@@ -589,7 +587,6 @@ class CreateEventViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "addCategories" {
             let navController = segue.destinationViewController as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController

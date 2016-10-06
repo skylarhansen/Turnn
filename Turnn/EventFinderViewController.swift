@@ -116,9 +116,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         noEventsPlaceholderView.hidden = true
         revealOrHideNoResultsView()
-        if EventController.hasLoadedTheFirstTime == false {
-            updateQuery()
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -163,13 +160,11 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.mapView.rotateEnabled = false
         
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
-            
             self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
             }, completion: nil)
-    }
+        }
     
     func updateQuery(){
-        EventController.hasLoadedTheFirstTime = true
         if isFiltered == false {
             GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
                 if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
@@ -233,6 +228,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.view.bringSubviewToFront(lowMilesButton)
         self.view.bringSubviewToFront(lowestMilesButton)
         revealOrHideNoResultsView()
+        updateQuery()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -297,10 +293,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     class CustomAnnotationView: MKAnnotationView {
         override func layoutSubviews() {
             super.layoutSubviews()
-            
             // Force the annotation view to maintain a constant size when the map is tilted.
             // scalesWithViewingDistance = false
-            
             // Use CALayer’s corner radius to turn this view into a circle.
             layer.cornerRadius = frame.width / 2
             layer.borderWidth = 2
@@ -319,7 +313,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func setBackgroundAndTableView() {
-        
         self.tableView.backgroundColor = .clearColor()
         let blurEffect = UIBlurEffect(style: .Dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
@@ -350,7 +343,6 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             currentFiltration = categoryVC.categories
             if filteredEvents != nil {
                 self.filteredEvents = filteredEvents!
-                updateQuery()
             } else {
                 revealOrHideNoResultsView()
             }

@@ -16,8 +16,6 @@ class EventController {
     
     static let sharedController = EventController()
     
-    static var hasLoadedTheFirstTime = false
-    
     static let eventData = FirebaseController.ref.child("Events")
 
     static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: String? = "Free", contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool, eventID: String?) -> Void)

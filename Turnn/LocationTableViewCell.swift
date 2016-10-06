@@ -14,6 +14,7 @@ class LocationTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupCell()
     }
     
     func setupCell() {
