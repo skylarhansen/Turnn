@@ -4,7 +4,7 @@
 //
 //  Created by Jake Hardy on 4/15/16.
 //  Copyright © 2016 Relief Group. All rights reserved.
-//  Lended with Love by Nathan Falcone on 8/8/16.
+//  Lended with love by Nathan Falcone on 8/8/16.
 //  Adapted with gratitude by Team Turnn on 8/8/16.
 //
 
@@ -113,7 +113,6 @@ class GeoFireController {
         })
         
         circleQuery.observeReadyWithBlock{
-            print("I got this far")
             GeoFireController.getEventIdsForLocationIdentifiers(matchedLocationKeysArray, completion: { (ids) in
                 if let ids = ids {
                     EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
@@ -145,7 +144,6 @@ class GeoFireController {
         }
     }
 }
-
 //      METHOD TO OBSERVE KEYS 'EXITING' SEARCH RADIUS -- probably nothing we'll implement anytime soon
 //
 //        circleQuery.observeEventType(.KeyExited, withBlock: { (key, location: CLLocation!) in
