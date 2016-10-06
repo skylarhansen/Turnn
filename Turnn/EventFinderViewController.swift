@@ -229,6 +229,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.view.bringSubviewToFront(lowestMilesButton)
         revealOrHideNoResultsView()
         updateQuery()
+        revealOrHideNoResultsView()
     }
     
     override func viewDidDisappear(animated: Bool) {
