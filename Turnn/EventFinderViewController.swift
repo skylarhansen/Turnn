@@ -55,7 +55,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     var loadingIndicator: UIActivityIndicatorView!
     var loadingIndicatorView: UIView!
-    
+   
     var selectedIndexPath: NSIndexPath?
     
     enum Miles: Int {
@@ -187,8 +187,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                     //as old events. they might more properly be
                     //called: "locationKeysForOldEvents"
                     self.matchingLocationKeys = matchingLocationKeys
-                    self.revealOrHideNoResultsView()
                     self.tableView.reloadData()
+                    self.revealOrHideNoResultsView()
             }
         })
     }
@@ -213,9 +213,8 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                     //as old events. they might more properly be
                     //called: "locationKeysForOldEvents"
                     self.matchingLocationKeys = matchingLocationKeys
-                    self.revealOrHideNoResultsView()
-          
                     self.tableView.reloadData()
+                    self.revealOrHideNoResultsView()
                 }
             })
         }
@@ -227,9 +226,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         self.view.bringSubviewToFront(midMilesButton)
         self.view.bringSubviewToFront(lowMilesButton)
         self.view.bringSubviewToFront(lowestMilesButton)
-        revealOrHideNoResultsView()
         updateQuery()
-        revealOrHideNoResultsView()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -517,6 +514,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
 extension EventFinderViewController {
     
     func createMileViews() {
+        
         topMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 80, 35))
         topMilesButton.setTitle("15 mi", forState: .Normal)
         topMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
