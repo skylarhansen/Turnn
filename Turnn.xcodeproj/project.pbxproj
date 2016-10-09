@@ -101,6 +101,7 @@
 		8C1C608E1D4FFC610015FAC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8C1C60901D4FFCC10015FAC5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8C1C60921D5002860015FAC5 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		8C5709D51DA84C7E001A8D3A /* Salt Lake City, UT.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Salt Lake City, UT.gpx"; sourceTree = "<group>"; };
 		8C72A2CA1D510D50008301CC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8C72A2CB1D510D50008301CC /* CategoryCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		8C8E57B21D666B5F00FD20E7 /* NetworkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 		8C044AA61D4FBF76002754B5 /* Turnn */ = {
 			isa = PBXGroup;
 			children = (
+				8C5709D51DA84C7E001A8D3A /* Salt Lake City, UT.gpx */,
 				8C044AA71D4FBF76002754B5 /* AppDelegate.swift */,
 				950DC84F1D51045500601BC5 /* Extensions.swift */,
 				956EF9A11D53FC8B000389A6 /* FirebaseDataStructure.swift */,
