@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="UHt-1v-iBx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Ubuntu-R.ttf">
+            <string>Ubuntu</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Legal And Privacy View Controller-->
+        <scene sceneID="sGh-Gy-uMk">
+            <objects>
+                <viewController id="cqO-XU-8T3" customClass="LegalAndPrivacyViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7ge-mt-p3c"/>
+                        <viewControllerLayoutGuide type="bottom" id="P4Q-gs-316"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3YU-tk-NBf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="OBc-jN-hYj">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-CX-5b1">
+                                <rect key="frame" x="36" y="113" width="303" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.66274509800000003" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="FOZ-ez-38o"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Legal &amp; Privacy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ax-me-gLn">
+                                <rect key="frame" x="87.5" y="74" width="200" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Eik-7i-uNs"/>
+                                    <constraint firstAttribute="height" constant="35" id="mZU-Ql-VdB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-Kw-kMv">
+                                <rect key="frame" x="36" y="134" width="303" height="513"/>
+                                <string key="text">LEGAL
+Turnn and its developers are not liable for any damages or injuries that occur as a result of the existance of this application. When considering posting, sharing, or attending events, be careful and use good judgment.
+
+PRIVACY
+Turnn does not sell your information to anyone—nor will it ever. Turnn never records nor stores your current location, location history, or browsing history.</string>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="7ax-me-gLn" firstAttribute="centerX" secondItem="3YU-tk-NBf" secondAttribute="centerX" id="1Mq-9w-YEY"/>
+                            <constraint firstItem="P4Q-gs-316" firstAttribute="top" secondItem="OBc-jN-hYj" secondAttribute="bottom" id="30V-01-yMh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8Gz-CX-5b1" secondAttribute="trailing" constant="20" id="IoY-xF-UNW"/>
+                            <constraint firstItem="7ax-me-gLn" firstAttribute="bottom" secondItem="8Gz-CX-5b1" secondAttribute="top" constant="-4" id="N5C-pI-4ZC"/>
+                            <constraint firstItem="nAq-Kw-kMv" firstAttribute="leading" secondItem="3YU-tk-NBf" secondAttribute="leadingMargin" constant="20" id="TjC-rc-yJf"/>
+                            <constraint firstItem="7ax-me-gLn" firstAttribute="top" secondItem="7ge-mt-p3c" secondAttribute="bottom" constant="10" id="XGP-0O-K8i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nAq-Kw-kMv" secondAttribute="trailing" constant="20" id="a10-8V-iuU"/>
+                            <constraint firstItem="P4Q-gs-316" firstAttribute="top" secondItem="nAq-Kw-kMv" secondAttribute="bottom" constant="20" id="gIs-Rj-WCo"/>
+                            <constraint firstItem="OBc-jN-hYj" firstAttribute="leading" secondItem="3YU-tk-NBf" secondAttribute="leading" id="gzT-qN-jmS"/>
+                            <constraint firstAttribute="trailing" secondItem="OBc-jN-hYj" secondAttribute="trailing" id="kQT-dU-iTY"/>
+                            <constraint firstItem="8Gz-CX-5b1" firstAttribute="centerX" secondItem="3YU-tk-NBf" secondAttribute="centerX" id="klZ-bk-fBM"/>
+                            <constraint firstItem="nAq-Kw-kMv" firstAttribute="centerX" secondItem="3YU-tk-NBf" secondAttribute="centerX" id="m0J-ev-cP8"/>
+                            <constraint firstItem="8Gz-CX-5b1" firstAttribute="leading" secondItem="3YU-tk-NBf" secondAttribute="leadingMargin" constant="20" id="mGV-xK-mum"/>
+                            <constraint firstItem="OBc-jN-hYj" firstAttribute="top" secondItem="7ge-mt-p3c" secondAttribute="bottom" constant="-20" id="mJI-QY-sK2"/>
+                            <constraint firstItem="nAq-Kw-kMv" firstAttribute="top" secondItem="8Gz-CX-5b1" secondAttribute="bottom" constant="20" id="o1A-gj-ifg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="s0A-JE-FME">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="Coy-ic-akL">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="cqO-XU-8T3" id="WOv-Qn-kOg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lu9-6e-04L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-762.39999999999998" y="-1777.0614692653674"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0S3-9l-TUP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UHt-1v-iBx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G62-T3-6pq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cqO-XU-8T3" kind="relationship" relationship="rootViewController" id="37z-VG-CO8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t08-0a-gZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1604" y="-1777.0614692653674"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="375" height="667"/>
+    </resources>
+</document>

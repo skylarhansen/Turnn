@@ -9,97 +9,147 @@
 import Foundation
 import UIKit
 
-class Event {
+class Event: FirebaseType {
     
     private let titleKey = "title"
     private let locationKey = "location"
     private let startTimeKey = "startTime"
     private let endTimeKey = "endTime"
-    private let descriptionKey = "description"
+    private let categoriesKey = "categories"
+    private let eventDescriptionKey = "eventDescription"
     private let passwordProtectedKey = "passwordProtected"
     private let passwordKey = "password"
+    private let priceKey = "price"
     private let contactInfoKey = "contactInfo"
     private let imageKey = "image"
+    private let moreInfoKey = "moreInfo"
+    private let hostKey = "host"
+    private let identiferKey = "eventID"
+    private let locationIDKey = "LocationID"
     
     var title: String
-    var location: String // what type should location be?
+    var location: Location
     var startTime: NSDate
-    var endTime: NSDate?
-    //    let categories: [Category]
-    var description: String?
-    var passwordProtected: Bool?
+    var endTime: NSDate
+    var categories: [Int]
+    var eventDescription: String?
+    var passwordProtected: Bool
     var password: String?
+    var price: String?
     var contactInfo: String?
-    var image: UIImage?
+    var imageURL: String?
     var identifier: String?
-    //    let host: User      --> what time should host be?
+    var host: User
+    var moreInfo: String?
+    var locationID: String?
     
     var endpoint: String {
-        
-        return "events"
+        return "Events"
     }
     
-    var dictionaryCopy: [String:AnyObject] {
+    var dictionaryCopy: [String: AnyObject] {
+        var dictionary: [String : AnyObject] = [titleKey : title, startTimeKey : startTime.timeIntervalSince1970, endTimeKey : endTime.timeIntervalSince1970, categoriesKey : categories, hostKey: host.dictionaryCopy, locationKey : location.dictionaryCopy, passwordProtectedKey : passwordProtected]
         
+        if let eventDescription = eventDescription {
+            dictionary.updateValue(eventDescription, forKey: eventDescriptionKey)
+        }
         
+        if passwordProtected == true {
+            if let password = password {
+                dictionary.updateValue(password, forKey: passwordKey)
+            }
+        }
         
-        return [titleKey:title, locationKey:location, startTimeKey:startTime, endTimeKey:endTime, descriptionKey:description, passwordProtectedKey:passwordProtected, passwordKey:password, contactInfoKey:contactInfo, imageKey:image]
+        if let price = price {
+            dictionary.updateValue(price, forKey: priceKey)
+        }
+        if let contactInfo = contactInfo {
+            dictionary.updateValue(contactInfo, forKey: contactInfoKey)
+        }
+        
+        if let image = imageURL {
+            dictionary.updateValue(image, forKey: imageKey)
+        }
+        
+        if let moreInfo = moreInfo {
+            dictionary.updateValue(moreInfo, forKey: moreInfoKey)
+        }
+        return dictionary
+    }
+    
+    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool, password: String?, price: String?, contactInfo: String?, imageURL: String?, host: User, moreInfo: String?) {
+        
+        self.title = title
+        self.location = location
+        self.startTime = startTime
+        self.endTime = endTime
+        self.categories = categories
+        self.eventDescription = eventDescription
+        self.passwordProtected = passwordProtected
+        self.password = password
+        self.price = price
+        self.imageURL = imageURL
+        self.contactInfo = contactInfo
+        self.host = host
+        self.moreInfo = moreInfo
+        self.identifier = nil
+        self.locationID = nil
+    }
+    
+    required init?(dictionary: [String : AnyObject], identifier: String) {
+        
+        guard let title = dictionary[titleKey] as? String,
+            locationDictionary = dictionary[locationKey] as? [String: AnyObject],
+            location = Location(dictionary: locationDictionary),
+            startTime = dictionary[startTimeKey] as? Double,
+            endTime = dictionary[endTimeKey] as? Double,
+            categories = dictionary[categoriesKey] as? [Int],
+            passwordProtected = dictionary[passwordProtectedKey] as? Bool,
+            locationID = dictionary[locationIDKey] as? String,
+            hostDictionary = dictionary[hostKey] as? [String : AnyObject],
+            //Change back to id if and when we make that change
+            host = User(dictionary: hostDictionary, identifier: hostDictionary["firstName"] as? String ?? "") else {
+                print("COULD NOT CONVERT DICTIONARY TO EVENT")
+                return nil
+        }
+        
+        if let locationID = dictionary[locationIDKey] as? String{
+            self.locationID = locationID
+        }
+        
+        if let eventDescription = dictionary[eventDescriptionKey] as? String {
+            self.eventDescription = eventDescription
+        }
+        
+        if passwordProtected == true {
+            if let password = dictionary[passwordKey] as? String {
+                self.password = password
+            }
+        }
+        
+        if let price = dictionary[priceKey] as? String {
+            self.price = price
+        }
+        if let contactInfo = dictionary[contactInfoKey] as? String {
+            self.contactInfo = contactInfo
+        }
+        
+        if let image = dictionary[imageKey] as? String {
+            self.imageURL = image
+        }
+        
+        if let moreInfo = dictionary[moreInfoKey] as? String {
+            self.moreInfo = moreInfo
+        }
+        
+        self.title = title
+        self.location = location
+        self.startTime = NSDate(timeIntervalSince1970: startTime)
+        self.endTime = NSDate(timeIntervalSince1970: endTime)
+        self.categories = categories
+        self.passwordProtected = passwordProtected
+        self.host = host
+        self.identifier = identifier
+        self.locationID = locationID
     }
 }
-
-
-
-
-/*
- import Foundation
- 
- class Location: FirebaseType {
- 
- private let addressKey = "address"
- private let cityKey = "city"
- private let stateKey = "state"
- private let zipKey = "zip"
- 
- var address: String
- var city: String
- var state: String
- var zipCode: String
- //    let latitude: Double {}
- //    let longitude: Double {}
- var identifier: String?
- 
- var endpoint: String {
- 
- return "locations"
- }
- 
- var dictionaryCopy: [String:AnyObject] {
- 
- return [addressKey:address, cityKey:city, stateKey:state, zipKey:zipCode]
- }
- 
- init(address: String, city: String, state: String, zipCode: String) {
- 
- self.address = address
- self.city = city
- self.state = state
- self.zipCode = zipCode
- self.identifier = nil
- }
- 
- required init?(dictionary: [String:AnyObject], identifier: String) {
- 
- guard let address = dictionary[addressKey] as? String,
- city = dictionary[cityKey] as? String,
- state = dictionary[stateKey] as? String,
- zipCode = dictionary[zipKey] as? String else { return  nil }
- 
- self.address = address
- self.identifier = identifier
- self.city = city
- self.state = state
- self.zipCode = zipCode
- }
- }
- */
- 

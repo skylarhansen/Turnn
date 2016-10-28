@@ -1,27 +1,78 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r7n-um-cof">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <!--LaunchScreen-->
+        <scene sceneID="HzD-XI-yoZ">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController title="LaunchScreen" id="r7n-um-cof" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="Uqa-yX-hJA"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Y2-cZ-vnx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="Af0-Ri-e9b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="hQp-Al-jQi">
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDo-ra-K2p">
+                                <color key="backgroundColor" red="0.1176470588" green="0.65490196079999996" blue="0.81960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="BEp-6e-pOA"/>
+                                    <constraint firstAttribute="height" constant="2" id="qKK-Lm-oUm"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Turnn Type" translatesAutoresizingMaskIntoConstraints="NO" id="Fp2-eS-xYR">
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bK6-3t-Epc"/>
+                                    <constraint firstAttribute="width" constant="300" id="hzy-4Z-0Qc"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Subtitle Type" translatesAutoresizingMaskIntoConstraints="NO" id="yVZ-iQ-Mnx">
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0bV-6P-VgL"/>
+                                    <constraint firstAttribute="width" constant="275" id="6bn-hu-MW8"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="4Y2-cZ-vnx" firstAttribute="top" secondItem="hQp-Al-jQi" secondAttribute="bottom" id="20j-CG-PyC"/>
+                            <constraint firstItem="hQp-Al-jQi" firstAttribute="top" secondItem="Uqa-yX-hJA" secondAttribute="bottom" constant="-20" id="7KS-En-lkl"/>
+                            <constraint firstItem="hQp-Al-jQi" firstAttribute="leading" secondItem="Af0-Ri-e9b" secondAttribute="leading" id="8BA-cn-9Fy"/>
+                            <constraint firstItem="uDo-ra-K2p" firstAttribute="centerY" secondItem="Af0-Ri-e9b" secondAttribute="centerY" id="Dw8-0U-dOc"/>
+                            <constraint firstItem="Fp2-eS-xYR" firstAttribute="centerX" secondItem="uDo-ra-K2p" secondAttribute="centerX" id="F4K-Pf-mRp"/>
+                            <constraint firstItem="uDo-ra-K2p" firstAttribute="top" secondItem="Fp2-eS-xYR" secondAttribute="bottom" constant="25" id="J3I-t7-TUi"/>
+                            <constraint firstAttribute="trailing" secondItem="hQp-Al-jQi" secondAttribute="trailing" id="JyF-o1-zwp"/>
+                            <constraint firstItem="yVZ-iQ-Mnx" firstAttribute="top" secondItem="uDo-ra-K2p" secondAttribute="bottom" constant="5" id="QkM-dK-MUC"/>
+                            <constraint firstItem="yVZ-iQ-Mnx" firstAttribute="centerX" secondItem="uDo-ra-K2p" secondAttribute="centerX" id="ZrV-ic-vZe"/>
+                            <constraint firstItem="uDo-ra-K2p" firstAttribute="centerX" secondItem="Af0-Ri-e9b" secondAttribute="centerX" id="i1U-oC-I2g"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozI-V1-m5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="31" y="60"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background" width="375" height="667"/>
+        <image name="Subtitle Type" width="1750" height="114"/>
+        <image name="Turnn Type" width="378" height="102"/>
+    </resources>
 </document>

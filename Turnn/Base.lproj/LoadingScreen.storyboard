@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="7Cn-mE-mJE">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <development version="7000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+    </dependencies>
+    <scenes>
+        <!--Loading Screen View Controller-->
+        <scene sceneID="RGi-cM-wud">
+            <objects>
+                <viewController id="7Cn-mE-mJE" customClass="LoadingScreenViewController" customModule="Turnn" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gAu-g0-wwy"/>
+                        <viewControllerLayoutGuide type="bottom" id="J7P-Ia-ncZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k8o-08-vGq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="Y4K-eo-U1K">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z2z-uQ-ubw">
+                                <rect key="frame" x="33" y="333" width="310" height="2"/>
+                                <color key="backgroundColor" red="0.1176470588" green="0.65490196079999996" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="dpy-sY-7nn"/>
+                                    <constraint firstAttribute="height" constant="2" id="ytH-Th-35x"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Turnn Type" translatesAutoresizingMaskIntoConstraints="NO" id="msB-Wk-rue">
+                                <rect key="frame" x="38" y="258" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5NR-AU-9NP"/>
+                                    <constraint firstAttribute="height" constant="50" id="tuh-fr-eAZ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Subtitle Type" translatesAutoresizingMaskIntoConstraints="NO" id="HRt-uk-fB2">
+                                <rect key="frame" x="50" y="340" width="275" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="O4y-X9-jwW"/>
+                                    <constraint firstAttribute="height" constant="50" id="p5n-zK-oyV"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qin-pK-wAc">
+                                <rect key="frame" x="163" y="400" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0tm-CJ-Y0w"/>
+                                    <constraint firstAttribute="width" constant="50" id="Tr1-R9-O8c"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="msB-Wk-rue" firstAttribute="centerX" secondItem="Z2z-uQ-ubw" secondAttribute="centerX" id="2kR-bH-pNK"/>
+                            <constraint firstItem="Z2z-uQ-ubw" firstAttribute="top" secondItem="msB-Wk-rue" secondAttribute="bottom" constant="25" id="6k2-ew-urG"/>
+                            <constraint firstItem="Z2z-uQ-ubw" firstAttribute="centerY" secondItem="k8o-08-vGq" secondAttribute="centerY" id="BTg-fw-ZI9"/>
+                            <constraint firstItem="HRt-uk-fB2" firstAttribute="centerX" secondItem="Z2z-uQ-ubw" secondAttribute="centerX" id="Heq-cN-FPH"/>
+                            <constraint firstItem="Z2z-uQ-ubw" firstAttribute="centerX" secondItem="k8o-08-vGq" secondAttribute="centerX" id="PUo-AY-iHl"/>
+                            <constraint firstItem="Y4K-eo-U1K" firstAttribute="top" secondItem="gAu-g0-wwy" secondAttribute="bottom" constant="-20" id="Woi-g7-c2b"/>
+                            <constraint firstItem="Qin-pK-wAc" firstAttribute="centerX" secondItem="k8o-08-vGq" secondAttribute="centerX" id="YFs-Tv-0s9"/>
+                            <constraint firstItem="Y4K-eo-U1K" firstAttribute="leading" secondItem="k8o-08-vGq" secondAttribute="leading" id="bId-cD-uT6"/>
+                            <constraint firstItem="HRt-uk-fB2" firstAttribute="top" secondItem="Z2z-uQ-ubw" secondAttribute="bottom" constant="5" id="qnV-la-wfr"/>
+                            <constraint firstItem="J7P-Ia-ncZ" firstAttribute="top" secondItem="Y4K-eo-U1K" secondAttribute="bottom" id="rJn-2z-WwK"/>
+                            <constraint firstItem="Qin-pK-wAc" firstAttribute="top" secondItem="HRt-uk-fB2" secondAttribute="bottom" constant="10" id="tiL-b4-meA"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4K-eo-U1K" secondAttribute="trailing" id="tvq-n0-K26"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Qin-pK-wAc" id="iI0-FD-hka"/>
+                        <segue destination="lmC-Mo-mcA" kind="presentation" identifier="loadingScreenToEventFinderSegue" id="cQp-u1-613"/>
+                        <segue destination="rFU-Fr-I8r" kind="presentation" identifier="loadingScreenToSignUpSignInSegue" id="iSA-Z5-lqV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cjd-T1-Odo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1062" y="-280"/>
+        </scene>
+        <!--EventFinder-->
+        <scene sceneID="a5W-Gr-fx7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventFinder" id="lmC-Mo-mcA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CAv-ZK-lsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-433" y="-367"/>
+        </scene>
+        <!--SignInSignUp-->
+        <scene sceneID="htP-vI-Mkk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignInSignUp" id="rFU-Fr-I8r" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bsg-cp-MZz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-385" y="-166"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="375" height="667"/>
+        <image name="Subtitle Type" width="875" height="57"/>
+        <image name="Turnn Type" width="378" height="102"/>
+    </resources>
+</document>

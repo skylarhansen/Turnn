@@ -8,9 +8,11 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class FirebaseController {
     static let ref = FIRDatabase.database().reference()
+    static let storage = FIRStorage.storage().reference()
 }
 
 protocol FirebaseType {
@@ -30,11 +32,13 @@ extension FirebaseType {
         var newEndpoint = FirebaseController.ref.child(endpoint)
         if let identifier = identifier {
             newEndpoint = newEndpoint.child(identifier)
+            newEndpoint.updateChildValues(dictionaryCopy)
         } else {
             newEndpoint = newEndpoint.childByAutoId()
             self.identifier = newEndpoint.key
+            newEndpoint.setValue(dictionaryCopy)
         }
-        newEndpoint.updateChildValues(dictionaryCopy)
+//        newEndpoint.setValue(dictionaryCopy)
     }
     
     func delete() {
