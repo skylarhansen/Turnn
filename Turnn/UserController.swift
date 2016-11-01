@@ -20,7 +20,8 @@ class UserController {
     
     var currentUserId: String {
         guard let currentUser = currentUser, currentUserId = currentUser.identifier else {
-            fatalError("Could not retrieve current user id")
+            print("current user is nil")
+            return "nada"
         }
         return currentUserId
     }
