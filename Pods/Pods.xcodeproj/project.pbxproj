@@ -21,6 +21,7 @@
 		3345DE3FB948FD4F52BFB9CC47D83DD0 /* GTMDebugSelectorValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = AA315942201F73451ED720357100FAC4 /* GTMDebugSelectorValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		338D57F32361B369F0BD9B196EB4B988 /* GTMNSDictionary+URLArguments.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C3F8E8E33C46AA8B5D396F0184B99DC /* GTMNSDictionary+URLArguments.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AEBA279E30075619BA3B91594A0283C /* GTMNSDictionary+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = D18B7766CCF07B3AE3633EC18392AB4F /* GTMNSDictionary+URLArguments.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3B3D9FA61E2BFB9600702DDD /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45555E60CC30AD63953D9E4C73F368F1 /* FirebaseDatabase.framework */; };
 		49B02C33D93CD5BB60845F20F7B5F0A5 /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = B987629CB74DDFBC1F9C33AB5D1D79CD /* GeoFire.m */; };
 		4C2895BE6FD94CC46C5B4139ABA4B9FE /* GeoFire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E0AA8CE5913A851BB95F18C9B9B6FBC /* GeoFire-dummy.m */; };
 		516ABC2F90807B09194C6AD9D6FB46C3 /* GTMDebugThreadValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A482F7F16A2A269D18A2717CC1EF49 /* GTMDebugThreadValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,7 +39,6 @@
 		8852FD9AFC242520924D98BE9C4E2477 /* GTMSessionFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FBA0A833F7547B42C921DE986C433C6 /* GTMSessionFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92717B61DDABE582BF774F6CDCFA90CC /* GFQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BA093B0FC4C1EF7EE36248A0847CBED /* GFQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		95C69447F517DB81437EDE0003486963 /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3626FDA3C93C4C3859CAF5283729EA14 /* GTMSessionFetcherService.m */; };
-		95F14C921DE41F83000F5F3F /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45555E60CC30AD63953D9E4C73F368F1 /* FirebaseDatabase.framework */; };
 		A83EEEDEDD3140EE175D2C85B3689135 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614D7C3A0D16F17014BFC2E04C031AC2 /* Foundation.framework */; };
 		AA9B66CF625E7C0E2AD2706BF0F7E221 /* GFBase32Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = DBB8BE8992AD9AA6AC7F6956E3A97955 /* GFBase32Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AAF6062ED36F72042008ABBFF91A050D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 614D7C3A0D16F17014BFC2E04C031AC2 /* Foundation.framework */; };
@@ -197,7 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95F14C921DE41F83000F5F3F /* FirebaseDatabase.framework in Frameworks */,
+				3B3D9FA61E2BFB9600702DDD /* FirebaseDatabase.framework in Frameworks */,
 				1FA375816005BD73DC57C12C9D40E516 /* CoreLocation.framework in Frameworks */,
 				A83EEEDEDD3140EE175D2C85B3689135 /* Foundation.framework in Frameworks */,
 				735B1005CF6967A0B2224C691D8DAB4F /* GoogleToolboxForMac.framework in Frameworks */,
