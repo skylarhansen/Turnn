@@ -148,8 +148,11 @@ class CreateEventViewController: UITableViewController {
                 }
                 location = Location(address: address, city: city, state: state, zipCode: zip)
                 
-                EventController.createSnapShotOfLocation(location) { (success, image) in
-                    if success && image != nil {
+                EventController.createSnapShotOfLocation(location) { (success, image, clLocation) in
+                    
+                    if !success && (clLocation?.coordinate.latitude == nil || clLocation?.coordinate.longitude == nil) {
+                      self.createAlert("Invalid address", message: "Be sure to enter a valid address")
+                    } else if success && image != nil {
                         ImageController.saveImage(image!, completion: { (imageURL) in
                             guard let imageURL = imageURL else {
                                 print("Wasn't able to get an imageURL... Image may not have saved. Creating event without screenshot of map.")
@@ -180,7 +183,7 @@ class CreateEventViewController: UITableViewController {
                                 }
                             })
                         })
-                    } else {
+                    } else if !success && clLocation?.coordinate.latitude != nil && clLocation?.coordinate.longitude != nil {
                         print("Wasn't able create a snapshot... Creating event without screenshot of map.")
                         EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: price, contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
                             if success {
@@ -243,8 +246,11 @@ class CreateEventViewController: UITableViewController {
                 
                 location = Location(address: address, city: city, state: state, zipCode: zip)
                 
-                EventController.createSnapShotOfLocation(location) { (success, image) in
-                    if success && image != nil {
+                EventController.createSnapShotOfLocation(location) { (success, image, clLocation) in
+                
+                    if !success && (clLocation?.coordinate.latitude == nil || clLocation?.coordinate.longitude == nil) {
+                        self.createAlert("Invalid address", message: "Be sure to enter a valid address")
+                    } else if success && image != nil {
                         ImageController.saveImage(image!, completion: { (imageURL) in
                             guard let imageURL = imageURL else {
                                 print("Wasn't able to get an imageURL... Image may not have saved. Creating event without screenshot of map.")
@@ -275,7 +281,7 @@ class CreateEventViewController: UITableViewController {
                                 }
                             })
                         })
-                    } else {
+                    } else if !success && clLocation?.coordinate.latitude != nil && clLocation?.coordinate.longitude != nil {
                         print("Wasn't able create a snapshot... Creating event without screenshot of map.")
                         EventController.createEvent(title, location: self.location, startTime: startTime, endTime: endTime, categories: categories, eventDescription: self.descriptionCell.descriptionTextView.text ?? "", passwordProtected: false, password: nil, price: "Free", contactInfo: nil, imageURL: nil, host: UserController.shared.currentUser!, moreInfo: self.moreInfoCell.moreInfoTextView.text ?? "", completion: { (success, eventID) in
                             if success {

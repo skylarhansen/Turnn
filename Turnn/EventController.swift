@@ -17,7 +17,7 @@ class EventController {
     static let sharedController = EventController()
     
     static let eventData = FirebaseController.ref.child("Events")
-
+    
     static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: String? = "Free", contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool, eventID: String?) -> Void)
     {
         guard let host = UserController.shared.currentUser else { NSLog("there is no current user logged in"); return }
@@ -43,7 +43,7 @@ class EventController {
     
     ////////////STEVE HERE IS THE DELETE EVENT FUNCTION SIGNATURE///////////////
     
-    // // // // // // // // THANKS EVA YOU RAHRAHROCK!! // // // // // // // // 
+    // // // // // // // // THANKS EVA YOU RAHRAHROCK!! // // // // // // // //
     
     static func getSingleEventIdForLocationIdentifier(id: String, completion: (id: String?) -> Void) {
         var eventIDtoExport: String = ""
@@ -62,27 +62,27 @@ class EventController {
     
     func deleteEvent(event: Event){
         if let locationID = event.locationID {
-        FirebaseController.ref.child("Locations").child(locationID).removeValue()
+            FirebaseController.ref.child("Locations").child(locationID).removeValue()
         }
         if let identifier = event.identifier {
-        FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(identifier).removeValue()
+            FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(identifier).removeValue()
             event.delete()
         }
     }
-
-//      NOT NECESSARY LONG-TERM, IS A WAY TO CONSTANTLY OBSERVE ALL EVENTS, REGARDLESS OF LOCATION.
-//          may be helpful for testing events without having to be crazy particular about radius
-//
-//    static func fetchEvents(completion: (events: [Event]) -> Void){
-//        eventData.observeEventType(.Value, withBlock: { (dataSnapshot) in
-//            guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
-//                completion(events: [])
-//                return
-//            }
-//            let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
-//            completion(events: events)
-//        })
-//    }
+    
+    //      NOT NECESSARY LONG-TERM, IS A WAY TO CONSTANTLY OBSERVE ALL EVENTS, REGARDLESS OF LOCATION.
+    //          may be helpful for testing events without having to be crazy particular about radius
+    //
+    //    static func fetchEvents(completion: (events: [Event]) -> Void){
+    //        eventData.observeEventType(.Value, withBlock: { (dataSnapshot) in
+    //            guard let dataDictionary = dataSnapshot.value as? [String: [String: AnyObject]] else {
+    //                completion(events: [])
+    //                return
+    //            }
+    //            let events = dataDictionary.flatMap { Event(dictionary: $1, identifier: $0) }
+    //            completion(events: events)
+    //        })
+    //    }
     
     static func fetchEventsForUserID(uid: String, completion: (events: [Event]?) -> Void) {
         let users = FirebaseController.ref.child("Users")
@@ -106,14 +106,14 @@ class EventController {
         for eventID in eventIDs {
             dispatch_group_enter(eventFetchGroup)
             eventData.child(eventID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-               //print(snapshot.value!)
+                //print(snapshot.value!)
                 if let eventDictionary = snapshot.value as? [String : AnyObject], let event = Event(dictionary: eventDictionary, identifier: eventID) {
                     events.append(event)
                 }
                 dispatch_group_leave(eventFetchGroup)
             })
         }
-        dispatch_group_notify(eventFetchGroup, dispatch_get_main_queue()) { 
+        dispatch_group_notify(eventFetchGroup, dispatch_get_main_queue()) {
             completion(events: events)
         }
     }
@@ -139,9 +139,10 @@ class EventController {
         }
         return filteredEvents.allObjects as? [Event]
     }
-
-    static func createSnapShotOfLocation(location: Location, completion: (success: Bool, image: UIImage?) -> Void) {
+    
+    static func createSnapShotOfLocation(location: Location, completion: (success: Bool, image: UIImage?, location: CLLocation?) -> Void) {
         let address = String.autoformatAddressForGPSAquistionWith(location.address, city: location.city, state: location.state, zipCode: location.zipCode)
+        
         LocationController.sharedInstance.forwardGeocoding(address) { (location, error) in
             let center = CLLocationCoordinate2DMake(location?.coordinate.latitude ?? 0.0, location?.coordinate.longitude ?? 0.0)
             let region = MKCoordinateRegionMakeWithDistance(center, 1.0.makeMeters(), 1.0.makeMeters())
@@ -149,31 +150,36 @@ class EventController {
             options.region = region
             options.scale = UIScreen.mainScreen().scale
             
-            let snapshotter = MKMapSnapshotter(options: options)
-            snapshotter.startWithCompletionHandler { snapshot, error in
-                guard let snapshot = snapshot else {
-                    print("Snapshot error: \(error)")
-                    completion(success: false, image: nil)
-                    return
+            if location?.coordinate.latitude == nil || location?.coordinate.longitude == nil {
+                completion(success: false, image: nil, location: location)
+            } else {
+                
+                let snapshotter = MKMapSnapshotter(options: options)
+                snapshotter.startWithCompletionHandler { snapshot, error in
+                    guard let snapshot = snapshot else {
+                        print("Snapshot error: \(error)")
+                        completion(success: false, image: nil, location: nil)
+                        return
+                    }
+                    
+                    let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+                    let image = snapshot.image
+                    
+                    UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
+                    image.drawAtPoint(CGPoint.zero)
+                    
+                    let visibleRect = CGRect(origin: CGPoint.zero, size: image.size)
+                    var point = snapshot.pointForCoordinate(location!.coordinate)
+                    if visibleRect.contains(point) {
+                        point.x = point.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
+                        point.y = point.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
+                        pin.image?.drawAtPoint(point)
+                    }
+                    
+                    let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
+                    UIGraphicsEndImageContext()
+                    completion(success: true, image: compositeImage, location: nil)
                 }
-                
-                let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
-                let image = snapshot.image
-                
-                UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
-                image.drawAtPoint(CGPoint.zero)
-                
-                let visibleRect = CGRect(origin: CGPoint.zero, size: image.size)
-                var point = snapshot.pointForCoordinate(location!.coordinate)
-                if visibleRect.contains(point) {
-                    point.x = point.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
-                    point.y = point.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
-                    pin.image?.drawAtPoint(point)
-                }
-                
-                let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                completion(success: true, image: compositeImage)
             }
         }
     }
