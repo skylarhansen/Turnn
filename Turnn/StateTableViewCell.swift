@@ -21,14 +21,14 @@ class StateTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     func setupCell() {
         self.stateTextField.delegate = self
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = textField.text!.characters.count + string.characters.count - range.length
         if textField == stateTextField {
             return newLength <= 15
@@ -36,15 +36,15 @@ class StateTableViewCell: UITableViewCell, UITextFieldDelegate {
         return true
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.4)
             
-            UIView.animateWithDuration(0.5) {
-                self.backgroundColor = .clearColor()
-            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = .clear
+            }) 
         }
     }
 }

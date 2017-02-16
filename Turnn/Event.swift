@@ -11,26 +11,26 @@ import UIKit
 
 class Event: FirebaseType {
     
-    private let titleKey = "title"
-    private let locationKey = "location"
-    private let startTimeKey = "startTime"
-    private let endTimeKey = "endTime"
-    private let categoriesKey = "categories"
-    private let eventDescriptionKey = "eventDescription"
-    private let passwordProtectedKey = "passwordProtected"
-    private let passwordKey = "password"
-    private let priceKey = "price"
-    private let contactInfoKey = "contactInfo"
-    private let imageKey = "image"
-    private let moreInfoKey = "moreInfo"
-    private let hostKey = "host"
-    private let identiferKey = "eventID"
-    private let locationIDKey = "LocationID"
+    fileprivate let titleKey = "title"
+    fileprivate let locationKey = "location"
+    fileprivate let startTimeKey = "startTime"
+    fileprivate let endTimeKey = "endTime"
+    fileprivate let categoriesKey = "categories"
+    fileprivate let eventDescriptionKey = "eventDescription"
+    fileprivate let passwordProtectedKey = "passwordProtected"
+    fileprivate let passwordKey = "password"
+    fileprivate let priceKey = "price"
+    fileprivate let contactInfoKey = "contactInfo"
+    fileprivate let imageKey = "image"
+    fileprivate let moreInfoKey = "moreInfo"
+    fileprivate let hostKey = "host"
+    fileprivate let identiferKey = "eventID"
+    fileprivate let locationIDKey = "LocationID"
     
     var title: String
     var location: Location
-    var startTime: NSDate
-    var endTime: NSDate
+    var startTime: Date
+    var endTime: Date
     var categories: [Int]
     var eventDescription: String?
     var passwordProtected: Bool
@@ -48,36 +48,36 @@ class Event: FirebaseType {
     }
     
     var dictionaryCopy: [String: AnyObject] {
-        var dictionary: [String : AnyObject] = [titleKey : title, startTimeKey : startTime.timeIntervalSince1970, endTimeKey : endTime.timeIntervalSince1970, categoriesKey : categories, hostKey: host.dictionaryCopy, locationKey : location.dictionaryCopy, passwordProtectedKey : passwordProtected]
+        var dictionary: [String : AnyObject] = [titleKey : title as AnyObject, startTimeKey : startTime.timeIntervalSince1970 as AnyObject, endTimeKey : endTime.timeIntervalSince1970 as AnyObject, categoriesKey : categories as AnyObject, hostKey: host.dictionaryCopy as AnyObject, locationKey : location.dictionaryCopy as AnyObject, passwordProtectedKey : passwordProtected as AnyObject]
         
         if let eventDescription = eventDescription {
-            dictionary.updateValue(eventDescription, forKey: eventDescriptionKey)
+            dictionary.updateValue(eventDescription as AnyObject, forKey: eventDescriptionKey)
         }
         
         if passwordProtected == true {
             if let password = password {
-                dictionary.updateValue(password, forKey: passwordKey)
+                dictionary.updateValue(password as AnyObject, forKey: passwordKey)
             }
         }
         
         if let price = price {
-            dictionary.updateValue(price, forKey: priceKey)
+            dictionary.updateValue(price as AnyObject, forKey: priceKey)
         }
         if let contactInfo = contactInfo {
-            dictionary.updateValue(contactInfo, forKey: contactInfoKey)
+            dictionary.updateValue(contactInfo as AnyObject, forKey: contactInfoKey)
         }
         
         if let image = imageURL {
-            dictionary.updateValue(image, forKey: imageKey)
+            dictionary.updateValue(image as AnyObject, forKey: imageKey)
         }
         
         if let moreInfo = moreInfo {
-            dictionary.updateValue(moreInfo, forKey: moreInfoKey)
+            dictionary.updateValue(moreInfo as AnyObject, forKey: moreInfoKey)
         }
         return dictionary
     }
     
-    init(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String?, passwordProtected: Bool, password: String?, price: String?, contactInfo: String?, imageURL: String?, host: User, moreInfo: String?) {
+    init(title: String, location: Location, startTime: Date, endTime: Date, categories: [Int], eventDescription: String?, passwordProtected: Bool, password: String?, price: String?, contactInfo: String?, imageURL: String?, host: User, moreInfo: String?) {
         
         self.title = title
         self.location = location
@@ -99,16 +99,16 @@ class Event: FirebaseType {
     required init?(dictionary: [String : AnyObject], identifier: String) {
         
         guard let title = dictionary[titleKey] as? String,
-            locationDictionary = dictionary[locationKey] as? [String: AnyObject],
-            location = Location(dictionary: locationDictionary),
-            startTime = dictionary[startTimeKey] as? Double,
-            endTime = dictionary[endTimeKey] as? Double,
-            categories = dictionary[categoriesKey] as? [Int],
-            passwordProtected = dictionary[passwordProtectedKey] as? Bool,
-            locationID = dictionary[locationIDKey] as? String,
-            hostDictionary = dictionary[hostKey] as? [String : AnyObject],
+            let locationDictionary = dictionary[locationKey] as? [String: AnyObject],
+            let location = Location(dictionary: locationDictionary),
+            let startTime = dictionary[startTimeKey] as? Double,
+            let endTime = dictionary[endTimeKey] as? Double,
+            let categories = dictionary[categoriesKey] as? [Int],
+            let passwordProtected = dictionary[passwordProtectedKey] as? Bool,
+            let locationID = dictionary[locationIDKey] as? String,
+            let hostDictionary = dictionary[hostKey] as? [String : AnyObject],
             //Change back to id if and when we make that change
-            host = User(dictionary: hostDictionary, identifier: hostDictionary["firstName"] as? String ?? "") else {
+            let host = User(dictionary: hostDictionary, identifier: hostDictionary["firstName"] as? String ?? "") else {
                 print("COULD NOT CONVERT DICTIONARY TO EVENT")
                 return nil
         }
@@ -144,8 +144,8 @@ class Event: FirebaseType {
         
         self.title = title
         self.location = location
-        self.startTime = NSDate(timeIntervalSince1970: startTime)
-        self.endTime = NSDate(timeIntervalSince1970: endTime)
+        self.startTime = Date(timeIntervalSince1970: startTime)
+        self.endTime = Date(timeIntervalSince1970: endTime)
         self.categories = categories
         self.passwordProtected = passwordProtected
         self.host = host

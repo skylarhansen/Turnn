@@ -10,26 +10,26 @@ import UIKit
 
 class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     
-    @IBOutlet weak private var descriptionLabel: UILabel!
+    @IBOutlet weak fileprivate var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         descriptionTextView.delegate = self
         descriptionTextView.text = " Briefly describe your event"
-        descriptionTextView.textColor = UIColor.grayColor()
+        descriptionTextView.textColor = UIColor.gray
         setupCell()
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        if descriptionTextView.textColor == UIColor.grayColor() {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if descriptionTextView.textColor == UIColor.gray {
             descriptionTextView.text = nil
-            descriptionTextView.textColor = UIColor.blackColor()
+            descriptionTextView.textColor = UIColor.black
         }
         textView.layer.borderWidth = 0
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newLength = textView.text!.characters.count + text.characters.count - range.length
         if textView == descriptionTextView {
             return newLength <= 175
@@ -38,19 +38,19 @@ class DescriptionTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func setupCell() {
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
         self.descriptionTextView.layer.cornerRadius = 8
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.4)
             
-            UIView.animateWithDuration(0.5) {
-                self.backgroundColor = .clearColor()
-            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = .clear
+            }) 
         }
     }
 }

@@ -9,57 +9,54 @@
 import Foundation
 import UIKit
 
-extension NSDate: Comparable {
-}
-
-public func == (lhs: NSDate, rhs: NSDate) -> Bool {
+public func == (lhs: Date, rhs: Date) -> Bool {
     return lhs.timeIntervalSinceReferenceDate == rhs.timeIntervalSinceReferenceDate
 }
 
-public func < (lhs: NSDate, rhs: NSDate) -> Bool {
+public func < (lhs: Date, rhs: Date) -> Bool {
     return lhs.timeIntervalSinceReferenceDate < rhs.timeIntervalSinceReferenceDate
 }
 
-public func + (lhs: NSDate, rhs: NSTimeInterval) -> NSDate {
-    return lhs.dateByAddingTimeInterval(rhs)
+public func + (lhs: Date, rhs: TimeInterval) -> Date {
+    return lhs.addingTimeInterval(rhs)
 }
 
-public func - (lhs: NSDate, rhs: NSTimeInterval) -> NSDate {
-    return lhs.dateByAddingTimeInterval(-rhs)
+public func - (lhs: Date, rhs: TimeInterval) -> Date {
+    return lhs.addingTimeInterval(-rhs)
 }
 
-public func - (lhs: NSDate, rhs: NSDate) -> NSTimeInterval {
-    return lhs.timeIntervalSinceDate(rhs)
+public func - (lhs: Date, rhs: Date) -> TimeInterval {
+    return lhs.timeIntervalSince(rhs)
 }
 
-extension NSDate {
+extension Date {
     
     func dateFormat() -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
         
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     func dateLongFormat() -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = .ShortStyle
-        dateFormatter.dateStyle = .MediumStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .medium
         
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     func dateOnly() -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .MediumStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
         
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
-    static func dateFromString(string: String) -> NSDate? {
-        let dateFormatter = NSDateFormatter()
+    static func dateFromString(_ string: String) -> Date? {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        if let date = dateFormatter.dateFromString(string) {
+        if let date = dateFormatter.date(from: string) {
             return date
         } else {
             return nil
@@ -88,7 +85,7 @@ extension UIColor {
 
 extension UIImage {
     
-    func data() -> NSData? {
+    func data() -> Data? {
         let data = UIImageJPEGRepresentation(self, 0.8)
         return data
     }
@@ -147,15 +144,15 @@ extension Event {
 
 extension String {
     
-    static func autoformatAddressForGPSAquisitionWith(event: Event) -> String {
+    static func autoformatAddressForGPSAquisitionWith(_ event: Event) -> String {
         return event.location.address + ", " + event.location.city + ", " + event.location.state + ", " + event.location.zipCode
     }
     
-    static func autoformatAddressForGPSAquistionWith(address: String, city: String, state: String, zipCode: String) -> String {
+    static func autoformatAddressForGPSAquistionWith(_ address: String, city: String, state: String, zipCode: String) -> String {
         return address + ", " + city + ", " + state + ", " + zipCode
     }
     
-    static func printEvents(currentEvents: [Event], oldEvents: [Event], futureEvents: [Event]) {
+    static func printEvents(_ currentEvents: [Event], oldEvents: [Event], futureEvents: [Event]) {
         print("\n|------------------------| \n" + "|    RETRIEVED EVENTS    |")
         print("|                         -----------------------------------------------------------")
         print("|\tCurrent Events: \n|\t\t \(currentEvents)" + "\n|")
@@ -165,15 +162,15 @@ extension String {
     }
 }
 
-extension SequenceType {
+extension Sequence {
     /**
      Returns a tuple with 2 arrays.
      The first array (the slice) contains the elements of self that match the predicate.
      The second array (the remainder) contains the elements of self that do not match the predicate.
      */
-    func divide(@noescape predicate: (Self.Generator.Element) -> Bool) -> (slice: [Self.Generator.Element], remainder: [Self.Generator.Element]) {
-        var slice:     [Self.Generator.Element] = []
-        var remainder: [Self.Generator.Element] = []
+    func divide(_ predicate: (Self.Iterator.Element) -> Bool) -> (slice: [Self.Iterator.Element], remainder: [Self.Iterator.Element]) {
+        var slice:     [Self.Iterator.Element] = []
+        var remainder: [Self.Iterator.Element] = []
         forEach {
             switch predicate($0) {
             case true  : slice.append($0)

@@ -14,9 +14,9 @@ protocol ImagesSetDelegate: class {
 
 class CategoriesTableViewCell: UITableViewCell {
     
-    @IBOutlet weak private var categoriesView: UIView!
-    @IBOutlet private var categoryImageViews: [UIImageView]!
-    @IBOutlet weak private var addCategoriesButton: UIButton!
+    @IBOutlet weak fileprivate var categoriesView: UIView!
+    @IBOutlet fileprivate var categoryImageViews: [UIImageView]!
+    @IBOutlet weak fileprivate var addCategoriesButton: UIButton!
     
     weak var imagesSetDelegate: ImagesSetDelegate?
     
@@ -25,14 +25,14 @@ class CategoriesTableViewCell: UITableViewCell {
         setupCell()
     }
     
-    func loadImageViews(images: [UIImage], completion: (success: Bool) -> Void) {
-        for (index, image) in images.enumerate() {
-            categoryImageViews[index].hidden = false
+    func loadImageViews(_ images: [UIImage], completion: (_ success: Bool) -> Void) {
+        for (index, image) in images.enumerated() {
+            categoryImageViews[index].isHidden = false
             categoryImageViews[index].image = image
         }
     }
     
-    func loadCategoriesForEvent(categories: [Int]) -> [UIImage] {
+    func loadCategoriesForEvent(_ categories: [Int]) -> [UIImage] {
         var imageArray: [UIImage] = []
         for category in categories {
             if let image = Categories(rawValue: category)?.selectedImage {
@@ -42,34 +42,34 @@ class CategoriesTableViewCell: UITableViewCell {
         return imageArray
     }
     
-    func updateWith(categories: [Int]) {
+    func updateWith(_ categories: [Int]) {
         if categories.count > 0 {
-            addCategoriesButton.setTitle("Edit Categories", forState: .Normal)
+            addCategoriesButton.setTitle("Edit Categories", for: UIControlState())
             for imageView in categoryImageViews {
-                imageView.hidden = true
+                imageView.isHidden = true
             }
-            self.categoriesView.hidden = false
+            self.categoriesView.isHidden = false
             loadImageViews(loadCategoriesForEvent(categories)) { _ in
             }
         }
     }
     
     func setupCell() {
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
         self.categoriesView.layer.cornerRadius = 8
-        self.categoriesView.hidden = true
-        self.categoriesView.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
+        self.categoriesView.isHidden = true
+        self.categoriesView.backgroundColor = UIColor.turnnGray().withAlphaComponent(0.8)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.4)
             
-            UIView.animateWithDuration(0.5) {
-                self.backgroundColor = .clearColor()
-            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = .clear
+            }) 
         }
     }
 }

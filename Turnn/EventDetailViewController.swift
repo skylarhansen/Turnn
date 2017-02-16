@@ -16,28 +16,28 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - Outlets
     
-    @IBOutlet weak private var tableView: UITableView!
-    @IBOutlet weak private var backgroundImageView: UIImageView!
-    @IBOutlet weak private var eventTitleLabel: UILabel!
-    @IBOutlet weak private var eventTimeLabel: UILabel!
-    @IBOutlet weak private var eventDateLabel: UILabel!
-    @IBOutlet private var categoryImageViews: [UIImageView]!
-    @IBOutlet weak private var categoryImageHolderView: UIView!
-    @IBOutlet weak private var backButton: UIButton!
-    @IBOutlet weak private var mapButton: UIButton!
-    @IBOutlet weak private var actionButton: UIButton!
+    @IBOutlet weak fileprivate var tableView: UITableView!
+    @IBOutlet weak fileprivate var backgroundImageView: UIImageView!
+    @IBOutlet weak fileprivate var eventTitleLabel: UILabel!
+    @IBOutlet weak fileprivate var eventTimeLabel: UILabel!
+    @IBOutlet weak fileprivate var eventDateLabel: UILabel!
+    @IBOutlet fileprivate var categoryImageViews: [UIImageView]!
+    @IBOutlet weak fileprivate var categoryImageHolderView: UIView!
+    @IBOutlet weak fileprivate var backButton: UIButton!
+    @IBOutlet weak fileprivate var mapButton: UIButton!
+    @IBOutlet weak fileprivate var actionButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         
         visualEffectView.frame = self.view.bounds
         
         backgroundImageView.addSubview(visualEffectView)
         
         mapButton.layer.borderWidth = 3
-        mapButton.layer.borderColor = UIColor.blackColor().CGColor
+        mapButton.layer.borderColor = UIColor.black.cgColor
         mapButton.layer.masksToBounds = false
         mapButton.layer.cornerRadius = mapButton.frame.width/2
         mapButton.clipsToBounds = true
@@ -47,7 +47,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         categoryImageHolderView.backgroundColor = UIColor.turnnGray()
         
         for imageView in categoryImageViews {
-            imageView.hidden = true
+            imageView.isHidden = true
         }
         
         if let event = event {
@@ -55,18 +55,18 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         let string = NSAttributedString(string: "Back to Events", attributes: [NSForegroundColorAttributeName: UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)])
-        backButton.setAttributedTitle(string, forState: .Normal)
-        backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        backButton.setAttributedTitle(string, for: UIControlState())
+        backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
     }
     
-    func loadImageViews(images: [UIImage]) {
-        for (index, image) in images.enumerate() {
-            categoryImageViews[index].hidden = false
+    func loadImageViews(_ images: [UIImage]) {
+        for (index, image) in images.enumerated() {
+            categoryImageViews[index].isHidden = false
             categoryImageViews[index].image = image
         }
     }
     
-    func updateEventDetail(event: Event) {
+    func updateEventDetail(_ event: Event) {
         
         eventTitleLabel.text = event.title
         eventTimeLabel.text = "\(event.startTime.dateFormat()) - \(event.endTime.dateFormat())"
@@ -79,61 +79,69 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         ImageController.imageForUrl(event.imageURL!) { (image) in
-            self.mapButton.setBackgroundImage(image, forState: .Normal)
+            self.mapButton.setBackgroundImage(image, for: UIControlState())
         }
     }
     
     // MARK: - Action Buttons -
     
-    @IBAction func backButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func mapButtonTapped(sender: AnyObject) {
+    @IBAction func mapButtonTapped(_ sender: AnyObject) {
         guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.longitude else {
             return
         }
-        let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
-        UIApplication.sharedApplication().openURL(url)
+        let url = URL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     
-    @IBAction func locationButtonTapped(sender: AnyObject) {
+    @IBAction func locationButtonTapped(_ sender: AnyObject) {
         presentAlertController()
     }
     // MARK: - Alert Controller
     
     func presentAlertController() {
         
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        let mapsAction = UIAlertAction(title: "Maps", style: .Default) { (_) in
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let mapsAction = UIAlertAction(title: "Maps", style: .default) { (_) in
             guard let latitude = self.event?.location.latitude, let longitude = self.event?.location.latitude else {
                 return
             }
             
-            let url = NSURL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
-            UIApplication.sharedApplication().openURL(url)
+            let url = URL(string: "http://maps.apple.com/?daddr=\(latitude),\(longitude)&dirflg=w")!
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         actionSheet.addAction(mapsAction)
         actionSheet.addAction(cancelAction)
         
-        presentViewController(actionSheet, animated: true, completion: nil)
+        present(actionSheet, animated: true, completion: nil)
     }
     
     // MARK: - tableView data source functions
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
             return UITableViewAutomaticDimension
@@ -158,16 +166,16 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
             
         case 0:
-            let hostDetailCell = tableView.dequeueReusableCellWithIdentifier("hostDetailCell", forIndexPath: indexPath) as? HostDetailTableViewCell
+            let hostDetailCell = tableView.dequeueReusableCell(withIdentifier: "hostDetailCell", for: indexPath) as? HostDetailTableViewCell
             hostDetailCell?.hostNameLabel.text = (event?.host.firstName)! + " " + (event?.host.lastName)!
             return hostDetailCell ?? UITableViewCell()
             
         case 1:
-            let locationDetailCell =  tableView.dequeueReusableCellWithIdentifier("locationDetailCell", forIndexPath: indexPath) as? LocationDetailTableViewCell
+            let locationDetailCell =  tableView.dequeueReusableCell(withIdentifier: "locationDetailCell", for: indexPath) as? LocationDetailTableViewCell
             locationDetailCell?.updateLocationWithEvent(event!)
             //            locationDetailCell?.streetNumberLabel.text = event?.location.address
             //            locationDetailCell?.cityStateLabel.text = "\(event!.location.city), \(event!.location.state)"
@@ -175,7 +183,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
             return locationDetailCell ?? UITableViewCell()
             
         case 2:
-            let priceDetailCell = tableView.dequeueReusableCellWithIdentifier("priceDetailCell", forIndexPath: indexPath) as? PriceDetailTableViewCell
+            let priceDetailCell = tableView.dequeueReusableCell(withIdentifier: "priceDetailCell", for: indexPath) as? PriceDetailTableViewCell
             if let price = event?.price {
                 priceDetailCell?.priceNumberLabel.text = "\(price)"
             } else {
@@ -186,10 +194,10 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case 3:
             if event != nil && event?.eventDescription == "" {
             let blankCell = UITableViewCell()
-            blankCell.hidden = true
+            blankCell.isHidden = true
             return blankCell
             } else {
-            let descriptionDetailCell = tableView.dequeueReusableCellWithIdentifier("descriptionDetailCell", forIndexPath: indexPath) as? DescriptionDetailTableViewCell
+            let descriptionDetailCell = tableView.dequeueReusableCell(withIdentifier: "descriptionDetailCell", for: indexPath) as? DescriptionDetailTableViewCell
             descriptionDetailCell?.detailedDescriptionLabel.text = event?.eventDescription
                 return descriptionDetailCell ?? UITableViewCell()
             }
@@ -197,10 +205,10 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         case 4:
             if event != nil && event?.moreInfo == "" {
                 let blankCell = UITableViewCell()
-                blankCell.hidden = true
+                blankCell.isHidden = true
                 return blankCell
             } else {
-            let moreInfoDetailCell =  tableView.dequeueReusableCellWithIdentifier("moreInfoDetailCell", forIndexPath: indexPath) as? MoreInfoDetailTableViewCell
+            let moreInfoDetailCell =  tableView.dequeueReusableCell(withIdentifier: "moreInfoDetailCell", for: indexPath) as? MoreInfoDetailTableViewCell
             moreInfoDetailCell?.moreInfoDetailLabel.text = event?.moreInfo
                 return moreInfoDetailCell ?? UITableViewCell()
             }
@@ -216,27 +224,27 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     // print odd text in email report when we use the REAL DATA
     
     
-    @IBAction func actionButtonTapped(sender: AnyObject) {
+    @IBAction func actionButtonTapped(_ sender: AnyObject) {
         reportEvent()
     }
     
     
     func showSendMailErrorAlert(){
         let sendMailErrorAlert =
-            UIAlertController(title: "Couldn't Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .Alert)
-        let dismissAction = UIAlertAction(title: "Dismiss", style: .Cancel){ (action) in print(action)}
+            UIAlertController(title: "Couldn't Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Dismiss", style: .cancel){ (action) in print(action)}
         sendMailErrorAlert.addAction(dismissAction)
-        self.presentViewController(sendMailErrorAlert, animated: true, completion: nil)
+        self.present(sendMailErrorAlert, animated: true, completion: nil)
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func reportEvent(){
         if event != nil {
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-            alert.addAction(UIAlertAction(title: "Report event as inappropriate", style: .Destructive) { action in
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Report event as inappropriate", style: .destructive) { action in
                 
                 if MFMailComposeViewController.canSendMail() {
                     let composeVC = MFMailComposeViewController()
@@ -245,15 +253,15 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
                     composeVC.setSubject("Inappropriate Event Report")
                     composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid:\(self.event!.identifier!) \nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
                     
-                    self.presentViewController(composeVC, animated: true, completion: nil)
+                    self.present(composeVC, animated: true, completion: nil)
                 } else {
                     self.showSendMailErrorAlert()
                 }
                 
                 })
-            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { action in
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
                 })
-            presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
         }
     }
 }

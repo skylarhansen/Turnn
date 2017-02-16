@@ -10,7 +10,7 @@ import UIKit
 
 class LocationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak private var locationLabel: UILabel!
+    @IBOutlet weak fileprivate var locationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,18 +18,18 @@ class LocationTableViewCell: UITableViewCell {
     }
     
     func setupCell() {
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.4)
             
-            UIView.animateWithDuration(0.5) {
-                self.backgroundColor = .clearColor()
-            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = .clear
+            }) 
         }
     }
 }

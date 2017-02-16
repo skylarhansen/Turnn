@@ -21,22 +21,22 @@ class LoadingScreenViewController: UIViewController {
         FIRApp.configure()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         UserController.isLoggedInServerTest { (success, error) in
             if success == true {
                 self.isUserLoggedInOnServer = true
                 UserController.restoreUserIdToDevice()
-                self.performSegueWithIdentifier("loadingScreenToEventFinderSegue", sender: nil)
+                self.performSegue(withIdentifier: "loadingScreenToEventFinderSegue", sender: nil)
                     self.activityIndicator.removeFromSuperview()
             } else {
                 self.isUserLoggedInOnServer = false
                 if UserController.shared.currentUser == nil || self.isUserLoggedInOnServer == false {
-                self.performSegueWithIdentifier("loadingScreenToSignUpSignInSegue", sender: nil)
+                self.performSegue(withIdentifier: "loadingScreenToSignUpSignInSegue", sender: nil)
                     self.activityIndicator.removeFromSuperview()
                 }
             }
         }
-        NSRunLoop.currentRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 3))
+        RunLoop.current.run(until: Date(timeIntervalSinceNow: 3))
     }
   
     override func didReceiveMemoryWarning() {

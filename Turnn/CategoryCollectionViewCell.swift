@@ -10,8 +10,8 @@ import UIKit
 
 class CategoryCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak private var categoryImageView: UIImageView!
-    @IBOutlet weak private var categoryLabel: UILabel!
+    @IBOutlet weak fileprivate var categoryImageView: UIImageView!
+    @IBOutlet weak fileprivate var categoryLabel: UILabel!
     
     var name: String = ""
     
@@ -20,7 +20,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         categoryImageView.layer.masksToBounds = true
     }
     
-    func updateWith(image: UIImage, name: String) {
+    func updateWith(_ image: UIImage, name: String) {
         
         categoryImageView.image = image
         categoryLabel.text = name

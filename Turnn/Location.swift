@@ -11,12 +11,12 @@ import MapKit
 
 class Location {
     
-    private let addressKey = "address"
-    private let cityKey = "city"
-    private let stateKey = "state"
-    private let zipKey = "zip"
-    private let latitudeKey = "latitude"
-    private let longitudeKey = "longitude"
+    fileprivate let addressKey = "address"
+    fileprivate let cityKey = "city"
+    fileprivate let stateKey = "state"
+    fileprivate let zipKey = "zip"
+    fileprivate let latitudeKey = "latitude"
+    fileprivate let longitudeKey = "longitude"
     
     var address: String
     var city: String
@@ -30,14 +30,14 @@ class Location {
     }
     
     var dictionaryCopy: [String: AnyObject] {
-        var dictionary: [String : AnyObject] = [addressKey: address, cityKey: city, stateKey: state, zipKey: zipCode]
+        var dictionary: [String : AnyObject] = [addressKey: address as AnyObject, cityKey: city as AnyObject, stateKey: state as AnyObject, zipKey: zipCode as AnyObject]
         
         if let latitude = self.latitude {
-            dictionary.updateValue(latitude, forKey: latitudeKey)
+            dictionary.updateValue(latitude as AnyObject, forKey: latitudeKey)
         }
         
         if let longitude = self.longitude {
-            dictionary.updateValue(longitude, forKey: longitudeKey)
+            dictionary.updateValue(longitude as AnyObject, forKey: longitudeKey)
         }
         
         return dictionary
@@ -57,11 +57,11 @@ class Location {
     init?(dictionary: [String:AnyObject]) {
         
         guard let address = dictionary[addressKey] as? String,
-        city = dictionary[cityKey] as? String,
-        state = dictionary[stateKey] as? String,
-        zipCode = dictionary[zipKey] as? String,
-        latitude = dictionary[latitudeKey] as? Double,
-        longitude = dictionary[longitudeKey] as? Double
+        let city = dictionary[cityKey] as? String,
+        let state = dictionary[stateKey] as? String,
+        let zipCode = dictionary[zipKey] as? String,
+        let latitude = dictionary[latitudeKey] as? Double,
+        let longitude = dictionary[longitudeKey] as? Double
             
             else { return nil }
         

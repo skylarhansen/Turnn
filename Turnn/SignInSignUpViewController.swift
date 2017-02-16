@@ -12,34 +12,34 @@ import FirebaseAuth
 
 class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet private var conditionalLabels: [UILabel]! {
+    @IBOutlet fileprivate var conditionalLabels: [UILabel]! {
         didSet {
             conditionalLabels.forEach {
-                $0.hidden = true
+                $0.isHidden = true
             }
         }
     }
-    @IBOutlet private var conditionalFields: [UITextField]! {
+    @IBOutlet fileprivate var conditionalFields: [UITextField]! {
         didSet {
             conditionalFields.forEach {
-                $0.hidden = true
+                $0.isHidden = true
             }
         }
     }
     
-    @IBOutlet weak private var forgetPasswordButtonOutlet: UIButton!
+    @IBOutlet weak fileprivate var forgetPasswordButtonOutlet: UIButton!
     
-    @IBOutlet weak private var haveAccountLabel: UILabel!
-    @IBOutlet weak private var signUpOrInButtonOutlet: UIButton!
+    @IBOutlet weak fileprivate var haveAccountLabel: UILabel!
+    @IBOutlet weak fileprivate var signUpOrInButtonOutlet: UIButton!
     
-    @IBOutlet weak private var emailField: UITextField!
-    @IBOutlet weak private var passwordField: UITextField!
-    @IBOutlet weak private var firstNameField: UITextField!
-    @IBOutlet weak private var lastNameField: UITextField!
+    @IBOutlet weak fileprivate var emailField: UITextField!
+    @IBOutlet weak fileprivate var passwordField: UITextField!
+    @IBOutlet weak fileprivate var firstNameField: UITextField!
+    @IBOutlet weak fileprivate var lastNameField: UITextField!
     
-    @IBOutlet weak private var centerYConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var centerYConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak private var loginOrSignUpButtonOutlet: UIButton!
+    @IBOutlet weak fileprivate var loginOrSignUpButtonOutlet: UIButton!
     
     var isSignInPage = true
     
@@ -56,13 +56,13 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        forgetPasswordButtonOutlet.hidden = false
-        forgetPasswordButtonOutlet.enabled = true
+        forgetPasswordButtonOutlet.isHidden = false
+        forgetPasswordButtonOutlet.isEnabled = true
         setDelegatesForTextFields()
         setupViewUI()
         haveAccountLabel.text = "Don't have an account?"
-        loginOrSignUpButtonOutlet.setTitle("Login", forState: .Normal)
-        signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
+        loginOrSignUpButtonOutlet.setTitle("Login", for: UIControlState())
+        signUpOrInButtonOutlet.setTitle("Sign Up", for: UIControlState())
         
         // DUMMY EVENT CREATOR BELOW:
         
@@ -82,7 +82,7 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         //        }
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newLength = textField.text!.characters.count + string.characters.count - range.length
         if textField == emailField {
             return newLength <= 35
@@ -96,160 +96,160 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
 
-    func textFieldDidBeginEditing(textField: UITextField) {
-        UIView.animateWithDuration(0.5) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.centerYConstraint.constant = -65
             self.view.layoutIfNeeded()
-        }
+        }) 
     }
     
-    @IBAction func tappedOutsideTextFields(sender: AnyObject) {
+    @IBAction func tappedOutsideTextFields(_ sender: AnyObject) {
         
         self.view.endEditing(true)
         
-        UIView.animateWithDuration(0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.centerYConstraint.constant = 0
             self.view.layoutIfNeeded()
-        }
+        }) 
     }
     
     func setupViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.184, green: 0.184, blue: 0.184, alpha: 1.00)
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     
     func updateLoginView() {
         if isSignInPage == true  {
-            UIView.animateWithDuration(0.25){
+            UIView.animate(withDuration: 0.25, animations: {
                 self.conditionalLabels.forEach {
-                    $0.hidden = false
+                    $0.isHidden = false
                 }
                 self.conditionalFields.forEach {
-                    $0.hidden = false
+                    $0.isHidden = false
                 }
                 self.haveAccountLabel.text = "Already have an account?"
-            }
-            forgetPasswordButtonOutlet.hidden = true
-            forgetPasswordButtonOutlet.enabled = false
-            loginOrSignUpButtonOutlet.setTitle("Create Account", forState: .Normal)
-            signUpOrInButtonOutlet.setTitle("Sign In", forState: .Normal)
+            })
+            forgetPasswordButtonOutlet.isHidden = true
+            forgetPasswordButtonOutlet.isEnabled = false
+            loginOrSignUpButtonOutlet.setTitle("Create Account", for: UIControlState())
+            signUpOrInButtonOutlet.setTitle("Sign In", for: UIControlState())
             isSignInPage = false
         } else {
-            UIView.animateWithDuration(0.25){
+            UIView.animate(withDuration: 0.25, animations: {
                 self.conditionalLabels.forEach {
-                    $0.hidden = true
+                    $0.isHidden = true
                 }
                 self.conditionalFields.forEach {
-                    $0.hidden = true
+                    $0.isHidden = true
                 }
                 self.haveAccountLabel.text = "Don't have an account?"
-            }
-            forgetPasswordButtonOutlet.hidden = false
-            forgetPasswordButtonOutlet.enabled = true
-            loginOrSignUpButtonOutlet.setTitle("Login", forState: .Normal)
-            signUpOrInButtonOutlet.setTitle("Sign Up", forState: .Normal)
+            })
+            forgetPasswordButtonOutlet.isHidden = false
+            forgetPasswordButtonOutlet.isEnabled = true
+            loginOrSignUpButtonOutlet.setTitle("Login", for: UIControlState())
+            signUpOrInButtonOutlet.setTitle("Sign Up", for: UIControlState())
             isSignInPage = true
         }
     }
     
     func signUp() {
-         if let firstName = firstNameField.text where firstNameField.text != "",
-            let email = emailField.text where emailField.text != "",
-            let password = passwordField.text where passwordField.text != "" {
+         if let firstName = firstNameField.text, firstNameField.text != "",
+            let email = emailField.text, emailField.text != "",
+            let password = passwordField.text, passwordField.text != "" {
             UserController.createUser(firstName, lastName: lastNameField.text ?? "", paid: false, email: email, password: password, completion: { (user, error) in
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
-                    self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+                    self.performSegue(withIdentifier: "fromLoginToEventFinderSegue", sender: self)
                     self.emailField.text = ""
                     self.passwordField.text = ""
                     self.firstNameField.text = ""
                     self.lastNameField.text = ""
                     self.updateLoginView()
-                    self.loginOrSignUpButtonOutlet.enabled = true
+                    self.loginOrSignUpButtonOutlet.isEnabled = true
                 } else {
                     if error != nil {
                         if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
                             switch errCode {
-                            case .ErrorCodeTooManyRequests:
+                            case .errorCodeTooManyRequests:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Too many recent account creation attempts from your device. Please wait a little while and try again.")
-                            case .ErrorCodeInvalidEmail:
+                            case .errorCodeInvalidEmail:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Invalid email address, please correct the address you entered and again.")
-                            case .ErrorCodeWeakPassword:
+                            case .errorCodeWeakPassword:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Password is too short and/or weak. Please make your password at least eight characters,\nand include at least one upper-case letter, one lower-case letter, and one number")
-                            case .ErrorCodeEmailAlreadyInUse:
+                            case .errorCodeEmailAlreadyInUse:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "An account already exists for this email address. Please choose 'sign in' at the bottom of the page to login to your account.")
-                            case .ErrorCodeInternalError:
+                            case .errorCodeInternalError:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Internal error. Please try again.")
-                            case .ErrorCodeNetworkError:
+                            case .errorCodeNetworkError:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Not able to connect to the network. Please test your connection and try again.")
                             default:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Account creation failed due to an unexpected error. 💩")
                             }
                         }
-                        self.loginOrSignUpButtonOutlet.enabled = true
+                        self.loginOrSignUpButtonOutlet.isEnabled = true
                     }
                 }
             })
          } else {
-            self.loginOrSignUpButtonOutlet.enabled = true
+            self.loginOrSignUpButtonOutlet.isEnabled = true
         }
     }
     
     func login() {
-         if let email = emailField.text where emailField.text != "",
-            let password = passwordField.text where passwordField.text != "" {
+         if let email = emailField.text, emailField.text != "",
+            let password = passwordField.text, passwordField.text != "" {
             UserController.authUser(email, password: password, completion: { (user, error) in
                 UserController.shared.currentUser = user
                 if UserController.shared.currentUser != nil {
-                    self.performSegueWithIdentifier("fromLoginToEventFinderSegue", sender: self)
+                    self.performSegue(withIdentifier: "fromLoginToEventFinderSegue", sender: self)
                     self.emailField.text = ""
                     self.passwordField.text = ""
                     self.firstNameField.text = ""
                     self.lastNameField.text = ""
-                    self.loginOrSignUpButtonOutlet.enabled = true
+                    self.loginOrSignUpButtonOutlet.isEnabled = true
                 } else {
                     if error != nil {
                         if let errCode = FIRAuthErrorCode(rawValue: error!.code) {
                             switch errCode {
-                            case .ErrorCodeTooManyRequests:
+                            case .errorCodeTooManyRequests:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Too many recent login attempts from your device. Please wait a little while and try again.")
-                            case .ErrorCodeInvalidEmail:
+                            case .errorCodeInvalidEmail:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Invalid email address, please try again.")
-                            case .ErrorCodeWrongPassword:
+                            case .errorCodeWrongPassword:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Invalid password, please try again. If you forgot your password, please use the 'forgot password' button below.")
-                            case .ErrorCodeUserDisabled:
+                            case .errorCodeUserDisabled:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Your account has been disabled, likely for the creation of inappropriate events.")
-                            case .ErrorCodeInternalError:
+                            case .errorCodeInternalError:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Internal error. Please try again.")
-                            case .ErrorCodeNetworkError:
+                            case .errorCodeNetworkError:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Not able to connect to the network. Please test your connection and try again.")
-                            case .ErrorCodeUserNotFound:
+                            case .errorCodeUserNotFound:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "User not found! The account may not exist yet. Choose 'sign up' at the bottom of the page to create an account.")
                             default:
                                 self.createAlert("Error: \(errCode.rawValue)", message: "Login failed due to an unexpected error. 💩")
                             }
                         }
-                       self.loginOrSignUpButtonOutlet.enabled = true
+                       self.loginOrSignUpButtonOutlet.isEnabled = true
                     }
                 }
             })
          } else {
-            self.loginOrSignUpButtonOutlet.enabled = true
+            self.loginOrSignUpButtonOutlet.isEnabled = true
         }
     }
     
-    @IBAction func toggleSignUpOrInButtonTapped(sender: AnyObject) {
+    @IBAction func toggleSignUpOrInButtonTapped(_ sender: AnyObject) {
         updateLoginView()
     }
     
-    @IBAction func loginButtonTapped(sender: AnyObject) {
-            self.loginOrSignUpButtonOutlet.enabled = false
+    @IBAction func loginButtonTapped(_ sender: AnyObject) {
+            self.loginOrSignUpButtonOutlet.isEnabled = false
         if isSignInPage == false {
             signUp()
         } else {
@@ -257,14 +257,14 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func forgetPasswordButtonTapped(sender: AnyObject) {
-        let prompt = UIAlertController.init(title: "Reset Password", message: "Please enter the email address associated with your Turnn account:", preferredStyle: UIAlertControllerStyle.Alert)
-        let okAction = UIAlertAction.init(title: "Submit", style: UIAlertActionStyle.Default) { (action) in
+    @IBAction func forgetPasswordButtonTapped(_ sender: AnyObject) {
+        let prompt = UIAlertController.init(title: "Reset Password", message: "Please enter the email address associated with your Turnn account:", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction.init(title: "Submit", style: UIAlertActionStyle.default) { (action) in
             let userInput = prompt.textFields![0].text
             if (userInput!.isEmpty) {
                 return
             }
-            FIRAuth.auth()?.sendPasswordResetWithEmail(userInput!) { (error) in
+            FIRAuth.auth()?.sendPasswordReset(withEmail: userInput!) { (error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
@@ -272,17 +272,17 @@ class SignInSignUpViewController: UIViewController, UITextFieldDelegate {
             }
             self.createAlert("Request Sent", message: "If address is associated with a Turnn account, you should receive a password reset email within a few minutes.")
         }
-        prompt.addTextFieldWithConfigurationHandler(nil)
+        prompt.addTextField(configurationHandler: nil)
         prompt.addAction(okAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         prompt.addAction(cancelAction)
-        presentViewController(prompt, animated: true, completion: nil)
+        present(prompt, animated: true, completion: nil)
     }
     
-    func createAlert(title: String, message: String = "") {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+    func createAlert(_ title: String, message: String = "") {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alert.addAction(okayAction)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -21,18 +21,18 @@ class LegalAndPrivacyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     func setupViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
-    @IBAction func doneButtonTapped(sender: AnyObject)
+    @IBAction func doneButtonTapped(_ sender: AnyObject)
         {
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
 
     

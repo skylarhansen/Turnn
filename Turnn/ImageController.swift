@@ -13,32 +13,32 @@ class ImageController {
     
     static var event: Event?
     
-    static func saveImage(image: UIImage, completion: (imageURL: String?) -> Void){
+    static func saveImage(_ image: UIImage, completion: @escaping (_ imageURL: String?) -> Void){
         
         if let uploadData = UIImagePNGRepresentation(image) {
-            let imageName = NSUUID().UUIDString
-            FirebaseController.storage.child("Event Location Screenshots").child(imageName).putData(uploadData, metadata: nil, completion: { (metadata, error) in
+            let imageName = UUID().uuidString
+            FirebaseController.storage.child("Event Location Screenshots").child(imageName).put(uploadData, metadata: nil, completion: { (metadata, error) in
                 if let error = error {
                     print(error.localizedDescription)
-                    completion(imageURL: nil)
+                    completion(nil)
                 } else {
-                    completion(imageURL: metadata?.downloadURL()?.absoluteString)
+                    completion(metadata?.downloadURL()?.absoluteString)
                 }
             })
         }
     }
     
-    static func imageForUrl(urlString: String, completion: (image: UIImage?) -> Void) {
-        guard let url = NSURL(string: urlString) else {
+    static func imageForUrl(_ urlString: String, completion: @escaping (_ image: UIImage?) -> Void) {
+        guard let url = URL(string: urlString) else {
             fatalError("Image URL optional is nil")
         }
         NetworkController.performRequestForURL(url, httpMethod: .Get) { (data, error) in
             guard let data = data else {
-                completion(image: nil)
+                completion(nil)
                 return
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                completion(image: UIImage(data: data))
+            DispatchQueue.main.async(execute: {
+                completion(UIImage(data: data))
             })
         }
     }

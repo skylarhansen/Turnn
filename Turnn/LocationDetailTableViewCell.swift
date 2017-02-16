@@ -17,18 +17,18 @@ class LocationDetailTableViewCell: UITableViewCell {
     }
 
     
-    @IBOutlet weak private var addressLabel: TurnnCopyableLabel!
-    @IBOutlet weak private var streetNumberLabel: UILabel!
-    @IBOutlet weak private var cityStateLabel: UILabel!
-    @IBOutlet weak private var zipcodeLabel: UILabel!
+    @IBOutlet weak fileprivate var addressLabel: TurnnCopyableLabel!
+    @IBOutlet weak fileprivate var streetNumberLabel: UILabel!
+    @IBOutlet weak fileprivate var cityStateLabel: UILabel!
+    @IBOutlet weak fileprivate var zipcodeLabel: UILabel!
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func updateLocationWithEvent(event: Event) {
+    func updateLocationWithEvent(_ event: Event) {
         addressLabel.text = "\(event.location.address)\n\(event.location.city), \(event.location.state)\n\(event.location.zipCode)"
         //        streetNumberLabel.text = event.location.address
         //        cityStateLabel.text = "\(event.location.city), \(event.location.state)"

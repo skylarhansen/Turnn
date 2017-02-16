@@ -34,7 +34,7 @@ class TurnnButton: UIButton {
     }
     
     func setupView() {
-        self.layer.borderColor = UIColor.turnnWhite().CGColor
+        self.layer.borderColor = UIColor.turnnWhite().cgColor
         self.layer.borderWidth = borderWidth
         self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = true

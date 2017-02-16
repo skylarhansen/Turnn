@@ -15,9 +15,9 @@ class HostTableViewCell: UITableViewCell {
     }
     
     
-    @IBOutlet weak private var hostNameLabel: UILabel!
+    @IBOutlet weak fileprivate var hostNameLabel: UILabel!
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 }

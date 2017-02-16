@@ -7,6 +7,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 private let reuseIdentifier = "categoryCell"
 
@@ -22,7 +46,7 @@ class CategoryCollectionViewController: UICollectionViewController {
     
     var mode: ButtonMode = .Save
     
-    @IBOutlet weak private var doneButton: UIBarButtonItem!
+    @IBOutlet weak fileprivate var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         
@@ -35,25 +59,25 @@ class CategoryCollectionViewController: UICollectionViewController {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToCreateEvent" {
-            if let createEventVC = segue.destinationViewController as? CreateEventViewController {
+            if let createEventVC = segue.destination as? CreateEventViewController {
                 createEventVC.categories = self.categories
             }
         }
     }
     
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
+    @IBAction func cancelButtonTapped(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func doneButtonTapped(sender: AnyObject) {
+    @IBAction func doneButtonTapped(_ sender: AnyObject) {
         
         if mode == .Search {
-            self.performSegueWithIdentifier("unwindToEventFinder", sender: self)
+            self.performSegue(withIdentifier: "unwindToEventFinder", sender: self)
         } else if mode == .Save {
-            self.performSegueWithIdentifier("unwindToCreateEvent", sender: self)
+            self.performSegue(withIdentifier: "unwindToCreateEvent", sender: self)
             
         }
     }
@@ -65,22 +89,22 @@ class CategoryCollectionViewController: UICollectionViewController {
     func setUpNavigationUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.278, green: 0.310, blue: 0.310, alpha: 1.00)
         self.navigationController?.navigationBar.tintColor = UIColor(red: 0.000, green: 0.663, blue: 0.800, alpha: 1.00)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
     }
     
     // MARK: UICollectionViewDataSource
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return Categories.count
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
         guard let category = Categories(rawValue: indexPath.item),
-            image = category.grayCircleImage,
-            name = category.name else { return CategoryCollectionViewCell() }
+            let image = category.grayCircleImage,
+            let name = category.name else { return CategoryCollectionViewCell() }
         
         cell.updateWith(image, name: name)
         
@@ -90,43 +114,43 @@ class CategoryCollectionViewController: UICollectionViewController {
     
     // MARK: UICollectionViewDelegate
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard collectionView.indexPathsForSelectedItems()?.count <= 5 else {
-            collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+        guard collectionView.indexPathsForSelectedItems?.count <= 5 else {
+            collectionView.deselectItem(at: indexPath, animated: false)
             return
         }
         
-        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
             
             guard let category = Categories(rawValue: indexPath.item),
-                selectedImage = category.selectedCircleImage,
-                name = category.name else { return }
+                let selectedImage = category.selectedCircleImage,
+                let name = category.name else { return }
             
             cell.updateWith(selectedImage, name: name)
             categories.append(category.rawValue)
         }
         
-        if let count = collectionView.indexPathsForSelectedItems()?.count {
+        if let count = collectionView.indexPathsForSelectedItems?.count {
             
             self.title = "\(count)/5 Selected"
         }
     }
     
-    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
-        if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? CategoryCollectionViewCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell {
             
             guard let category = Categories(rawValue: indexPath.item),
-                image = category.grayCircleImage,
-                name = category.name,
-                index = categories.indexOf(category.rawValue) else { return }
+                let image = category.grayCircleImage,
+                let name = category.name,
+                let index = categories.index(of: category.rawValue) else { return }
             
             cell.updateWith(image, name: name)
-            categories.removeAtIndex(index)
+            categories.remove(at: index)
         }
         
-        if let count = collectionView.indexPathsForSelectedItems()?.count {
+        if let count = collectionView.indexPathsForSelectedItems?.count {
             
             self.title = "\(count)/5 Selected"
         }
@@ -135,18 +159,18 @@ class CategoryCollectionViewController: UICollectionViewController {
 
 extension CategoryCollectionViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return 15
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSizeMake(86, 107)
+        return CGSize(width: 86, height: 107)
     }
 }

@@ -10,11 +10,11 @@ import Foundation
 
 class User: FirebaseType {
     
-    private let firstNameKey = "firstName"
-    private let lastNameKey = "lastName"
-    private let identifierKey = "id"
-    private let paidKey = "paid"
-    private let eventsKey = "events"
+    fileprivate let firstNameKey = "firstName"
+    fileprivate let lastNameKey = "lastName"
+    fileprivate let identifierKey = "id"
+    fileprivate let paidKey = "paid"
+    fileprivate let eventsKey = "events"
     
     var firstName: String
     var lastName: String?
@@ -30,14 +30,14 @@ class User: FirebaseType {
     
     var dictionaryCopy: [String:AnyObject] {
         
-        var dictionary: [String: AnyObject] = [firstNameKey: firstName, paidKey: paid]
+        var dictionary: [String: AnyObject] = [firstNameKey: firstName as AnyObject, paidKey: paid as AnyObject]
         
         if let lastName = lastName {
-            dictionary.updateValue(lastName, forKey: lastNameKey)
+            dictionary.updateValue(lastName as AnyObject, forKey: lastNameKey)
         }
         
         if let events = eventIds {
-            dictionary.updateValue(events, forKey: eventsKey)
+            dictionary.updateValue(events as AnyObject, forKey: eventsKey)
         }
         return dictionary
     }
@@ -55,8 +55,8 @@ class User: FirebaseType {
     required init?(dictionary: [String:AnyObject], identifier: String) {
         
         guard let firstName = dictionary[firstNameKey] as? String,
-            lastName = dictionary[lastNameKey] as? String,
-            paid = dictionary[paidKey] as? Bool else { return nil }
+            let lastName = dictionary[lastNameKey] as? String,
+            let paid = dictionary[paidKey] as? Bool else { return nil }
         
         if let eventIds = dictionary[eventsKey] as? [String] {
             self.eventIds = eventIds

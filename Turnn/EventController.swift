@@ -18,7 +18,7 @@ class EventController {
     
     static let eventData = FirebaseController.ref.child("Events")
     
-    static func createEvent(title: String, location: Location, startTime: NSDate, endTime: NSDate, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: String? = "Free", contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: (success: Bool, eventID: String?) -> Void)
+    static func createEvent(_ title: String, location: Location, startTime: Date, endTime: Date, categories: [Int], eventDescription: String? = "", passwordProtected: Bool = false, password: String? = "", price: String? = "Free", contactInfo: String? = "", imageURL: String?, host: User, moreInfo: String?, completion: @escaping (_ success: Bool, _ eventID: String?) -> Void)
     {
         guard let host = UserController.shared.currentUser else { NSLog("there is no current user logged in"); return }
         
@@ -28,14 +28,14 @@ class EventController {
         
         if let eventID = event.identifier {
             LocationController.sharedInstance.forwardGeocoding(event) { (location, error) in
-                print(error)
+                print("\(error?.description)")
                 if let GPS = location {
                     GeoFireController.setLocation(eventID, location: GPS) { (success, savedLocation) in
                         savedLocation?.updateChildValues(["EventID" : eventID])
-                        completion(success: true, eventID: eventID)
+                        completion(true, eventID)
                     }
                 } else {
-                    completion(success: false, eventID: eventID)
+                    completion(false, eventID)
                 }
             }
         }
@@ -45,22 +45,22 @@ class EventController {
     
     // // // // // // // // THANKS EVA YOU RAHRAHROCK!! // // // // // // // //
     
-    static func getSingleEventIdForLocationIdentifier(id: String, completion: (id: String?) -> Void) {
+    static func getSingleEventIdForLocationIdentifier(_ id: String, completion: @escaping (_ id: String?) -> Void) {
         var eventIDtoExport: String = ""
-        let singleEventIDFetch = dispatch_group_create()
-        dispatch_group_enter(singleEventIDFetch)
-        FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
+        let singleEventIDFetch = DispatchGroup()
+        singleEventIDFetch.enter()
+        FirebaseController.ref.child("Locations").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let locationDictionary = snapshot.value as? [String : AnyObject], let eventID = locationDictionary["EventID"] as? String {
                 eventIDtoExport = eventID
             }
-            dispatch_group_leave(singleEventIDFetch)
+            singleEventIDFetch.leave()
         })
-        dispatch_group_notify(singleEventIDFetch, dispatch_get_main_queue()) {
-            completion(id: eventIDtoExport)
+        singleEventIDFetch.notify(queue: DispatchQueue.main) {
+            completion(eventIDtoExport)
         }
     }
     
-    func deleteEvent(event: Event){
+    func deleteEvent(_ event: Event){
         if let locationID = event.locationID {
             FirebaseController.ref.child("Locations").child(locationID).removeValue()
         }
@@ -84,41 +84,41 @@ class EventController {
     //        })
     //    }
     
-    static func fetchEventsForUserID(uid: String, completion: (events: [Event]?) -> Void) {
+    static func fetchEventsForUserID(_ uid: String, completion: @escaping (_ events: [Event]?) -> Void) {
         let users = FirebaseController.ref.child("Users")
-        users.child(UserController.shared.currentUserId).child("events").observeEventType(.Value, withBlock: { (snapshot) in
+        users.child(UserController.shared.currentUserId).child("events").observe(.value, with: { (snapshot) in
             if let eventDictionary = snapshot.value as? [String : AnyObject] {
                 let eventIDs = eventDictionary.flatMap({ ($0.0) })
                 fetchEventsThatMatchQuery(eventIDs, completion: { (events) in
-                    completion(events: events)
+                    completion(events)
                 })
             } else {
-                completion(events: nil)
+                completion(nil)
             }
         })
     }
     
     // Gets particular events with identifiers -> Completes with [Event]
-    static func fetchEventsThatMatchQuery(eventIDs: [String], completion: (events: [Event]?) -> Void) {
+    static func fetchEventsThatMatchQuery(_ eventIDs: [String], completion: @escaping (_ events: [Event]?) -> Void) {
         var events: [Event] = []
         
-        let eventFetchGroup = dispatch_group_create()
+        let eventFetchGroup = DispatchGroup()
         for eventID in eventIDs {
-            dispatch_group_enter(eventFetchGroup)
-            eventData.child(eventID).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            eventFetchGroup.enter()
+            eventData.child(eventID).observeSingleEvent(of: .value, with: { (snapshot) in
                 //print(snapshot.value!)
                 if let eventDictionary = snapshot.value as? [String : AnyObject], let event = Event(dictionary: eventDictionary, identifier: eventID) {
                     events.append(event)
                 }
-                dispatch_group_leave(eventFetchGroup)
+                eventFetchGroup.leave()
             })
         }
-        dispatch_group_notify(eventFetchGroup, dispatch_get_main_queue()) {
-            completion(events: events)
+        eventFetchGroup.notify(queue: DispatchQueue.main) {
+            completion(events)
         }
     }
     
-    static func updateEvent(event: Event){
+    static func updateEvent(_ event: Event){
         if let identifier = event.identifier {
             FirebaseController.ref.child("Events").child(identifier).updateChildValues(event.dictionaryCopy)
         } else {
@@ -126,13 +126,13 @@ class EventController {
         }
     }
     
-    static func filterEventsByCategories(events: [Event], categories: [Int]) -> [Event]? {
+    static func filterEventsByCategories(_ events: [Event], categories: [Int]) -> [Event]? {
         let filteredEvents = NSMutableSet()
         for event in events {
             for eventCategory in event.categories {
                 for category in categories {
                     if category == eventCategory {
-                        filteredEvents.addObject(event)
+                        filteredEvents.add(event)
                     }
                 }
             }
@@ -140,7 +140,7 @@ class EventController {
         return filteredEvents.allObjects as? [Event]
     }
     
-    static func createSnapShotOfLocation(location: Location, completion: (success: Bool, image: UIImage?, location: CLLocation?) -> Void) {
+    static func createSnapShotOfLocation(_ location: Location, completion: @escaping (_ success: Bool, _ image: UIImage?, _ location: CLLocation?) -> Void) {
         let address = String.autoformatAddressForGPSAquistionWith(location.address, city: location.city, state: location.state, zipCode: location.zipCode)
         
         LocationController.sharedInstance.forwardGeocoding(address) { (location, error) in
@@ -148,17 +148,17 @@ class EventController {
             let region = MKCoordinateRegionMakeWithDistance(center, 1.0.makeMeters(), 1.0.makeMeters())
             let options = MKMapSnapshotOptions()
             options.region = region
-            options.scale = UIScreen.mainScreen().scale
+            options.scale = UIScreen.main.scale
             
             if location?.coordinate.latitude == nil || location?.coordinate.longitude == nil {
-                completion(success: false, image: nil, location: location)
+                completion(false, nil, location)
             } else {
                 
                 let snapshotter = MKMapSnapshotter(options: options)
-                snapshotter.startWithCompletionHandler { snapshot, error in
+                snapshotter.start (completionHandler: { snapshot, error in
                     guard let snapshot = snapshot else {
                         print("Snapshot error: \(error)")
-                        completion(success: false, image: nil, location: nil)
+                        completion(false, nil, nil)
                         return
                     }
                     
@@ -166,20 +166,20 @@ class EventController {
                     let image = snapshot.image
                     
                     UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
-                    image.drawAtPoint(CGPoint.zero)
+                    image.draw(at: CGPoint.zero)
                     
                     let visibleRect = CGRect(origin: CGPoint.zero, size: image.size)
-                    var point = snapshot.pointForCoordinate(location!.coordinate)
+                    var point = snapshot.point(for: location!.coordinate)
                     if visibleRect.contains(point) {
                         point.x = point.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
                         point.y = point.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
-                        pin.image?.drawAtPoint(point)
+                        pin.image?.draw(at: point)
                     }
                     
                     let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
                     UIGraphicsEndImageContext()
-                    completion(success: true, image: compositeImage, location: nil)
-                }
+                    completion(true, compositeImage, nil)
+                })
             }
         }
     }

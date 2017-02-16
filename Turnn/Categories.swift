@@ -11,20 +11,20 @@ import UIKit
 
 enum Categories: Int {
     
-    case Admission  // 0
-    case BoardGames // 1
-    case Dancing    // 2
-    case Drinking   // 3
-    case Food       // 4
-    case Hackathon  // 5
-    case Hiking     // 6
-    case Holiday    // 7
-    case Movie      // 8
-    case Music      // 9
-    case Party      // 10
-    case Shopping   // 11
-    case Sports     // 12
-    case VideoGames // 13
+    case admission  // 0
+    case boardGames // 1
+    case dancing    // 2
+    case drinking   // 3
+    case food       // 4
+    case hackathon  // 5
+    case hiking     // 6
+    case holiday    // 7
+    case movie      // 8
+    case music      // 9
+    case party      // 10
+    case shopping   // 11
+    case sports     // 12
+    case videoGames // 13
     
     static let count: Int = {
         var max: Int = 0
@@ -35,132 +35,132 @@ enum Categories: Int {
     var grayCircleImage: UIImage? {
         switch self {
             
-        case .Admission:
+        case .admission:
             return UIImage(named: "Circle Admission Gray")
-        case .BoardGames:
+        case .boardGames:
             return UIImage(named: "Circle Board Games Gray")
-        case .Dancing:
+        case .dancing:
             return UIImage(named: "Circle Dancing Gray")
-        case .Drinking:
+        case .drinking:
             return UIImage(named: "Circle Drinking Gray")
-        case .Food:
+        case .food:
             return UIImage(named: "Circle Food Gray")
-        case .Hackathon:
+        case .hackathon:
             return UIImage(named: "Circle Hackathon Gray")
-        case .Hiking:
+        case .hiking:
             return UIImage(named: "Circle Hiking Gray")
-        case .Holiday:
+        case .holiday:
             return UIImage(named: "Circle Holiday Gray")
-        case .Movie:
+        case .movie:
             return UIImage(named: "Circle Movie Gray")
-        case .Music:
+        case .music:
             return UIImage(named: "Circle Music Gray")
-        case .Party:
+        case .party:
             return UIImage(named: "Circle Party Gray")
-        case .Shopping:
+        case .shopping:
             return UIImage(named: "Circle Shopping Gray")
-        case .Sports:
+        case .sports:
             return UIImage(named: "Circle Sports Gray")
-        case .VideoGames:
+        case .videoGames:
             return UIImage(named: "Circle Video Games Gray")
         }
     }
     
     var selectedCircleImage: UIImage? {
         switch self {
-        case .Admission:
+        case .admission:
             return UIImage(named: "Circle Admission")
-        case .BoardGames:
+        case .boardGames:
             return UIImage(named: "Circle Board Games")
-        case .Dancing:
+        case .dancing:
             return UIImage(named: "Circle Dancing")
-        case .Drinking:
+        case .drinking:
             return UIImage(named: "Circle Drinking")
-        case .Food:
+        case .food:
             return UIImage(named: "Circle Food")
-        case .Hackathon:
+        case .hackathon:
             return UIImage(named: "Circle Hackathon")
-        case .Hiking:
+        case .hiking:
             return UIImage(named: "Circle Hiking")
-        case .Holiday:
+        case .holiday:
             return UIImage(named: "Circle Holiday")
-        case .Movie:
+        case .movie:
             return UIImage(named: "Circle Movie")
-        case .Music:
+        case .music:
             return UIImage(named: "Circle Music")
-        case .Party:
+        case .party:
             return UIImage(named: "Circle Party")
-        case .Shopping:
+        case .shopping:
             return UIImage(named: "Circle Shopping")
-        case .Sports:
+        case .sports:
             return UIImage(named: "Circle Sports")
-        case .VideoGames:
+        case .videoGames:
             return UIImage(named: "Circle Video Games")
         }
     }
     
     var grayImage: UIImage? {
         switch self {
-        case .Admission:
+        case .admission:
             return UIImage(named: "Admission Gray")
-        case .BoardGames:
+        case .boardGames:
             return UIImage(named: "Board Games Gray")
-        case .Dancing:
+        case .dancing:
             return UIImage(named: "Dancing Gray")
-        case .Drinking:
+        case .drinking:
             return UIImage(named: "Drinking Gray")
-        case .Food:
+        case .food:
             return UIImage(named: "Food Gray")
-        case .Hackathon:
+        case .hackathon:
             return UIImage(named: "Hackathon Gray")
-        case .Hiking:
+        case .hiking:
             return UIImage(named: "Hiking Gray")
-        case .Holiday:
+        case .holiday:
             return UIImage(named: "Holiday Gray")
-        case .Movie:
+        case .movie:
             return UIImage(named: "Movie Gray")
-        case .Music:
+        case .music:
             return UIImage(named: "Music Gray")
-        case .Party:
+        case .party:
             return UIImage(named: "Party Gray")
-        case .Shopping:
+        case .shopping:
             return UIImage(named: "Shopping Gray")
-        case .Sports:
+        case .sports:
             return UIImage(named: "Sports Gray")
-        case .VideoGames:
+        case .videoGames:
             return UIImage(named: "Video Games Gray")
         }
     }
     
     var selectedImage: UIImage? {
         switch self {
-        case .Admission:
+        case .admission:
             return UIImage(named: "Admission")
-        case .BoardGames:
+        case .boardGames:
             return UIImage(named: "Board Games")
-        case .Dancing:
+        case .dancing:
             return UIImage(named: "Dancing")
-        case .Drinking:
+        case .drinking:
             return UIImage(named: "Drinking")
-        case .Food:
+        case .food:
             return UIImage(named: "Food")
-        case .Hackathon:
+        case .hackathon:
             return UIImage(named: "Hackathon")
-        case .Hiking:
+        case .hiking:
             return UIImage(named: "Hiking")
-        case .Holiday:
+        case .holiday:
             return UIImage(named: "Holiday")
-        case .Movie:
+        case .movie:
             return UIImage(named: "Movie")
-        case .Music:
+        case .music:
             return UIImage(named: "Music")
-        case .Party:
+        case .party:
             return UIImage(named: "Party")
-        case .Shopping:
+        case .shopping:
             return UIImage(named: "Shopping")
-        case .Sports:
+        case .sports:
             return UIImage(named: "Sports")
-        case .VideoGames:
+        case .videoGames:
             return UIImage(named: "Video Games")
         }
     }
@@ -169,33 +169,33 @@ enum Categories: Int {
     var name: String? {
         switch self {
             
-        case .Admission:
+        case .admission:
             return "Admission"
-        case .BoardGames:
+        case .boardGames:
             return "Board Games"
-        case .Dancing:
+        case .dancing:
             return "Dancing"
-        case .Drinking:
+        case .drinking:
             return "Drinking"
-        case .Food:
+        case .food:
             return "Food"
-        case .Hackathon:
+        case .hackathon:
             return "Hackathon"
-        case .Hiking:
+        case .hiking:
             return "Outdoors"
-        case .Holiday:
+        case .holiday:
             return "Holiday"
-        case .Movie:
+        case .movie:
             return "Movie"
-        case .Music:
+        case .music:
             return "Music"
-        case .Party:
+        case .party:
             return "Party"
-        case .Shopping:
+        case .shopping:
             return "Shopping"
-        case .Sports:
+        case .sports:
             return "Sports"
-        case .VideoGames:
+        case .videoGames:
             return "Video Games"
         }
     }

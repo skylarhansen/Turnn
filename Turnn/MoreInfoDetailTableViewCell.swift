@@ -11,20 +11,20 @@ import UIKit
 class MoreInfoDetailTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak private var moreInfoLabel: UILabel!
+    @IBOutlet weak fileprivate var moreInfoLabel: UILabel!
     @IBOutlet weak var moreInfoDetailLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func updateMoreInfoWithEvent(event: Event) {
+    func updateMoreInfoWithEvent(_ event: Event) {
         moreInfoDetailLabel.text = event.moreInfo
     }
 

@@ -404,7 +404,7 @@
 					8C044AA31D4FBF76002754B5 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = V9YMV3Q9VL;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -793,7 +793,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -816,7 +816,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.turnntable.Turnn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

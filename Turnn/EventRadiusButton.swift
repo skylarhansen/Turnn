@@ -22,6 +22,6 @@ class EventRadiusButton: UIButton {
     func setupView() {
         self.layer.cornerRadius = self.frame.height / 2
         self.layer.masksToBounds = true
-        self.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.9)
+        self.backgroundColor = UIColor.turnnGray().withAlphaComponent(0.9)
     }
 }

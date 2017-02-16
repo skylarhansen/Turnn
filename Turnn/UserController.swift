@@ -8,6 +8,30 @@
 
 import Foundation
 import Firebase
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class UserController {
     
@@ -19,66 +43,66 @@ class UserController {
     var currentUser: User? = UserController.loadFromDefaults()
     
     var currentUserId: String {
-        guard let currentUser = currentUser, currentUserId = currentUser.identifier else {
+        guard let currentUser = currentUser, let currentUserId = currentUser.identifier else {
             print("current user is nil")
             return "nada"
         }
         return currentUserId
     }
     
-    static func createUser(firstName: String, lastName: String, paid: Bool, email: String, password: String, completion: (user: User?, error: NSError?) -> Void) {
-        FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
+    static func createUser(_ firstName: String, lastName: String, paid: Bool, email: String, password: String, completion: @escaping (_ user: User?, _ error: NSError?) -> Void) {
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if let error = error {
                 print("There was error while creating user: \(error.localizedDescription)")
-                completion(user: nil, error: error)
+                completion(nil, error as NSError?)
             } else if let firebaseUser = user {
                 var user = User(firstName: firstName, lastName: lastName, paid: paid, identifier: firebaseUser.uid)
                 user.save()
                 UserController.shared.currentUser = user
                 UserController.saveUserInDefaults(user)
-                completion(user: user, error: error)
+                completion(user, error as NSError?)
             } else {
-                completion(user: nil, error: error)
+                completion(nil, error as NSError?)
             }
         })
     }
     
-    static func updateEventIDsForCurrentUser(eventID: String?, completion: (success: Bool) -> Void) {
+    static func updateEventIDsForCurrentUser(_ eventID: String?, completion: (_ success: Bool) -> Void) {
         if let eventID = eventID {
             if UserController.shared.currentUser?.eventIds?.count > 0 {
                 UserController.shared.currentUser?.eventIds?.append(eventID)
                 //UserController.shared.currentUser?.save()
                 FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(eventID).setValue(true)
-                completion(success: true)
+                completion(true)
             } else {
                 UserController.shared.currentUser?.eventIds = [eventID]
                 //UserController.shared.currentUser?.save()
                 FirebaseController.ref.child("Users").child(UserController.shared.currentUserId).child("events").child(eventID).setValue(true)
-                completion(success: true)
+                completion(true)
             }
         } else {
             print("Could not update User: EventID was nil")
-            completion(success: false)
+            completion(false)
         }
     }
     
-    static func authUser(email: String, password: String, completion: (user: User?, error: NSError?) -> Void) {
-        FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (firebaseUser, error) in
+    static func authUser(_ email: String, password: String, completion: @escaping (_ user: User?, _ error: NSError?) -> Void) {
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (firebaseUser, error) in
             if let error = error {
                 print("Wasn't able log user in: \(error.localizedDescription)")
-                completion(user: nil, error: error)
+                completion(nil, error as NSError?)
             } else if let firebaseUser = firebaseUser {
                 UserController.fetchUserForIdentifier(firebaseUser.uid, completion: { (user) in
                     guard let user = user else {
-                        completion(user: nil, error: error)
+                        completion(nil, error as NSError?)
                         return
                     }
                     UserController.shared.currentUser = user
                     UserController.saveUserInDefaults(user)
-                    completion(user: user, error: error)
+                    completion(user, error as NSError?)
                 })
             } else {
-                completion(user: nil, error: error)
+                completion(nil, error as NSError?)
             }
         })
     }
@@ -100,48 +124,48 @@ class UserController {
         UserController.shared.currentUser = nil
     }
     
-    static func fetchUserForIdentifier(identifier: String, completion: (user: User?) -> Void) {
-        FirebaseController.ref.child("Users").child(identifier).observeSingleEventOfType(.Value, withBlock: { data in
+    static func fetchUserForIdentifier(_ identifier: String, completion: @escaping (_ user: User?) -> Void) {
+        FirebaseController.ref.child("Users").child(identifier).observeSingleEvent(of: .value, with: { data in
             guard let dataDict = data.value as? [String: AnyObject],
-                user = User(dictionary: dataDict, identifier: identifier) else {
-                    completion(user: nil)
+                let user = User(dictionary: dataDict, identifier: identifier) else {
+                    completion(nil)
                     return
             }
-            completion(user: user)
+            completion(user)
         })
     }
     
-    static func isLoggedInServerTest(completion: (success: Bool, error: NSError?) -> Void) {
+    static func isLoggedInServerTest(_ completion: @escaping (_ success: Bool, _ error: NSError?) -> Void) {
         if let currentUser = FIRAuth.auth()?.currentUser {
             currentUser.getTokenForcingRefresh(true) { (idToken, error) in
                 if let error = error {
-                    completion(success: false, error: error)
+                    completion(false, error as NSError?)
                     print(error.localizedDescription)
                 } else {
                     UserController.shared.currentUser = loadFromDefaults()
-                    completion(success: true, error: nil)
+                    completion(true, nil)
                 }
             }
         } else {
-            completion(success: false, error: nil)
+            completion(false, nil)
         }
     }
     
     static func clearLocallySavedUserOnLogout(){
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.removeObjectForKey(UserController.currentUserKey)
-        defaults.removeObjectForKey(currentUserIdKey)
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: UserController.currentUserKey)
+        defaults.removeObject(forKey: currentUserIdKey)
         defaults.synchronize()
     }
     
-    static func saveUserInDefaults(user: User) {
-        NSUserDefaults.standardUserDefaults().setObject(user.dictionaryCopy, forKey: UserController.currentUserKey)
-        NSUserDefaults.standardUserDefaults().setObject(user.identifier!, forKey: currentUserIdKey)
+    static func saveUserInDefaults(_ user: User) {
+        UserDefaults.standard.set(user.dictionaryCopy, forKey: UserController.currentUserKey)
+        UserDefaults.standard.set(user.identifier!, forKey: currentUserIdKey)
     }
     
     static func loadFromDefaults() -> User? {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        guard let userId = defaults.objectForKey(currentUserIdKey) as? String else {
+        let defaults = UserDefaults.standard
+        guard let userId = defaults.object(forKey: currentUserIdKey) as? String else {
             return nil
         }
         

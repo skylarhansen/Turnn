@@ -15,7 +15,7 @@ class CreateEventViewController: UITableViewController {
     var locationSelected: Bool = false
     var priceSelected: Bool = false
     
-    @IBOutlet weak private var createEventButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak fileprivate var createEventButtonOutlet: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,33 +38,33 @@ class CreateEventViewController: UITableViewController {
     var categories: [Int]? {
         didSet {
             if locationSelected {
-                let indexPath = NSIndexPath(forRow: 10, inSection: 0)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                let indexPath = IndexPath(row: 10, section: 0)
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
             } else {
-                let indexPath = NSIndexPath(forRow: 6, inSection: 0)
-                self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                let indexPath = IndexPath(row: 6, section: 0)
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
     }
     
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButtonTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func createEventButtonTapped(sender: AnyObject) {
+    @IBAction func createEventButtonTapped(_ sender: AnyObject) {
         removePlaceholderTextFromViews()
-        createEventButtonOutlet.enabled = false
+        createEventButtonOutlet.isEnabled = false
         createEventWithEventInfo { (success) in
             if !success {
-                self.createEventButtonOutlet.enabled = true
+                self.createEventButtonOutlet.isEnabled = true
                 self.reAddPlaceholderTextInViews()
             }
         }
     }
     
-    @IBAction func unwindToCreateEvent(segue: UIStoryboardSegue) {
+    @IBAction func unwindToCreateEvent(_ segue: UIStoryboardSegue) {
         if let categories = categories {
-            if categories.contains(Categories.Admission.rawValue) {
+            if categories.contains(Categories.admission.rawValue) {
                 priceSelected = true
                 tableView.reloadData()
             } else {
@@ -91,18 +91,18 @@ class CreateEventViewController: UITableViewController {
         }
     }
     
-    func createAlert(title: String, message: String) {
-        createEventButtonOutlet.enabled = true
+    func createAlert(_ title: String, message: String) {
+        createEventButtonOutlet.isEnabled = true
         reAddPlaceholderTextInViews()
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
-        self.presentViewController(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
     
-    func createEventWithEventInfo(completion: (success: Bool) -> Void) {
+    func createEventWithEventInfo(_ completion: (_ success: Bool) -> Void) {
         if priceSelected {
             if locationSelected {
-                guard let title = titleCell.titleTextField.text where title.characters.count > 0 else {
+                guard let title = titleCell.titleTextField.text, title.characters.count > 0 else {
                     createAlert("No Title", message: "Please enter a title for your event")
                     hightlightTextFieldForError(self.titleCell.titleTextField)
                     return
@@ -117,17 +117,17 @@ class CreateEventViewController: UITableViewController {
                     hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
                     return
                 }
-                guard let address = addressCell.addressTextField.text where address.characters.count > 0 else {
+                guard let address = addressCell.addressTextField.text, address.characters.count > 0 else {
                     createAlert("Missing Address", message: "Please be sure to include an address for the event")
                     hightlightTextFieldForError(self.addressCell.addressTextField)
                     return
                 }
-                guard let city = cityCell.cityTextField.text where cityCell.cityTextField.text != "" else {
+                guard let city = cityCell.cityTextField.text, cityCell.cityTextField.text != "" else {
                     createAlert("Missing City", message: "Please be sure to include the city as part of your address")
                     hightlightTextFieldForError(self.cityCell.cityTextField)
                     return
                 }
-                guard let zip = zipCell.zipTextField.text where zipCell.zipTextField.text != "" else {
+                guard let zip = zipCell.zipTextField.text, zipCell.zipTextField.text != "" else {
                     createAlert("Missing Zip", message: "Please be sure to include the zip as part of your address")
                     hightlightTextFieldForError(self.zipCell.zipTextField)
                     return
@@ -136,12 +136,12 @@ class CreateEventViewController: UITableViewController {
                     createAlert("Missing Categories", message: "Please be sure to inclue at least one category for your event")
                     return
                 }
-                guard let state = stateCell.stateTextField.text where stateCell.stateTextField.text != "" else {
+                guard let state = stateCell.stateTextField.text, stateCell.stateTextField.text != "" else {
                     createAlert("Missing State", message: "Please be sure to include the state as part of your address")
                     hightlightTextFieldForError(self.stateCell.stateTextField)
                     return
                 }
-                guard let price = priceCell.priceTextField.text where priceCell.priceTextField.text != "$0.00" else {
+                guard let price = priceCell.priceTextField.text, priceCell.priceTextField.text != "$0.00" else {
                     createAlert("Pricing Error", message: "You selected admission price. Please enter a price greater than $0")
                     hightlightTextFieldForError(self.priceCell.priceTextField)
                     return
@@ -160,7 +160,7 @@ class CreateEventViewController: UITableViewController {
                                     if success {
                                         UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
                                             if success {
-                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                                self.dismiss(animated: true, completion: nil)
                                             } else {
                                                 self.createAlert("An Error Occurred", message: "Please contact the app developer")
                                             }
@@ -174,7 +174,7 @@ class CreateEventViewController: UITableViewController {
                                     if let eventID = eventID {
                                         UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
                                             if success {
-                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                                self.dismiss(animated: true, completion: nil)
                                             } else {
                                                 self.createAlert("An Error Occurred", message: "Please contact the app developer")
                                             }
@@ -189,7 +189,7 @@ class CreateEventViewController: UITableViewController {
                             if success {
                                 UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
                                     if success {
-                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                        self.dismiss(animated: true, completion: nil)
                                     } else {
                                         self.createAlert("An Error Occurred", message: "Please contact the app developer")
                                     }
@@ -204,7 +204,7 @@ class CreateEventViewController: UITableViewController {
             }
         } else {
             if locationSelected {
-                guard let title = titleCell.titleTextField.text where title.characters.count > 0 else {
+                guard let title = titleCell.titleTextField.text, title.characters.count > 0 else {
                     createAlert("No Title", message: "Please enter a title for your event")
                     hightlightTextFieldForError(self.titleCell.titleTextField)
                     return
@@ -219,17 +219,17 @@ class CreateEventViewController: UITableViewController {
                     hightlightTextFieldForError(self.endTimeCell.endTimeTextField)
                     return
                 }
-                guard let address = addressCell.addressTextField.text where address.characters.count > 0 else {
+                guard let address = addressCell.addressTextField.text, address.characters.count > 0 else {
                     createAlert("Missing Address", message: "Please be sure to include an address for the event")
                     hightlightTextFieldForError(self.addressCell.addressTextField)
                     return
                 }
-                guard let city = cityCell.cityTextField.text where cityCell.cityTextField.text != "" else {
+                guard let city = cityCell.cityTextField.text, cityCell.cityTextField.text != "" else {
                     createAlert("Missing City", message: "Please be sure to include the city as part of your address")
                     hightlightTextFieldForError(self.cityCell.cityTextField)
                     return
                 }
-                guard let zip = zipCell.zipTextField.text where zipCell.zipTextField.text != "" else {
+                guard let zip = zipCell.zipTextField.text, zipCell.zipTextField.text != "" else {
                     createAlert("Missing Zip", message: "Please be sure to include the zip as part of your address")
                     hightlightTextFieldForError(self.zipCell.zipTextField)
                     return
@@ -238,7 +238,7 @@ class CreateEventViewController: UITableViewController {
                     createAlert("Missing Categories", message: "Please be sure to inclue at least one category for your event")
                     return
                 }
-                guard let state = stateCell.stateTextField.text where stateCell.stateTextField.text != "" else {
+                guard let state = stateCell.stateTextField.text, stateCell.stateTextField.text != "" else {
                     createAlert("Missing State", message: "Please be sure to include the state as part of your address")
                     hightlightTextFieldForError(self.stateCell.stateTextField)
                     return
@@ -258,7 +258,7 @@ class CreateEventViewController: UITableViewController {
                                     if success {
                                         UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
                                             if success {
-                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                                self.dismiss(animated: true, completion: nil)
                                             } else {
                                                 self.createAlert("An Error Occurred", message: "Please contact the app developer")
                                             }
@@ -272,7 +272,7 @@ class CreateEventViewController: UITableViewController {
                                     if let eventID = eventID {
                                         UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
                                             if success {
-                                                self.dismissViewControllerAnimated(true, completion: nil)
+                                                self.dismiss(animated: true, completion: nil)
                                             } else {
                                                 self.createAlert("An Error Occurred", message: "Please contact the app developer")
                                             }
@@ -287,7 +287,7 @@ class CreateEventViewController: UITableViewController {
                             if success {
                                 UserController.updateEventIDsForCurrentUser(eventID, completion: {(success) in
                                     if success {
-                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                        self.dismiss(animated: true, completion: nil)
                                     } else {
                                         self.createAlert("An Error Occurred", message: "Please contact the app developer")
                                     }
@@ -303,9 +303,9 @@ class CreateEventViewController: UITableViewController {
         }
     }
     
-    func hightlightTextFieldForError(textfield: UITextField) {
+    func hightlightTextFieldForError(_ textfield: UITextField) {
         textfield.layer.borderWidth = 1.5
-        textfield.layer.borderColor = UIColor.error().CGColor
+        textfield.layer.borderColor = UIColor.error().cgColor
         textfield.layer.cornerRadius = 4
         textfield.layer.masksToBounds = true
         
@@ -313,29 +313,29 @@ class CreateEventViewController: UITableViewController {
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
         animation.duration = 0.4
         animation.values = [-5.0, 5.0, -5.0, 5.0, -5.0, 5.0, -2.0, 2.0, 0.0 ]
-        textfield.layer.addAnimation(animation, forKey: "shake")
+        textfield.layer.add(animation, forKey: "shake")
     }
     
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
-        self.tableView.separatorColor = .clearColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        self.tableView.keyboardDismissMode = .OnDrag
+        self.tableView.separatorColor = .clear
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.tableView.keyboardDismissMode = .onDrag
         setBackgroundForTableView()
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
     func setBackgroundForTableView() {
         
-        let blurEffect = UIBlurEffect(style: .Dark)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
         
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         
         imageView.addSubview(blurView)
         tableView.backgroundView = imageView
@@ -349,11 +349,11 @@ class CreateEventViewController: UITableViewController {
     
     // MARK - TableView Datasource
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if priceSelected {
             
             if locationSelected {
@@ -371,45 +371,45 @@ class CreateEventViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if priceSelected {
             if locationSelected {
                 switch indexPath.row {
                 case 0:
-                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    titleCell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as? TitleTableViewCell
                     return titleCell ?? UITableViewCell()
                 case 1:
-                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    timeCell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath) as? TimeTableViewCell
                     return timeCell ?? UITableViewCell()
                 case 2:
-                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    endTimeCell = tableView.dequeueReusableCell(withIdentifier: "endTimeCell", for: indexPath) as? EndTimeTableViewCell
                     return endTimeCell ?? UITableViewCell()
                 case 3:
-                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    locationCell = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell", for: indexPath) as? LocationTableViewCell
                     return locationCell ?? UITableViewCell()
                 case 4:
-                    addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
+                    addressCell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as? AddressTableViewCell
                     return addressCell ?? UITableViewCell()
                 case 5:
-                    cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
+                    cityCell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityTableViewCell
                     return cityCell ?? UITableViewCell()
                 case 6:
-                    stateCell = tableView.dequeueReusableCellWithIdentifier("stateCell", forIndexPath: indexPath) as? StateTableViewCell
+                    stateCell = tableView.dequeueReusableCell(withIdentifier: "stateCell", for: indexPath) as? StateTableViewCell
                     return stateCell ?? UITableViewCell()
                 case 7:
-                    zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
+                    zipCell = tableView.dequeueReusableCell(withIdentifier: "zipCell", for: indexPath) as? ZipTableViewCell
                     return zipCell ?? UITableViewCell()
                 case 8:
-                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    descriptionCell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell", for: indexPath) as? DescriptionTableViewCell
                     return descriptionCell ?? UITableViewCell()
                 case 9:
-                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoCell", for: indexPath) as? MoreInfoTableViewCell
                     return moreInfoCell ?? UITableViewCell()
                 case 10:
-                    priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
+                    priceCell = tableView.dequeueReusableCell(withIdentifier: "priceCell", for: indexPath) as? PriceTableViewCell
                     return priceCell ?? UITableViewCell()
                 case 11:
-                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    let categoriesCell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell
                     if let categories = categories {
                         categoriesCell?.updateWith(categories)
                     }
@@ -420,28 +420,28 @@ class CreateEventViewController: UITableViewController {
             } else {
                 switch indexPath.row {
                 case 0:
-                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    titleCell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as? TitleTableViewCell
                     return titleCell ?? UITableViewCell()
                 case 1:
-                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    timeCell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath) as? TimeTableViewCell
                     return timeCell ?? UITableViewCell()
                 case 2:
-                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    endTimeCell = tableView.dequeueReusableCell(withIdentifier: "endTimeCell", for: indexPath) as? EndTimeTableViewCell
                     return endTimeCell ?? UITableViewCell()
                 case 3:
-                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    locationCell = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell", for: indexPath) as? LocationTableViewCell
                     return locationCell ?? UITableViewCell()
                 case 4:
-                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    descriptionCell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell", for: indexPath) as? DescriptionTableViewCell
                     return descriptionCell ?? UITableViewCell()
                 case 5:
-                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoCell", for: indexPath) as? MoreInfoTableViewCell
                     return moreInfoCell ?? UITableViewCell()
                 case 6:
-                    priceCell = tableView.dequeueReusableCellWithIdentifier("priceCell", forIndexPath: indexPath) as? PriceTableViewCell
+                    priceCell = tableView.dequeueReusableCell(withIdentifier: "priceCell", for: indexPath) as? PriceTableViewCell
                     return priceCell ?? UITableViewCell()
                 case 7:
-                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    let categoriesCell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell
                     if let categories = categories {
                         categoriesCell?.updateWith(categories)
                     }
@@ -456,37 +456,37 @@ class CreateEventViewController: UITableViewController {
             if locationSelected {
                 switch indexPath.row {
                 case 0:
-                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    titleCell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as? TitleTableViewCell
                     return titleCell ?? UITableViewCell()
                 case 1:
-                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    timeCell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath) as? TimeTableViewCell
                     return timeCell ?? UITableViewCell()
                 case 2:
-                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    endTimeCell = tableView.dequeueReusableCell(withIdentifier: "endTimeCell", for: indexPath) as? EndTimeTableViewCell
                     return endTimeCell ?? UITableViewCell()
                 case 3:
-                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    locationCell = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell", for: indexPath) as? LocationTableViewCell
                     return locationCell ?? UITableViewCell()
                 case 4:
-                    addressCell = tableView.dequeueReusableCellWithIdentifier("addressCell", forIndexPath: indexPath) as? AddressTableViewCell
+                    addressCell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as? AddressTableViewCell
                     return addressCell ?? UITableViewCell()
                 case 5:
-                    cityCell = tableView.dequeueReusableCellWithIdentifier("cityCell", forIndexPath: indexPath) as? CityTableViewCell
+                    cityCell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityTableViewCell
                     return cityCell ?? UITableViewCell()
                 case 6:
-                    stateCell = tableView.dequeueReusableCellWithIdentifier("stateCell", forIndexPath: indexPath) as? StateTableViewCell
+                    stateCell = tableView.dequeueReusableCell(withIdentifier: "stateCell", for: indexPath) as? StateTableViewCell
                     return stateCell ?? UITableViewCell()
                 case 7:
-                    zipCell = tableView.dequeueReusableCellWithIdentifier("zipCell", forIndexPath: indexPath) as? ZipTableViewCell
+                    zipCell = tableView.dequeueReusableCell(withIdentifier: "zipCell", for: indexPath) as? ZipTableViewCell
                     return zipCell ?? UITableViewCell()
                 case 8:
-                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    descriptionCell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell", for: indexPath) as? DescriptionTableViewCell
                     return descriptionCell ?? UITableViewCell()
                 case 9:
-                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoCell", for: indexPath) as? MoreInfoTableViewCell
                     return moreInfoCell ?? UITableViewCell()
                 case 10:
-                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    let categoriesCell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell
                     if let categories = categories {
                         categoriesCell?.updateWith(categories)
                     }
@@ -497,25 +497,25 @@ class CreateEventViewController: UITableViewController {
             } else {
                 switch indexPath.row {
                 case 0:
-                    titleCell = tableView.dequeueReusableCellWithIdentifier("titleCell", forIndexPath: indexPath) as? TitleTableViewCell
+                    titleCell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as? TitleTableViewCell
                     return titleCell ?? UITableViewCell()
                 case 1:
-                    timeCell = tableView.dequeueReusableCellWithIdentifier("timeCell", forIndexPath: indexPath) as? TimeTableViewCell
+                    timeCell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath) as? TimeTableViewCell
                     return timeCell ?? UITableViewCell()
                 case 2:
-                    endTimeCell = tableView.dequeueReusableCellWithIdentifier("endTimeCell", forIndexPath: indexPath) as? EndTimeTableViewCell
+                    endTimeCell = tableView.dequeueReusableCell(withIdentifier: "endTimeCell", for: indexPath) as? EndTimeTableViewCell
                     return endTimeCell ?? UITableViewCell()
                 case 3:
-                    locationCell = tableView.dequeueReusableCellWithIdentifier("locationTitleCell", forIndexPath: indexPath) as? LocationTableViewCell
+                    locationCell = tableView.dequeueReusableCell(withIdentifier: "locationTitleCell", for: indexPath) as? LocationTableViewCell
                     return locationCell ?? UITableViewCell()
                 case 4:
-                    descriptionCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell", forIndexPath: indexPath) as? DescriptionTableViewCell
+                    descriptionCell = tableView.dequeueReusableCell(withIdentifier: "descriptionCell", for: indexPath) as? DescriptionTableViewCell
                     return descriptionCell ?? UITableViewCell()
                 case 5:
-                    moreInfoCell = tableView.dequeueReusableCellWithIdentifier("moreInfoCell", forIndexPath: indexPath) as? MoreInfoTableViewCell
+                    moreInfoCell = tableView.dequeueReusableCell(withIdentifier: "moreInfoCell", for: indexPath) as? MoreInfoTableViewCell
                     return moreInfoCell ?? UITableViewCell()
                 case 6:
-                    let categoriesCell = tableView.dequeueReusableCellWithIdentifier("categoriesCell", forIndexPath: indexPath) as? CategoriesTableViewCell
+                    let categoriesCell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as? CategoriesTableViewCell
                     if let categories = categories {
                         categoriesCell?.updateWith(categories)
                     }
@@ -530,23 +530,23 @@ class CreateEventViewController: UITableViewController {
     
     // MARK - TableView Delegate
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // May not need
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
         if indexPath.row == 3 && !self.locationSelected {
             self.locationSelected = !self.locationSelected
             tableView.beginUpdates()
-            let indexPaths = [NSIndexPath(forRow: 4, inSection: 0), NSIndexPath(forRow: 5, inSection: 0), NSIndexPath(forRow: 6, inSection: 0), NSIndexPath(forRow: 7, inSection: 0)]
-            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Middle)
+            let indexPaths = [IndexPath(row: 4, section: 0), IndexPath(row: 5, section: 0), IndexPath(row: 6, section: 0), IndexPath(row: 7, section: 0)]
+            tableView.insertRows(at: indexPaths, with: .middle)
             tableView.endUpdates()
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if priceSelected {
             if locationSelected {
                 switch indexPath.row {
@@ -592,9 +592,9 @@ class CreateEventViewController: UITableViewController {
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addCategories" {
-            let navController = segue.destinationViewController as? UINavigationController
+            let navController = segue.destination as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
             categoryVC?.mode = .Save
         }

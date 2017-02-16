@@ -10,8 +10,8 @@ import UIKit
 
 class MyEventTableViewCell: UITableViewCell {
     
-    @IBOutlet weak private var eventTitleLabel: UILabel!
-    @IBOutlet weak private var eventDateTitleLabel: UILabel!
+    @IBOutlet weak fileprivate var eventTitleLabel: UILabel!
+    @IBOutlet weak fileprivate var eventDateTitleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,23 +19,23 @@ class MyEventTableViewCell: UITableViewCell {
     }
 
     func setupCell() {
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
     }
     
-    func updateWithEvent(event: Event) {
+    func updateWithEvent(_ event: Event) {
         eventTitleLabel.text = "• \(event.title)"
         eventDateTitleLabel.text =  "  \(event.startTime.dateLongFormat())"
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.2)
             
-            UIView.animateWithDuration(0.4) {
-                self.backgroundColor = .clearColor()
-            }
+            UIView.animate(withDuration: 0.4, animations: {
+                self.backgroundColor = .clear
+            }) 
         }
     }
 }

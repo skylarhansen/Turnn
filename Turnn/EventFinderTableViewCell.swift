@@ -10,20 +10,20 @@ import UIKit
 
 class EventFinderTableViewCell: UITableViewCell {
     
-    @IBOutlet weak private var eventNameLabel: UILabel!
-    @IBOutlet private var categoryImages: [UIImageView]!
+    @IBOutlet weak fileprivate var eventNameLabel: UILabel!
+    @IBOutlet fileprivate var categoryImages: [UIImageView]!
     
-    func loadImageViews(images: [UIImage]) {
-        for (index, image) in images.enumerate() {
-            categoryImages[index].hidden = false
+    func loadImageViews(_ images: [UIImage]) {
+        for (index, image) in images.enumerated() {
+            categoryImages[index].isHidden = false
             categoryImages[index].image = image
         }
     }
     
-    func updateWithEvent(event: Event) {
+    func updateWithEvent(_ event: Event) {
         eventNameLabel.text = event.title
         for categoryImageView in categoryImages {
-            categoryImageView.hidden = true
+            categoryImageView.isHidden = true
         }
         loadImageViews(event.loadCategoriesForEvent())
     }
@@ -31,19 +31,19 @@ class EventFinderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
            for categoryImageView in categoryImages {
-            categoryImageView.hidden = true
+            categoryImageView.isHidden = true
         }
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
   
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.4)
             
-            UIView.animateWithDuration(0.5) {
-                self.backgroundColor = .clearColor()
-            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = .clear
+            }) 
         }
     }
 }

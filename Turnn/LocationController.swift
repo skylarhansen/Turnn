@@ -8,6 +8,30 @@
 
 import Foundation
 import CoreLocation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class LocationController {
     static let sharedInstance = LocationController()
@@ -26,14 +50,14 @@ class LocationController {
     }
     
     // Enter address to get GPS for Event
-    func forwardGeocoding(event: Event, completion: (location: CLLocation?, error: String?) -> Void) {
+    func forwardGeocoding(_ event: Event, completion: @escaping (_ location: CLLocation?, _ error: String?) -> Void) {
         var coordinate: CLLocationCoordinate2D?
         var event = event
         let address = String.autoformatAddressForGPSAquisitionWith(event)
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
-                print(error)
-                completion(location: nil, error: "\(error?.localizedDescription)")
+                print("\(error?.localizedDescription)")
+                completion(nil, "\(error?.localizedDescription)")
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
@@ -45,22 +69,22 @@ class LocationController {
                     event.location.latitude = coordinate.latitude
                     event.location.longitude = coordinate.longitude
                     event.save()
-                    completion(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), error: nil)
+                    completion(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), nil)
                 } else {
-                    completion(location: nil, error: "Could not unwrap a value for coordinate")
+                    completion(nil, "Could not unwrap a value for coordinate")
                 }
             } else {
-                completion(location: nil, error: "Placemark Count <= 0")
+                completion(nil, "Placemark Count <= 0")
             }
         })
     }
     
-    func forwardGeocoding(address: String, completion: (location: CLLocation?, error: String?) -> Void) {
+    func forwardGeocoding(_ address: String, completion: @escaping (_ location: CLLocation?, _ error: String?) -> Void) {
         var coordinate: CLLocationCoordinate2D?
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
-                print(error?.localizedDescription)
-                completion(location: nil, error: "\(error?.localizedDescription)")
+                print("\(error?.localizedDescription)")
+                completion(nil, "\(error?.localizedDescription)")
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
@@ -69,12 +93,12 @@ class LocationController {
                 //print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
                 
                 if let coordinate = coordinate {
-                    completion(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), error: nil)
+                    completion(CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude), nil)
                 } else {
-                    completion(location: nil, error: "Could not unwrap a value for coordinate")
+                    completion(nil, "Could not unwrap a value for coordinate")
                 }
             } else {
-                completion(location: nil, error: "Placemark Count <= 0")
+                completion(nil, "Placemark Count <= 0")
             }
         })
     }

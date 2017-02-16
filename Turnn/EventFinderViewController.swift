@@ -12,16 +12,16 @@ import CoreLocation
 
 class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
-    @IBOutlet weak private var mapViewPlaceholderView: UIView!
+    @IBOutlet weak fileprivate var mapViewPlaceholderView: UIView!
     var mapView: MKMapView!
-    @IBOutlet weak private var tableView: UITableView!
-    @IBOutlet weak private var noEventsPlaceholderView: UIView!
-    @IBOutlet weak private var moreOptionsButton: UIBarButtonItem!
-    @IBOutlet weak private var noEventsLabel1: UILabel!
-    @IBOutlet weak private var noEventsLabel2: UILabel!
-    @IBOutlet weak private var noEventsButtonOutlet: UIButton!
-    @IBOutlet weak private var noEventsChangeRadiusButtonOutlet: UIButton!
-    @IBOutlet weak private var noEventsRemoveFiltersButtonOutlet: UIButton!
+    @IBOutlet weak fileprivate var tableView: UITableView!
+    @IBOutlet weak fileprivate var noEventsPlaceholderView: UIView!
+    @IBOutlet weak fileprivate var moreOptionsButton: UIBarButtonItem!
+    @IBOutlet weak fileprivate var noEventsLabel1: UILabel!
+    @IBOutlet weak fileprivate var noEventsLabel2: UILabel!
+    @IBOutlet weak fileprivate var noEventsButtonOutlet: UIButton!
+    @IBOutlet weak fileprivate var noEventsChangeRadiusButtonOutlet: UIButton!
+    @IBOutlet weak fileprivate var noEventsRemoveFiltersButtonOutlet: UIButton!
     
     var moreOptionsOn = false
     var mileRadiusViewsOn = false
@@ -56,13 +56,13 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var loadingIndicator: UIActivityIndicatorView!
     var loadingIndicatorView: UIView!
    
-    var selectedIndexPath: NSIndexPath?
+    var selectedIndexPath: IndexPath?
     
     enum Miles: Int {
-        case Fifteen = 15
-        case Ten = 10
-        case Five = 5
-        case One = 1
+        case fifteen = 15
+        case ten = 10
+        case five = 5
+        case one = 1
     }
     
     var isFiltered = false
@@ -73,36 +73,36 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    var selectedRadius: Miles = .Fifteen
+    var selectedRadius: Miles = .fifteen
  
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingIndicatorView = UIView(frame: CGRectMake((self.view.frame.width / 2) - 30, (self.view.frame.height / 2) - 90, 60, 60))
+        loadingIndicatorView = UIView(frame: CGRect(x: (self.view.frame.width / 2) - 30, y: (self.view.frame.height / 2) - 90, width: 60, height: 60))
         loadingIndicatorView.layer.cornerRadius = 15
-        loadingIndicatorView.backgroundColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
-        loadingIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0, loadingIndicatorView.frame.width, loadingIndicatorView.frame.height))
-        loadingIndicator.activityIndicatorViewStyle = .WhiteLarge
+        loadingIndicatorView.backgroundColor = UIColor.turnnGray().withAlphaComponent(0.8)
+        loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0, width: loadingIndicatorView.frame.width, height: loadingIndicatorView.frame.height))
+        loadingIndicator.activityIndicatorViewStyle = .whiteLarge
         loadingIndicator.hidesWhenStopped = true
         loadingIndicatorView.addSubview(loadingIndicator)
         self.view.addSubview(loadingIndicatorView)
         loadingIndicator.startAnimating()
         createMileViews()
         
-        noEventsLabel1.textColor = UIColor.turnnWhite().colorWithAlphaComponent(0.9)
-        noEventsLabel2.textColor = UIColor.turnnWhite().colorWithAlphaComponent(0.9)
+        noEventsLabel1.textColor = UIColor.turnnWhite().withAlphaComponent(0.9)
+        noEventsLabel2.textColor = UIColor.turnnWhite().withAlphaComponent(0.9)
         
-        noEventsButtonOutlet.backgroundColor = UIColor.turnnBlue().colorWithAlphaComponent(0.8)
-        noEventsChangeRadiusButtonOutlet.backgroundColor = UIColor.turnnBlue().colorWithAlphaComponent(0.8)
-        noEventsRemoveFiltersButtonOutlet.backgroundColor = UIColor.turnnBlue().colorWithAlphaComponent(0.8)
+        noEventsButtonOutlet.backgroundColor = UIColor.turnnBlue().withAlphaComponent(0.8)
+        noEventsChangeRadiusButtonOutlet.backgroundColor = UIColor.turnnBlue().withAlphaComponent(0.8)
+        noEventsRemoveFiltersButtonOutlet.backgroundColor = UIColor.turnnBlue().withAlphaComponent(0.8)
         
-        noEventsButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
-        noEventsChangeRadiusButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
-        noEventsRemoveFiltersButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().colorWithAlphaComponent(0.8)
+        noEventsButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().withAlphaComponent(0.8)
+        noEventsChangeRadiusButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().withAlphaComponent(0.8)
+        noEventsRemoveFiltersButtonOutlet.titleLabel?.textColor = UIColor.turnnGray().withAlphaComponent(0.8)
         
-        noEventsButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.Center
-        noEventsChangeRadiusButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.Center
-        noEventsRemoveFiltersButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.Center
+        noEventsButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.center
+        noEventsChangeRadiusButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.center
+        noEventsRemoveFiltersButtonOutlet.titleLabel?.textAlignment = NSTextAlignment.center
         
         noEventsButtonOutlet.layer.cornerRadius = (noEventsButtonOutlet.frame.width / 2)
         noEventsButtonOutlet.clipsToBounds = true
@@ -114,28 +114,28 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         noEventsRemoveFiltersButtonOutlet.layer.cornerRadius = (noEventsRemoveFiltersButtonOutlet.frame.width / 2)
         noEventsRemoveFiltersButtonOutlet.clipsToBounds = true
         
-        noEventsPlaceholderView.hidden = true
+        noEventsPlaceholderView.isHidden = true
         revealOrHideNoResultsView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.moreOptionsOn = false
         
         //let styleURL = NSURL(string: "mapbox://styles/ebresciano/cirl1oo0g000dg4m7ofa9mvqk")
         
         self.view.layoutSubviews()
-        self.mapView = MKMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height))
+        self.mapView = MKMapView(frame: CGRect(x: self.mapViewPlaceholderView.frame.origin.x, y: self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, width: self.mapViewPlaceholderView.frame.width, height: self.mapViewPlaceholderView.frame.height))
         
         self.mapView.delegate = self
         self.view.addSubview(mapView)
         self.mapView.tintColor = UIColor.turnnBlue()
         self.mapView.showsCompass = false
-        self.mapView.rotateEnabled = false
+        self.mapView.isRotateEnabled = false
         
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
             
-            self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
+            self.mapView.frame = CGRect(x: self.mapViewPlaceholderView.frame.origin.x, y: self.mapViewPlaceholderView.frame.origin.y, width: self.mapViewPlaceholderView.frame.width, height: self.mapViewPlaceholderView.frame.height)
             }, completion: nil)
         
         self.locationManager.requestWhenInUseAuthorization()
@@ -151,23 +151,23 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     
     func createMapView() {
         self.view.layoutSubviews()
-        self.mapView = MKMapView(frame: CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height))
+        self.mapView = MKMapView(frame: CGRect(x: self.mapViewPlaceholderView.frame.origin.x, y: self.mapViewPlaceholderView.frame.origin.y - self.mapViewPlaceholderView.frame.height, width: self.mapViewPlaceholderView.frame.width, height: self.mapViewPlaceholderView.frame.height))
         
         self.mapView.delegate = self
         self.view.addSubview(mapView)
         self.mapView.tintColor = UIColor.turnnBlue()
         self.mapView.showsCompass = false
-        self.mapView.rotateEnabled = false
+        self.mapView.isRotateEnabled = false
         
-        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
-            self.mapView.frame = CGRectMake(self.mapViewPlaceholderView.frame.origin.x, self.mapViewPlaceholderView.frame.origin.y, self.mapViewPlaceholderView.frame.width, self.mapViewPlaceholderView.frame.height)
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: [], animations: {
+            self.mapView.frame = CGRect(x: self.mapViewPlaceholderView.frame.origin.x, y: self.mapViewPlaceholderView.frame.origin.y, width: self.mapViewPlaceholderView.frame.width, height: self.mapViewPlaceholderView.frame.height)
             }, completion: nil)
         }
     
     func updateQuery(){
         if isFiltered == false {
             GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
-                if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
+                if let currentEvents = currentEvents, let oldEvents = oldEvents, let matchingLocationKeys = matchingLocationKeys, let futureEvents = futureEvents {
                     String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
                     self.mapView.removeAnnotations(self.annotations)
                     self.annotations = []
@@ -176,7 +176,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                     //can't do the line below or it'll trigger the didSet for isFiltered
                     //self.filteredEvents = EventController.filterEventsByCategories(currentEvents, categories: self.currentFiltration)!
                 
-                    self.loadingIndicatorView.hidden = true
+                    self.loadingIndicatorView.isHidden = true
                     self.loadingIndicator.stopAnimating()
                     self.displayEvents()
     
@@ -194,7 +194,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
         if isFiltered == true {
             GeoFireController.queryEventsForRadius(miles: Double(selectedRadius.rawValue), completion: { (currentEvents, oldEvents, matchingLocationKeys, futureEvents) in
-                if let currentEvents = currentEvents, oldEvents = oldEvents, matchingLocationKeys = matchingLocationKeys, futureEvents = futureEvents {
+                if let currentEvents = currentEvents, let oldEvents = oldEvents, let matchingLocationKeys = matchingLocationKeys, let futureEvents = futureEvents {
                     String.printEvents(currentEvents, oldEvents: oldEvents, futureEvents: futureEvents)
                     self.mapView.removeAnnotations(self.annotations)
                     self.annotations = []
@@ -202,7 +202,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
                     self.events = currentEvents
                     self.filteredEvents = EventController.filterEventsByCategories(currentEvents, categories: self.currentFiltration)!
                     
-                    self.loadingIndicatorView.hidden = true
+                    self.loadingIndicatorView.isHidden = true
                     self.loadingIndicator.stopAnimating()
                     self.displayEvents()
                     
@@ -220,16 +220,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.view.bringSubviewToFront(topMilesButton)
-        self.view.bringSubviewToFront(midMilesButton)
-        self.view.bringSubviewToFront(lowMilesButton)
-        self.view.bringSubviewToFront(lowestMilesButton)
+        self.view.bringSubview(toFront: topMilesButton)
+        self.view.bringSubview(toFront: midMilesButton)
+        self.view.bringSubview(toFront: lowMilesButton)
+        self.view.bringSubview(toFront: lowestMilesButton)
         updateQuery()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.mapView.delegate = nil
         self.mapView.removeFromSuperview()
@@ -240,10 +240,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         if isFiltered {
             for event in self.filteredEvents {
                 let point = MKPointAnnotation()
-                if let latitude = event.location.latitude, longitude = event.location.longitude {
+                if let latitude = event.location.latitude, let longitude = event.location.longitude {
                     point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 }
-                self.mapView.rotateEnabled = false
+                self.mapView.isRotateEnabled = false
                 self.mapView.showsCompass = false
                 point.title = event.title
                 point.subtitle = event.location.address
@@ -253,10 +253,10 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         } else {
             for event in self.events {
                 let point = MKPointAnnotation()
-                if let latitude = event.location.latitude, longitude = event.location.longitude {
+                if let latitude = event.location.latitude, let longitude = event.location.longitude {
                     point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                 }
-                self.mapView.rotateEnabled = false
+                self.mapView.isRotateEnabled = false
                 self.mapView.showsCompass = false
                 point.title = event.title
                 point.subtitle = event.location.address
@@ -296,7 +296,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             // Use CALayer’s corner radius to turn this view into a circle.
             layer.cornerRadius = frame.width / 2
             layer.borderWidth = 2
-            layer.borderColor = UIColor.whiteColor().CGColor
+            layer.borderColor = UIColor.white.cgColor
         }
     }
     
@@ -305,38 +305,38 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
-        self.tableView.separatorColor = .whiteColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.tableView.separatorColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         setBackgroundAndTableView()
     }
     
     func setBackgroundAndTableView() {
-        self.tableView.backgroundColor = .clearColor()
-        let blurEffect = UIBlurEffect(style: .Dark)
+        self.tableView.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         imageView.addSubview(blurView)
-        imageView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.width, self.view.frame.height)
+        imageView.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height)
         self.view.addSubview(imageView)
-        self.view.sendSubviewToBack(imageView)
+        self.view.sendSubview(toBack: imageView)
         blurView.frame = self.view.bounds
     }
     
     // MARK: - Location Manager Delegate Methods
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // let location = locations.last
         mapCenter = CLLocationCoordinate2DMake(usersCurrentLocation?.coordinate.latitude ?? 0.0, usersCurrentLocation?.coordinate.longitude ?? 0.0)
-        self.mapView.setCenterCoordinate(mapCenter, animated: true)
+        self.mapView.setCenter(mapCenter, animated: true)
         self.locationManager.stopUpdatingLocation()
         let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(selectedRadius.rawValue).makeMeters(), Double(selectedRadius.rawValue).makeMeters())
         self.mapView.setRegion(region, animated: false)
     }
     
-    @IBAction func unwindToEventFinder(segue: UIStoryboardSegue) {
+    @IBAction func unwindToEventFinder(_ segue: UIStoryboardSegue) {
         if segue.identifier == "unwindToEventFinder" {
-            let categoryVC = segue.sourceViewController as! CategoryCollectionViewController
+            let categoryVC = segue.source as! CategoryCollectionViewController
             let filteredEvents = EventController.filterEventsByCategories(events, categories: categoryVC.categories)
             currentFiltration = categoryVC.categories
             if filteredEvents != nil {
@@ -347,33 +347,33 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    func mapViewUpdated(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+    func mapViewUpdated(_ mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         print("UPDATED")
     }
     
-    func mapView(mapView: MKMapView, annotationCanShowCallout annotation: MKAnnotation) -> Bool {
+    func mapView(_ mapView: MKMapView, annotationCanShowCallout annotation: MKAnnotation) -> Bool {
         // Always try to show a callout when an annotation is tapped.
         return true
     }
     
     // MARK: - No Events View Non-Segue Actions -
     
-    @IBAction func noEventsChangeRadiusButtonTapped(sender: AnyObject) {
+    @IBAction func noEventsChangeRadiusButtonTapped(_ sender: AnyObject) {
         if mileRadiusViewsOn {
-        UIView.animateWithDuration(0.4, animations: {
-            self.topMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-            self.midMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-            self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 80, 35)
-            self.lowMilesButton.setTitle("\(self.selectedRadius.rawValue) mi", forState: .Normal)
-            self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
+        UIView.animate(withDuration: 0.4, animations: {
+            self.topMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+            self.midMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+            self.lowMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35)
+            self.lowMilesButton.setTitle("\(self.selectedRadius.rawValue) mi", for: UIControlState())
+            self.lowestMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
             self.midMilesButton.alpha = 0.0
             self.topMilesButton.alpha = 0.0
             self.lowestMilesButton.alpha = 0.0
             
             }, completion: { _ in
-                self.midMilesButton.hidden = true
-                self.topMilesButton.hidden = true
-                self.lowestMilesButton.hidden = true
+                self.midMilesButton.isHidden = true
+                self.topMilesButton.isHidden = true
+                self.lowestMilesButton.isHidden = true
         })
         mileRadiusViewsOn = !mileRadiusViewsOn
         } else {
@@ -381,14 +381,14 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    @IBAction func noEventsRemoveFiltersButtonTapped(sender: AnyObject) {
+    @IBAction func noEventsRemoveFiltersButtonTapped(_ sender: AnyObject) {
         moreOptionsOn = !moreOptionsOn
         addAccessoryView(moreOptionsOn)
     }
     
     // MARK: - Table view data source -
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         if isFiltered == true {
             return filteredEvents.count
         } else {
@@ -396,16 +396,16 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     var noResultsSubView: UIView!
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if isFiltered {
             
-            let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
+            let eventCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventFinderTableViewCell
             
             let event = self.filteredEvents[indexPath.section]
             eventCell?.updateWithEvent(event)
@@ -413,7 +413,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
             return eventCell ?? UITableViewCell()
             
         } else {
-            let eventCell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as? EventFinderTableViewCell
+            let eventCell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventFinderTableViewCell
             
             let event = self.events[indexPath.section]
             eventCell?.updateWithEvent(event)
@@ -422,30 +422,30 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.5
     }
     
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRectMake(0, 0, self.view.frame.width, 0.5))
-        view.backgroundColor = UIColor.whiteColor()
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 0.5))
+        view.backgroundColor = UIColor.white
         return view
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
-        self.performSegueWithIdentifier("toDetailSegue", sender: nil)
+        self.performSegue(withIdentifier: "toDetailSegue", sender: nil)
     }
     
     // MARK: - Navigation
     
-    @IBAction func moreOptionsButtonTapped(sender: AnyObject) {
+    @IBAction func moreOptionsButtonTapped(_ sender: AnyObject) {
         moreOptionsOn = !moreOptionsOn
         addAccessoryView(moreOptionsOn)
     }
     
     func categoriesButtonTapped() {
-        self.performSegueWithIdentifier("toCategoriesSegue", sender: nil)
+        self.performSegue(withIdentifier: "toCategoriesSegue", sender: nil)
     }
     
     func showAllEvents() {
@@ -455,26 +455,26 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     }
     
     func myEventsButtonTapped() {
-        self.performSegueWithIdentifier("ToMyEventsSegue", sender: nil)
+        self.performSegue(withIdentifier: "ToMyEventsSegue", sender: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toCategoriesSegue" {
-            let navController = segue.destinationViewController as? UINavigationController
+            let navController = segue.destination as? UINavigationController
             let categoryVC = navController?.viewControllers.first as? CategoryCollectionViewController
             categoryVC?.mode = .Search
         }
         
         if segue.identifier == "toDetailSegue" {
             if isFiltered == true {
-                if let eventDetailVC = segue.destinationViewController as? EventDetailViewController, let indexPath = self.selectedIndexPath {
+                if let eventDetailVC = segue.destination as? EventDetailViewController, let indexPath = self.selectedIndexPath {
                     let event = filteredEvents[indexPath.section]
                     eventDetailVC.event = event
                 }
             }
             if isFiltered == false {
-                if let eventDetailVC = segue.destinationViewController as? EventDetailViewController, let indexPath = self.selectedIndexPath {
+                if let eventDetailVC = segue.destination as? EventDetailViewController, let indexPath = self.selectedIndexPath {
                     let event = events[indexPath.section]
                     eventDetailVC.event = event
                 }
@@ -486,23 +486,23 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         
         if isFiltered == true {
             if filteredEvents.count == 0 {
-                noEventsPlaceholderView.hidden = false
-                self.tableView.hidden = true
+                noEventsPlaceholderView.isHidden = false
+                self.tableView.isHidden = true
             }
             if filteredEvents.count > 0 {
-                noEventsPlaceholderView.hidden = true
-                self.tableView.hidden = false
+                noEventsPlaceholderView.isHidden = true
+                self.tableView.isHidden = false
             } else {return}
         }
         
         if isFiltered == false {
             if events.count == 0 {
-                noEventsPlaceholderView.hidden = false
-                self.tableView.hidden = true
+                noEventsPlaceholderView.isHidden = false
+                self.tableView.isHidden = true
             }
             if events.count > 0  {
-                noEventsPlaceholderView.hidden = true
-                self.tableView.hidden = false
+                noEventsPlaceholderView.isHidden = true
+                self.tableView.isHidden = false
             } else {return}
         }
         else {return}
@@ -515,91 +515,91 @@ extension EventFinderViewController {
     
     func createMileViews() {
         
-        topMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 80, 35))
-        topMilesButton.setTitle("15 mi", forState: .Normal)
-        topMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-        topMilesButton.tag = Miles.Fifteen.rawValue
-        topMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+        topMilesButton = EventRadiusButton(frame: CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35))
+        topMilesButton.setTitle("15 mi", for: UIControlState())
+        topMilesButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
+        topMilesButton.tag = Miles.fifteen.rawValue
+        topMilesButton.addTarget(self, action: #selector(changeRadius(_:)), for: .touchUpInside)
         
-        midMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35))
-        midMilesButton.setTitle("10", forState: .Normal)
-        midMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-        midMilesButton.tag = Miles.Ten.rawValue
-        midMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+        midMilesButton = EventRadiusButton(frame: CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35))
+        midMilesButton.setTitle("10", for: UIControlState())
+        midMilesButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
+        midMilesButton.tag = Miles.ten.rawValue
+        midMilesButton.addTarget(self, action: #selector(changeRadius(_:)), for: .touchUpInside)
         
-        lowMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35))
-        lowMilesButton.setTitle("5", forState: .Normal)
-        lowMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-        lowMilesButton.tag = Miles.Five.rawValue
-        lowMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+        lowMilesButton = EventRadiusButton(frame: CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35))
+        lowMilesButton.setTitle("5", for: UIControlState())
+        lowMilesButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
+        lowMilesButton.tag = Miles.five.rawValue
+        lowMilesButton.addTarget(self, action: #selector(changeRadius(_:)), for: .touchUpInside)
         
-        lowestMilesButton = EventRadiusButton(frame: CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35))
-        lowestMilesButton.setTitle("1", forState: .Normal)
-        lowestMilesButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-        lowestMilesButton.tag = Miles.One.rawValue
-        lowestMilesButton.addTarget(self, action: #selector(changeRadius(_:)), forControlEvents: .TouchUpInside)
+        lowestMilesButton = EventRadiusButton(frame: CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35))
+        lowestMilesButton.setTitle("1", for: UIControlState())
+        lowestMilesButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
+        lowestMilesButton.tag = Miles.one.rawValue
+        lowestMilesButton.addTarget(self, action: #selector(changeRadius(_:)), for: .touchUpInside)
         
         self.view.addSubview(topMilesButton)
         self.view.addSubview(midMilesButton)
         self.view.addSubview(lowMilesButton)
         self.view.addSubview(lowestMilesButton)
         
-        self.lowMilesButton.hidden = true
-        self.midMilesButton.hidden = true
-        self.lowestMilesButton.hidden = true
+        self.lowMilesButton.isHidden = true
+        self.midMilesButton.isHidden = true
+        self.lowestMilesButton.isHidden = true
     }
     
     func addRadiusViews() {
         
         mileRadiusViewsOn = !mileRadiusViewsOn
         
-        self.view.bringSubviewToFront(topMilesButton)
-        self.view.bringSubviewToFront(midMilesButton)
-        self.view.bringSubviewToFront(lowMilesButton)
-        self.view.bringSubviewToFront(lowestMilesButton)
+        self.view.bringSubview(toFront: topMilesButton)
+        self.view.bringSubview(toFront: midMilesButton)
+        self.view.bringSubview(toFront: lowMilesButton)
+        self.view.bringSubview(toFront: lowestMilesButton)
         
-        self.topMilesButton.hidden = false
-        self.midMilesButton.hidden = false
-        self.lowMilesButton.hidden = false
-        self.lowestMilesButton.hidden = false
+        self.topMilesButton.isHidden = false
+        self.midMilesButton.isHidden = false
+        self.lowMilesButton.isHidden = false
+        self.lowestMilesButton.isHidden = false
         
-        UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
             self.topMilesButton.alpha = 0.9
             self.midMilesButton.alpha = 0.9
             self.lowMilesButton.alpha = 0.9
             self.lowestMilesButton.alpha = 0.9
             
-            self.topMilesButton.setTitle("15", forState: .Normal)
-            self.midMilesButton.setTitle("10", forState: .Normal)
-            self.lowMilesButton.setTitle("5", forState: .Normal)
-            self.lowestMilesButton.setTitle("1", forState: .Normal)
-            self.topMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-            self.midMilesButton.frame = CGRectMake(self.view.frame.width - 255, (self.view.frame.height / 2) - 15, 35, 35)
-            self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 185, (self.view.frame.height / 2) - 15, 35, 35)
-            self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 115, (self.view.frame.height / 2) - 15, 35, 35)
+            self.topMilesButton.setTitle("15", for: UIControlState())
+            self.midMilesButton.setTitle("10", for: UIControlState())
+            self.lowMilesButton.setTitle("5", for: UIControlState())
+            self.lowestMilesButton.setTitle("1", for: UIControlState())
+            self.topMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+            self.midMilesButton.frame = CGRect(x: self.view.frame.width - 255, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+            self.lowMilesButton.frame = CGRect(x: self.view.frame.width - 185, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+            self.lowestMilesButton.frame = CGRect(x: self.view.frame.width - 115, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
             
             }, completion: nil)
     }
     
-    func addAccessoryView(show: Bool) {
+    func addAccessoryView(_ show: Bool) {
         if show {
-            logOutView = LogOutView(frame: CGRectMake(self.mapViewPlaceholderView.frame.width + 5, 78, self.mapViewPlaceholderView.frame.width + 20, 35))
-            myEventsView = LogOutView(frame: CGRectMake(self.mapViewPlaceholderView.frame.width + 5, 123, self.view.frame.width / 2, 35))
+            logOutView = LogOutView(frame: CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 78, width: self.mapViewPlaceholderView.frame.width + 20, height: 35))
+            myEventsView = LogOutView(frame: CGRect(x: self.mapViewPlaceholderView.frame.width + 5, y: 123, width: self.view.frame.width / 2, height: 35))
             
-            let filterButton = UIButton(frame: CGRectMake(0,0,logOutView.frame.width / 2 - 20, logOutView.frame.height))
-            filterButton.setTitle("Filter", forState: .Normal)
-            filterButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-            filterButton.addTarget(self, action: #selector(categoriesButtonTapped), forControlEvents: .TouchUpInside)
+            let filterButton = UIButton(frame: CGRect(x: 0,y: 0,width: logOutView.frame.width / 2 - 20, height: logOutView.frame.height))
+            filterButton.setTitle("Filter", for: UIControlState())
+            filterButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
+            filterButton.addTarget(self, action: #selector(categoriesButtonTapped), for: .touchUpInside)
             
-            let showAllButton = UIButton(frame: CGRectMake(self.logOutView.frame.width / 2 - 20,0, self.logOutView.frame.width / 2 - 20, logOutView.frame.height))
-            showAllButton.setTitle("Remove Filters", forState: .Normal)
-            showAllButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-            showAllButton.addTarget(self, action: #selector(showAllEvents), forControlEvents: .TouchUpInside)
+            let showAllButton = UIButton(frame: CGRect(x: self.logOutView.frame.width / 2 - 20,y: 0, width: self.logOutView.frame.width / 2 - 20, height: logOutView.frame.height))
+            showAllButton.setTitle("Remove Filters", for: UIControlState())
+            showAllButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
+            showAllButton.addTarget(self, action: #selector(showAllEvents), for: .touchUpInside)
             
-            let myEventsButton = UIButton(frame: CGRectMake(20,0, self.myEventsView.frame.width - 10, logOutView.frame.height))
-            myEventsButton.setTitle("My Events", forState: .Normal)
-            myEventsButton.setTitleColor(UIColor.turnnBlue(), forState: .Normal)
-            myEventsButton.addTarget(self, action: #selector(myEventsButtonTapped), forControlEvents: .TouchUpInside)
+            let myEventsButton = UIButton(frame: CGRect(x: 20,y: 0, width: self.myEventsView.frame.width - 10, height: logOutView.frame.height))
+            myEventsButton.setTitle("My Events", for: UIControlState())
+            myEventsButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
+            myEventsButton.addTarget(self, action: #selector(myEventsButtonTapped), for: .touchUpInside)
             
             self.logOutView.addSubview(filterButton)
             self.logOutView.addSubview(showAllButton)
@@ -607,7 +607,7 @@ extension EventFinderViewController {
             self.view.addSubview(logOutView)
             self.view.addSubview(myEventsView)
             
-            UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
+            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.8, options: [], animations: {
                 self.logOutView.alpha = 0.9
                 self.myEventsView.alpha = 0.9
 
@@ -620,27 +620,27 @@ extension EventFinderViewController {
         }
     }
     
-    func changeRadius(sender: UIButton) {
+    func changeRadius(_ sender: UIButton) {
         switch sender.tag {
-        case Miles.Fifteen.rawValue:
+        case Miles.fifteen.rawValue:
             if mileRadiusViewsOn {
-                self.selectedRadius = Miles.Fifteen
+                self.selectedRadius = Miles.fifteen
                 let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(selectedRadius.rawValue).makeMeters(), Double(selectedRadius.rawValue).makeMeters())
                 self.mapView.setRegion(region, animated: true)
-                UIView.animateWithDuration(0.4, animations: {
-                    self.topMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 80, 35)
-                    self.topMilesButton.setTitle("15 mi", forState: .Normal)
-                    self.midMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.topMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35)
+                    self.topMilesButton.setTitle("15 mi", for: UIControlState())
+                    self.midMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.lowMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.lowestMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
                     self.midMilesButton.alpha = 0.0
                     self.lowMilesButton.alpha = 0.0
                     self.lowestMilesButton.alpha = 0.0
                     
                     }, completion: { _ in
-                        self.midMilesButton.hidden = true
-                        self.lowMilesButton.hidden = true
-                        self.lowestMilesButton.hidden = true
+                        self.midMilesButton.isHidden = true
+                        self.lowMilesButton.isHidden = true
+                        self.lowestMilesButton.isHidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
                 updateQuery()
@@ -650,25 +650,25 @@ extension EventFinderViewController {
             }
             
             break
-        case Miles.Ten.rawValue:
+        case Miles.ten.rawValue:
             if mileRadiusViewsOn {
-                self.selectedRadius = Miles.Ten
+                self.selectedRadius = Miles.ten
                 let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(selectedRadius.rawValue).makeMeters(), Double(selectedRadius.rawValue).makeMeters())
                 self.mapView.setRegion(region, animated: true)
-                UIView.animateWithDuration(0.4, animations: {
-                    self.topMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.midMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 80, 35)
-                    self.midMilesButton.setTitle("10 mi", forState: .Normal)
-                    self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.topMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.midMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35)
+                    self.midMilesButton.setTitle("10 mi", for: UIControlState())
+                    self.lowMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.lowestMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
                     self.topMilesButton.alpha = 0.0
                     self.lowMilesButton.alpha = 0.0
                     self.lowestMilesButton.alpha = 0.0
                     
                     }, completion: { _ in
-                        self.topMilesButton.hidden = true
-                        self.lowMilesButton.hidden = true
-                        self.lowestMilesButton.hidden = true
+                        self.topMilesButton.isHidden = true
+                        self.lowMilesButton.isHidden = true
+                        self.lowestMilesButton.isHidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
                 updateQuery()
@@ -678,25 +678,25 @@ extension EventFinderViewController {
             }
             
             break
-        case Miles.Five.rawValue:
+        case Miles.five.rawValue:
             if mileRadiusViewsOn {
-                self.selectedRadius = Miles.Five
+                self.selectedRadius = Miles.five
                 let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(selectedRadius.rawValue).makeMeters(), Double(selectedRadius.rawValue).makeMeters())
                 self.mapView.setRegion(region, animated: true)
-                UIView.animateWithDuration(0.4, animations: {
-                    self.topMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.midMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 80, 35)
-                    self.lowMilesButton.setTitle("5 mi", forState: .Normal)
-                    self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) + 20, 35, 35)
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.topMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.midMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.lowMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35)
+                    self.lowMilesButton.setTitle("5 mi", for: UIControlState())
+                    self.lowestMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) + 20, width: 35, height: 35)
                     self.midMilesButton.alpha = 0.0
                     self.topMilesButton.alpha = 0.0
                     self.lowestMilesButton.alpha = 0.0
                     
                     }, completion: { _ in
-                        self.midMilesButton.hidden = true
-                        self.topMilesButton.hidden = true
-                        self.lowestMilesButton.hidden = true
+                        self.midMilesButton.isHidden = true
+                        self.topMilesButton.isHidden = true
+                        self.lowestMilesButton.isHidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
                 updateQuery()
@@ -706,25 +706,25 @@ extension EventFinderViewController {
             }
             
             break
-        case Miles.One.rawValue:
+        case Miles.one.rawValue:
             if mileRadiusViewsOn {
-                self.selectedRadius = Miles.One
+                self.selectedRadius = Miles.one
                 let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(selectedRadius.rawValue).makeMeters(), Double(selectedRadius.rawValue).makeMeters())
                 self.mapView.setRegion(region, animated: true)
-                UIView.animateWithDuration(0.4, animations: {
-                    self.topMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.midMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.lowMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 35, 35)
-                    self.lowestMilesButton.frame = CGRectMake(self.view.frame.width - 325, (self.view.frame.height / 2) - 15, 80, 35)
-                    self.lowestMilesButton.setTitle("1 mi", forState: .Normal)
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.topMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.midMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.lowMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
+                    self.lowestMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35)
+                    self.lowestMilesButton.setTitle("1 mi", for: UIControlState())
                     self.midMilesButton.alpha = 0.0
                     self.lowMilesButton.alpha = 0.0
                     self.topMilesButton.alpha = 0.0
                     
                     }, completion: { _ in
-                        self.midMilesButton.hidden = true
-                        self.lowMilesButton.hidden = true
-                        self.topMilesButton.hidden = true
+                        self.midMilesButton.isHidden = true
+                        self.lowMilesButton.isHidden = true
+                        self.topMilesButton.isHidden = true
                 })
                 mileRadiusViewsOn = !mileRadiusViewsOn
                 updateQuery()
@@ -740,7 +740,7 @@ extension EventFinderViewController {
     }
     
     func dismissAccessoryViews() {
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.logOutView.alpha = 0.0
             self.myEventsView.alpha = 0.0
             self.moreOptionsOn = false

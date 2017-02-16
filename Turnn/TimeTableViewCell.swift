@@ -10,9 +10,9 @@ import UIKit
 
 class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
-    @IBOutlet weak private var timeLabel: UILabel!
+    @IBOutlet weak fileprivate var timeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
-    var date: NSDate?
+    var date: Date?
       override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
@@ -20,43 +20,43 @@ class TimeTableViewCell: UITableViewCell, UITextFieldDelegate {
       
     func setupCell() {
         self.timeTextField.delegate = self
-        self.backgroundColor = .clearColor()
+        self.backgroundColor = .clear
         setupTextfieldInputView()
     }
     
     func setupTextfieldInputView() {
-        let datePicker = UIDatePicker(frame: CGRectZero)
-        datePicker.datePickerMode = .DateAndTime
+        let datePicker = UIDatePicker(frame: CGRect.zero)
+        datePicker.datePickerMode = .dateAndTime
         datePicker.backgroundColor = UIColor.turnnGray()
-        datePicker.minimumDate = NSDate()
+        datePicker.minimumDate = Date()
         datePicker.setValue(UIColor.turnnWhite(), forKeyPath: "textColor")
-        datePicker.addTarget(self, action: #selector(dateUpdated(_:)), forControlEvents: .ValueChanged)
+        datePicker.addTarget(self, action: #selector(dateUpdated(_:)), for: .valueChanged)
         self.timeTextField.inputView = datePicker
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
         if textField.text == "" {
-            date = NSDate()
-            textField.text = NSDate().dateLongFormat()
+            date = Date()
+            textField.text = Date().dateLongFormat()
         }
     }
     
-    func dateUpdated(datePicker: UIDatePicker) {
+    func dateUpdated(_ datePicker: UIDatePicker) {
         print(datePicker.date)
         date = datePicker.date
         timeTextField.text = datePicker.date.dateLongFormat()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         if selected == true {
-            self.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.4)
+            self.backgroundColor = UIColor.white.withAlphaComponent(0.4)
             
-            UIView.animateWithDuration(0.5) {
-                self.backgroundColor = .clearColor()
-            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundColor = .clear
+            }) 
         }
     }
 }

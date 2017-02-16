@@ -10,18 +10,18 @@ import UIKit
 
 class DescriptionDetailTableViewCell: UITableViewCell {
     
-    @IBOutlet weak private var descriptionLabel: UILabel!
+    @IBOutlet weak fileprivate var descriptionLabel: UILabel!
     @IBOutlet weak var detailedDescriptionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func updateDescriptionWithEvent(event: Event) {
+    func updateDescriptionWithEvent(_ event: Event) {
         detailedDescriptionLabel.text = event.eventDescription
     }
 

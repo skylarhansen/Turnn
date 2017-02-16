@@ -17,16 +17,16 @@ class PriceDetailTableViewCell: UITableViewCell {
         
     }
     
-    @IBOutlet weak private var priceLabel: UILabel!
+    @IBOutlet weak fileprivate var priceLabel: UILabel!
     @IBOutlet weak var priceNumberLabel: UILabel!
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
     }
     
-    func updatePriceWithEvent(event: Event) {
+    func updatePriceWithEvent(_ event: Event) {
         guard price != nil else { return }
             priceNumberLabel.text = "\(event.price)"
         }

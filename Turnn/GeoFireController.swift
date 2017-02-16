@@ -18,79 +18,79 @@ class GeoFireController {
   
     static let eventDataPoint = FirebaseController.ref.child("Events")
     
-    static func setLocation(eventID: String, location: CLLocation, completion: (success : Bool, savedLocation: FIRDatabaseReference?) -> Void) {
-        let key = geofire.firebaseRef.childByAutoId().key
-        geofire.setLocation(location, forKey: key) { (error) in
+    static func setLocation(_ eventID: String, location: CLLocation, completion: @escaping (_ success : Bool, _ savedLocation: FIRDatabaseReference?) -> Void) {
+        let key = geofire?.firebaseRef.childByAutoId().key
+        geofire?.setLocation(location, forKey: key) { (error) in
             if let error = error {
                 print(error)
-                completion(success: false, savedLocation: nil)
+                completion(false, nil)
             }
-            eventDataPoint.child(eventID).updateChildValues(["LocationID": key ])
-            completion(success: true, savedLocation: geofire.firebaseRef.child(key))
+            eventDataPoint.child(eventID).updateChildValues(["LocationID": key! ])
+            completion(true, geofire?.firebaseRef.child(key!))
         }
     }
     
-    static func getEventIdsForLocationIdentifiers(ids: [String], completion: (ids: [String]?) -> Void) {
+    static func getEventIdsForLocationIdentifiers(_ ids: [String], completion: @escaping (_ ids: [String]?) -> Void) {
         var eventIDs: [String] = []
-        let eventIDFetch = dispatch_group_create()
+        let eventIDFetch = DispatchGroup()
         for id in ids {
-            dispatch_group_enter(eventIDFetch)
-            FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
+            eventIDFetch.enter()
+            FirebaseController.ref.child("Locations").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], let eventID = locationDictionary["EventID"] as? String {
                     eventIDs.append(eventID)
                 }
-                dispatch_group_leave(eventIDFetch)
+                eventIDFetch.leave()
             })
         }
-        dispatch_group_notify(eventIDFetch, dispatch_get_main_queue()) {
-            completion(ids: eventIDs)
+        eventIDFetch.notify(queue: DispatchQueue.main) {
+            completion(eventIDs)
         }
     }
     
-    static func getSingleEventIdForLocationIdentifier(id: String, completion: (id: String?) -> Void) {
+    static func getSingleEventIdForLocationIdentifier(_ id: String, completion: @escaping (_ id: String?) -> Void) {
         var eventIDtoExport: String = ""
-        let singleEventIDFetch = dispatch_group_create()
-            dispatch_group_enter(singleEventIDFetch)
-            FirebaseController.ref.child("Locations").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                if let locationDictionary = snapshot.value as? [String : AnyObject], eventID = locationDictionary["EventID"] as? String {
+        let singleEventIDFetch = DispatchGroup()
+            singleEventIDFetch.enter()
+            FirebaseController.ref.child("Locations").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], let eventID = locationDictionary["EventID"] as? String {
                     eventIDtoExport = eventID
                 }
-                dispatch_group_leave(singleEventIDFetch)
+                singleEventIDFetch.leave()
             })
-        dispatch_group_notify(singleEventIDFetch, dispatch_get_main_queue()) {
-            completion(id: eventIDtoExport)
+        singleEventIDFetch.notify(queue: DispatchQueue.main) {
+            completion(eventIDtoExport)
         }
     }
     
-    static func getLocationIdsForEventIdentifiers(ids: [String], completion: (ids: [String]?) -> Void) {
+    static func getLocationIdsForEventIdentifiers(_ ids: [String], completion: @escaping (_ ids: [String]?) -> Void) {
         var locationIDs: [String] = []
-        let locationIDFetch = dispatch_group_create()
+        let locationIDFetch = DispatchGroup()
         for id in ids {
-            dispatch_group_enter(locationIDFetch)
-            FirebaseController.ref.child("Events").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-                if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
+            locationIDFetch.enter()
+            FirebaseController.ref.child("Events").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let locationDictionary = snapshot.value as? [String : AnyObject], let locationID = locationDictionary["LocationID"] as? String {
                     locationIDs.append(locationID)
                 }
-                dispatch_group_leave(locationIDFetch)
+                locationIDFetch.leave()
             })
         }
-        dispatch_group_notify(locationIDFetch, dispatch_get_main_queue()) {
-            completion(ids: locationIDs)
+        locationIDFetch.notify(queue: DispatchQueue.main) {
+            completion(locationIDs)
         }
     }
     
-    static func getSingleLocationIdForEventIdentifier(id: String, completion: (id: String?) -> Void) {
+    static func getSingleLocationIdForEventIdentifier(_ id: String, completion: @escaping (_ id: String?) -> Void) {
         var locationIDtoExport: String = ""
-        let singleLocationIDFetch = dispatch_group_create()
-        dispatch_group_enter(singleLocationIDFetch)
-        FirebaseController.ref.child("Events").child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            if let locationDictionary = snapshot.value as? [String : AnyObject], locationID = locationDictionary["LocationID"] as? String {
+        let singleLocationIDFetch = DispatchGroup()
+        singleLocationIDFetch.enter()
+        FirebaseController.ref.child("Events").child(id).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let locationDictionary = snapshot.value as? [String : AnyObject], let locationID = locationDictionary["LocationID"] as? String {
                 locationIDtoExport = locationID
                 }
-                dispatch_group_leave(singleLocationIDFetch)
+                singleLocationIDFetch.leave()
         })
-        dispatch_group_notify(singleLocationIDFetch, dispatch_get_main_queue()) {
-            completion(id: locationIDtoExport)
+        singleLocationIDFetch.notify(queue: DispatchQueue.main) {
+            completion(locationIDtoExport)
         }
     }
     
@@ -99,20 +99,20 @@ class GeoFireController {
     //              CURRENTEVENTS are all other events, whose "endTime" not not passed
     //                            and whose "startTime" is equal to or less than 24 hours away from now
     
-    static func queryEventsForRadius(miles radius: Double, completion: (currentEvents: [Event]?, oldEvents: [Event]?, matchingLocationKeys: [String]?, futureEvents: [Event]?) -> Void) {
+    static func queryEventsForRadius(miles radius: Double, completion: @escaping (_ currentEvents: [Event]?, _ oldEvents: [Event]?, _ matchingLocationKeys: [String]?, _ futureEvents: [Event]?) -> Void) {
         var matchedLocationKeysArray: [String] = []
         guard let center = LocationController.sharedInstance.coreLocationManager.location else {
-            completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil, futureEvents: nil)
+            completion(nil, nil, nil, nil)
             return }
         
         //print("My Location: \(center.coordinate.latitude), \(center.coordinate.longitude)")
-        let circleQuery = geofire.queryAtLocation(center, withRadius: radius.makeKilometers())
-        circleQuery.observeEventType(.KeyEntered, withBlock: { (key, location) in
+        let circleQuery = geofire?.query(at: center, withRadius: radius.makeKilometers())
+        circleQuery?.observe(.keyEntered, with: { (key, location) in
             //print("Key '\(key)' entered the search area and is at location '\(location)'")
-            matchedLocationKeysArray.append(key)
+            matchedLocationKeysArray.append(key!)
         })
         
-        circleQuery.observeReadyWithBlock{
+        circleQuery?.observeReady{
             GeoFireController.getEventIdsForLocationIdentifiers(matchedLocationKeysArray, completion: { (ids) in
                 if let ids = ids {
                     EventController.fetchEventsThatMatchQuery(ids, completion: { (events) in
@@ -120,25 +120,25 @@ class GeoFireController {
                         if let events = events {
                             print("EVENT RETRIEVED: \(events)")
                             
-                            let eventSortOldOrNot = events.divide({$0.endTime.timeIntervalSince1970 >= NSDate().timeIntervalSince1970})
+                            let eventSortOldOrNot = events.divide({$0.endTime.timeIntervalSince1970 >= Date().timeIntervalSince1970})
                             
                             let notOldEvents = eventSortOldOrNot.slice
                             let oldEvents = eventSortOldOrNot.remainder
                             
-                            let eventSortFutureOrPresent = notOldEvents.divide({$0.startTime.timeIntervalSince1970 <= NSDate().dateByAddingTimeInterval(86400).timeIntervalSince1970})
+                            let eventSortFutureOrPresent = notOldEvents.divide({$0.startTime.timeIntervalSince1970 <= Date().addingTimeInterval(86400).timeIntervalSince1970})
                                 
                             let currentEvents = eventSortFutureOrPresent.slice
                             let futureEvents = eventSortFutureOrPresent.remainder
                             
-                            completion(currentEvents: currentEvents, oldEvents: oldEvents, matchingLocationKeys: matchedLocationKeysArray, futureEvents: futureEvents)
+                            completion(currentEvents, oldEvents, matchedLocationKeysArray, futureEvents)
                         } else {
                             print("Dang it!!!")
-                            completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil, futureEvents: nil)
+                            completion(nil, nil, nil, nil)
                         }
                     })
                 } else {
                     print("Did not get back any eventIDs")
-                    completion(currentEvents: nil, oldEvents: nil, matchingLocationKeys: nil, futureEvents: nil)
+                    completion(nil, nil, nil, nil)
                 }
             })
         }

@@ -31,28 +31,28 @@ class MyEventsTableViewController: UITableViewController {
     @IBAction func logOutButtonTapped() {
         print("logged out tapped")
         UserController.logOutUser()
-        self.performSegueWithIdentifier("logOutSegue", sender: self)
+        self.performSegue(withIdentifier: "logOutSegue", sender: self)
     }
     
     @IBAction func doneButtonTapped() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setupTableViewUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.turnnGray()
         self.navigationController?.navigationBar.tintColor = UIColor.turnnBlue()
-        self.tableView.separatorColor = .clearColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        self.tableView.separatorColor = .clear
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         setBackgroundForTableView()
     }
     
     func setBackgroundForTableView() {
         
-        let blurEffect = UIBlurEffect(style: .Dark)
+        let blurEffect = UIBlurEffect(style: .dark)
         let blurView = UIVisualEffectView(effect: blurEffect)
         
         let imageView = UIImageView(image: UIImage(named: "Turnn Background")!)
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         
         imageView.addSubview(blurView)
         tableView.backgroundView = imageView
@@ -60,33 +60,33 @@ class MyEventsTableViewController: UITableViewController {
         createFloatyLegalAndPrivacyButton()
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var frame = self.legalButton.frame
         frame.origin.y = scrollView.contentOffset.y + self.tableView.frame.size.height - self.legalButton.frame.size.height
         self.legalButton.frame = frame
-        self.view.bringSubviewToFront(self.legalButton)
+        self.view.bringSubview(toFront: self.legalButton)
     }
     
     func createFloatyLegalAndPrivacyButton(){
-        self.legalButton.frame = CGRectMake(self.view.bounds.minX + 8, self.view.bounds.maxY - 110, 50, 40)
+        self.legalButton.frame = CGRect(x: self.view.bounds.minX + 8, y: self.view.bounds.maxY - 110, width: 50, height: 40)
         self.legalButton.layer.masksToBounds = true
-        self.legalButton.backgroundColor = UIColor.clearColor()
-        self.legalButton.setTitleColor(UIColor.turnnWhite(), forState: .Normal)
-        self.legalButton.setTitle("Legal &\nPrivacy", forState: .Normal)
+        self.legalButton.backgroundColor = UIColor.clear
+        self.legalButton.setTitleColor(UIColor.turnnWhite(), for: UIControlState())
+        self.legalButton.setTitle("Legal &\nPrivacy", for: UIControlState())
         self.legalButton.titleLabel?.numberOfLines = 2
-        self.legalButton.titleLabel?.textAlignment = .Center
+        self.legalButton.titleLabel?.textAlignment = .center
         self.legalButton.titleLabel?.font = UIFont.init(name: "Ubuntu", size: 11.0)
-        self.legalButton.addTarget(self, action: #selector(legalButtonTapped), forControlEvents: .TouchUpInside)
+        self.legalButton.addTarget(self, action: #selector(legalButtonTapped), for: .touchUpInside)
         self.view.addSubview(self.legalButton)
-        self.view.bringSubviewToFront(self.legalButton)
+        self.view.bringSubview(toFront: self.legalButton)
     }
     
     func legalButtonTapped(){
-    self.performSegueWithIdentifier("myEventsToLegalSegue", sender: nil)
+    self.performSegue(withIdentifier: "myEventsToLegalSegue", sender: nil)
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -96,12 +96,12 @@ class MyEventsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return events.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("myEventCell", forIndexPath: indexPath) as? MyEventTableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "myEventCell", for: indexPath) as? MyEventTableViewCell {
             let event = events[indexPath.row]
             cell.updateWithEvent(event)
             return cell
@@ -111,13 +111,13 @@ class MyEventsTableViewController: UITableViewController {
     }
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             let event = events[indexPath.row]
             EventController.sharedController.deleteEvent(event)
             tableView.beginUpdates()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            events.removeAtIndex(indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            events.remove(at: indexPath.row)
             tableView.endUpdates()
         }
     }
