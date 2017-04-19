@@ -28,7 +28,7 @@ class PriceDetailTableViewCell: UITableViewCell {
     
     func updatePriceWithEvent(_ event: Event) {
         guard price != nil else { return }
-            priceNumberLabel.text = "\(event.price)"
+            priceNumberLabel.text = "\(String(describing: event.price))"
         }
 
 }

@@ -249,7 +249,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 if MFMailComposeViewController.canSendMail() {
                     let composeVC = MFMailComposeViewController()
                     composeVC.mailComposeDelegate = self
-                    composeVC.setToRecipients(["report@honestbadger.com"])
+                    composeVC.setToRecipients(["report@turnnapp.com"])
                     composeVC.setSubject("Inappropriate Event Report")
                     composeVC.setMessageBody("Event to report:\n'\(self.event!.title)'\n\n Thank you for your report! Do you have any comments to add?: \n\n\n\n\n\n\n \n*******************\nDeveloper Data:\neid:\(self.event!.identifier!) \nuid:\(self.event!.host.identifier!)\nst:\(self.event!.startTime.timeIntervalSince1970)\n*******************", isHTML: false)
                     

@@ -56,8 +56,8 @@ class LocationController {
         let address = String.autoformatAddressForGPSAquisitionWith(event)
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
-                print("\(error?.localizedDescription)")
-                completion(nil, "\(error?.localizedDescription)")
+                print("\(String(describing: error?.localizedDescription))")
+                completion(nil, "\(String(describing: error?.localizedDescription))")
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]
@@ -83,8 +83,8 @@ class LocationController {
         var coordinate: CLLocationCoordinate2D?
         CLGeocoder().geocodeAddressString(address, completionHandler: { (placemarks, error) in
             if error != nil {
-                print("\(error?.localizedDescription)")
-                completion(nil, "\(error?.localizedDescription)")
+                print("\(String(describing: error?.localizedDescription))")
+                completion(nil, "\(String(describing: error?.localizedDescription))")
             }
             if placemarks?.count > 0 {
                 let placemark = placemarks?[0]

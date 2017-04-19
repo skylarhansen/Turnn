@@ -28,7 +28,7 @@ class EventController {
         
         if let eventID = event.identifier {
             LocationController.sharedInstance.forwardGeocoding(event) { (location, error) in
-                print("\(error?.description)")
+                print("\(String(describing: error?.description))")
                 if let GPS = location {
                     GeoFireController.setLocation(eventID, location: GPS) { (success, savedLocation) in
                         savedLocation?.updateChildValues(["EventID" : eventID])
@@ -157,7 +157,7 @@ class EventController {
                 let snapshotter = MKMapSnapshotter(options: options)
                 snapshotter.start (completionHandler: { snapshot, error in
                     guard let snapshot = snapshot else {
-                        print("Snapshot error: \(error)")
+                        print("Snapshot error: \(String(describing: error))")
                         completion(false, nil, nil)
                         return
                     }
