@@ -18,7 +18,7 @@ class GeoFireController {
   
     static let eventDataPoint = FirebaseController.ref.child("Events")
     
-    static func setLocation(_ eventID: String, location: CLLocation, completion: @escaping (_ success : Bool, _ savedLocation: FIRDatabaseReference?) -> Void) {
+    static func setLocation(_ eventID: String, location: CLLocation, completion: @escaping (_ success : Bool, _ savedLocation: DatabaseReference?) -> Void) {
         let key = geofire?.firebaseRef.childByAutoId().key
         geofire?.setLocation(location, forKey: key) { (error) in
             if let error = error {

@@ -18,7 +18,7 @@ class LoadingScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activityIndicator.startAnimating()
-        FIRApp.configure()
+        FirebaseApp.configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {

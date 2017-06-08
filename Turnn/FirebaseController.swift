@@ -11,8 +11,8 @@ import Firebase
 import FirebaseStorage
 
 class FirebaseController {
-    static let ref = FIRDatabase.database().reference()
-    static let storage = FIRStorage.storage().reference()
+    static let ref = Database.database().reference()
+    static let storage = Storage.storage().reference()
 }
 
 protocol FirebaseType {

@@ -17,7 +17,7 @@ class ImageController {
         
         if let uploadData = UIImagePNGRepresentation(image) {
             let imageName = UUID().uuidString
-            FirebaseController.storage.child("Event Location Screenshots").child(imageName).put(uploadData, metadata: nil, completion: { (metadata, error) in
+            FirebaseController.storage.child("Event Location Screenshots").child(imageName).putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if let error = error {
                     print(error.localizedDescription)
                     completion(nil)
