@@ -68,8 +68,8 @@
 		8A23C529537D62F6284CB34CFB6372BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EA74677AF41D668CA474189D648729 /* Foundation.framework */; };
 		9024F4774BD8DDE03700B223CF7F8164 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29EA74677AF41D668CA474189D648729 /* Foundation.framework */; };
 		92717B61DDABE582BF774F6CDCFA90CC /* GFQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B511A858CAE0167DAF0954EB8F0F6BD /* GFQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		951E0C771EE9625F00684F41 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E591CD01BF4FE944E8E23A21F8F43 /* FirebaseDatabase.framework */; };
 		95740791FC37B0F9307998F55C5D1883 /* GPBDescriptor_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = D9AE5FEDAD5B2C1A71EA1AB9E221C008 /* GPBDescriptor_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95AA4F361EEC119600769AC4 /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA9E591CD01BF4FE944E8E23A21F8F43 /* FirebaseDatabase.framework */; };
 		95C69447F517DB81437EDE0003486963 /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1914853188D478903A91D923C6ED019A /* GTMSessionFetcherService.m */; };
 		969478CFBB4827915D4502BDEBD1A16F /* GPBProtocolBuffers_RuntimeSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = F9D61BC8F7CD0313E855160334140891 /* GPBProtocolBuffers_RuntimeSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9700DF330AA08E9CBE7D049B35B4E439 /* GPBUnknownFieldSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 997EE744E23E380746CF7606E59C5C68 /* GPBUnknownFieldSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -345,7 +345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951E0C771EE9625F00684F41 /* FirebaseDatabase.framework in Frameworks */,
+				95AA4F361EEC119600769AC4 /* FirebaseDatabase.framework in Frameworks */,
 				C905C7C05DA47C2413D9E2492D7C4016 /* CoreLocation.framework in Frameworks */,
 				29201A2541063D958C1F622BDE21A5FC /* Foundation.framework in Frameworks */,
 				735B1005CF6967A0B2224C691D8DAB4F /* GoogleToolboxForMac.framework in Frameworks */,
