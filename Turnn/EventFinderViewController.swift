@@ -59,7 +59,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
     var selectedIndexPath: IndexPath?
     
     enum Miles: Int {
-        case fifteen = 15
+        case twentyfive = 25
         case ten = 10
         case five = 5
         case one = 1
@@ -73,7 +73,7 @@ class EventFinderViewController: UIViewController, CLLocationManagerDelegate, UI
         }
     }
     
-    var selectedRadius: Miles = .fifteen
+    var selectedRadius: Miles = .twentyfive
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -516,9 +516,9 @@ extension EventFinderViewController {
     func createMileViews() {
         
         topMilesButton = EventRadiusButton(frame: CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35))
-        topMilesButton.setTitle("15 mi", for: UIControlState())
+        topMilesButton.setTitle("25 mi", for: UIControlState())
         topMilesButton.setTitleColor(UIColor.turnnBlue(), for: UIControlState())
-        topMilesButton.tag = Miles.fifteen.rawValue
+        topMilesButton.tag = Miles.twentyfive.rawValue
         topMilesButton.addTarget(self, action: #selector(changeRadius(_:)), for: .touchUpInside)
         
         midMilesButton = EventRadiusButton(frame: CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35))
@@ -569,7 +569,7 @@ extension EventFinderViewController {
             self.lowMilesButton.alpha = 0.9
             self.lowestMilesButton.alpha = 0.9
             
-            self.topMilesButton.setTitle("15", for: UIControlState())
+            self.topMilesButton.setTitle("25", for: UIControlState())
             self.midMilesButton.setTitle("10", for: UIControlState())
             self.lowMilesButton.setTitle("5", for: UIControlState())
             self.lowestMilesButton.setTitle("1", for: UIControlState())
@@ -622,14 +622,14 @@ extension EventFinderViewController {
     
     func changeRadius(_ sender: UIButton) {
         switch sender.tag {
-        case Miles.fifteen.rawValue:
+        case Miles.twentyfive.rawValue:
             if mileRadiusViewsOn {
-                self.selectedRadius = Miles.fifteen
+                self.selectedRadius = Miles.twentyfive
                 let region = MKCoordinateRegionMakeWithDistance(mapCenter, Double(selectedRadius.rawValue).makeMeters(), Double(selectedRadius.rawValue).makeMeters())
                 self.mapView.setRegion(region, animated: true)
                 UIView.animate(withDuration: 0.4, animations: {
                     self.topMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 80, height: 35)
-                    self.topMilesButton.setTitle("15 mi", for: UIControlState())
+                    self.topMilesButton.setTitle("25 mi", for: UIControlState())
                     self.midMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
                     self.lowMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
                     self.lowestMilesButton.frame = CGRect(x: self.view.frame.width - 325, y: (self.view.frame.height / 2) - 15, width: 35, height: 35)
