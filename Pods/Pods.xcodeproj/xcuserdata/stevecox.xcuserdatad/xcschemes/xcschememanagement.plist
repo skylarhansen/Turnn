@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>leveldb-library.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>044AC63C47D3393CC31705165FC239CD</key>
+		<key>0B8E38BAD0DF639399DF954241FECEBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>253343503242E3A65881B04FEB005FE3</key>
+		<key>0CD4C91F12019217FC0180E8FA26C01F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D17B4D0D8A5264FE67417A94F604D75</key>
+		<key>136CF81C8265062A354C93115C010C74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>42E6C3B3F68E685443CD2456EE94563A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6057CE7B4E195904DFB91C336183FABE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A8341471CDBC09313C75CB027F413B88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C0D8BFA72D5D8C9FFC99A45232DD99B1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CEB86D75439B7BC93C84573CBD965642</key>
 		<dict>
 			<key>primary</key>
 			<true/>
